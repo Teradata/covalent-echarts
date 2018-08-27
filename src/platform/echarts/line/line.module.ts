@@ -1,11 +1,11 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CovalentBaseEchartsModule } from '../base';
+import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 
 import { TdLineChartComponent } from './line.component';
 
-export const MODULE_COMPONENTS: Type<any>[] = [
+export const LINE_MODULE_COMPONENTS: Type<any>[] = [
   TdLineChartComponent,
 ];
 
@@ -15,10 +15,10 @@ export const MODULE_COMPONENTS: Type<any>[] = [
     CovalentBaseEchartsModule,
   ],
   declarations: [
-    MODULE_COMPONENTS,
+    LINE_MODULE_COMPONENTS,
   ],
   exports: [
-    MODULE_COMPONENTS,
+    LINE_MODULE_COMPONENTS,
   ],
 })
 export class CovalentLineEchartsModule {

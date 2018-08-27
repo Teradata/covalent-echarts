@@ -6,7 +6,7 @@ import {
 
 import 'echarts/lib/chart/line';
 
-import { BASE_CHART_PROVIDER } from '../base';
+import { BASE_CHART_PROVIDER } from '@covalent/echarts/base';
 
 @Component({
   selector: 'td-chart-line',

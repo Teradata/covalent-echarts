@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TdBaseChartComponent } from './base.component';
 import { TdChartTooltipComponent, TdChartTooltipFormatterDirective } from './tooltip/tooltip.component';
 
-export const BASE_COMPONENTS: Type<any>[] = [
+export const BASE_MODULE_COMPONENTS: Type<any>[] = [
   TdBaseChartComponent,
   TdChartTooltipComponent,
   TdChartTooltipFormatterDirective,
@@ -15,10 +15,10 @@ export const BASE_COMPONENTS: Type<any>[] = [
     CommonModule,
   ],
   declarations: [
-    BASE_COMPONENTS,
+    BASE_MODULE_COMPONENTS,
   ],
   exports: [
-    BASE_COMPONENTS,
+    BASE_MODULE_COMPONENTS,
   ],
 })
 export class CovalentBaseEchartsModule {
