@@ -79,14 +79,14 @@
                     [position]="'bottom'"
                     [type]="'time'"
                     [boundaryGap]="false"
-                    [axisLine]="{show: false}"
-                    [splitLine]="{show: false}">
+                    [axisLine]="xLine"
+                    [splitLine]="splitLine">
   </td-chart-x-axis>
   <td-chart-y-axis [show]="true"
                     [type]="'value'"
-                    [axisLabel]="{inside: true}"
-                    [axisLine]="{show: false}"
-                    [splitLine]="{show: false}">
+                    [axisLabel]="yAxisLabel"
+                    [axisLine]="yLine"
+                    [splitLine]="splitLine">
   </td-chart-y-axis>
 </td-base-chart>
 <h3>Line Test 2</h3>

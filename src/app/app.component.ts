@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IAxisLine, IAxisLabel, IAxisTick, ISplitLine, ISplitArea, IAxisPointer  } from '../platform/echarts';
+import { IAxisLine, IAxisLabel, ISplitLine } from '../platform/echarts';
 
 export const NOW: Date = new Date();
 
@@ -51,25 +51,32 @@ export class DocsAppComponent {
   yLine: IAxisLine = { 
     show: true, 
     lineStyle: 
-    { color: 'red', type: 'dotted', width: 5 },
+    { color: '#777777', width: 2 },
   };
 
   yAxisLabel: IAxisLabel = { 
     show: true, 
     inside: false,
     fontStyle: 'italic',
+    formatter: '${value}',
   };
 
   xLine: IAxisLine = { 
     show: true, 
     lineStyle: 
-    { color: 'red', type: 'dotted', width: 5 },
+    { color: '#777777', width: 2 },
   };
 
   xAxisLabel: IAxisLabel = { 
     show: true, 
     inside: false,
     fontStyle: 'italic',
+  };
+
+  splitLine: ISplitLine = {
+    lineStyle: {
+      type: 'dotted',
+    },
   };
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
