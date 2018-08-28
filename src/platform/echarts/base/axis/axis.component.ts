@@ -7,7 +7,7 @@ import {
 
 import { TdChartOptionsService } from '../base.service';
 import { assignDefined } from '../utils';
-import { IAxisLine, IAxisLabel, IAxisTick, ISplitLine, ISplitArea, IAxisPointer } from './y-axis.interface';
+import { IAxisLine, IAxisLabel, IAxisTick, ISplitLine, ISplitArea, IAxisPointer  } from './axis.interface';
 import { TdAxisType, TdNameLocation } from './../base.types';
 export abstract class TdChartAxisComponent implements OnChanges, OnInit, OnDestroy {
 

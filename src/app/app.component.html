@@ -17,17 +17,17 @@
     </ng-template>
   </td-chart-tooltip>
   <td-chart-x-axis [show]="true"
-                    [position]="'top'"z
+                    [position]="'top'"
                     [type]="'category'"
                     [boundaryGap]="true"
-                    [axisLine]="{show: false}"
+                    [axisLine]="xLine"
                     [splitLine]="{show: false}">
   </td-chart-x-axis>
   <td-chart-y-axis [show]="true"
                     [type]="'value'"
                     [position]="'right'"
-                    [axisLabel]="{inside: true}"
-                    [axisLine]="{show: true}"
+                    [axisLabel]="yAxisLabel"
+                    [axisLine]="yLine"
                     [max]="120"
                     [splitLine]="{show: true}">
   </td-chart-y-axis>

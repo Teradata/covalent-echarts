@@ -1,10 +1,7 @@
 import {
-  TdNameLocation,
   TdAlign,
-  TdAxisType,
   TdfontStyle,
   TdFontWeight,
-  TdPosition,
   TdVerticalAlign,
   TdFontFamily,
   TdPointerType,
@@ -12,48 +9,8 @@ import {
   TdAxisLineType,
 } from '../base.types';
 
-export interface ITdYAxis {
-  id?: string;
-  show?: boolean;
-  gridIndex?: number;
-  position?: TdPosition;
-  offset?: number;
-  type?: TdAxisType;
-  name?: string;
-  nameLocation?: any;
-  nameTextSytle?: INameAxisTextStyle;
-  nameGap?: number;
-  nameRotate?: number;
-  inverse?: false;
-  boundaryGap?: boolean;
-  min?: number;
-  max?: number;
-  scale?: boolean;
-  splitNumber?: number;
-  minInterval?: number;
-  interval?: number;
-  /*
-     * Only valid when using numeric axes with type: 'log' 
-    */
-  logBase?: number;
-  /*
-     * True for axis that cannot be interacted with. 
-    */
-  silent?: boolean;
-  triggerEvent?: boolean;
-  axisLine?: IAxisLine;
-  axisTick?: IAxisTick;
-  axisLabel?: IAxisLabel;
-  splitLine?: ISplitLine;
-  splitArea?: ISplitArea;
-  data?: any[];
-  axisPointer?: IAxisPointer;
-  zlevel?: number;
-  z?: number;
-}
-
-export interface IAxisLine {
-  show?: boolean;
+interface IAxisLine {
+  show: boolean;
   onZero?: boolean;
   onZeroAxisIndex?: number;
   symbol?: string | string[];
@@ -62,7 +19,7 @@ export interface IAxisLine {
   lineStyle?: ITdStyle;
 }
 
-export interface IAxisLabel {
+interface IAxisLabel {
   show?: boolean;
   interval?: any;
   inside?: boolean;
@@ -98,7 +55,7 @@ export interface IAxisLabel {
   textShadowOffsetY?: number;
 }
 
-export interface IAxisTick {
+interface IAxisTick {
   alignWithLabel?: boolean;
   interval?: any;
   inside?: boolean;
@@ -106,19 +63,19 @@ export interface IAxisTick {
   lineStyle?: ITdStyle;
 }
 
-export interface ISplitLine {
+interface ISplitLine {
   show?: boolean;
   interval?: any;
   lineStyle?: ITdStyle;
 }
 
-export interface ISplitArea {
+interface ISplitArea {
   show?: boolean;
   interval?: any;
   areaStyle?: ITdBaseStyle;
 }
 
-export interface ITdBaseStyle {
+interface ITdBaseStyle {
   color?: any;
   shadowBlur?: number;
   shadowColor?: any;
@@ -127,7 +84,7 @@ export interface ITdBaseStyle {
   opacity?: number;
 }
 
-export interface ITdStyle {
+interface ITdStyle {
   color?: any;
   width?: number;
   type?: TdAxisLineType;
@@ -138,7 +95,7 @@ export interface ITdStyle {
   opacity?: number;
 }
 
-export interface IAxisPointer {
+interface IAxisPointer {
   show?: boolean;
   type?: TdPointerType;
   snap?: boolean;
@@ -152,7 +109,7 @@ export interface IAxisPointer {
   handle?: object; // TODO Look into this more
 }
 
-export interface IAxisPointerLabel {
+interface IAxisPointerLabel {
   show: boolean;
   precision: string | number;
   formatter: any;
@@ -181,7 +138,7 @@ export interface IAxisPointerLabel {
   shadowOffsetY: number;
 }
 
-export interface INameAxisTextStyle {
+interface INameAxisTextStyle {
   color?: string | object;
   fontStyle?: TdfontStyle;
   fontWeight?: TdFontWeight;
@@ -213,3 +170,16 @@ export interface INameAxisTextStyle {
     */
   rich: object;
 }
+
+export {
+  IAxisLine,
+  IAxisLabel,
+  IAxisTick,
+  ISplitLine,
+  IAxisPointerLabel,
+  INameAxisTextStyle,
+  ISplitArea,
+  IAxisPointer,
+  ITdBaseStyle,
+  ITdStyle,
+};
