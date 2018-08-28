@@ -61,12 +61,7 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
   @Input('data') data: any[];
   @Input('max') max: number;
   @Input('chartGroup') chartGroup: string;
-  @Input('yAxisFormatter') yAxisFormatter: (value: any, index?: number) => string;
-  @Input('yAxisType') yAxisType: string = 'value';
   @Input('dataZoom') dataZoom: boolean = true;
-  @Input('yAxis') yAxis: any[];
-  @Input('showYAxis') showYAxis: boolean = true;
-  @Input('yAxisSplitNumber') yAxisSplitNumber: number;
 
   @Output('markAreaClick') markAreaClick: EventEmitter<any> = new EventEmitter<any>();
 
