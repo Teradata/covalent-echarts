@@ -97,7 +97,6 @@ export class TdSeriesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private _setOptions(): void {
-    // console.log(this.data, this.type);
     let config: any = assignDefined(this._state, this.config, {
       id: this.id,
       type: this.type,
