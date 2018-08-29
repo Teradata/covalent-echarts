@@ -47,6 +47,50 @@ export class DocsAppComponent {
     }],
   }];
 
+  series: any[] = [
+    {
+        data: [65, 300, 100, 200, 100, 100, 100],
+        type: 'bar',
+        
+    },
+    {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        
+    },
+    ];
+
+  xAxisCombo: any = {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  };
+
+  yAxisCombo: any[] = [
+    {
+      position: 'left',
+        type : 'value',
+        name: 'test',
+        min: 0,
+        max: 2000,
+        splitNumber: 2,
+        zlevel: 0,
+        splitLine: {
+            lineStyle: {color: 'red'},
+        },
+        axisLabel: {show: true},
+        
+    },
+    {
+        position: 'right',
+        type : 'value',
+        min: 0,
+        max: 4000,
+        splitNumber: 3,
+        zlevel: 0,
+        
+    },
+];
+
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
 
   }

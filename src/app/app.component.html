@@ -1,6 +1,5 @@
 <h3>Bar Test</h3>
 <td-base-chart [style.height.px]="300"
-          [yAxisType]="'value'"
           [dataZoom]="false"
           [data]="barPlot">
   <td-chart-tooltip [trigger]="'item'">
@@ -111,3 +110,41 @@
     </ng-template>
   </td-chart-tooltip>
 </td-chart-line>
+
+<h3>Series Test</h3>
+<td-base-chart [style.height.px]="300"
+          [dataZoom]="false">
+  <td-chart-tooltip [trigger]="'item'">
+    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300">person</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-tooltip>
+  <td-chart-x-axis [show]="true"
+                    [position]="'bottom'"
+                    [type]="'category'"
+                    [boundaryGap]="true"
+                    [axisLine]="{show: true}"
+                    [splitLine]="{show: false}"
+                    [data]="['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']">
+  </td-chart-x-axis>
+  <td-chart-y-axis *ngFor="let yc of yAxisCombo"
+                    [show]="true"
+                    [type]="yc.value"
+                    [min]="yc.min"
+                    [max]="yc.max"
+                    [position]="yc.position"
+                    [axisLabel]="{inside: true}"
+                    [axisLine]="{show: true}"
+                    [splitLine]="{show: true}">
+  </td-chart-y-axis>
+  <td-series *ngFor="let s of series" [data]="s.data" [type]="s.type"></td-series>
+</td-base-chart>
