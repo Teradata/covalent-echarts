@@ -12,29 +12,33 @@ import 'echarts/lib/component/tooltip';
 export class DocsAppComponent {
 
   barPlot: any = [{
-    color: '#575757',
-    opacity: 0.75,
+    itemStyle: {
+      opacity: 0.75,
+      color: '#575757',
+    },
     name: 'Historical Model',
-    type: 'bar',
     data: [100],
   }, {
-    color: '#00E5FF',
-    opacity: 0.75,
+    itemStyle: {
+      opacity: 0.75,
+      color: '#00E5FF',
+    },
     name: 'Today',
-    type: 'bar',
     data: [80],
   }];
 
   showTooltip: boolean = true;
   linePlot: any[] = [{
     name: 'Line Test',
-    color: '#575757',
-    shadowBlur: 5,
-    shadowColor: 'rgba(0, 0, 0, 0.15)',
-    shadowOffsetX: 0,
-    shadowOffsetY: 5,
-    width: 2,
-    opacity: 0.75,
+    lineStyle: {
+      color: '#575757',
+      width: 2,
+      shadowBlur: 5,
+      shadowColor: 'rgba(0, 0, 0, 0.15)',
+      shadowOffsetX: 0,
+      shadowOffsetY: 5,
+      opacity: 0.75,
+    },
     data: [{
       name: NOW.toISOString(),
       value: [NOW.toISOString(), 200],

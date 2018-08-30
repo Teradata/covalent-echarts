@@ -29,7 +29,7 @@ import { TdChartOptionsService, BASE_CHART_PROVIDER } from './base.service';
 import { assignDefined } from './utils';
 
 @Component({
-  selector: 'td-base-chart',
+  selector: 'td-chart',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +42,6 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
   private _heightSubject: Subject<number> = new Subject<number>();
   private _resizing: boolean = false;
 
-  private _series: any[];
   private _legend: any;
 
   private _instance: any;
@@ -58,8 +57,6 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
 
   @Input('chartTitle') chartTitle: string;
   @Input('showLegend') showLegend: boolean = true;
-  @Input('data') data: any[];
-  @Input('max') max: number;
   @Input('chartGroup') chartGroup: string;
   @Input('dataZoom') dataZoom: boolean = true;
 
@@ -133,43 +130,6 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
 
   render(): void {
     if (this._instance) {
-      if (this.data && this.data instanceof Array ) {
-        this._series = this.data.map((d: any) => {
-          return {
-            name: d.name,
-            id: d.id,
-            type: d.type ? d.type : 'line',
-            stack: d.stack,
-            data: d.data,
-            color: d.color,
-            connectNulls: false,
-            barWidth: d.barWidth,
-            barGap: d.barGap,
-            z: d.z,
-            lineStyle: {
-              opacity: d.opacity,
-              width: d.width,
-              shadowBlur: d.shadowBlur,
-              shadowColor: d.shadowColor,
-              shadowOffsetX: d.shadowOffsetX,
-              shadowOffsetY: d.shadowOffsetY,
-            },
-            itemStyle: {
-              opacity: d.opacity,
-            },
-            showSymbol: false,
-            areaStyle: d.area ? {opacity: d.opacity} : undefined,
-            markArea: {
-              data: d.markArea,
-              itemStyle: {
-                borderColor: '#464646',
-                borderWidth: 1,
-                opacity: d.markAreaOpacity ? d.markAreaOpacity : 0.1,
-              },
-            },
-          };
-        });
-      }
       this._legend = {
         show: this.showLegend,
         type: 'scroll',
@@ -177,7 +137,6 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
         orient: 'horizontal', // 'vertical'
         right: '5',
         bottom: '5',
-        data: this.data && this.data instanceof Array ? this.data.map((d: any) => d.name) : [],
       },
       this._instance.setOption(Object.assign({}, {
         grid: {
@@ -197,7 +156,7 @@ export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, 
         legend: this._legend,
         xAxis : [{}], // throws error if its empty
         yAxis : [{}], // throws error if its empty
-        series: this._series,
+        series: [],
       }, this._options), true);
       this._changeDetectorRef.markForCheck();
     }

@@ -1,8 +1,6 @@
 <h3>Bar Test</h3>
-<td-base-chart [style.height.px]="300"
-          [yAxisType]="'value'"
-          [dataZoom]="false"
-          [data]="barPlot">
+<td-chart [style.height.px]="300"
+                [dataZoom]="false">
   <td-chart-tooltip [trigger]="'item'">
     <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
       <ng-container *ngIf="params">
@@ -32,33 +30,20 @@
                     [max]="120"
                     [splitLine]="{show: true}">
   </td-chart-y-axis>
-</td-base-chart>
-<h3>Bar Test 2</h3>
-<td-chart-bar [style.height.px]="300"
-              [data]="barPlot">
-  <td-chart-tooltip [trigger]="'item'">
-    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
-      <ng-container *ngIf="params">
-        <div layout="row" layout-align="start center">
-          <mat-icon>
-            <span class="tc-blue-300">person</span>
-          </mat-icon>
-          <span class="mat-caption pad-left-sm">
-            {{params.seriesName + ': ' + params.value}}
-          </span>
-        </div>
-      </ng-container>
-    </ng-template>
-  </td-chart-tooltip>
-</td-chart-bar>
+  <td-chart-series td-bar
+                   *ngFor="let series of barPlot"
+                   [data]="series.data"
+                   [name]="series.name"
+                   [itemStyle]="series.itemStyle">
+  </td-chart-series>
+</td-chart>
 <h3>Line Test</h3>
 <div layout="row">
   <button mat-button (click)="showTooltip = !showTooltip">
     Show/Hide Tooltip
   </button>
 </div>
-<td-base-chart [style.height.px]="300"
-                [data]="linePlot">
+<td-chart [style.height.px]="300">
   <td-chart-tooltip [show]="showTooltip">
     <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
       <ng-container *ngIf="params">
@@ -86,28 +71,13 @@
   <td-chart-y-axis [show]="true"
                     [type]="'value'"
                     [axisLabel]="{inside: true}"
-                    [axisLine]="{show: false}"
-                    [splitLine]="{show: false}">
+                    [axisLine]="{show: true}"
+                    [splitLine]="{show: true}">
   </td-chart-y-axis>
-</td-base-chart>
-<h3>Line Test 2</h3>
-<td-chart-line [style.height.px]="300"
-                [data]="linePlot">
-  <td-chart-tooltip>
-    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
-      <ng-container *ngIf="params">
-        <div layout="row" layout-align="start center">
-          <mat-icon>
-            <span class="tc-blue-300">update_time</span>
-          </mat-icon>
-          <span class="mat-caption pad-left-sm">
-            {{params[0].seriesName + ': ' + params[0].value[1]}}
-          </span>
-        </div>
-        <div class="mat-caption">
-          at {{(params[0].name | date:'medium')}}
-        </div>
-      </ng-container>
-    </ng-template>
-  </td-chart-tooltip>
-</td-chart-line>
+  <td-chart-series td-line
+                   *ngFor="let series of linePlot"
+                   [data]="series.data"
+                   [name]="series.name"
+                   [lineStyle]="series.lineStyle">
+  </td-chart-series>
+</td-chart>
