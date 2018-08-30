@@ -9,7 +9,7 @@ import {
 
 import 'echarts/lib/chart/line';
 
-import { TdChartOptionsService } from '../base/base.service';
+import { TdChartOptionsService } from '../base/chart.service';
 import { assignDefined } from '../base/utils';
 
 @Component({

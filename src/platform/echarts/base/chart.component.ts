@@ -25,17 +25,17 @@ import 'echarts/lib/component/legendScroll';
 import 'echarts/lib/component/markArea';
 import 'echarts/lib/component/dataZoom';
 
-import { TdChartOptionsService, BASE_CHART_PROVIDER } from './base.service';
+import { TdChartOptionsService, CHART_PROVIDER } from './chart.service';
 import { assignDefined } from './utils';
 
 @Component({
   selector: 'td-chart',
-  templateUrl: './base.component.html',
-  styleUrls: ['./base.component.scss'],
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [BASE_CHART_PROVIDER],
+  providers: [CHART_PROVIDER],
 })
-export class TdBaseChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDestroy {
+export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDestroy {
 
   private _resizeSubscription: Subscription;
   private _widthSubject: Subject<number> = new Subject<number>();
