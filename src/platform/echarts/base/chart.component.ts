@@ -45,15 +45,15 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
   private _legend: any;
 
   private _instance: any;
-  private _options: any = {};
 
   get instance(): any {
     return this._instance;
   }
 
-  get options(): any {
-    return this._options;
-  }
+  private _state: any = {};
+  private _options: any = {};
+
+  @Input('config') config: any = {};
 
   @Input('chartTitle') chartTitle: string;
   @Input('showLegend') showLegend: boolean = true;
@@ -138,7 +138,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         right: '5',
         bottom: '5',
       },
-      this._instance.setOption(Object.assign({}, {
+      this._instance.setOption(assignDefined(this._state, {
         grid: {
           show: true,
           left: '20',
@@ -157,7 +157,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         xAxis : [{}], // throws error if its empty
         yAxis : [{}], // throws error if its empty
         series: [],
-      }, this._options), true);
+      }, this.config ? this.config : {}, this._options), true);
       this._changeDetectorRef.markForCheck();
     }
   }

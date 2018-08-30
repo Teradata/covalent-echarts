@@ -30,6 +30,7 @@ export class DocsAppComponent {
   showTooltip: boolean = true;
   linePlot: any[] = [{
     name: 'Line Test',
+    type: 'line',
     lineStyle: {
       color: '#575757',
       width: 2,

@@ -37,13 +37,13 @@
                    [itemStyle]="series.itemStyle">
   </td-chart-series>
 </td-chart>
-<h3>Line Test</h3>
+<h3>Line Test (atomic)</h3>
 <div layout="row">
   <button mat-button (click)="showTooltip = !showTooltip">
     Show/Hide Tooltip
   </button>
 </div>
-<td-chart [style.height.px]="300">
+<td-chart [style.height.px]="300" [config]="{series: linePlot}">
   <td-chart-tooltip [show]="showTooltip">
     <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
       <ng-container *ngIf="params">
@@ -80,4 +80,11 @@
                    [name]="series.name"
                    [lineStyle]="series.lineStyle">
   </td-chart-series>
+</td-chart>
+<h3>Line Test (config object)</h3>
+<td-chart [style.height.px]="300" [config]="{
+                                    xAxis: [{show: true, type: 'time'}],
+                                    yAxis: [{show: true, type: 'value'}],
+                                    series: linePlot
+                                  }">
 </td-chart>
