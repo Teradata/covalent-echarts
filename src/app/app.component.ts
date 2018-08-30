@@ -52,6 +52,17 @@ export class DocsAppComponent {
     }],
   }];
 
+  lineConfig: any = {
+    xAxis: [{show: true, type: 'time', boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
+    yAxis: [{show: true, type: 'value', axisLabel: {inside: true}}],
+    series: this.linePlot,
+    tooltip: {
+      show: true,
+      trigger: 'axis',
+      showContent: true,
+    },
+  };
+
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
 
   }

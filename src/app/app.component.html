@@ -75,16 +75,13 @@
                     [splitLine]="{show: true}">
   </td-chart-y-axis>
   <td-chart-series td-line
-                   *ngFor="let series of linePlot"
-                   [data]="series.data"
-                   [name]="series.name"
-                   [lineStyle]="series.lineStyle">
+                    *ngFor="let series of linePlot"
+                    [data]="series.data"
+                    [name]="series.name"
+                    [lineStyle]="series.lineStyle">
   </td-chart-series>
 </td-chart>
 <h3>Line Test (config object)</h3>
-<td-chart [style.height.px]="300" [config]="{
-                                    xAxis: [{show: true, type: 'time'}],
-                                    yAxis: [{show: true, type: 'value'}],
-                                    series: linePlot
-                                  }">
+<td-chart [style.height.px]="300"
+          [config]="lineConfig">
 </td-chart>
