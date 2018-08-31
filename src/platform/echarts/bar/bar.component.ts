@@ -9,8 +9,7 @@ import {
 
 import 'echarts/lib/chart/bar';
 
-import { TdChartOptionsService } from '../base/chart.service';
-import { assignDefined } from '../base/utils';
+import { TdChartOptionsService, assignDefined } from '@covalent/echarts/base';
 
 @Component({
   selector: 'td-chart-series[td-bar]',
