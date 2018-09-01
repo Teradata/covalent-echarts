@@ -1,38 +1,52 @@
-type TdNameLocation = 'start' | 'middle' | 'center' | 'end';
+enum TdAlign {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
 
-type TdAxisType = 'value' | 'category' | 'time' | 'log';
+enum TdFontWeight {
+  Normal = 'normal',
+  Bold = 'bold',
+  Bolder = 'bolder',
+  Lighter = 'lighter',
+}
 
-type TdAxisLineType = 'solid' | 'dashed' | 'dotted';
+enum TdVerticalAlign {
+  Top = 'top',
+  Middle = 'middle',
+  Bottom = 'bottom',
+  Center = 'center',
+}
 
-type TdPosition = 'left' | 'right';
+enum TdPointerType {
+  Line = 'line',
+  Shadow = 'shadow',
+}
 
-type TdAlign = 'left' | 'center' | 'right';
+ // TODO test other options
+enum TdFontFamily {
+  Sans = 'sans-serif',
+  Serif = 'serif',
+  Mono = 'monospace',
+}
 
-type TdfontStyle = 'normal' | 'italic' | 'oblique';
+enum TdfontStyle {
+  Normal = 'normal',
+  Italic = 'italic',
+  Oblique = 'oblique',
+}
 
-type TdFontWeight = 'normal' | 'bold' | 'bolder' | 'lighter';
-
-type TdVerticalAlign = 'top' | 'middle' | 'bottom' | 'center';
-
-type TdShowLabel = true | false | null;
-
-type TdPointerType = 'line' | 'shadow';
-
-type TdFontFamily =  'sans-serif' | 'serif' | 'monospace'; // TODO test other options
-
-type TdStatus = 'show' | 'hide';
+enum TdStatus {
+  Show = 'show',
+  Hide = 'hide',
+}
 
 export {
-  TdNameLocation,
-  TdAxisType,
-  TdPosition,
   TdAlign,
   TdfontStyle,
   TdFontWeight,
   TdVerticalAlign,
-  TdShowLabel,
   TdFontFamily,
   TdPointerType,
   TdStatus,
-  TdAxisLineType,
 };

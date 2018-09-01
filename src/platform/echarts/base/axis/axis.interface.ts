@@ -6,7 +6,6 @@ import {
   TdFontFamily,
   TdPointerType,
   TdStatus,
-  TdAxisLineType,
 } from '../base.types';
 
 interface IAxisLine {
@@ -171,6 +170,36 @@ interface INameAxisTextStyle {
   rich: object;
 }
 
+enum TdNameLocation {
+  Start = 'start',
+  Middle = 'middle',
+  Center = 'center',
+  End = 'end',
+}
+
+enum TdAxisType {
+  Value = 'value',
+  Category = 'category',
+  Time = 'time',
+  Log = 'log',
+}
+
+enum TdYAxisPosition {
+  Left = 'left',
+  Right = 'right',
+}
+
+enum TdXAxisPosition {
+  Top = 'top',
+  Bottom = 'bottom',
+}
+
+enum TdAxisLineType {
+  Solid = 'solid',
+  Dashed = 'dashed',
+  Dotted = 'dotted',
+}
+
 export {
   IAxisLine,
   IAxisLabel,
@@ -182,4 +211,9 @@ export {
   IAxisPointer,
   ITdBaseStyle,
   ITdStyle,
+  TdYAxisPosition,
+  TdXAxisPosition,
+  TdAxisLineType,
+  TdNameLocation,
+  TdAxisType,
 };

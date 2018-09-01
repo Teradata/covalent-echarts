@@ -7,8 +7,18 @@ import {
 
 import { TdChartOptionsService } from '../base.service';
 import { assignDefined } from '../utils';
-import { IAxisLine, IAxisLabel, IAxisTick, ISplitLine, ISplitArea, IAxisPointer  } from './axis.interface';
-import { TdAxisType, TdNameLocation } from './../base.types';
+import { 
+  IAxisLine,
+  IAxisLabel,
+  IAxisTick,
+  ISplitLine,
+  ISplitArea,
+  IAxisPointer,
+  TdAxisType,
+  TdNameLocation,
+  TdXAxisPosition,
+  TdYAxisPosition } from './axis.interface';
+  
 export abstract class TdChartAxisComponent implements OnChanges, OnInit, OnDestroy {
 
   private _state: any = {};
@@ -19,7 +29,7 @@ export abstract class TdChartAxisComponent implements OnChanges, OnInit, OnDestr
   @Input('show') show: boolean = true;
   @Input('gridIndex') gridIndex: number;
   @Input('offset') offset: number;
-  abstract position: any;
+  abstract position: TdXAxisPosition | TdYAxisPosition ;
   @Input('type') type: TdAxisType;
   @Input('name') name: string;
   @Input('nameLocation') nameLocation: TdNameLocation;

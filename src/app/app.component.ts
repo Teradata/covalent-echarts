@@ -1,9 +1,10 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IAxisLine, IAxisLabel, ISplitLine } from '../platform/echarts';
+import { IAxisLine, IAxisLabel, ISplitLine, TdXAxisPosition, TdYAxisPosition, TdAxisLineType } from '../platform/echarts';
 
 export const NOW: Date = new Date();
 
 import 'echarts/lib/component/tooltip';
+import { TdFontFamily, TdfontStyle, TdFontWeight } from '@covalent/echarts/base/base.types';
 
 @Component({
   selector: 'docs-covalent',
@@ -57,7 +58,8 @@ export class DocsAppComponent {
   yAxisLabel: IAxisLabel = { 
     show: true, 
     inside: false,
-    fontStyle: 'italic',
+    fontStyle: TdfontStyle.Italic,
+    fontWeight: TdFontWeight.Bold,
     formatter: '${value}',
   };
 
@@ -70,17 +72,26 @@ export class DocsAppComponent {
   xAxisLabel: IAxisLabel = { 
     show: true, 
     inside: false,
-    fontStyle: 'italic',
+    fontStyle: TdfontStyle.Italic,
+    fontWeight: TdFontWeight.Bold,
+  };
+
+  splitLineBar: ISplitLine = {
+    lineStyle: {
+      type: TdAxisLineType.Dotted,
+    },
   };
 
   splitLine: ISplitLine = {
     lineStyle: {
-      type: 'dotted',
+      type: TdAxisLineType.Dashed,
     },
   };
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
+  barYaxisPosition: TdYAxisPosition = TdYAxisPosition.Right;
+  lineXAxisPosition: TdXAxisPosition = TdXAxisPosition.Top;
 
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {
   }
 
 }

@@ -12,4 +12,9 @@ export {
   ISplitLine,
   ITdBaseStyle,
   ITdStyle,
+  TdXAxisPosition,
+  TdYAxisPosition,
+  TdAxisLineType,
+  TdNameLocation,
+  TdAxisType,
 } from './axis/axis.interface';
