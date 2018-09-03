@@ -19,16 +19,16 @@
                     [position]="'top'"
                     [type]="'category'"
                     [boundaryGap]="true"
-                    [axisLine]="{show: false}"
+                    [axisLine]="xLine"
                     [splitLine]="{show: false}">
   </td-chart-x-axis>
   <td-chart-y-axis [show]="true"
                     [type]="'value'"
-                    [position]="'right'"
-                    [axisLabel]="{inside: true}"
-                    [axisLine]="{show: true}"
+                    [position]="barYaxisPosition"
+                    [axisLabel]="yAxisLabel"
+                    [axisLine]="yLine"
                     [max]="120"
-                    [splitLine]="{show: true}">
+                    [splitLine]="splitLineBar">
   </td-chart-y-axis>
   <td-chart-series td-bar
                    *ngFor="let series of barPlot"
@@ -62,17 +62,18 @@
     </ng-template>
   </td-chart-tooltip>
   <td-chart-x-axis [show]="true"
-                    [position]="'bottom'"
+                    [position]="lineXAxisPosition"
+                    [axisLabel]="xAxisLabel"
                     [type]="'time'"
                     [boundaryGap]="false"
-                    [axisLine]="{show: false}"
-                    [splitLine]="{show: false}">
+                    [axisLine]="xLine"
+                    [splitLine]="splitLine">
   </td-chart-x-axis>
   <td-chart-y-axis [show]="true"
                     [type]="'value'"
-                    [axisLabel]="{inside: true}"
-                    [axisLine]="{show: true}"
-                    [splitLine]="{show: true}">
+                    [axisLabel]="yAxisLabel"
+                    [axisLine]="yLine"
+                    [splitLine]="splitLine">
   </td-chart-y-axis>
   <td-chart-series td-line
                     *ngFor="let series of linePlot"
