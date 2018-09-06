@@ -100,7 +100,7 @@ export class TdChartSeriesBarComponent implements OnChanges, OnInit, OnDestroy {
   private _setOptions(): void {
     let config: any = assignDefined(this._state, this.config, {
       id: this.id,
-      type: this.type ? this.type : this._type,
+      type: this._type,
       name: this.name,
       coordinateSystem: this.coordinateSystem,
       xAxisIndex: this.xAxisIndex,
