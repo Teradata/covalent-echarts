@@ -44,7 +44,7 @@ export class DocsAppComponent {
     type: TdSeriesType.Bar,
     markPoint: {
       data : [
-        {name : 'Key Indicator', value : 80, xAxis: 1, yAxis: 121}],
+        {name : 'Target', value : 80, xAxis: 1, yAxis: 121}],
       },
       markLine: {
         data : [
@@ -60,7 +60,42 @@ export class DocsAppComponent {
     data: [80, 122, 80, 120, 80, 120],
   }];
 
+  comboPlot: ITdBarSeries[] = [{
+    type: TdSeriesType.Bar,
+    itemStyle: {
+      opacity: 0.75,
+      color: '#575757',
+    },
+    markPoint: {
+      data: [
+        {name: 'Target', value: 130, xAxis: 1, yAxis: 130}],
+      },
+    name: 'Yesterday',
+    data: [150, 130, 150, 120, 150, 120],
+  }, {
+    type: TdSeriesType.Line,
+    markPoint: {
+      data : [
+        {name : 'Target', value : 100, xAxis: 1, yAxis: 121}],
+        symbolRotate: 180,
+        label: {offset: [0, 10]},
+      },
+      markLine: {
+        data : [
+          {name : 'Average', value : 30, xAxis: 1, yAxis: 30}],
+          lineStyle: {color: '#000', type: TdLineType.Dotted},
+          symbol: 'circle',
+        },
+    itemStyle: {
+      opacity: 0.75,
+      color: '#00E5FF',
+    },
+    name: 'Today',
+    data: [80, 122, 80, 120, 80, 120],
+  }];
+  
   showTooltip: boolean = true;
+
   linePlot: ITdLineSeries[] = [{
     name: 'Line Test',
     type: TdSeriesType.Line,
@@ -110,6 +145,28 @@ export class DocsAppComponent {
     xAxis: [{show: true, type: TdAxisType.Time, boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
     yAxis: [{show: true, type: TdAxisType.Value, axisLabel: {inside: false}}],
     series: this.linePlot,
+    tooltip: {
+      show: true,
+      trigger: TdToolTipTrigger.Item,
+      showContent: true,
+    },
+  };
+
+  comboConfig: ITdBarConfig = {
+    xAxis: [
+      {data: ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']},
+      {show: true, type: TdAxisType.Time, boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
+    yAxis: [{show: true, type: TdAxisType.Value, axisLabel: {inside: false}, min: 0, max: 300}, 
+      {
+        show: true,
+        type: TdAxisType.Value,
+        axisLabel: {inside: false},
+        splitLine: {lineStyle: {type: TdLineType.Dotted}},
+        position: TdYAxisPosition.Right,
+        min: 0,
+        max: 100,
+      }],
+    series: this.comboPlot,
     tooltip: {
       show: true,
       trigger: TdToolTipTrigger.Item,
