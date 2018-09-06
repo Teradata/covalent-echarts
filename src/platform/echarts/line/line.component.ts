@@ -8,9 +8,27 @@ import {
 } from '@angular/core';
 
 import 'echarts/lib/chart/line';
+import 'echarts/lib/component/markPoint';
+import 'echarts/lib/component/markLine';
+import 'echarts/lib/component/markArea';
 
-import { TdChartOptionsService, assignDefined } from '@covalent/echarts/base';
-
+import { 
+  TdChartOptionsService,
+  assignDefined,
+  TdSeriesType,
+  TdCoordinateSystem,
+  TdMarkPointSymbol,
+  ITdMarkPoint,
+  ITdItemStyle,
+  ITdLabel,
+  ITdMarkLineEmphasis,
+  ITdAreaStyle,
+  TdSeriesLayoutBy,
+  ITdMarkLine,
+  ITdMarkArea,
+  ITdLineStyle,
+  ITdSeriesTooltip } from '@covalent/echarts/base';
+  
 @Component({
   selector: 'td-chart-series[td-line]',
   template: '',
@@ -18,20 +36,19 @@ import { TdChartOptionsService, assignDefined } from '@covalent/echarts/base';
 })
 export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy {
 
-  private _type: string = 'line';
+  private _type: TdSeriesType = TdSeriesType.Line;
 
   private _state: any = {};
 
   @Input('config') config: any = {};
 
   @Input('id') id: string;
-  @Input('type') type: string;
   @Input('name') name: string;
-  @Input('coordinateSystem') coordinateSystem: string;
+  @Input('coordinateSystem') coordinateSystem: TdCoordinateSystem;
   @Input('xAxisIndex') xAxisIndex: number;
   @Input('yAxisIndex') yAxisIndex: number;
   @Input('polarIndex') polarIndex: number;
-  @Input('symbol') symbol: string;
+  @Input('symbol') symbol: TdMarkPointSymbol | string;
   @Input('symbolSize') symbolSize: number | any[] | Function;
   @Input('symbolRotate') symbolRotate: number;
   @Input('symbolKeepAspect') symbolKeepAspect: boolean;
@@ -45,22 +62,22 @@ export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy 
   @Input('connectNulls') connectNulls: boolean;
   @Input('clipOverflow') clipOverflow: boolean;
   @Input('step') step: string | boolean;
-  @Input('label') label: any;
-  @Input('itemStyle') itemStyle: any;
-  @Input('lineStyle') lineStyle: any;
-  @Input('areaStyle') areaStyle: any;
-  @Input('emphasis') emphasis: any;
+  @Input('label') label: ITdLabel;
+  @Input('itemStyle') itemStyle: ITdItemStyle;
+  @Input('lineStyle') lineStyle: ITdLineStyle;
+  @Input('areaStyle') areaStyle: ITdAreaStyle;
+  @Input('emphasis') emphasis: ITdMarkLineEmphasis;
   @Input('smooth') smooth: boolean | number;
   @Input('smoothMonotone') smoothMonotone: string;
   @Input('sampling') sampling: string;
   @Input('dimensions') dimensions: any[];
   @Input('encode') encode: any;
-  @Input('seriesLayoutBy') seriesLayoutBy: string;
+  @Input('seriesLayoutBy') seriesLayoutBy: TdSeriesLayoutBy;
   @Input('datasetIndex') datasetIndex: number;
   @Input('data') data: any[];
-  @Input('markPoint') markPoint: any;
-  @Input('markLine') markLine: any;
-  @Input('markArea') markArea: any;
+  @Input('markPoint') markPoint: ITdMarkPoint;
+  @Input('markLine') markLine: ITdMarkLine;
+  @Input('markArea') markArea: ITdMarkArea;
   @Input('zlevel') zlevel: number;
   @Input('z') z: number;
   @Input('silent') silent: boolean;
@@ -72,7 +89,7 @@ export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy 
   @Input('animationDurationUpdate') animationDurationUpdate: number | Function;
   @Input('animationEasingUpdate') animationEasingUpdate: string;
   @Input('animationDelayUpdate') animationDelayUpdate: number | Function;
-  @Input('tooltip') tooltip: any;
+  @Input('tooltip') tooltip: ITdSeriesTooltip;
 
   constructor(private _optionsService: TdChartOptionsService) {
   }

@@ -1,5 +1,5 @@
 <h3>Bar Test</h3>
-<td-chart [style.height.px]="300"
+<td-chart [style.height.px]="600"
                 [dataZoom]="false">
   <td-chart-tooltip [trigger]="'item'">
     <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
@@ -16,8 +16,9 @@
     </ng-template>
   </td-chart-tooltip>
   <td-chart-x-axis [show]="true"
-                    [position]="'top'"
+                    [position]="'bottom'"
                     [type]="'category'"
+                    [data]="['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']"
                     [boundaryGap]="true"
                     [axisLine]="xLine"
                     [splitLine]="{show: false}">
@@ -27,15 +28,21 @@
                     [position]="barYaxisPosition"
                     [axisLabel]="yAxisLabel"
                     [axisLine]="yLine"
-                    [max]="120"
+                    [max]="200"
                     [splitLine]="splitLineBar">
   </td-chart-y-axis>
   <td-chart-series td-bar
                    *ngFor="let series of barPlot"
                    [data]="series.data"
                    [name]="series.name"
+                   [markPoint]="series.markPoint"
+                   [markLine]="series.markLine"
                    [itemStyle]="series.itemStyle">
   </td-chart-series>
+</td-chart>
+<h3>Bar Test (config object)</h3>
+<td-chart [style.height.px]="300"
+          [config]="barConfig">
 </td-chart>
 <h3>Line Test (atomic)</h3>
 <div layout="row">
@@ -77,8 +84,10 @@
   </td-chart-y-axis>
   <td-chart-series td-line
                     *ngFor="let series of linePlot"
+                    [symbolSize]="14"
                     [data]="series.data"
                     [name]="series.name"
+                    [symbol]="roundRectMarkPointSymbol"
                     [lineStyle]="series.lineStyle">
   </td-chart-series>
 </td-chart>

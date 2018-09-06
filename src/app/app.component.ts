@@ -1,10 +1,25 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IAxisLine, IAxisLabel, ISplitLine, TdXAxisPosition, TdYAxisPosition, TdAxisLineType } from '../platform/echarts';
+import { 
+  ITdAxisLine,
+  ITdAxisLabel,
+  ITdSplitLine,
+  TdXAxisPosition,
+  TdYAxisPosition,
+  TdLineType,
+  TdMarkPointSymbol,
+  ITdLineStyle,
+  ITdBarSeries, 
+  ITdLineSeries,
+  TdFontStyle,
+  TdFontWeight, 
+  TdSeriesType, 
+  TdLineLabelPosition,
+  ITdLineConfig,
+  ITdBarConfig, 
+  TdAxisType, 
+  TdToolTipTrigger } from '../platform/echarts';
 
 export const NOW: Date = new Date();
-
-import 'echarts/lib/component/tooltip';
-import { TdFontFamily, TdFontStyle, TdFontWeight } from '@covalent/echarts/base/base.types';
 
 @Component({
   selector: 'docs-covalent',
@@ -13,26 +28,42 @@ import { TdFontFamily, TdFontStyle, TdFontWeight } from '@covalent/echarts/base/
 })
 export class DocsAppComponent {
 
-  barPlot: any = [{
+  barPlot: ITdBarSeries[] = [{
+    type: TdSeriesType.Bar,
     itemStyle: {
       opacity: 0.75,
       color: '#575757',
     },
-    name: 'Historical Model',
-    data: [100],
+    markPoint: {
+      data: [
+        {name: 'test', value: 130, xAxis: 1, yAxis: 130}],
+      },
+    name: 'Yesterday',
+    data: [150, 130, 150, 120, 150, 120],
   }, {
+    type: TdSeriesType.Bar,
+    markPoint: {
+      data : [
+        {name : 'Key Indicator', value : 80, xAxis: 1, yAxis: 121}],
+      },
+      markLine: {
+        data : [
+          {name : 'Average', value : 30, xAxis: 1, yAxis: 30}],
+          lineStyle: {color: '#000', type: TdLineType.Dotted},
+          symbol: 'circle',
+        },
     itemStyle: {
       opacity: 0.75,
       color: '#00E5FF',
     },
     name: 'Today',
-    data: [80],
+    data: [80, 122, 80, 120, 80, 120],
   }];
 
   showTooltip: boolean = true;
-  linePlot: any[] = [{
+  linePlot: ITdLineSeries[] = [{
     name: 'Line Test',
-    type: 'line',
+    type: TdSeriesType.Line,
     lineStyle: {
       color: '#575757',
       width: 2,
@@ -42,6 +73,13 @@ export class DocsAppComponent {
       shadowOffsetY: 5,
       opacity: 0.75,
     },
+    markLine: {
+      data : [
+        {name : 'Average', value : 125, xAxis: 1, yAxis: 125}],
+        label: {position: TdLineLabelPosition.Start},
+        lineStyle: {color: '#607d8b', type: TdLineType.Dashed},
+        symbol: 'none',
+      },
     data: [{
       name: NOW.toISOString(),
       value: [NOW.toISOString(), 200],
@@ -49,29 +87,43 @@ export class DocsAppComponent {
       name: new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(),
       value: [new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(), 50],
     }, {
+
       name: new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(),
       value: [new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(), 100],
     }],
   }];
 
-  lineConfig: any = {
-    xAxis: [{show: true, type: 'time', boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
-    yAxis: [{show: true, type: 'value', axisLabel: {inside: true}}],
-    series: this.linePlot,
+  barConfig: ITdBarConfig = {
+    xAxis: [
+      {data: ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']},
+      {show: true, type: TdAxisType.Time, boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
+    yAxis: [{show: true, type: TdAxisType.Value, axisLabel: {inside: false}, max: 300}],
+    series: this.barPlot,
     tooltip: {
       show: true,
-      trigger: 'axis',
+      trigger: TdToolTipTrigger.Item,
       showContent: true,
     },
   };
 
-  yLine: IAxisLine = { 
+  lineConfig: ITdLineConfig = {
+    xAxis: [{show: true, type: TdAxisType.Time, boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
+    yAxis: [{show: true, type: TdAxisType.Value, axisLabel: {inside: false}}],
+    series: this.linePlot,
+    tooltip: {
+      show: true,
+      trigger: TdToolTipTrigger.Item,
+      showContent: true,
+    },
+  };
+
+  yLine: ITdAxisLine = { 
     show: true, 
     lineStyle: 
     { color: '#777777', width: 2 },
   };
 
-  yAxisLabel: IAxisLabel = { 
+  yAxisLabel: ITdAxisLabel = { 
     show: true, 
     inside: false,
     fontStyle: TdFontStyle.Italic,
@@ -79,28 +131,31 @@ export class DocsAppComponent {
     formatter: '${value}',
   };
 
-  xLine: IAxisLine = { 
+  xLine: ITdAxisLine = { 
     show: true, 
     lineStyle: 
     { color: '#777777', width: 2 },
   };
 
-  xAxisLabel: IAxisLabel = { 
+  roundRectMarkPointSymbol: TdMarkPointSymbol = TdMarkPointSymbol.RoundRect;
+  lineStyle: ITdLineStyle;
+
+  xAxisLabel: ITdAxisLabel = { 
     show: true, 
     inside: false,
     fontStyle: TdFontStyle.Italic,
     fontWeight: TdFontWeight.Bold,
   };
 
-  splitLineBar: ISplitLine = {
+  splitLineBar: ITdSplitLine = {
     lineStyle: {
-      type: TdAxisLineType.Dotted,
+      type: TdLineType.Dotted,
     },
   };
 
-  splitLine: ISplitLine = {
+  splitLine: ITdSplitLine = {
     lineStyle: {
-      type: TdAxisLineType.Dashed,
+      type: TdLineType.Dashed,
     },
   };
 

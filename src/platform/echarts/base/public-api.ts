@@ -3,19 +3,60 @@ export { TdChartComponent } from './chart.component';
 export { TdChartOptionsService, CHART_PROVIDER } from './chart.service';
 export * from './utils';
 export {
-  IAxisLabel,
-  IAxisLine,
-  IAxisPointer,
-  IAxisPointerLabel,
-  IAxisTick,
-  INameAxisTextStyle,
-  ISplitArea,
-  ISplitLine,
+  ITdAxisLabel,
+  ITdAxisLine,
+  ITdAxisPointer,
+  ITdAxisPointerLabel,
+  ITdAxisTick,
+  ITdNameAxisTextStyle,
+  ITdSplitArea,
+  ITdSplitLine,
   ITdBaseStyle,
-  ITdStyle,
   TdXAxisPosition,
   TdYAxisPosition,
-  TdAxisLineType,
   TdNameLocation,
   TdAxisType,
+  ITdXAxisConfig,
+  ITdYAxisConfig,
 } from './axis/axis.interface';
+
+export {
+  TdSeriesType,
+  ITdItemStyle,
+  ITdAreaStyle,
+  ITdEmphasis,
+  ITdMarkPoint,
+  TdCoordinateSystem,
+  ITdMarkLine,
+  ITdMarkArea,
+  ITdLineLabel,
+  ITdMarkLineEmphasis,
+  TdSeriesLayoutBy, 
+  TdProgressiveChunkMode,
+  ITdSeriesTooltip, } from './series.base.interface';
+
+export {
+  TdAlign,
+  TdFontStyle,
+  TdFontWeight,
+  TdVerticalAlign,
+  TdFontFamily,
+  TdPointerType,
+  TdStatus,
+  TdLineType,
+  ITdLineStyle,
+  TdAreaOrigin,
+  TdMarkPointSymbol,
+  TdAnimationEasing,
+  ITdTextStyle,
+  TdLineLabelPosition,
+  ITdLineCurveStyle,
+  ITdLabel,
+  ITdTooltip,
+  TdToolTipTrigger,
+} from './base.types';
+
+export { ITdBarSeries } from '../bar/bar-series.interface';
+export { ITdLineSeries } from '../line/line-series.interface';
+export { ITdBarConfig } from '../bar/bar-config.interface';
+export { ITdLineConfig } from '../line/line-config.interface';
