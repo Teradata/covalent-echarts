@@ -17,7 +17,10 @@ import {
   ITdLineConfig,
   ITdBarConfig, 
   TdAxisType, 
-  TdToolTipTrigger } from '../platform/echarts';
+  TdToolTipTrigger,
+  ITdScatterConfig, } from '../platform/echarts';
+
+import { configScatterOption, basicScatterData } from './data/scatter';
 
 export const NOW: Date = new Date();
 
@@ -27,6 +30,9 @@ export const NOW: Date = new Date();
   styleUrls: ['./app.component.scss'],
 })
 export class DocsAppComponent {
+
+  configScatter: ITdScatterConfig = configScatterOption;
+  scatterData: any = basicScatterData;
 
   barPlot: ITdBarSeries[] = [{
     type: TdSeriesType.Bar,

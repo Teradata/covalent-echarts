@@ -9,20 +9,11 @@ import {
     TdAnimationEasing,
     ITdMarkArea,
     ITdSeriesTooltip,
-    ITdAreaStyle,
-    ITdLineStyle,
     TdMarkPointSymbol,
     TdSeriesType,
 } from '../';
 
-enum TdSampling {
-    Average = 'average',
-    Max = 'max',
-    Min = 'min',
-    Sum = 'sum',
-}
-
-interface ITdLineSeries {
+interface ITdScatterSeries {
     type?: TdSeriesType;
     id?: string;
     name?: string;
@@ -30,35 +21,26 @@ interface ITdLineSeries {
     xAxisIndex?: number;
     yAxisIndex?: number;
     polarIndex?: number;
+    geoIndex?: number;
+    calendarIndex?: number;
+    hoverAnimation?: boolean;
+    legendHoverLink?: boolean;
     symbol?: TdMarkPointSymbol;
     symbolSize?: number;
     symbolRotate?: number;
     symbolKeepAspect?: boolean;
     symbolOffset?: any[];
-    showSymbol?: boolean;
-    showAllSymbol?: boolean | 'auto';
-    hoverAnimation?: boolean;
-    legendHoverLink?: boolean;
-    stack?: boolean;
+    large: boolean;
+    largeThreshold: number;
     cursor?: string;
     connectNulls?: boolean;
     clipOverflow?: boolean;
     step?: boolean;
     label?: ITdLabel;
     itemStyle?: ITdItemStyle;
-    lineStyle?: ITdLineStyle;
-    color?: any;
-    width?: number;
-    shadowBlur?: number;
-    shadowColor?: number;
-    shadowOffsetX?: number;
-    shadowOffsetY?: number;
-    opacity?: number;
-    areaStyle?: ITdAreaStyle;
     Emphasis?: ITdEmphasis;
-    smooth?: boolean;
-    smoothMonotone?: string;
-    sampling?: TdSampling;
+    progressive: number;
+    progressiveThreshold: number;
     dimensions?: any[];
     encode?: any;
     seriesLayoutBy?: TdSeriesLayoutBy;
@@ -81,4 +63,4 @@ interface ITdLineSeries {
     tooltip?: ITdSeriesTooltip;
 }
 
-export { ITdLineSeries, TdSampling };
+export { ITdScatterSeries };

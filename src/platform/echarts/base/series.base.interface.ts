@@ -82,7 +82,7 @@ interface ITdMarkLine {
   precision?: number;
   label?: ITdLineLabel;
   lineStyle?: ITdLineCurveStyle;
-  emphasis?: ITdEmphasis;
+  emphasis?: ITdMarkLineEmphasis;
   data?: any[];
   animation?: boolean;
   animationThreshold?: number;
@@ -166,6 +166,56 @@ enum TdSeriesType {
   Custom = 'custom',
 }
 
+interface ITdScatterSeries {
+  type?: TdSeriesType;
+  id?: string;
+  name?: string;
+  coordinateSystem?: TdCoordinateSystem;
+  xAxisIndex?: number;
+  yAxisIndex?: number;
+  polarIndex?: number;
+  geoIndex?: number;
+  calendarIndex?: number;
+  hoverAnimation?: boolean;
+  legendHoverLink?: boolean;
+  symbol?: TdMarkPointSymbol;
+  symbolSize?: number;
+  symbolRotate?: number;
+  symbolKeepAspect?: boolean;
+  symbolOffset?: any[];
+  large: boolean;
+  largeThreshold: number;
+  cursor?: string;
+  connectNulls?: boolean;
+  clipOverflow?: boolean;
+  step?: boolean;
+  label?: ITdLabel;
+  itemStyle?: ITdItemStyle;
+  Emphasis?: ITdEmphasis;
+  progressive: number;
+  progressiveThreshold: number;
+  dimensions?: any[];
+  encode?: any;
+  seriesLayoutBy?: TdSeriesLayoutBy;
+  datasetIndex?: 0;
+  data?: any[];
+  markPoint?: ITdMarkPoint;
+  markLine?: ITdMarkLine;
+  markArea?: ITdMarkArea;
+  zlevel?: number;
+  z?: number;
+  silent?: boolean;
+  Animation?: boolean;
+  animationThreshold?: number;
+  animationDuration?: number;
+  animationEasing?: TdAnimationEasing;
+  animationDelay?: 0;
+  animationDurationUpdate?: number;
+  animationEasingUpdate?: TdAnimationEasing;
+  animationDelayUpdate?: number;
+  tooltip?: ITdSeriesTooltip;
+}
+
 export {
   TdSeriesType,
   ITdItemStyle,
@@ -181,4 +231,5 @@ export {
   ITdSeriesTooltip,
   TdSeriesLayoutBy,
   TdProgressiveChunkMode,
+  ITdScatterSeries,
 };

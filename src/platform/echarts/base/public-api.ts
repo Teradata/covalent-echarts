@@ -60,3 +60,5 @@ export { ITdBarSeries } from '../bar/bar-series.interface';
 export { ITdLineSeries } from '../line/line-series.interface';
 export { ITdBarConfig } from '../bar/bar-config.interface';
 export { ITdLineConfig } from '../line/line-config.interface';
+export { ITdScatterSeries } from '../scatter/scatter-series.interface';
+export { ITdScatterConfig } from '../scatter/scatter-config.interface';

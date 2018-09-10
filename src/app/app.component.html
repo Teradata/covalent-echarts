@@ -98,3 +98,47 @@
 <h3>Combination (config object)</h3>
 <td-chart [style.height.px]="300"
           [config]="comboConfig">
+</td-chart>
+<h3>Scatter (atomic)</h3>
+<td-chart [style.height.px]="300"
+                [dataZoom]="false">
+  <td-chart-tooltip [trigger]="'item'">
+    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300">person</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-tooltip>
+  <td-chart-x-axis [show]="true"
+                    [position]="'bottom'"
+                    [type]="'value'"
+                    [boundaryGap]="true"
+                    [axisLine]="xLine"
+                    [splitLine]="{show: false}">
+  </td-chart-x-axis>
+  <td-chart-y-axis [show]="true"
+                    [type]="'value'"
+                    [axisLine]="yLine"
+                    [splitLine]="splitLineBar">
+  </td-chart-y-axis>
+  <td-chart-series td-scatter
+                   *ngFor="let series of configScatter.series"
+                   [data]="series.data"
+                   [name]="series.name"
+                   [symbolSize]="series.symbolSize"
+                   [markPoint]="series.markPoint"
+                   [markLine]="series.markLine"
+                   [itemStyle]="series.itemStyle">
+  </td-chart-series>
+</td-chart>
+<h3>Scatter (config Object)</h3>
+<td-chart [style.height.px]="300"
+          [config]="configScatter">
+</td-chart>  
