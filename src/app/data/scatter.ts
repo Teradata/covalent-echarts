@@ -1,7 +1,7 @@
-
 import * as echarts from 'echarts/lib/echarts';
+import { ITdScatterConfig, TdLineType, TdSeriesType } from '../../platform/echarts';
 
-export const basicScatterData: any[] = [
+const basicScatterData: any[] = [
   [
     [28604, 77, 17096869, 'Australia', 1990],
     [31163, 77.4, 27662440, 'Canada', 1990],
@@ -46,7 +46,8 @@ export const basicScatterData: any[] = [
   ],
 ];
 
-export const configScatterOption: any = {
+export const configScatterOption: ITdScatterConfig = {
+tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
   backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
       offset: 0,
       color: '#f7f8fa',
@@ -54,46 +55,45 @@ export const configScatterOption: any = {
       offset: 1,
       color: '#cdd0d5',
   }]),
-  title: {
-      text: '1990 与 2015 年各国家人均寿命与 GDP',
-  },
   legend: {
       right: 10,
       data: ['1990', '2015'],
   },
-  xAxis: {
+  xAxis: [{
       splitLine: {
           lineStyle: {
-              type: 'dashed',
+              type: TdLineType.Dotted,
           },
       },
-  },
-  yAxis: {
+  }],
+  yAxis: [{
       splitLine: {
           lineStyle: {
-              type: 'dashed',
+            type: TdLineType.Dotted,
           },
       },
       scale: true,
   },
+
+],
   series: [{
+      tooltip: {borderColor: '#e26d7b', borderWidth: 3},
       name: '1990',
       data: basicScatterData[0],
-      type: 'scatter',
-      symbolSize: function (data) {
+      type: TdSeriesType.Scatter,
+      symbolSize: function (data: number[]): number {
           return Math.sqrt(data[2]) / 5e2;
       },
       label: {
           emphasis: {
               show: true,
-              formatter: function (param) {
+              formatter: function (param: any): any {
                   return param.data[3];
               },
               position: 'top',
           },
       },
       itemStyle: {
-          normal: {
               shadowBlur: 10,
               shadowColor: 'rgba(120, 36, 50, 0.5)',
               shadowOffsetY: 5,
@@ -105,25 +105,25 @@ export const configScatterOption: any = {
                   color: 'rgb(204, 46, 72)',
               }]),
           },
-      },
-  }, {
+  }, 
+  {
+    tooltip: {borderColor: '#77d6e5', borderWidth: 3},
       name: '2015',
       data: basicScatterData[1],
-      type: 'scatter',
-      symbolSize: function (data) {
+      type: TdSeriesType.Scatter,
+      symbolSize: function (data: number[]): number {
           return Math.sqrt(data[2]) / 5e2;
       },
       label: {
           emphasis: {
               show: true,
-              formatter: function (param) {
+              formatter: function (param: any): any {
                   return param.data[3];
               },
               position: 'top',
           },
       },
       itemStyle: {
-          normal: {
               shadowBlur: 10,
               shadowColor: 'rgba(25, 100, 150, 0.5)',
               shadowOffsetY: 5,
@@ -134,7 +134,7 @@ export const configScatterOption: any = {
                   offset: 1,
                   color: 'rgb(25, 183, 207)',
               }]),
-          },
       },
-  }],
+  },
+],
 };

@@ -12,6 +12,7 @@ import {
     TdMarkPointSymbol,
     TdSeriesType,
 } from '../';
+import { ITdLineLabel } from 'base';
 
 interface ITdScatterSeries {
     type?: TdSeriesType;
@@ -26,21 +27,21 @@ interface ITdScatterSeries {
     hoverAnimation?: boolean;
     legendHoverLink?: boolean;
     symbol?: TdMarkPointSymbol;
-    symbolSize?: number;
+    symbolSize?: number | Function;
     symbolRotate?: number;
     symbolKeepAspect?: boolean;
     symbolOffset?: any[];
-    large: boolean;
-    largeThreshold: number;
+    large?: boolean;
+    largeThreshold?: number;
     cursor?: string;
     connectNulls?: boolean;
     clipOverflow?: boolean;
     step?: boolean;
-    label?: ITdLabel;
-    itemStyle?: ITdItemStyle;
+    label?: ITdLineLabel;
+    itemStyle?: any;
     Emphasis?: ITdEmphasis;
-    progressive: number;
-    progressiveThreshold: number;
+    progressive?: number;
+    progressiveThreshold?: number;
     dimensions?: any[];
     encode?: any;
     seriesLayoutBy?: TdSeriesLayoutBy;

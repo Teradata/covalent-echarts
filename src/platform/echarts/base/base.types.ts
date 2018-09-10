@@ -27,7 +27,7 @@ interface ITdTooltip {
   show?: boolean;
   trigger?: TdToolTipTrigger;
   axisPointer?: ITdTooltipAxisPointer;
-  showContent: boolean;
+  showContent?: boolean;
   position?: string | any[] | Function;
   triggerOn?: TdTriggerOn;
   showDelay?: number;

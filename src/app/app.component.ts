@@ -20,7 +20,7 @@ import {
   TdToolTipTrigger,
   ITdScatterConfig, } from '../platform/echarts';
 
-import { configScatterOption, basicScatterData } from './data/scatter';
+import { configScatterOption } from './data/scatter';
 
 export const NOW: Date = new Date();
 
@@ -32,7 +32,6 @@ export const NOW: Date = new Date();
 export class DocsAppComponent {
 
   configScatter: ITdScatterConfig = configScatterOption;
-  scatterData: any = basicScatterData;
 
   barPlot: ITdBarSeries[] = [{
     type: TdSeriesType.Bar,
@@ -209,7 +208,7 @@ export class DocsAppComponent {
     fontStyle: TdFontStyle.Italic,
     fontWeight: TdFontWeight.Bold,
   };
-
+  
   splitLineBar: ITdSplitLine = {
     lineStyle: {
       type: TdLineType.Dotted,

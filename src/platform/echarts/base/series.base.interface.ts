@@ -111,14 +111,14 @@ interface ITdMarkArea {
 }
 
 interface ITdSeriesTooltip {
-  position: TdTooltipPosition | any;
-  formatter: any;
-  backgroundColor: any;
-  borderColor: any;
-  borderWidth: number;
-  padding: number;
-  textStyle: ITdTextStyle;
-  extraCssText: string;
+  position?: TdTooltipPosition | any;
+  formatter?: any;
+  backgroundColor?: any;
+  borderColor?: any;
+  borderWidth?: number;
+  padding?: number;
+  textStyle?: ITdTextStyle;
+  extraCssText?: string;
 }
 
 enum TdCoordinateSystem {

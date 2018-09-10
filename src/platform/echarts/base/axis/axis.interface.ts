@@ -68,6 +68,7 @@ interface ITdAxisTick {
 }
 
 interface ITdSplitLine {
+  type?: TdLineType;
   show?: boolean;
   interval?: any;
   lineStyle?: ITdLineStyle;
