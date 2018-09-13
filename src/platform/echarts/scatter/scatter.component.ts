@@ -8,9 +8,6 @@ import {
 } from '@angular/core';
 
 import 'echarts/lib/chart/scatter';
-import 'echarts/lib/component/markPoint';
-import 'echarts/lib/component/markLine';
-import 'echarts/lib/component/markArea';
 
 import { 
   TdChartOptionsService,
