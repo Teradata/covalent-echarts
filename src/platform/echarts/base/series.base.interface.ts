@@ -71,7 +71,7 @@ interface ITdMarkAreaEmphasis {
 
 interface ITdLineLabel {
   show?: boolean;
-  position: TdLineLabelPosition;
+  position?: TdLineLabelPosition;
   formatter?: string | Function;
 }
 
@@ -223,7 +223,6 @@ export {
   ITdEmphasis,
   ITdMarkPoint,
   TdCoordinateSystem,
-  TdMarkPointSymbol,
   ITdMarkLine,
   ITdMarkArea,
   ITdLineLabel,
@@ -232,4 +231,5 @@ export {
   TdSeriesLayoutBy,
   TdProgressiveChunkMode,
   ITdScatterSeries,
+  ITdMarkAreaEmphasis,
 };

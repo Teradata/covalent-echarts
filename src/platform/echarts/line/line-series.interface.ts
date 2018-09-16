@@ -1,19 +1,19 @@
 import {
-    TdCoordinateSystem,
     ITdLabel,
+    TdAnimationEasing,
+    ITdLineStyle,
+    TdMarkPointSymbol,
+    TdCoordinateSystem,
     ITdItemStyle,
     ITdEmphasis,
     TdSeriesLayoutBy,
     ITdMarkPoint,
     ITdMarkLine,
-    TdAnimationEasing,
     ITdMarkArea,
     ITdSeriesTooltip,
     ITdAreaStyle,
-    ITdLineStyle,
-    TdMarkPointSymbol,
     TdSeriesType,
-} from '../';
+} from '@covalent/echarts/base';
 
 enum TdSampling {
     Average = 'average',
@@ -55,7 +55,7 @@ interface ITdLineSeries {
     shadowOffsetY?: number;
     opacity?: number;
     areaStyle?: ITdAreaStyle;
-    Emphasis?: ITdEmphasis;
+    emphasis?: ITdEmphasis;
     smooth?: boolean;
     smoothMonotone?: string;
     sampling?: TdSampling;

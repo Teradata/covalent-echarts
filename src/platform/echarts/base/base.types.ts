@@ -1,5 +1,3 @@
-import { ITdAxisPointer } from './axis/axis.interface';
-
 interface ITdLineStyle {
   color?: any;
   width?: number;
@@ -88,7 +86,7 @@ interface ITdLabel {
   distance?: number;
   rotate?: number;
   offset?: number[];
-  formatter?: any;
+  formatter?: any | Function;
   color?: any;
   fontStyle?: TdFontStyle;
   fontWeight?: TdFontWeight;
@@ -175,7 +173,7 @@ enum TdLabelPosition {
   Top = 'top',
   Left = 'left',
   Right = 'right',
-  Bottoem = 'bottom',
+  Bottom = 'bottom',
   Inside = 'inside',
   InsideLeft = 'insideLeft',
   InsideRight = 'insideRight',
@@ -310,6 +308,9 @@ export {
   TdStatus,
   TdLineType,
   TdToolTipTrigger,
+  TdLabelPosition,
+  TdToolPointerType,
+  TdTriggerOn,
   ITdLineStyle,
   TdAreaOrigin,
   TdMarkPointSymbol,
@@ -322,4 +323,6 @@ export {
   ITdLabel,
   ITdAxisPointerLabel,
   ITdBaseStyle,
+  ITdTooltipAxisPointer,
+  TdAxisPointerAxis,
 };

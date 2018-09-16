@@ -1,7 +1,5 @@
 import {
     TdCoordinateSystem,
-    ITdLabel,
-    ITdItemStyle,
     ITdEmphasis,
     TdSeriesLayoutBy,
     ITdMarkPoint,
@@ -11,8 +9,9 @@ import {
     ITdSeriesTooltip,
     TdMarkPointSymbol,
     TdSeriesType,
-} from '../';
-import { ITdLineLabel } from 'base';
+    ITdLineLabel,
+    ITdLabel,
+} from '@covalent/echarts/base';
 
 interface ITdScatterSeries {
     type?: TdSeriesType;
@@ -37,7 +36,7 @@ interface ITdScatterSeries {
     connectNulls?: boolean;
     clipOverflow?: boolean;
     step?: boolean;
-    label?: ITdLineLabel;
+    label?: ITdLabel;
     itemStyle?: any;
     Emphasis?: ITdEmphasis;
     progressive?: number;

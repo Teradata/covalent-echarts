@@ -18,4 +18,4 @@ export const SCATTER_MODULE_COMPONENTS: Type<any>[] = [
     SCATTER_MODULE_COMPONENTS,
   ],
 })
-export class CovalentSeriesEchartsModule { }
+export class CovalentScatterEchartsModule { }

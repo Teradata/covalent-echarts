@@ -121,7 +121,6 @@ export class DocsAppComponent {
       },
       markLine: {
         data: [{ name: 'Average', value: 125, xAxis: 1, yAxis: 125 }],
-        label: { position: TdLineLabelPosition.Start },
         lineStyle: { color: '#607d8b', type: TdLineType.Dashed },
         symbol: 'none',
       },

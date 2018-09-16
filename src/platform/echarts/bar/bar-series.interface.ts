@@ -1,17 +1,17 @@
 import {
-  TdCoordinateSystem,
   ITdLabel,
+  TdAnimationEasing,
+  TdCoordinateSystem,
   ITdItemStyle,
   ITdEmphasis,
   TdProgressiveChunkMode,
   TdSeriesLayoutBy,
   ITdMarkPoint,
   ITdMarkLine,
-  TdAnimationEasing,
   ITdMarkArea,
   ITdSeriesTooltip,
   TdSeriesType,
-} from '../';
+} from '@covalent/echarts/base';
 
 interface ITdBarSeries {
   type?: TdSeriesType;

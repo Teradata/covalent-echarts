@@ -50,7 +50,7 @@
     Show/Hide Tooltip
   </button>
 </div>
-<td-chart [style.height.px]="300" [config]="{series: linePlot}">
+<td-chart [style.height.px]="300">
   <td-chart-tooltip [show]="showTooltip">
     <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
       <ng-container *ngIf="params">

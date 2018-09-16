@@ -1,4 +1,9 @@
-import { ITdTooltip, ITdBarSeries, ITdXAxisConfig, ITdYAxisConfig } from '../';
+import { 
+    ITdTooltip,
+    ITdXAxisConfig,
+    ITdYAxisConfig, 
+} from '@covalent/echarts/base';
+import { ITdBarSeries } from './bar-series.interface';
 
 interface ITdBarConfig {
     title?: any;

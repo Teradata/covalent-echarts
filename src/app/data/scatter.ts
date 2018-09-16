@@ -1,5 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
 import { ITdScatterConfig, TdLineType, TdSeriesType } from '../../platform/echarts';
+import { TdLabelPosition } from '../../platform/echarts';
 
 const basicScatterData: any[] = [
   [
@@ -85,13 +86,11 @@ tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
           return Math.sqrt(data[2]) / 5e2;
       },
       label: {
-          emphasis: {
               show: true,
               formatter: function (param: any): any {
                   return param.data[3];
               },
-              position: 'top',
-          },
+              position: TdLabelPosition.Top,
       },
       itemStyle: {
               shadowBlur: 10,
@@ -115,13 +114,11 @@ tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
           return Math.sqrt(data[2]) / 5e2;
       },
       label: {
-          emphasis: {
               show: true,
               formatter: function (param: any): any {
                   return param.data[3];
               },
-              position: 'top',
-          },
+              position: TdLabelPosition.Top,
       },
       itemStyle: {
               shadowBlur: 10,

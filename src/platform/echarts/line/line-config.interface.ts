@@ -1,4 +1,5 @@
-import { ITdTooltip, ITdLineSeries, ITdXAxisConfig, ITdYAxisConfig } from '../';
+import { ITdTooltip, ITdXAxisConfig, ITdYAxisConfig } from '@covalent/echarts/base';
+import { ITdLineSeries } from './line-series.interface';
 
 interface ITdLineConfig {
     title?: any;

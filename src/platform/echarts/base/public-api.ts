@@ -3,22 +3,49 @@ export { TdChartComponent } from './chart.component';
 export { TdChartOptionsService, CHART_PROVIDER } from './chart.service';
 export * from './utils';
 export {
-  ITdAxisLabel,
   ITdAxisLine,
-  ITdAxisPointer,
-  ITdAxisPointerLabel,
+  ITdAxisLabel,
   ITdAxisTick,
+  ITdSplitLine,
   ITdNameAxisTextStyle,
   ITdSplitArea,
-  ITdSplitLine,
-  ITdBaseStyle,
-  TdXAxisPosition,
+  ITdAxisPointer,
   TdYAxisPosition,
+  TdXAxisPosition,
   TdNameLocation,
   TdAxisType,
   ITdXAxisConfig,
   ITdYAxisConfig,
 } from './axis/axis.interface';
+
+export {
+    TdAlign,
+  TdFontStyle,
+  TdFontWeight,
+  TdVerticalAlign,
+  TdFontFamily,
+  TdPointerType,
+  TdStatus,
+  TdLineType,
+  TdToolTipTrigger,
+  TdLabelPosition,
+  TdToolPointerType,
+  TdTriggerOn,
+  ITdLineStyle,
+  TdAreaOrigin,
+  TdMarkPointSymbol,
+  TdAnimationEasing,
+  TdTooltipPosition,
+  ITdTooltip,
+  ITdTextStyle,
+  TdLineLabelPosition,
+  ITdLineCurveStyle,
+  ITdLabel,
+  ITdAxisPointerLabel,
+  ITdBaseStyle,
+  ITdTooltipAxisPointer,
+  TdAxisPointerAxis,
+} from './base.types';
 
 export {
   TdSeriesType,
@@ -31,34 +58,8 @@ export {
   ITdMarkArea,
   ITdLineLabel,
   ITdMarkLineEmphasis,
-  TdSeriesLayoutBy, 
+  ITdSeriesTooltip,
+  TdSeriesLayoutBy,
   TdProgressiveChunkMode,
-  ITdSeriesTooltip, } from './series.base.interface';
-
-export {
-  TdAlign,
-  TdFontStyle,
-  TdFontWeight,
-  TdVerticalAlign,
-  TdFontFamily,
-  TdPointerType,
-  TdStatus,
-  TdLineType,
-  ITdLineStyle,
-  TdAreaOrigin,
-  TdMarkPointSymbol,
-  TdAnimationEasing,
-  ITdTextStyle,
-  TdLineLabelPosition,
-  ITdLineCurveStyle,
-  ITdLabel,
-  ITdTooltip,
-  TdToolTipTrigger,
-} from './base.types';
-
-export { ITdBarSeries } from '../bar/bar-series.interface';
-export { ITdLineSeries } from '../line/line-series.interface';
-export { ITdBarConfig } from '../bar/bar-config.interface';
-export { ITdLineConfig } from '../line/line-config.interface';
-export { ITdScatterSeries } from '../scatter/scatter-series.interface';
-export { ITdScatterConfig } from '../scatter/scatter-config.interface';
+  ITdMarkAreaEmphasis,
+} from './series.base.interface';

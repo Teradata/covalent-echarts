@@ -12,24 +12,28 @@ import 'echarts/lib/chart/line';
 import { 
   TdChartOptionsService,
   assignDefined,
-  TdSeriesType,
   TdCoordinateSystem,
   TdMarkPointSymbol,
-  ITdMarkPoint,
-  ITdItemStyle,
   ITdLabel,
-  ITdMarkLineEmphasis,
+  ITdItemStyle,
+  ITdLineStyle,
   ITdAreaStyle,
+  ITdMarkLineEmphasis,
   TdSeriesLayoutBy,
+  ITdMarkPoint,
   ITdMarkLine,
   ITdMarkArea,
-  ITdLineStyle,
-  ITdSeriesTooltip } from '@covalent/echarts/base';
-  
+  ITdSeriesTooltip, 
+  TdSeriesType,
+  CHART_PROVIDER,
+} from '@covalent/echarts/base';
+
+import { ITdLineConfig } from './line-config.interface';
+
 @Component({
   selector: 'td-chart-series[td-line]',
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CHART_PROVIDER],
 })
 export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy {
 
@@ -37,7 +41,7 @@ export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy 
 
   private _state: any = {};
 
-  @Input('config') config: any = {};
+  @Input('config') config: ITdLineConfig = {};
 
   @Input('id') id: string;
   @Input('name') name: string;

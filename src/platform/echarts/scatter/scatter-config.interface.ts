@@ -1,4 +1,10 @@
-import { ITdTooltip, ITdXAxisConfig, ITdYAxisConfig, ITdScatterSeries } from '../';
+import { 
+    ITdTooltip,
+    ITdXAxisConfig,
+    ITdYAxisConfig,
+} from '@covalent/echarts/base';
+
+import { ITdScatterSeries } from './scatter-series.interface';
 
 interface ITdScatterConfig {
     title?: any;

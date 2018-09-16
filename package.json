@@ -33,7 +33,7 @@
     "generate:changelog": "./node_modules/.bin/conventional-changelog -i docs/CHANGELOG.md -s -p angular",
     "a11y": "scripts/a11y/a11y.sh -r scripts/a11y/routes.txt",
     "build_lib": "ng build --prod covalent-docs",
-    "npm_pack": "cd dist/covalent-docs && npm pack",
+    "npm_pack": "cd dist/covalent-docs/platform/echarts && npm pack",
     "package": "npm run build_lib && npm run npm_pack"
   },
   "engines": {
