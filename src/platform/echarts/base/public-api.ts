@@ -1,5 +1,8 @@
 export * from './base.module';
 export { TdChartComponent } from './chart.component';
+export { TdChartAxisComponent } from './axis/axis.component';
+export { TdChartYAxisComponent } from './axis/y-axis.component';
+export { TdChartTooltipComponent } from './tooltip/tooltip.component';
 export { TdChartOptionsService, CHART_PROVIDER } from './chart.service';
 export * from './utils';
 export {

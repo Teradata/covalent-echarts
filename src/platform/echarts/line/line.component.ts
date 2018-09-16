@@ -18,14 +18,13 @@ import {
   ITdItemStyle,
   ITdLineStyle,
   ITdAreaStyle,
-  ITdMarkLineEmphasis,
   TdSeriesLayoutBy,
   ITdMarkPoint,
   ITdMarkLine,
   ITdMarkArea,
   ITdSeriesTooltip, 
   TdSeriesType,
-  CHART_PROVIDER,
+  ITdEmphasis,
 } from '@covalent/echarts/base';
 
 import { ITdLineConfig } from './line-config.interface';
@@ -33,7 +32,7 @@ import { ITdLineConfig } from './line-config.interface';
 @Component({
   selector: 'td-chart-series[td-line]',
   template: '',
-  providers: [CHART_PROVIDER],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy {
 
@@ -67,7 +66,7 @@ export class TdChartSeriesLineComponent implements OnChanges, OnInit, OnDestroy 
   @Input('itemStyle') itemStyle: ITdItemStyle;
   @Input('lineStyle') lineStyle: ITdLineStyle;
   @Input('areaStyle') areaStyle: ITdAreaStyle;
-  @Input('emphasis') emphasis: ITdMarkLineEmphasis;
+  @Input('emphasis') emphasis: ITdEmphasis;
   @Input('smooth') smooth: boolean | number;
   @Input('smoothMonotone') smoothMonotone: string;
   @Input('sampling') sampling: string;

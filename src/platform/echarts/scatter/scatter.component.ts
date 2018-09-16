@@ -22,8 +22,8 @@ import {
   TdSeriesLayoutBy,
   ITdMarkLine,
   ITdMarkArea,
-  ITdSeriesTooltip, 
-  CHART_PROVIDER } from '@covalent/echarts/base';
+  ITdSeriesTooltip,
+} from '@covalent/echarts/base';
 
 import { ITdScatterConfig } from './scatter-config.interface';
   
@@ -31,7 +31,6 @@ import { ITdScatterConfig } from './scatter-config.interface';
   selector: 'td-chart-series[td-scatter]',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CHART_PROVIDER],
 })
 export class TdChartSeriesScatterComponent implements OnChanges, OnInit, OnDestroy {
 
