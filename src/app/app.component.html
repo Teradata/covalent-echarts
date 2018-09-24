@@ -37,14 +37,13 @@
                    [itemStyle]="series.itemStyle">
   </td-chart-series>
   <!-- td-chart-series-tooltip -->
-  <!-- <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index"
+  <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index"
   [index]="i"
   [textStyle]="tooltip.textStyle"
   [backgroundColor]="tooltip.backgroundColor">
     <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
       <ng-container *ngIf="params">
         <div layout="row" layout-align="start center">
-          {{i}}
           <mat-icon>
             <span class="tc-blue-300">{{tooltip.icon}}</span>
           </mat-icon>
@@ -54,21 +53,9 @@
         </div>
       </ng-container>
     </ng-template>
-  </td-chart-series-tooltip> -->
-  <td-chart-series-tooltip [config]="seriesToolTip[0]">
-      <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
-        <ng-container *ngIf="params">
-          <div layout="row" layout-align="start center">
-            <mat-icon>
-              <span class="tc-blue-300">{{seriesToolTip[0].icon}}</span>
-            </mat-icon>
-            <span class="mat-caption pad-left-sm">
-              {{params.seriesName + ': ' + params.value}}
-            </span>
-          </div>
-        </ng-container>
-      </ng-template>
-    </td-chart-series-tooltip>
+  </td-chart-series-tooltip>
+  <!-- <td-chart-series-tooltip [configArray]="seriesToolTip">
+    </td-chart-series-tooltip> -->
 </td-chart>
 <h3>Line Test (atomic)</h3>
 <div layout="row">
@@ -85,11 +72,11 @@
             <span class="tc-blue-300">update_time</span>
           </mat-icon>
           <span class="mat-caption pad-left-sm">
-            {{params[0].seriesName + ': ' + params[0].value[1]}}
+            {{params.seriesName + ': ' + params.value[1]}}
           </span>
         </div>
         <div class="mat-caption">
-          at {{(params[0].name | date:'medium')}}
+          at {{(params.name | date:'medium')}}
         </div>
       </ng-container>
     </ng-template>
@@ -128,21 +115,49 @@
         </ng-container>
       </ng-template>
     </td-chart-series-tooltip>
-    <!-- <td-chart-series-tooltip [config]="seriesToolTip[0]">
-        <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
-          <ng-container *ngIf="params">
-            <div layout="row" layout-align="start center">
-              <mat-icon>
-                <span class="tc-blue-300">{{seriesToolTip[0].icon}}</span>
-              </mat-icon>
-              <span class="mat-caption pad-left-sm">
-                {{params.seriesName + ': ' + params.value}}
-              </span>
-            </div>
-          </ng-container>
-        </ng-template>
-      </td-chart-series-tooltip> -->
+    <!-- <td-chart-series-tooltip [configArray]="seriesToolTip">
+    </td-chart-series-tooltip> -->
 </td-chart>
+<h3>Line Test - no series (atomic)</h3>
+<td-chart [style.height.px]="300">
+    <td-chart-tooltip [show]="showTooltip" [trigger]="'item'">
+      <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+        <ng-container *ngIf="params">
+          <div layout="row" layout-align="start center">
+            <mat-icon>
+              <span class="tc-blue-300">update_time</span>
+            </mat-icon>
+            <span class="mat-caption pad-left-sm">
+              {{params.seriesName + ': ' + params.value[1]}}
+            </span>
+          </div>
+          <div class="mat-caption">
+            at {{(params.name | date:'medium')}}
+          </div>
+        </ng-container>
+      </ng-template>
+    </td-chart-tooltip>
+    <td-chart-x-axis [show]="true"
+                      [position]="lineXAxisPositionNoSeries"
+                      [axisLabel]="xAxisLabel"
+                      [type]="'time'"
+                      [boundaryGap]="false"
+                      [axisLine]="xLine"
+                      [splitLine]="splitLine">
+    </td-chart-x-axis>
+    <td-chart-y-axis [show]="true"
+                      [type]="'value'"
+                      [axisLabel]="yAxisLabel"
+                      [axisLine]="yLine"
+                      [splitLine]="splitLine">
+    </td-chart-y-axis>
+    <td-chart-series td-line
+                      *ngFor="let series of linePlotNoSeries"
+                      [data]="series.data"
+                      [name]="series.name"
+                      [lineStyle]="series.lineStyle">
+    </td-chart-series>
+  </td-chart>
 <h3>Line Test (config object)</h3>
 <td-chart [style.height.px]="300"
           [config]="lineConfig">
