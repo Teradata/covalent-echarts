@@ -53,6 +53,8 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
 
   @Input('config') config: any = {};
   @Input('index') index: number = 0;
+
+  // Parent tooltip trigger must be set to 'item' to render these properties
   @Input('position') position: string | string[] | number[];
   @Input('backgroundColor') backgroundColor: string = 'rgba(50,50,50,0.7)';
   @Input('borderColor') borderColor: string = '#333';
@@ -96,7 +98,6 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
         formatter: this.formatter(),
       });
       // set series tooltip configuration in parent chart and render new configurations
-
       if (checkKeys) {
         this._optionsService.setSeriesOption('tooltip', config, this.index);
       } else {
