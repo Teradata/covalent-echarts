@@ -36,6 +36,35 @@
                    [name]="series.name"
                    [itemStyle]="series.itemStyle">
   </td-chart-series>
+  <!-- td-chart-series-tooltip -->
+  <!-- <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index" [index]="i" [textStyle]="tooltip.textStyle">
+    <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300">{{tooltip.icon}}</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-series-tooltip> -->
+    <td-chart-series-tooltip [configArray]="seriesToolTip">
+    <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300"> test {{seriesToolTip[1].icon}}</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-series-tooltip>
 </td-chart>
 <h3>Line Test (atomic)</h3>
 <div layout="row">
@@ -86,3 +115,8 @@
 <td-chart [style.height.px]="300"
           [config]="lineConfig">
 </td-chart>
+
+<ng-template #tooltipContent
+            [ngTemplateOutlet]="formatterTemplate"
+            [ngTemplateOutletContext]="_context">
+</ng-template>

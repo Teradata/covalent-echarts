@@ -104,6 +104,24 @@ export class DocsAppComponent {
     },
   };
 
+  seriesToolTip: any[] = [
+    {
+      icon: 'person',
+      textStyle: {
+        color: '#818181',
+      },
+      backgroundColor: '#fff',
+      formatter: '{a}: {c0}',
+    },
+        {
+      icon: 'dashboard',
+      textStyle: {
+        color: '#00efff',
+      },
+      formatter: '{a}: {c0}',
+    },
+  ];
+
   barYaxisPosition: TdYAxisPosition = TdYAxisPosition.Right;
   lineXAxisPosition: TdXAxisPosition = TdXAxisPosition.Top;
 
