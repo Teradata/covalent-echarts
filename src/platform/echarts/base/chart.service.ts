@@ -36,6 +36,7 @@ export class TdChartOptionsService {
   }
 
   setSeriesOption(option: string, value: any, index: number): void {
+
     const seriesOption: any = {[option]: value};
     setTimeout(() => {
       const prevSeriesValue: any[] = this.getOption('series');
@@ -48,13 +49,13 @@ export class TdChartOptionsService {
     });
   }
 
-  setSeriesOptionArray(option: string, value: any[]): void {
-    const seriesOption: any = { [option]: value };
-    if (seriesOption[option]) {
-      seriesOption[option].forEach((prevValue: any, i: number) => {
-        this.setSeriesOption(option, prevValue, i);
-      });
-    }
+  setSeriesOptionAll(option: string, value: any): void {
+    setTimeout(() => {
+    const prevSeriesValue: any[] = this.getOption('series');
+    prevSeriesValue.forEach((val: any, i: number) => {
+      this.setSeriesOption(option, value, i);
+    });
+  });
   }
 
   clearSeriesOption(option: string): void {

@@ -30,40 +30,6 @@ export class DocsAppComponent {
   }];
 
   showTooltip: boolean = true;
-  linePlot: any[] = [{
-    name: 'Line Test',
-    type: 'line',
-    lineStyle: {
-      color: '#575757',
-      width: 2,
-      shadowBlur: 5,
-      shadowColor: 'rgba(0, 0, 0, 0.15)',
-      shadowOffsetX: 0,
-      shadowOffsetY: 5,
-      opacity: 0.75,
-    },
-    data: [{
-      name: NOW.toISOString(),
-      value: [NOW.toISOString(), 200],
-    }, {
-      name: new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(),
-      value: [new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(), 50],
-    }, {
-      name: new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(),
-      value: [new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(), 100],
-    }],
-  }];
-
-  lineConfig: any = {
-    xAxis: [{show: true, type: 'time', boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
-    yAxis: [{show: true, type: 'value', axisLabel: {inside: true}}],
-    series: this.linePlot,
-    tooltip: {
-      show: true,
-      trigger: 'axis',
-      showContent: true,
-    },
-  };
 
   yLine: IAxisLine = { 
     show: true, 
@@ -111,17 +77,90 @@ export class DocsAppComponent {
         color: '#818181',
       },
       backgroundColor: '#fff',
-      formatter: '{a}: {c0}',
+      formatter: ' inline Label {a}: {c0}',
     },
         {
       icon: 'dashboard',
       textStyle: {
         color: '#00efff',
       },
-      formatter: '{a}: {c0}',
+      formatter: 'test {a}: {c0}',
     },
   ];
 
+  seriesLineToolTip: any[] = [
+    {
+      textStyle: {
+        color: '#818181',
+      },
+      backgroundColor: '#fff',
+      // formatter: ' inline Label {a}: {c0}',
+    },
+        {
+      textStyle: {
+        color: '#00efff',
+      },
+      // formatter: 'test {a}: {c0}',
+    },
+  ];
+
+  linePlot: any[] = [{
+    name: 'Line Test',
+    type: 'line',
+    lineStyle: {
+      color: '#575757',
+      width: 2,
+      shadowBlur: 5,
+      shadowColor: 'rgba(0, 0, 0, 0.15)',
+      shadowOffsetX: 0,
+      shadowOffsetY: 5,
+      opacity: 0.75,
+    },
+    data: [{
+      name: NOW.toISOString(),
+      value: [NOW.toISOString(), 200],
+    }, {
+      name: new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(),
+      value: [new Date(NOW.getTime() + (24 * 3600 * 1000)).toISOString(), 50],
+    }, {
+      name: new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(),
+      value: [new Date(NOW.getTime() + (2 * 24 * 3600 * 1000)).toISOString(), 100],
+    }],
+  }, {
+    name: 'Line Test',
+    type: 'line',
+    lineStyle: {
+      color: 'red',
+      width: 2,
+      shadowBlur: 5,
+      shadowColor: 'rgba(0, 0, 0, 0.15)',
+      shadowOffsetX: 0,
+      shadowOffsetY: 5,
+      opacity: 0.75,
+    },
+    data: [{
+      name: NOW.toISOString(),
+      value: [NOW.toISOString(), 200],
+    }, {
+      name: new Date(NOW.getTime() + (10 * 3600 * 1000)).toISOString(),
+      value: [new Date(NOW.getTime() + (10 * 3600 * 1000)).toISOString(), 50],
+    }, {
+      name: new Date(NOW.getTime() + (3 * 24 * 3600 * 1000)).toISOString(),
+      value: [new Date(NOW.getTime() + (3 * 24 * 3600 * 1000)).toISOString(), 100],
+    }],
+  }];
+
+  lineConfig: any = {
+    xAxis: [{show: true, type: 'time', boundaryGap: false, axisLine: {show: false}, splitLine: {show: false}}],
+    yAxis: [{show: true, type: 'value', axisLabel: {inside: true}}],
+    series: this.linePlot,
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      showContent: true,
+    },
+  };
+  
   barYaxisPosition: TdYAxisPosition = TdYAxisPosition.Right;
   lineXAxisPosition: TdXAxisPosition = TdXAxisPosition.Top;
 

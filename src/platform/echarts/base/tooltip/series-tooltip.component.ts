@@ -18,8 +18,7 @@ import { TdChartOptionsService } from '../chart.service';
 import { assignDefined } from '../utils';
 
 interface ITdSeriesTooltip {
-  
-  position?: any;
+  position?: any | any;
   formatter?: any;
   backgroundColor?: any;
   borderColor?: any;
@@ -52,8 +51,7 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
 
   _context: TdTooltipContext = new TdTooltipContext();
 
-  @Input('config') config: ITdSeriesTooltip = {};
-  @Input('configArray') configArray: ITdSeriesTooltip[] = [];
+  @Input('config') config: any = {};
   @Input('index') index: number = 0;
   @Input('position') position: string | string[] | number[];
   @Input('backgroundColor') backgroundColor: string = 'rgba(50,50,50,0.7)';
@@ -86,38 +84,53 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private _setOptions(): void {
-    let config: any = assignDefined(this._state, this.config ? this.config : {}, {
-      position: this.position,
-      formatter: (params: any, ticket: any, callback: (ticket: string, html: string) => void) => {
-        this._context = {
-          $implicit: params,
-          ticket: ticket,
-        };
-        // timeout set since we need to set the HTML at the end of the angular lifecycle when
-        // the tooltip delay is more than 0
-        setTimeout(() => {
-          callback(ticket, (<HTMLElement>this._elementRef.nativeElement).innerHTML);
-        });
-        this._changeDetectorRef.markForCheck();
-        return (<HTMLElement>this._elementRef.nativeElement).innerHTML;
-      },
-      backgroundColor: this.backgroundColor,
-      borderColor: this.borderColor,
-      borderWidth: this.borderWidth,
-      padding: this.padding,
-      textStyle: this.textStyle,
-      extraCssText: this.extraCssText,
-    });
+      const checkKeys: boolean = Object.keys(this.config).length === 0;
+      let config: any = assignDefined(this._state, !checkKeys ? this.config : {}, {
+        position: this.position,
+        backgroundColor: this.backgroundColor,
+        borderColor: this.borderColor,
+        borderWidth: this.borderWidth,
+        padding: this.padding,
+        textStyle: this.textStyle,
+        extraCssText: this.extraCssText,
+        formatter: this.formatter(),
+      });
+      // set series tooltip configuration in parent chart and render new configurations
+
+      if (checkKeys) {
+        this._optionsService.setSeriesOption('tooltip', config, this.index);
+      } else {
+        this._setConfig();
+      }
+  }
+
+  private _setConfig(): void {
+    let config: any = assignDefined(this._state, this.config);
+    config = !this.config.formatter 
+      ? { ...config, ... { formatter: this.formatter() } }
+      : this.config.formatter;
     // set series tooltip configuration in parent chart and render new configurations
-    if (this.configArray.length >= 1) {
-      this._optionsService.setSeriesOptionArray('tooltip', this.configArray);
-    } else {
-      this._optionsService.setSeriesOption('tooltip', config, this.index);
-    }
+    this._optionsService.setSeriesOptionAll('tooltip', config);
+  }
+
+  private formatter(): Function {
+    return (params: any, ticket: any, callback: (ticket: string, html: string) => void) => {
+      this._context = {
+        $implicit: params,
+        ticket: ticket,
+      };
+      // timeout set since we need to set the HTML at the end of the angular lifecycle when
+      // the tooltip delay is more than 0
+      setTimeout(() => {
+        callback(ticket, (<HTMLElement>this._elementRef.nativeElement).innerHTML);
+      });
+      this._changeDetectorRef.markForCheck();
+      return (<HTMLElement>this._elementRef.nativeElement).innerHTML;
+    };
   }
 
   private _removeOption(): void {
-    this._optionsService.clearSeriesOption('tooltip');
+    this._optionsService.clearSeriesOption('series');
   }
 
 }
