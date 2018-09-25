@@ -56,21 +56,6 @@ export class TdChartOptionsService {
   }
 
   /**
-   * Sets Series option
-   *
-   * @param option Series option (e.i. tooltip)
-   * @param value Array of values for series option
-   */
-  setSeriesOptionArray(option: string, value: any[]): void {
-    const seriesOption: any = { [option]: value };
-    if (seriesOption[option]) {
-      seriesOption[option].forEach((prevValue: any, i: number) => {
-        this.setSeriesOption(option, prevValue, i);
-      });
-    }
-  }
-
-  /**
    * Sets Series option using an index, normally used with an ngFor in the template
    *
    * @param option Series option (e.i. tooltip)

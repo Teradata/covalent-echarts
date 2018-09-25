@@ -55,7 +55,90 @@
     </ng-template>
   </td-chart-series-tooltip>
   <!-- <td-chart-series-tooltip [configArray]="seriesToolTip">
+      <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+          <ng-container *ngIf="params">
+            <div layout="row" layout-align="start center">
+              <mat-icon>
+                <span class="tc-blue-300">{{tooltip.icon}}</span>
+              </mat-icon>
+              <span class="mat-caption pad-left-sm">
+                {{params.seriesName + ': ' + params.value}}
+              </span>
+            </div>
+          </ng-container>
+        </ng-template>
     </td-chart-series-tooltip> -->
+</td-chart>
+<h3>Bar Test Config (atomic)</h3>
+<td-chart [style.height.px]="300"
+                [dataZoom]="false">
+  <td-chart-tooltip [trigger]="'item'">
+    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300">person</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-tooltip>
+  <td-chart-x-axis [show]="true"
+                    [position]="'top'"
+                    [type]="'category'"
+                    [boundaryGap]="true"
+                    [axisLine]="xLine"
+                    [splitLine]="{show: false}">
+  </td-chart-x-axis>
+  <td-chart-y-axis [show]="true"
+                    [type]="'value'"
+                    [position]="barYaxisPosition"
+                    [axisLabel]="yAxisLabel"
+                    [axisLine]="yLine"
+                    [max]="120"
+                    [splitLine]="splitLineBar">
+  </td-chart-y-axis>
+  <td-chart-series td-bar
+                   *ngFor="let series of barPlot"
+                   [data]="series.data"
+                   [name]="series.name"
+                   [itemStyle]="series.itemStyle">
+  </td-chart-series>
+  <!-- td-chart-series-tooltip -->
+  <!-- <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index"
+  [index]="i"
+  [textStyle]="tooltip.textStyle"
+  [backgroundColor]="tooltip.backgroundColor">
+    <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+      <ng-container *ngIf="params">
+        <div layout="row" layout-align="start center">
+          <mat-icon>
+            <span class="tc-blue-300">{{tooltip.icon}}</span>
+          </mat-icon>
+          <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </td-chart-series-tooltip> -->
+  <td-chart-series-tooltip [configArray]="seriesToolTip">
+      <ng-template let-params let-ticket="ticket" let-item="item" tdSeriesTooltipFormatter>
+          <ng-container *ngIf="params">
+            <div layout="row" layout-align="start center">
+              <mat-icon>
+                <span class="tc-blue-300">{{seriesToolTip[params.seriesIndex].icon}}</span>
+              </mat-icon>
+              <span class="mat-caption pad-left-sm">
+                {{params.seriesName + ': ' + params.value}}
+              </span>
+            </div>
+          </ng-container>
+        </ng-template>
+    </td-chart-series-tooltip>
 </td-chart>
 <h3>Line Test (atomic)</h3>
 <div layout="row">

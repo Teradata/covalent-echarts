@@ -84,7 +84,7 @@ export class DocsAppComponent {
       textStyle: {
         color: '#00efff',
       },
-      // formatter: 'test {a}: {c0}',
+      // formatter: 'inline Label {a}: {c0}',
     },
   ];
 

@@ -1,4 +1,5 @@
 export function assignDefined(target: any, ...sources: any[]): any {
+
   for (const key of Object.keys(target)) {
     delete target[key];
   }

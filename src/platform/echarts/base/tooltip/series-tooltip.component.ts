@@ -43,7 +43,7 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
   @Input('config') config: any;
   @Input('configArray') configArray: any[];
   @Input('index') index: number = 0;
-
+  @Input('formatter') formatter: any;
   // Parent tooltip trigger must be set to 'item' to render these properties
   @Input('position') position: string | string[] | number[];
   @Input('backgroundColor') backgroundColor: string = 'rgba(50,50,50,0.7)';
@@ -86,7 +86,7 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
         padding: this.padding,
         textStyle: this.textStyle,
         extraCssText: this.extraCssText,
-        formatter: this._formatter(),
+        formatter: this.formatter ? this.formatter : this._formatter(),
       });
       // set series tooltip configuration in parent chart and render new configurations
       this._optionsService.setSeriesOption('tooltip', config, this.index);
@@ -95,13 +95,17 @@ export class TdSeriesTooltipComponent implements OnChanges, OnInit, OnDestroy {
       }
   }
   /**
-   * Open tfor discussion, might be overkill but wanted to include it in case we want to provide
-   * a global series config. Bypasses setSeriesOption and ngTemplateOutlet. 
-   * Falls back to parent tooltip properties
+   * processes configArray and updates
    *
    */
   private _setConfig(): void {
-    this._optionsService.setSeriesOptionArray('tooltip', this.configArray);
+    let config: any = assignDefined(this._state, this.configArray);
+    for (const key of Object.keys(config)) {
+      if (!config[key].formatter) {
+        config[key].formatter = this._formatter();
+      }
+      this._optionsService.setSeriesOption('tooltip', config[key], parseInt(key, 0));
+    }
   }
   
   /**
