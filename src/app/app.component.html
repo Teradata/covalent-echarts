@@ -130,7 +130,7 @@
           <ng-container *ngIf="params">
             <div layout="row" layout-align="start center">
               <mat-icon>
-                <span class="tc-blue-300">{{seriesToolTip[params.seriesIndex].icon}}</span>
+                <span class="tc-blue-300">{{seriesToolTip[params?.seriesIndex]?.icon}}</span>
               </mat-icon>
               <span class="mat-caption pad-left-sm">
                 {{params.seriesName + ': ' + params.value}}
