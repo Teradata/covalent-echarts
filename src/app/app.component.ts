@@ -106,44 +106,6 @@ export class DocsAppComponent {
 
   showTooltip: boolean = true;
 
-  linePlot: ITdLineSeries[] = [
-    {
-      name: 'Line Test',
-      type: TdSeriesType.Line,
-      lineStyle: {
-        color: '#575757',
-        width: 2,
-        shadowBlur: 5,
-        shadowColor: 'rgba(0, 0, 0, 0.15)',
-        shadowOffsetX: 0,
-        shadowOffsetY: 5,
-        opacity: 0.75,
-      },
-      markLine: {
-        data: [{ name: 'Average', value: 125, xAxis: 1, yAxis: 125 }],
-        lineStyle: { color: '#607d8b', type: TdLineType.Dashed },
-        symbol: 'none',
-      },
-      data: [
-        {
-          name: NOW.toISOString(),
-          value: [NOW.toISOString(), 200],
-        },
-        {
-          name: new Date(NOW.getTime() + 24 * 3600 * 1000).toISOString(),
-          value: [new Date(NOW.getTime() + 24 * 3600 * 1000).toISOString(), 50],
-        },
-        {
-          name: new Date(NOW.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-          value: [
-            new Date(NOW.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-            100,
-          ],
-        },
-      ],
-    },
-  ];
-
   barConfig: ITdBarConfig = {
     xAxis: [
       {
@@ -173,27 +135,6 @@ export class DocsAppComponent {
       },
     ],
     series: this.barPlot,
-    tooltip: {
-      show: true,
-      trigger: TdToolTipTrigger.Item,
-      showContent: true,
-    },
-  };
-
-  lineConfig: ITdLineConfig = {
-    xAxis: [
-      {
-        show: true,
-        type: TdAxisType.Time,
-        boundaryGap: false,
-        axisLine: { show: false },
-        splitLine: { show: false },
-      },
-    ],
-    yAxis: [
-      { show: true, type: TdAxisType.Value, axisLabel: { inside: false } },
-    ],
-    series: this.linePlot,
     tooltip: {
       show: true,
       trigger: TdToolTipTrigger.Item,
