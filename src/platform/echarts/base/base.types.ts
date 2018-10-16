@@ -77,7 +77,7 @@ interface ITdTextStyle {
   textShadowBlur?: number;
   textShadowOffsetX?: number;
   textShadowOffsetY?: number;
-  rich: object;
+  rich?: object;
 }
 
 interface ITdLabel {

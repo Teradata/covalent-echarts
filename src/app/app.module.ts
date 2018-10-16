@@ -12,7 +12,16 @@ import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
+import { CovalentLayoutModule } from '@covalent/core/layout';
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
@@ -21,8 +30,6 @@ import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
 
 import { DocsAppComponent } from './app.component';
 import { appRoutes, appRoutingProviders } from './app.routes';
-
-// import {  } from '../platform/core';
 
 @NgModule({
   declarations: [
@@ -34,9 +41,14 @@ import { appRoutes, appRoutingProviders } from './app.routes';
     FormsModule,
     BrowserModule,
     HttpClientModule,
+    /** Material Modules */
     MatIconModule,
     MatButtonModule,
+    MatDividerModule,
+    MatListModule,
+    MatSidenavModule,
     /** Covalent Modules */
+    CovalentLayoutModule,
     CovalentBaseEchartsModule,
     CovalentLineEchartsModule,
     CovalentBarEchartsModule,

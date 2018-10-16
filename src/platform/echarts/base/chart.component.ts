@@ -69,9 +69,9 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
   ngAfterViewInit(): void {
     this._instance = echarts.init(this._elementRef.nativeElement);
     fromEvent(this._instance, 'click').subscribe((params: any) => {
-      if (params.componentType === 'markArea') {
-        this.markAreaClick.next(params);
-      }
+      // if (params.componentType === 'markArea') {
+        this.markAreaClick.emit(params);
+      // }
     });
     if (this.chartGroup) {
       this._instance.group = this.chartGroup;
@@ -91,14 +91,14 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         distinctUntilChanged(),
       ),
     ).subscribe(() => {
-      if (!this._resizing) {
+      // if (!this._resizing) {
         this._resizing = true;
         setTimeout(() => {
           this._instance.resize();
           this._resizing = false;
           this._changeDetectorRef.markForCheck();
         }, 100);
-      }
+      // }
     });
     this.render();
     this._optionsService.listen().subscribe((options: any) => {
@@ -134,7 +134,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         type: 'scroll',
         selectedMode: 'multiple',
         orient: 'horizontal', // 'vertical'
-        right: '5',
+        right: '5', 
         bottom: '5',
       },
       this._instance.setOption(assignDefined(this._state, {

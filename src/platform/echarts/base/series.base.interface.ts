@@ -111,6 +111,8 @@ interface ITdMarkArea {
 }
 
 interface ITdSeriesTooltip {
+  icon?: string; // optional, added for mat-icon
+  content?: any; // Allows custom content
   position?: TdTooltipPosition | any;
   formatter?: any;
   backgroundColor?: any;

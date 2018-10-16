@@ -62,9 +62,11 @@ export class TdChartOptionsService {
    */
   clearSeriesOption(option: string): void {
     const prevSeriesValue: any[] = this.getOption('series');
-    prevSeriesValue.forEach((val: any, i: number) => {
-      this.setSeriesOption(option, undefined, i);
-    });
+    if (prevSeriesValue) {
+      prevSeriesValue.forEach((val: any, i: number) => {
+        this.setSeriesOption(option, undefined, i);
+      });
+    }
   }
   
   clearOption(option: string): void {

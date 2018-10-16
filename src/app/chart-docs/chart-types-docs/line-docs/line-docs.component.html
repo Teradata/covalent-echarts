@@ -1,0 +1,134 @@
+<mat-card flex>
+  <mat-card-title>Line Test (atomic)
+      <ng-template layout="row">
+          <span flex>Individual component configurations, series, tooltip, x & y axis, series tooltip</span>
+          <button mat-button (click)="showTooltip = !showTooltip">
+              Show/Hide Tooltip
+            </button>
+      </ng-template>
+  </mat-card-title>
+  <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-tab-group mat-stretch-tabs dynamicHeight>
+    <mat-tab>
+      <ng-template matTabLabel>Demo</ng-template>
+      <mat-card-content>
+      <td-chart [style.height.px]="300">
+        <td-chart-tooltip [show]="showTooltip" [trigger]="'item'">
+          <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+            <ng-container *ngIf="params">
+              <div layout="row" layout-align="start center">
+                <mat-icon>
+                  <span class="tc-blue-300">update_time</span>
+                </mat-icon>
+                <span class="mat-caption pad-left-sm">
+                  {{params.seriesName + ': ' + params.value[1]}}
+                </span>
+              </div>
+              <div class="mat-caption">
+                at {{(params.name | date:'medium')}}
+              </div>
+            </ng-container>
+          </ng-template>
+        </td-chart-tooltip>
+        <td-chart-x-axis [show]="true" [position]="lineXAxisPosition" [axisLabel]="xAxisLabel" [type]="'time'"
+          [boundaryGap]="false" [axisLine]="xLine" [splitLine]="splitLine">
+        </td-chart-x-axis>
+        <td-chart-y-axis [show]="true" [type]="'value'" [axisLabel]="yAxisLabel" [axisLine]="yLine" [splitLine]="splitLine">
+        </td-chart-y-axis>
+        <td-chart-series td-line *ngFor="let series of linePlot" [symbolSize]="14" [data]="series.data" [name]="series.name"
+          [symbol]="roundRectMarkPointSymbol" [lineStyle]="series.lineStyle">
+        </td-chart-series>
+        <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index" [index]="i" [textStyle]="tooltip.textStyle"
+          [backgroundColor]="tooltip.backgroundColor">
+          <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+            <ng-container *ngIf="params">
+              <div layout="row" layout-align="start center">
+                <mat-icon>
+                  <span class="tc-blue-300">{{tooltip.icon}}</span>
+                </mat-icon>
+                <span class="mat-caption pad-left-sm">
+                  {{params.seriesName + ': ' + params.value}}
+                </span>
+              </div>
+            </ng-container>
+          </ng-template>
+        </td-chart-series-tooltip>
+      </td-chart>
+    </mat-card-content>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>Code</ng-template>
+      <td-highlight lang="html">
+          <![CDATA[
+          <td-chart [style.height.px]="300">
+              <td-chart-tooltip [show]="showTooltip" [trigger]="'item'">
+                <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+                  <ng-container *ngIf="params">
+                    <div layout="row" layout-align="start center">
+                      <mat-icon>
+                        <span class="tc-blue-300">update_time</span>
+                      </mat-icon>
+                      <span class="mat-caption pad-left-sm">
+                        { {params.seriesName + ': ' + params.value[1]} }
+                      </span>
+                    </div>
+                    <div class="mat-caption">
+                      at { {(params.name | date:'medium')} }
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </td-chart-tooltip>
+              <td-chart-x-axis [show]="true" [position]="lineXAxisPosition" [axisLabel]="xAxisLabel" [type]="'time'"
+                [boundaryGap]="false" [axisLine]="xLine" [splitLine]="splitLine">
+              </td-chart-x-axis>
+              <td-chart-y-axis [show]="true" [type]="'value'" [axisLabel]="yAxisLabel" [axisLine]="yLine" [splitLine]="splitLine">
+              </td-chart-y-axis>
+              <td-chart-series td-line *ngFor="let series of linePlot" [symbolSize]="14" [data]="series.data" [name]="series.name"
+                [symbol]="roundRectMarkPointSymbol" [lineStyle]="series.lineStyle">
+              </td-chart-series>
+              <td-chart-series-tooltip *ngFor="let tooltip of seriesToolTip; let i=index" [index]="i" [textStyle]="tooltip.textStyle"
+                [backgroundColor]="tooltip.backgroundColor">
+                <ng-template let-params let-ticket="ticket" tdSeriesTooltipFormatter>
+                  <ng-container *ngIf="params">
+                    <div layout="row" layout-align="start center">
+                      <mat-icon>
+                        <span class="tc-blue-300">{ {tooltip.icon} }</span>
+                      </mat-icon>
+                      <span class="mat-caption pad-left-sm">
+                        { {params.seriesName + ': ' + params.value} }
+                      </span>
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </td-chart-series-tooltip>
+            </td-chart>
+          ]]>
+      </td-highlight>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
+<mat-card>
+  <mat-card-title>Line (config object)</mat-card-title>
+  <mat-card-subtitle>Configuration object, acts just like the atomic version but using one configuration @Input property</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-tab-group mat-stretch-tabs dynamicHeight>
+    <mat-tab>
+      <ng-template matTabLabel>Demo</ng-template>
+  <mat-card-content>
+      <td-chart [style.height.px]="300"
+                [config]="lineConfig">
+      </td-chart>
+  </mat-card-content>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabLabel>Code</ng-template>
+    <td-highlight lang="html">
+        <![CDATA[
+        <td-chart [style.height.px]="300"
+        [config]="lineConfig"></td-chart>
+        ]]>          
+      </td-highlight> 
+  </mat-tab>
+  </mat-tab-group>
+</mat-card>
