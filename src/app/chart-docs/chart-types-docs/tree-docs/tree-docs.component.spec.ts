@@ -8,7 +8,7 @@ describe('TreeDocsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TreeDocsComponent ]
+      declarations: [ TreeDocsComponent ],
     })
     .compileComponents();
   }));

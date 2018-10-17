@@ -144,6 +144,25 @@ interface ITdAxisPointerLabel {
   shadowOffsetY?: number;
 }
 
+interface ITdCharMarkEvent {
+  $vars?: any[];
+  color?: string;
+  componentSubType?: string;
+  componentType?: string;
+  data?: any;
+  dataIndex?: number;
+  dataType?: any;
+  event?: Event;
+  marker?: string;
+  name?: string;
+  seriesId?: string;
+  seriesIndex?: number;
+  seriesName?: any;
+  seriesType?: string;
+  type?: string;
+  value?: any;
+  }
+
 enum TdAxisPointerAxis {
   X= 'x',
   Y = 'y',
@@ -322,6 +341,7 @@ export {
   ITdLineCurveStyle,
   ITdLabel,
   ITdAxisPointerLabel,
+  ITdCharMarkEvent,
   ITdBaseStyle,
   ITdTooltipAxisPointer,
   TdAxisPointerAxis,

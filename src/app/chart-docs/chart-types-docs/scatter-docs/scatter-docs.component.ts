@@ -13,6 +13,13 @@ import { ITdSplitLine, ITdAxisLine } from '@covalent/echarts/base';
 })
 export class ScatterDocsComponent {
 
+  /** 
+   * This component is intentionally left simple for brevity as the data is 
+   * typically normally requested via an API which would include Angular 
+   * life-cycle hooks and other considerations.
+   * 
+   * Data is found in line-example-data.ts adjacent to this component.
+   */
 
   splitLineBar: ITdSplitLine = splitLineBar;
   xLine: ITdAxisLine = xLine;

@@ -91,14 +91,14 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         distinctUntilChanged(),
       ),
     ).subscribe(() => {
-      // if (!this._resizing) {
+      if (!this._resizing) {
         this._resizing = true;
         setTimeout(() => {
           this._instance.resize();
           this._resizing = false;
           this._changeDetectorRef.markForCheck();
         }, 100);
-      // }
+      }
     });
     this.render();
     this._optionsService.listen().subscribe((options: any) => {

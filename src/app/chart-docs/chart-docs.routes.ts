@@ -7,6 +7,7 @@ import {
   BarDocsComponent,
   LineDocsComponent,
   ScatterDocsComponent,
+  CombinationDocsComponent,
 } from './';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         component: LineDocsComponent,
         path: 'line',
+      },
+      {
+        component: CombinationDocsComponent,
+        path: 'combination',
       },
       {
         component: ScatterDocsComponent,

@@ -1,4 +1,15 @@
-import { ITdSplitLine, TdLineType, TdSeriesType, TdAxisType, TdToolTipTrigger, ITdSeriesTooltip, ITdAxisLabel, TdFontStyle, TdFontWeight, ITdAxisLine } from '@covalent/echarts/base';
+import {
+  ITdSplitLine,
+  TdLineType,
+  TdSeriesType,
+  TdAxisType,
+  TdToolTipTrigger,
+  ITdSeriesTooltip,
+  ITdAxisLabel,
+  TdFontStyle,
+  TdFontWeight,
+  ITdAxisLine,
+} from '@covalent/echarts/base';
 import { ITdBarSeries, ITdBarConfig } from '@covalent/echarts/bar';
 
 const splitLineBar: ITdSplitLine = {
@@ -118,4 +129,13 @@ const xLine: ITdAxisLine = {
   lineStyle: { color: '#777777', width: 2 },
 };
 
-export { seriesToolTip, barConfig, barPlot, splitLineBar, xAxisLabel, yAxisLabel, yLine, xLine };
+export {
+  seriesToolTip,
+  barConfig,
+  barPlot,
+  splitLineBar,
+  xAxisLabel,
+  yAxisLabel,
+  yLine,
+  xLine,
+};

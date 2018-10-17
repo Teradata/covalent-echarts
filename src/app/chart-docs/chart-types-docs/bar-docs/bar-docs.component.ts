@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ITdSplitLine, TdYAxisPosition, ITdSeriesTooltip, ITdAxisLine, ITdAxisLabel } from '@covalent/echarts/base';
+import { Component, ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import { ITdSplitLine, TdYAxisPosition, ITdSeriesTooltip, ITdAxisLine, ITdAxisLabel, ITdCharMarkEvent } from '@covalent/echarts/base';
 import { ITdBarConfig, ITdBarSeries } from '@covalent/echarts/bar';
 import { seriesToolTip, barConfig, barPlot, splitLineBar, xLine, yLine, yAxisLabel } from './bar-example-data';
 
@@ -12,6 +12,14 @@ import { seriesToolTip, barConfig, barPlot, splitLineBar, xLine, yLine, yAxisLab
 })
 export class BarDocsComponent {
 
+  /** 
+   * This component is intentionally left simple for brevity as the data is 
+   * typically normally requested via an API which would include Angular 
+   * life-cycle hooks and other considerations.
+   * 
+   * Data is found in bar-example-data.ts adjacent to this component.
+   */
+
   seriesToolTip: ITdSeriesTooltip[] = seriesToolTip;
   barConfig: ITdBarConfig = barConfig;
   barPlot: ITdBarSeries[]  = barPlot;
@@ -22,10 +30,24 @@ export class BarDocsComponent {
   
   barYaxisPosition: TdYAxisPosition = TdYAxisPosition.Right;
 
-  constructor() {}
+  message: ITdCharMarkEvent;
+  height: number = 300;
+  rerender: boolean = false;
 
-  markClicked(event: any): void {
-    console.log(event);
+  markClicked(event: ITdCharMarkEvent): void {
+    this.message = event;
+    this.toggleChartRenderDirective();
+    this.height = 600;
+
   }
 
+  clearMarkData(): void {
+    this.toggleChartRenderDirective();
+    this.height = 300;
+    this.message = undefined;
+  }
+
+  toggleChartRenderDirective(): void {
+    this.rerender = !this.rerender;
+  }
 }

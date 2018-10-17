@@ -8,7 +8,7 @@ describe('ScatterDocsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScatterDocsComponent ]
+      declarations: [ ScatterDocsComponent ],
     })
     .compileComponents();
   }));

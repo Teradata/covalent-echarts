@@ -1,7 +1,7 @@
 <td-layout #layout
             [class]="activeTheme"
             [dir]="dir">
-  <td-navigation-drawer sidenavTitle="Covalent Charts" [logo]="activeTheme === 'theme-dark' ? 'teradata' : 'teradata-dark'" navigationRoute="/" flex color="none">
+  <td-navigation-drawer sidenavTitle="Covalent ECharts" [logo]="activeTheme === 'theme-dark' ? 'teradata' : 'teradata-dark'" navigationRoute="/" flex color="none">
     <mat-nav-list flex>
       <a mat-list-item
           tdLayoutClose
@@ -11,13 +11,9 @@
           <mat-icon matListIcon>home</mat-icon>
           Home
       </a>
-      <a *ngFor="let item of routes" 
-          mat-list-item
-           tdLayoutClose
-          [routerLink]="[item.route]"
-          [routerLinkActive]="['active']">
-          <mat-icon matListIcon>{{item.icon}}</mat-icon>
-          {{item.title}}
+      <a href="https://teradata.github.io/covalent"  target="_blank" mat-list-item>
+          <mat-icon matListIcon svgIcon="assets:covalent_stroke"></mat-icon>
+          Covalent
       </a>
     </mat-nav-list>
   </td-navigation-drawer>

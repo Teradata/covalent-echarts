@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChartTypesMainComponent } from './chart-types-main.component';
+import { CombinationDocsComponent } from './combination-docs.component';
 
-describe('ChartTypesMainComponent', () => {
-  let component: ChartTypesMainComponent;
-  let fixture: ComponentFixture<ChartTypesMainComponent>;
+describe('CombinationDocsComponent', () => {
+  let component: CombinationDocsComponent;
+  let fixture: ComponentFixture<CombinationDocsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChartTypesMainComponent ],
+      declarations: [ CombinationDocsComponent ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChartTypesMainComponent);
+    fixture = TestBed.createComponent(CombinationDocsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

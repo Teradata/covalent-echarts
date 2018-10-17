@@ -27,6 +27,15 @@ import { ITdLineConfig, ITdLineSeries } from '@covalent/echarts/line';
   preserveWhitespaces: true,
 })
 export class LineDocsComponent {
+
+  /** 
+   * This component is intentionally left simple for brevity as the data is 
+   * typically normally requested via an API which would include Angular 
+   * life-cycle hooks and other considerations.
+   * 
+   * Data is found in line-example-data.ts adjacent to this component.
+   */
+
   showTooltip: boolean = true;
 
   seriesToolTip: ITdSeriesTooltip[] = seriesToolTip;

@@ -8,7 +8,7 @@ describe('LineDocsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LineDocsComponent ]
+      declarations: [ LineDocsComponent ],
     })
     .compileComponents();
   }));

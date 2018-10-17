@@ -1,10 +1,10 @@
 <td-layout-nav-list #navList
                     logo="assets:teradata"
-                    toolbarTitle="Covalent Charts"
+                    toolbarTitle="Covalent ECharts"
                     navigationRoute="/"
                     [opened]="media.registerQuery('gt-sm') | async"
                     [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : ((media.registerQuery('sm') | async) ? 'push' : 'over')"
-                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '385px' : '100%'">
+                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '400px' : '100%'">
   <button mat-icon-button td-menu-button tdLayoutToggle>
     <mat-icon>menu</mat-icon>
   </button>
@@ -40,10 +40,10 @@
     <button mat-icon-button tdLayoutNavListOpen [hideWhenOpened]="true">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span hide-gt-sm flex>Components &amp; Addons</span>
+    <span hide-gt-sm flex>Chart Components</span>
+    <td-toolbar flex layout="row"></td-toolbar>
   </div>
   <div class="theme-alt">
     <router-outlet></router-outlet>
   </div>
 </td-layout-nav-list>
-<!-- <router-outlet></router-outlet> -->

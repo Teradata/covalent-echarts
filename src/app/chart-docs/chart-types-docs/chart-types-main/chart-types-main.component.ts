@@ -14,14 +14,22 @@ export class ChartTypesMainComponent {
     color: 'deep-purple-A700',
     icon: 'insert_chart',
     route: 'bar',
-    title: 'Bart Chart',
-  }, {
+    title: 'Bat Chart',
+  }, 
+  {
     color: 'blue-A700',
     icon: 'show_chart',
     route: 'line',
     title: 'Line Chart',
-  }, {
+  }, 
+  {
     color: 'pink-A700',
+    icon: 'multiline_chart',
+    route: 'scatter',
+    title: 'Combination Chart',
+  },
+  {
+    color: 'teal-A700',
     icon: 'bubble_chart',
     route: 'scatter',
     title: 'Scatter Chart',
@@ -32,41 +40,41 @@ atomicComponents: Object[] = [
   {
     color: 'cyan-A700',
     icon: 'style',
-    route: 'series-component',
+    route: '',
     title: 'Series',
   },
   {
     color: 'deep-orange-A700',
     icon: 'info',
-    route: 'tooltip-component',
+    route: '',
     title: 'Tooltip',
   },
   {
     color: 'lime-A700',
     icon: 'trending_flat',
-    route: 'x-axis-component',
+    route: '',
     title: 'X-Axis',
   },
   {
     color: 'amber-A700',
     icon: 'trending_up',
-    route: 'y-axis-component',
+    route: '',
     title: 'Y-Axis',
   },
   {
     color: 'green-A700',
     icon: 'info',
-    route: 'series-tooltip-component',
+    route: '',
     title: 'Series Tooltip',
   },
   {
     color: 'orange-A700',
     icon: 'text_fields',
-    route: 'legend-component',
+    route: '',
     title: 'Legend',
   },
 ];
 
-  constructor(private media: TdMediaService) { }
+  constructor(public media: TdMediaService) { }
 
 }

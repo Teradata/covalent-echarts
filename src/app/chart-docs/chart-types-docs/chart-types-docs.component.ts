@@ -11,7 +11,7 @@ import { TdMediaService } from '@covalent/core/media';
   templateUrl: './chart-types-docs.component.html',
   styleUrls: ['./chart-types-docs.component.scss'],
 })
-export class ChartTypesDocsComponent implements OnInit {
+export class ChartTypesDocsComponent {
 
   routes: Object[] = [
     {
@@ -38,6 +38,12 @@ export class ChartTypesDocsComponent implements OnInit {
       route: 'scatter',
       title: 'Scatter',
     },
+    {
+      description: 'Example using line/bar and 2 y-axis',
+      icon: 'multiline_chart',
+      route: 'combination',
+      title: 'Combination Chart',
+    },
     // {
     //   description: 'Amotic and Config Options',
     //   icon: 'attach_file',
@@ -50,42 +56,40 @@ export class ChartTypesDocsComponent implements OnInit {
     {
       description: 'Series component, determines chart type and series styling.',
       icon: 'style',
-      route: 'series-component',
+      route: '',
       title: 'Series',
     },
     {
       description: 'Global chart component, enable/disable and other chart level options.',
       icon: 'info',
-      route: 'tooltip-component',
+      route: '',
       title: 'Tooltip',
     },
     {
       description: 'X-Axis component, x-axis styling and other options',
       icon: 'trending_flat',
-      route: 'x-axis-component',
+      route: '',
       title: 'X-Axis',
     },
     {
       description: 'Y-Axis component, y-axis styling and other options',
       icon: 'trending_up',
-      route: 'y-axis-component',
+      route: '',
       title: 'Y-Axis',
-    },
-    {
-      description: 'Series Tooltip, Extends from chart wide tooltip settings and provides specific series level control.',
-      icon: 'info',
-      route: 'series-tooltip-component',
-      title: 'Series Tooltip',
     },
     {
       description: 'Chart legend options, incuding position  and styling.',
       icon: 'text_fields',
-      route: 'legend-component',
+      route: '',
       title: 'Legend',
+    },
+    {
+      description: 'Series Tooltip, Extends from chart wide tooltip settings and provides specific series level control.',
+      icon: 'info',
+      route: '',
+      title: 'Series Tooltip',
     },
   ];
 
-  constructor(private media: TdMediaService) {}
-
-  ngOnInit() {}
+  constructor(public media: TdMediaService) {}
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -10,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRippleModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentCommonModule } from '@covalent/core/common';
@@ -18,21 +20,23 @@ import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentMenuModule } from '@covalent/core/menu';
 import { CovalentHighlightModule } from '@covalent/highlight';
 
+import { ToolbarModule } from './toolbar/toolbar.module';
+
 import {
   ChartTypesDocsComponent,
   TreeDocsComponent,
   BarDocsComponent,
   LineDocsComponent,
   ScatterDocsComponent,
+  ChartTypesMainComponent,
+  CombinationDocsComponent,
 } from './';
 
-import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
+import { CovalentBaseEchartsModule } from '../../platform/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
 import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
 import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
-
 import { chartTypesRoutes } from './chart-docs.routes';
-import { ChartTypesMainComponent } from './chart-types-docs/chart-types-main/chart-types-main.component';
 
 @NgModule({
   imports: [
@@ -48,6 +52,8 @@ import { ChartTypesMainComponent } from './chart-types-docs/chart-types-main/cha
     MatGridListModule,
     MatTabsModule,
     MatRippleModule,
+    MatMenuModule,
+    HttpClientModule,
     // Covalent Core
     CovalentLayoutModule,
     CovalentCommonModule,
@@ -55,6 +61,7 @@ import { ChartTypesMainComponent } from './chart-types-docs/chart-types-main/cha
     CovalentMediaModule,
     CovalentMenuModule,
     CovalentHighlightModule,
+    ToolbarModule,
     // Covalent Echarts
     CovalentBaseEchartsModule,
     CovalentLineEchartsModule,
@@ -68,6 +75,7 @@ import { ChartTypesMainComponent } from './chart-types-docs/chart-types-main/cha
     LineDocsComponent,
     ScatterDocsComponent,
     ChartTypesMainComponent,
+    CombinationDocsComponent,
   ],
 })
 export class ChartDocsModule {}

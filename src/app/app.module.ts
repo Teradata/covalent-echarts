@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,12 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
-
-
+import { MatMenuModule } from '@angular/material/menu';
 import { CovalentLayoutModule } from '@covalent/core/layout';
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
@@ -47,6 +43,7 @@ import { appRoutes, appRoutingProviders } from './app.routes';
     MatDividerModule,
     MatListModule,
     MatSidenavModule,
+    MatMenuModule,
     /** Covalent Modules */
     CovalentLayoutModule,
     CovalentBaseEchartsModule,
