@@ -1,6 +1,10 @@
 import * as echarts from 'echarts/lib/echarts';
-import { ITdScatterConfig, TdLineType, TdSeriesType } from '../../platform/echarts';
-import { TdLabelPosition } from '../../platform/echarts';
+import { ITdScatterConfig } from '@covalent/echarts/scatter';
+import {
+  TdLabelPosition,
+  TdLineType,
+  TdSeriesType,
+} from '@covalent/echarts/base';
 
 const basicScatterData: any[] = [
   [
@@ -47,91 +51,105 @@ const basicScatterData: any[] = [
   ],
 ];
 
-export const configScatterOption: ITdScatterConfig = {
-tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
-  backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+const configScatterOption: ITdScatterConfig = {
+  tooltip: { borderColor: '#ddd', borderWidth: 10, show: true },
+  backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [
+    {
       offset: 0,
       color: '#f7f8fa',
-  }, {
+    },
+    {
       offset: 1,
       color: '#cdd0d5',
-  }]),
+    },
+  ]),
   legend: {
-      right: 10,
-      data: ['1990', '2015'],
+    right: 10,
+    data: ['1990', '2015'],
   },
-  xAxis: [{
+  xAxis: [
+    {
       splitLine: {
-          lineStyle: {
-              type: TdLineType.Dotted,
-          },
+        lineStyle: {
+          type: TdLineType.Dotted,
+        },
       },
-  }],
-  yAxis: [{
+    },
+  ],
+  yAxis: [
+    {
       splitLine: {
-          lineStyle: {
-            type: TdLineType.Dotted,
-          },
+        lineStyle: {
+          type: TdLineType.Dotted,
+        },
       },
       scale: true,
-  },
-
-],
-  series: [{
-      tooltip: {borderColor: '#e26d7b', borderWidth: 3},
+    },
+  ],
+  series: [
+    {
+      tooltip: { borderColor: '#e26d7b', borderWidth: 3 },
       name: '1990',
       data: basicScatterData[0],
       type: TdSeriesType.Scatter,
-      symbolSize: function (data: number[]): number {
-          return Math.sqrt(data[2]) / 5e2;
+      symbolSize: function(data: number[]): number {
+        return Math.sqrt(data[2]) / 5e2;
       },
       label: {
-              show: true,
-              formatter: function (param: any): any {
-                  return param.data[3];
-              },
-              position: TdLabelPosition.Top,
+        show: true,
+        formatter: function(param: any): any {
+          return param.data[3];
+        },
+        position: TdLabelPosition.Top,
       },
       itemStyle: {
-              shadowBlur: 10,
-              shadowColor: 'rgba(120, 36, 50, 0.5)',
-              shadowOffsetY: 5,
-              color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                  offset: 0,
-                  color: 'rgb(251, 118, 123)',
-              }, {
-                  offset: 1,
-                  color: 'rgb(204, 46, 72)',
-              }]),
+        shadowBlur: 10,
+        shadowColor: 'rgba(120, 36, 50, 0.5)',
+        shadowOffsetY: 5,
+        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
+          {
+            offset: 0,
+            color: 'rgb(251, 118, 123)',
           },
-  }, 
-  {
-    tooltip: {borderColor: '#77d6e5', borderWidth: 3},
+          {
+            offset: 1,
+            color: 'rgb(204, 46, 72)',
+          },
+        ]),
+      },
+    },
+    {
+      tooltip: { borderColor: '#77d6e5', borderWidth: 3 },
       name: '2015',
       data: basicScatterData[1],
       type: TdSeriesType.Scatter,
-      symbolSize: function (data: number[]): number {
-          return Math.sqrt(data[2]) / 5e2;
+      symbolSize: function(data: number[]): number {
+        return Math.sqrt(data[2]) / 5e2;
       },
       label: {
-              show: true,
-              formatter: function (param: any): any {
-                  return param.data[3];
-              },
-              position: TdLabelPosition.Top,
+        show: true,
+        formatter: function(param: any): any {
+          return param.data[3];
+        },
+        position: TdLabelPosition.Top,
       },
       itemStyle: {
-              shadowBlur: 10,
-              shadowColor: 'rgba(25, 100, 150, 0.5)',
-              shadowOffsetY: 5,
-              color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                  offset: 0,
-                  color: 'rgb(129, 227, 238)',
-              }, {
-                  offset: 1,
-                  color: 'rgb(25, 183, 207)',
-              }]),
+        shadowBlur: 10,
+        shadowColor: 'rgba(25, 100, 150, 0.5)',
+        shadowOffsetY: 5,
+        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
+          {
+            offset: 0,
+            color: 'rgb(129, 227, 238)',
+          },
+          {
+            offset: 1,
+            color: 'rgb(25, 183, 207)',
+          },
+        ]),
       },
-  },
-],
+    },
+  ],
 };
+
+export { basicScatterData, configScatterOption, };

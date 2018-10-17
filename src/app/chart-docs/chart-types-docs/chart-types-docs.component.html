@@ -1,15 +1,15 @@
 <td-layout-nav-list #navList
                     logo="assets:teradata"
-                    toolbarTitle="Covalent"
+                    toolbarTitle="Covalent Charts"
                     navigationRoute="/"
                     [opened]="media.registerQuery('gt-sm') | async"
                     [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : ((media.registerQuery('sm') | async) ? 'push' : 'over')"
-                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'">
+                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '385px' : '100%'">
   <button mat-icon-button td-menu-button tdLayoutToggle>
     <mat-icon>menu</mat-icon>
   </button>
   <mat-nav-list td-sidenav-content>
-    <h3 matSubheader>Core Components</h3>
+    <h3 matSubheader>Core Charts</h3>
     <ng-template let-item let-last="last" ngFor [ngForOf]="routes">
       <a mat-list-item 
           [routerLink]="[item.route]" 
@@ -22,8 +22,8 @@
       </a>
       <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
     </ng-template>
-    <h3 matSubheader>Options</h3>
-    <ng-template let-item let-last="last" ngFor [ngForOf]="optional">
+    <h3 matSubheader>Atomic Components</h3>
+    <ng-template let-item let-last="last" ngFor [ngForOf]="atomicComponents">
       <a mat-list-item 
           [routerLink]="[item.route]" 
           [routerLinkActive]="['active']" 

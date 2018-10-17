@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatRippleModule } from '@angular/material/core';
 
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentCommonModule } from '@covalent/core/common';
@@ -46,6 +47,7 @@ import { ChartTypesMainComponent } from './chart-types-docs/chart-types-main/cha
     MatButtonModule,
     MatGridListModule,
     MatTabsModule,
+    MatRippleModule,
     // Covalent Core
     CovalentLayoutModule,
     CovalentCommonModule,

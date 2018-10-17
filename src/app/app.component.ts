@@ -26,7 +26,6 @@ import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/markArea';
 import 'echarts/lib/component/tooltip';
 
-import { configScatterOption } from './data/scatter';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -38,7 +37,6 @@ export const NOW: Date = new Date();
   styleUrls: ['./app.component.scss'],
 })
 export class DocsAppComponent {
-  configScatter: ITdScatterConfig = configScatterOption;
 
   comboPlot: ITdBarSeries[] = [
     {
@@ -73,8 +71,6 @@ export class DocsAppComponent {
       data: [80, 122, 80, 120, 80, 120],
     },
   ];
-
-  showTooltip: boolean = true;
 
   comboConfig: ITdBarConfig = {
     xAxis: [
@@ -138,12 +134,6 @@ export class DocsAppComponent {
     inside: false,
     fontStyle: TdFontStyle.Italic,
     fontWeight: TdFontWeight.Bold,
-  };
-
-  splitLine: ITdSplitLine = {
-    lineStyle: {
-      type: TdLineType.Dashed,
-    },
   };
 
   barYaxisPosition: TdYAxisPosition = TdYAxisPosition.Right;

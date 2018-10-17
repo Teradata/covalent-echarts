@@ -1,13 +1,15 @@
 <mat-card flex>
-  <mat-card-title>Line Test (atomic)
-      <ng-template layout="row">
-          <span flex>Individual component configurations, series, tooltip, x & y axis, series tooltip</span>
-          <button mat-button (click)="showTooltip = !showTooltip">
-              Show/Hide Tooltip
-            </button>
-      </ng-template>
-  </mat-card-title>
-  <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
+  <div layout="row" layout="center center">
+    <div flex>
+        <mat-card-title>Line Test (atomic)</mat-card-title>
+        <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
+    </div>
+    <div layout="column" layout-align="center center" class="push-right-sm">
+        <button class="text-upper" mat-button (click)="showTooltip = !showTooltip">
+            Show/Hide Tooltip
+          </button>
+    </div>
+</div>
   <mat-divider></mat-divider>
   <mat-tab-group mat-stretch-tabs dynamicHeight>
     <mat-tab>
