@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { TdChartComponent } from './chart.component';
 import { TdChartTooltipComponent, TdChartTooltipFormatterDirective } from './tooltip/tooltip.component';
 import { TdSeriesTooltipComponent, TdChartSeriesTooltipFormatterDirective } from './tooltip/series-tooltip.component';
-import { ChartRenderDirective } from './directives/chart-render.directive';
 import { TdChartXAxisComponent } from './axis/x-axis.component';
 import { TdChartYAxisComponent } from './axis/y-axis.component';
 
@@ -16,7 +15,6 @@ export const BASE_MODULE_COMPONENTS: Type<any>[] = [
   TdChartYAxisComponent,
   TdSeriesTooltipComponent,
   TdChartSeriesTooltipFormatterDirective,
-  ChartRenderDirective,
 ];
 
 @NgModule({

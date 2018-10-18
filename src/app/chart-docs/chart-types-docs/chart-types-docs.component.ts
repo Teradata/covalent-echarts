@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 
-// import 'echarts/lib/component/markPoint';
-// import 'echarts/lib/component/markLine';
-// import 'echarts/lib/component/markArea';
-// import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/markPoint';
+import 'echarts/lib/component/markLine';
+import 'echarts/lib/component/markArea';
+import 'echarts/lib/component/tooltip';
 
 @Component({
   selector: 'app-chart-types-docs',

@@ -7,8 +7,8 @@
       <mat-tab>
         <ng-template matTabLabel>Demo</ng-template>
         <mat-card-content>
-          <div layout-gt-md="row">
-            <div *chartRender="rerender; delay:100" flex>
+          <div layout-gt-md="row" #parent>
+            <div flex>
               <td-chart [style.height.px]="height" [dataZoom]="false" (markAreaClick)="markClicked($event)">
                 <!-- GLOBAL TOOLTIP COMPONENT -->
                 <td-chart-tooltip [trigger]="'item'">
@@ -58,60 +58,10 @@
             <div flex-gt-md="30" *ngIf="message">
               <mat-list>
                 <h3 mat-subheader>A mark has been clicked and emits the following information</h3>
-                <mat-list-item>
-                  <span>$var: <ng-container *ngFor="let item of message.$vars; let last=last;">{{item}}<ng-container
-                        *ngIf="!last">, </ng-container>
-                    </ng-container></span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>color: {{message.color}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>componentSubType: {{message.componentSubType}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>componentType: {{message.componentType}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span> data: {{message.data}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>dataIndex: {{message.dataIndex}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>name: {{message.name}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>seriesId: {{message.seriesId}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>seriesIndex: {{message.seriesIndex}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>seriesName: {{message.seriesName}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>seriesType: {{message.seriesType}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>type: {{message.type}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-                <mat-list-item>
-                  <span>value: {{message.value}}</span>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
+                  <mat-list-item *ngFor="let item of message | keyvalue">
+                   <span matLine> {{item.key}}: {{item.value}}</span>
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
               </mat-list>
             </div>
           </div>

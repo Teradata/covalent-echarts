@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { getDirection } from './utilities/direction';
 
 @Component({
   selector: 'docs-covalent',
@@ -8,6 +9,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss'],
 })
 export class DocsAppComponent {
+
+  // Current date
+  year: any = new Date().getFullYear();
+
+  dir: string;
 
   constructor(
     private _iconRegistry: MatIconRegistry,
@@ -42,8 +48,9 @@ export class DocsAppComponent {
       `covalent_mark`,
       this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/covalent-mark.svg'),
     );
+    this.dir = getDirection();
   }
-
+  
   get activeTheme(): string {
     return localStorage.getItem('theme');
   }

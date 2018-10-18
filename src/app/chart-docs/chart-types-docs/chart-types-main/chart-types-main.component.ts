@@ -14,7 +14,7 @@ export class ChartTypesMainComponent {
     color: 'deep-purple-A700',
     icon: 'insert_chart',
     route: 'bar',
-    title: 'Bat Chart',
+    title: 'Bar Chart',
   }, 
   {
     color: 'blue-A700',

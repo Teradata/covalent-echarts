@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef, } from '@angular/core';
 import { ITdSplitLine, TdYAxisPosition, ITdSeriesTooltip, ITdAxisLine, ITdAxisLabel, ITdCharMarkEvent } from '@covalent/echarts/base';
 import { ITdBarConfig, ITdBarSeries } from '@covalent/echarts/bar';
 import { seriesToolTip, barConfig, barPlot, splitLineBar, xLine, yLine, yAxisLabel } from './bar-example-data';
@@ -18,6 +18,12 @@ export class BarDocsComponent {
    * life-cycle hooks and other considerations.
    * 
    * Data is found in bar-example-data.ts adjacent to this component.
+   * 
+   * CHANGE DECTECTION WORKAROUND:
+   * this.height is used as to trigger change detection which updates
+   * the chart, in this case the chart width needs to change. setTimeout in the
+   * clearMarkData() method cause Angular to wait for a tick in the change dectection
+   * life cycle before running change dectection again.
    */
 
   seriesToolTip: ITdSeriesTooltip[] = seriesToolTip;
@@ -32,22 +38,20 @@ export class BarDocsComponent {
 
   message: ITdCharMarkEvent;
   height: number = 300;
-  rerender: boolean = false;
+
+  constructor(private _changeDetectionRef: ChangeDetectorRef) {}
 
   markClicked(event: ITdCharMarkEvent): void {
     this.message = event;
-    this.toggleChartRenderDirective();
     this.height = 600;
-
+    this._changeDetectionRef.detectChanges();
   }
 
   clearMarkData(): void {
-    this.toggleChartRenderDirective();
     this.height = 300;
     this.message = undefined;
-  }
-
-  toggleChartRenderDirective(): void {
-    this.rerender = !this.rerender;
+    setTimeout(() => {
+      this._changeDetectionRef.detectChanges();
+    });
   }
 }

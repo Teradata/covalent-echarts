@@ -5,7 +5,6 @@ export { TdChartYAxisComponent } from './axis/y-axis.component';
 export { TdChartXAxisComponent } from './axis/x-axis.component';
 export { TdChartTooltipComponent } from './tooltip/tooltip.component';
 export { TdChartOptionsService, CHART_PROVIDER } from './chart.service';
-export { ChartRenderDirective } from './directives/chart-render.directive';
 export * from './utils';
 export {
   ITdAxisLine,
