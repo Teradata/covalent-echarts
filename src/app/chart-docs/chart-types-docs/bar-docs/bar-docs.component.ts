@@ -20,10 +20,12 @@ export class BarDocsComponent {
    * Data is found in bar-example-data.ts adjacent to this component.
    * 
    * CHANGE DECTECTION WORKAROUND:
-   * this.height is used as to trigger change detection which updates
+   * height is used as to trigger change detection which updates
    * the chart, in this case the chart width needs to change. setTimeout in the
    * clearMarkData() method cause Angular to wait for a tick in the change dectection
-   * life cycle before running change dectection again.
+   * life cycle before running change dectection again. This is due to the distinctUntilChange()
+   * operator being used when setting the height and width in 
+   * src/platform/echarts/base/chart.component.ts
    */
 
   seriesToolTip: ITdSeriesTooltip[] = seriesToolTip;
