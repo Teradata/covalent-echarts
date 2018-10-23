@@ -42,6 +42,7 @@ mat-sidenav,
 //   margin-left: 200px;
 // }
 
-mat-sidenav-content {
+mat-sidenav-content,
+.mat-drawer-content.mat-sidenav-content {
   margin-left: 0 !important;
 }

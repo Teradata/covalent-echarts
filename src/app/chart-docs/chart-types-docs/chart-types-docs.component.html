@@ -59,31 +59,28 @@
           <td-toolbar flex layout="row" (dirEmitter)="handleDirEmitter($event)"></td-toolbar>
         </div>
 <td-layout-manage-list class="side" #manageList [opened]="mediaGTSM | async" [mode]="(mediaGTSM | async) ? 'side' :  'over'"
-[sidenavWidth]="margin | async" [ngClass]="{'open': !miniNav}">
+[sidenavWidth]="(margin | async) + 'px'" [ngClass]="{'open': !miniNav}">
 <div td-sidenav-content layout="column" layout-fill>
-    <mat-nav-list flex [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
+    <mat-nav-list [ngClass]="{'clickable': miniNav}" (click)="miniNav ? openMiniNav($event) : ''" flex [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
             <a mat-list-item 
             [routerLinkActiveOptions]="{exact:true}" 
             [routerLink]="['/']" routerLinkActive="active" 
             [matTooltip]="miniNav ? '' : 'Home'"
-            matTooltipPosition="right">
+            matTooltipPosition="right" (click)="$event.stopPropagation()">
               <mat-icon mat-list-icon [matTooltip]="miniNav ? 'Home' : ''" matTooltipPosition="right">home</mat-icon>
                 <span *ngIf="!miniNav">Home</span>
             </a>
             <mat-divider></mat-divider>
             <mat-list-item *ngIf="!miniNav" class="nav-subheader" role="listitem" layout="row" (click)="hideCoreComponent = !hideCoreComponent"> 
-                <h3 matSubheader flex>Core Charts {{dir}}</h3><mat-icon>keyboard_arrow_up</mat-icon> 
+                <h3 matSubheader flex>Core Charts   {{marginDirection}}</h3><mat-icon [@tdRotate]="hideCoreComponent" [@tdFadeInOut]="!hideCoreComponent">keyboard_arrow_up</mat-icon>
               </mat-list-item>
               <mat-divider *ngIf="hideCoreComponent"></mat-divider>
              <div [@tdCollapse]="hideCoreComponent">
             <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="routes">
-                <mat-divider *ngIf="route?.section && i > 0"></mat-divider>
-              <span layout="column" layout-align="center center">
-              </span>
               <a mat-list-item color="accent"
                 [routerLinkActiveOptions]="{exact:true}" 
                 [routerLink]="route.route" 
-                routerLinkActive="active">
+                routerLinkActive="active" (click)="$event.stopPropagation()">
                   <mat-icon mat-list-icon [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{ route.icon }}</mat-icon>
                   <span *ngIf="!miniNav">{{ route.title }}</span>
                 </a>
@@ -96,11 +93,10 @@
             <mat-divider *ngIf="hideAtomicComponent"></mat-divider>
             <div [@tdCollapse]="hideAtomicComponent">
             <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="atomicComponentRoutes">
-                <mat-divider *ngIf="route?.section && i > 0"></mat-divider>
               <span layout="column" layout-align="center center">
               </span>
               <a mat-list-item
-              [routerLink]="">
+              [routerLink]="" (click)="$event.stopPropagation()">
                   <mat-icon mat-list-icon
                   [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{ route.icon }}</mat-icon>
                   <span *ngIf="!miniNav">{{ route.title }}</span>
@@ -109,26 +105,23 @@
               </ng-template>
             </div>
           <div layout="row" layout-align="end start" class="pad-sm">
-              <button mat-icon-button (click)="toggleMiniNav()">
+              <button mat-icon-button (click)="toggleMiniNav($event)">
                   <mat-icon [@tdRotate]="miniNav" [matTooltip]="miniNav ? '' : 'Expand Menu'" matTooltipPosition="right">keyboard_arrow_right</mat-icon>
                 </button>
           </div>
     </mat-nav-list>
-  </div>
-<div *ngIf="dir==='ltr'" [ngStyle]="{'margin-left': margin | async}" layout="column" laypout-align="end start">
-  <div layout="column">
+  </div>  
+<mat-sidenav-container flex [style.marginLeft.px]="marginDirection? marginDirection: margin | async" layout="column" layout-align="end start">
     <div class="theme-alt">
         <router-outlet></router-outlet>
-      </div>
   </div>
-</div>
+</mat-sidenav-container>
 
-<div *ngIf="dir==='rtl'" layout="column" laypout-align="end start">
-  <div layout="column">
+<!-- <mat-sidenav-container flex *ngIf="dir==='rtl'" layout="column" layout-align="end start">
     <div class="theme-alt">
         <router-outlet></router-outlet>
-      </div>
   </div>
-</div>
+</mat-sidenav-container> -->
+<!-- <router-outlet></router-outlet> -->
 </td-layout-manage-list>
 </td-layout-nav>

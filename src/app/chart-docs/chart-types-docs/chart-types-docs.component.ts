@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 import { TdLayoutManageListComponent } from '@covalent/core/layout';
 import { getDirection } from '../../utilities/direction';
@@ -10,7 +10,7 @@ import 'echarts/lib/component/tooltip';
 import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { share, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chart-types-docs',
@@ -22,13 +22,14 @@ export class ChartTypesDocsComponent implements AfterViewInit {
 
   @ViewChild('manageList')
   manageList: TdLayoutManageListComponent;
-
+  
   miniNav: boolean = false;
   hideCoreComponent: boolean = false;
   hideAtomicComponent: boolean = false;
-  _margin: BehaviorSubject<string> = new BehaviorSubject('250px'); 
+  _margin: BehaviorSubject<string> = new BehaviorSubject('250'); 
   mediaGTSM: Observable<any>;
-  dir: string;
+  dir: 'ltr' | 'rtl';
+  marginDirection: string;
 
   get margin(): Observable<string> {
     return this._margin.asObservable().pipe(share());
@@ -113,27 +114,63 @@ export class ChartTypesDocsComponent implements AfterViewInit {
   ];
 
   constructor(public media: TdMediaService) {
-    this.mediaGTSM = media.registerQuery('gt-sm').pipe(share());
     this.dir = getDirection();
+    this.mediaGTSM = media.registerQuery('gt-sm').pipe(tap((gtSm: boolean) => {
+      if (!gtSm) {
+        this._margin.next('0');
+      } else {
+        this.checkMiniNav();
+      }
+    }),
+    share());
   }
 
   handleDirEmitter(event: 'ltr' | 'rtl'): void {
     this.dir = event;
+    this._margin.subscribe((d: any) => {
+      if (this.dir === 'rtl') {
+        this.marginDirection = '0';
+        this.restMiniNav();
+      } else {
+        this.marginDirection = undefined;
+      }
+    });
+
   }
 
-  toggleMiniNav(): void {
+  toggleMiniNav(event): void {
+    event.stopPropagation();
     this.miniNav = !this.miniNav;
-    if (this.miniNav) {
-      this._margin.next('70px');
-    } else {
-      this._margin.next('250px');
+    this.checkMiniNav();
+
     }
+
+  checkMiniNav(): void {
+    if (this.miniNav) {
+      this._margin.next('64');
+    } else {
+      this._margin.next('250');
+    }
+}
+
+  openMiniNav(event: Event): void {
+    event.stopPropagation();
+    this.miniNav = !this.miniNav;
+    this._margin.next('250');
+    this.restMiniNav();
+  }
+
+  restMiniNav(): void {
+    this.manageList.opened = false;
+    setTimeout(() => {
+      this.manageList.opened = true;
+    }, 10);
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
+      this.handleDirEmitter(this.dir);
       this.media.broadcast();
-    })
-
+    });
   }
 }
