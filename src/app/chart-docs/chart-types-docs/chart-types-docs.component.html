@@ -58,7 +58,7 @@
           <span hide-gt-xs flex class="text-upper">Covalent ECharts</span>
           <td-toolbar flex layout="row" (dirEmitter)="handleDirEmitter($event)"></td-toolbar>
         </div>
-<td-layout-manage-list class="side" #manageList [opened]="mediaGTSM | async" [mode]="(mediaGTSM | async) ? 'side' :  'over'"
+<td-layout-manage-list class="side" #manageList [opened]="mediaGTSM | async" [mode]="'side'"
 [sidenavWidth]="(margin | async) + 'px'" [ngClass]="{'open': !miniNav}">
 <div td-sidenav-content layout="column" layout-fill>
     <mat-nav-list [ngClass]="{'clickable': miniNav}" (click)="miniNav ? openMiniNav($event) : ''" flex [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
@@ -72,7 +72,7 @@
             </a>
             <mat-divider></mat-divider>
             <mat-list-item *ngIf="!miniNav" class="nav-subheader" role="listitem" layout="row" (click)="hideCoreComponent = !hideCoreComponent"> 
-                <h3 matSubheader flex>Core Charts   {{marginDirection}}</h3><mat-icon [@tdRotate]="hideCoreComponent" [@tdFadeInOut]="!hideCoreComponent">keyboard_arrow_up</mat-icon>
+                <h3 matSubheader flex>Core Charts</h3><mat-icon [@tdRotate]="hideCoreComponent" [@tdFadeInOut]="!hideCoreComponent">keyboard_arrow_up</mat-icon>
               </mat-list-item>
               <mat-divider *ngIf="hideCoreComponent"></mat-divider>
              <div [@tdCollapse]="hideCoreComponent">
@@ -111,7 +111,8 @@
           </div>
     </mat-nav-list>
   </div>  
-<mat-sidenav-container flex [style.marginLeft.px]="marginDirection? marginDirection: margin | async" layout="column" layout-align="end start">
+  
+<mat-sidenav-container flex [style.marginLeft.px]="marginDirection ? marginDirection: margin | async" layout="column" layout-align="end start">
     <div class="theme-alt">
         <router-outlet></router-outlet>
   </div>

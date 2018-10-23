@@ -1,16 +1,16 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 import { TdLayoutManageListComponent } from '@covalent/core/layout';
-import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core/common';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Observable } from 'rxjs';
-import { share, tap } from 'rxjs/operators';
 import { getDirection } from '../../utilities/direction';
-
 import 'echarts/lib/component/markPoint';
 import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/markArea';
 import 'echarts/lib/component/tooltip';
+
+import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { share, tap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chart-types-docs',
@@ -114,15 +114,21 @@ export class ChartTypesDocsComponent implements AfterViewInit {
   ];
 
   constructor(public media: TdMediaService) {
-    this.dir = getDirection();
-    this.mediaGTSM = media.registerQuery('gt-sm').pipe(tap((gtSm: boolean) => {
+    this.mediaGTSM = media.registerQuery('gt-sm').pipe( 
+      distinctUntilChanged(),
+      debounceTime(50),
+      tap((gtSm: boolean) => {
       if (!gtSm) {
+        if (this.dir === 'ltr') {
         this._margin.next('0');
+        }
+        this.manageList.opened = false;
       } else {
         this.checkMiniNav();
       }
     }),
     share());
+    this.dir = getDirection();
   }
 
   handleDirEmitter(event: 'ltr' | 'rtl'): void {
@@ -151,6 +157,7 @@ export class ChartTypesDocsComponent implements AfterViewInit {
     } else {
       this._margin.next('250');
     }
+    this.restMiniNav();
 }
 
   openMiniNav(event: Event): void {
@@ -164,7 +171,7 @@ export class ChartTypesDocsComponent implements AfterViewInit {
     this.manageList.opened = false;
     setTimeout(() => {
       this.manageList.opened = true;
-    }, 10);
+    }, 300);
   }
 
   ngAfterViewInit(): void {

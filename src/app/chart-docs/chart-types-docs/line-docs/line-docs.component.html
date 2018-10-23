@@ -6,7 +6,8 @@
     </div>
     <div layout="column" layout-align="center center" class="push-right-sm">
         <button class="text-upper" mat-button (click)="showTooltip = !showTooltip">
-            Show/Hide Tooltip
+            <ng-container *ngIf="showTooltip; else hideText">Hide</ng-container> Tooltips
+            <ng-template #hideText>Show</ng-template>
           </button>
     </div>
 </div>
