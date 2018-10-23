@@ -1,16 +1,16 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 import { TdLayoutManageListComponent } from '@covalent/core/layout';
+import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core/common';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { share, tap } from 'rxjs/operators';
 import { getDirection } from '../../utilities/direction';
+
 import 'echarts/lib/component/markPoint';
 import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/markArea';
 import 'echarts/lib/component/tooltip';
-
-import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Observable } from 'rxjs';
-import { share, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chart-types-docs',
