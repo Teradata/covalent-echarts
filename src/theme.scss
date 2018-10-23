@@ -207,3 +207,35 @@ nav {
 a {
   text-decoration: none;
 }
+
+.td-layout-manage-list-sidenav::-webkit-scrollbar {
+  width: 8px;
+}
+.td-layout-manage-list-sidenav::-webkit-scrollbar-thumb {
+  background-color: mat-color($td-slate, 300);
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+}
+
+.nav-subheader {
+  background-color: mat-color($td-slate, 50);
+}
+
+.theme-dark {
+  .td-layout-manage-list-sidenav::-webkit-scrollbar {
+    width: 8px;
+  }
+  .td-layout-manage-list-sidenav::-webkit-scrollbar-thumb {
+    background-color: mat-color($td-slate, 600);
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 2px solid mat-color($td-slate, 800);
+  }
+  .nav-subheader {
+    background-color: mat-color($td-slate, 600);
+  }
+  .custom-icon {
+    fill: white;
+  }
+}

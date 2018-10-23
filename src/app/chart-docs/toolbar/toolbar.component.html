@@ -3,14 +3,17 @@
   TERADATA CORPORATION CONFIDENTIAL AND TRADE SECRET
 -->
 <div td-toolbar-content layout="row" layout-align="end center" flex>
-    <a href="https://teradata.github.io/covalent" target="_blank" class="text-upper" mat-button>
+    <a hide-xs hide-sm href="https://teradata.github.io/covalent" target="_blank" class="text-upper" mat-button>
       <mat-icon svgIcon="assets:covalent_mark" class="push-right-sm"></mat-icon> Covalent
   </a>
+  <a hide-gt-sm hide-xs href="https://teradata.github.io/covalent" target="_blank" class="text-upper" mat-icon-button>
+    <mat-icon svgIcon="assets:covalent_mark" class="push-right-sm"></mat-icon>
+</a>
   <button hide-xs mat-icon-button [matMenuTriggerFor]="settingsMenu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #settingsMenu="matMenu">
-      <button mat-menu-item (click)="dir = (dir == 'rtl' ? 'ltr' : 'rtl'); changeDir(dir)" title="Toggle between RTL and LTR">
+      <button mat-menu-item (click)="dir = (dir === 'rtl' ? 'ltr' : 'rtl'); changeDir(dir)" title="Toggle between RTL and LTR">
         <mat-icon>swap_horiz</mat-icon>
         <span>{{dir.toUpperCase()}}</span>
       </button>

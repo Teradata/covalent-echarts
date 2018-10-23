@@ -1,17 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
-
+import { TdLayoutManageListComponent } from '@covalent/core/layout';
+import { getDirection } from '../../utilities/direction';
 import 'echarts/lib/component/markPoint';
 import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/markArea';
 import 'echarts/lib/component/tooltip';
 
+import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 @Component({
   selector: 'app-chart-types-docs',
   templateUrl: './chart-types-docs.component.html',
   styleUrls: ['./chart-types-docs.component.scss'],
+  animations: [TdCollapseAnimation(), TdRotateAnimation(), TdFadeInOutAnimation()],
 })
-export class ChartTypesDocsComponent {
+export class ChartTypesDocsComponent implements AfterViewInit {
+
+  @ViewChild('manageList')
+  manageList: TdLayoutManageListComponent;
+
+  miniNav: boolean = false;
+  hideCoreComponent: boolean = false;
+  hideAtomicComponent: boolean = false;
+  _margin: BehaviorSubject<string> = new BehaviorSubject('250px'); 
+  mediaGTSM: Observable<any>;
+  dir: string;
+
+  get margin(): Observable<string> {
+    return this._margin.asObservable().pipe(share());
+  }
 
   routes: Object[] = [
     {
@@ -52,7 +73,7 @@ export class ChartTypesDocsComponent {
     // },
   ];
 
-  atomicComponents: Object[] = [
+  atomicComponentRoutes: Object[] = [
     {
       description: 'Series component, determines chart type and series styling.',
       icon: 'style',
@@ -91,5 +112,28 @@ export class ChartTypesDocsComponent {
     },
   ];
 
-  constructor(public media: TdMediaService) {}
+  constructor(public media: TdMediaService) {
+    this.mediaGTSM = media.registerQuery('gt-sm').pipe(share());
+    this.dir = getDirection();
+  }
+
+  handleDirEmitter(event: 'ltr' | 'rtl'): void {
+    this.dir = event;
+  }
+
+  toggleMiniNav(): void {
+    this.miniNav = !this.miniNav;
+    if (this.miniNav) {
+      this._margin.next('70px');
+    } else {
+      this._margin.next('250px');
+    }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.media.broadcast();
+    })
+
+  }
 }

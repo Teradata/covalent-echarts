@@ -12,7 +12,7 @@
           Home
       </a>
       <a href="https://teradata.github.io/covalent"  target="_blank" mat-list-item>
-          <mat-icon matListIcon svgIcon="assets:covalent_stroke"></mat-icon>
+          <mat-icon class="custom-icon" matListIcon svgIcon="assets:covalent_stroke"></mat-icon>
           Covalent
       </a>
     </mat-nav-list>
@@ -20,5 +20,7 @@
   <div td-sidenav-content class="td-layout-footer pad">
     <span class="mat-caption tc-grey-500">&copy;{{year}} Teradata. All Rights Reserved</span>
   </div>
+
   <router-outlet></router-outlet>
+  
 </td-layout>

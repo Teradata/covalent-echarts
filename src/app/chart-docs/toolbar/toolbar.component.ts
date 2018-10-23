@@ -1,4 +1,4 @@
-import { Component, Inject, Renderer2 } from '@angular/core';
+import { Component, Inject, Renderer2, Output, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 import { Dir } from '@angular/cdk/bidi';
@@ -11,9 +11,12 @@ import { getDirection, setDirection } from '../../utilities/direction';
   styleUrls: ['././toolbar.component.scss'],
 })
 export class ToolbarComponent {
+
+  @Output() dirEmitter: EventEmitter<'ltr' | 'rtl'> = new EventEmitter<'ltr' | 'rtl'>();
   updates: Object[] = [];
 
   dir: 'ltr' | 'rtl' = getDirection();
+  
 
   constructor(private _renderer: Renderer2,
               private _dir: Dir,
@@ -24,6 +27,7 @@ export class ToolbarComponent {
   changeDir(dir: 'ltr' | 'rtl'): void {
     this._renderer.setAttribute(this._document.querySelector('html'), 'dir', dir);
     this._dir.dir = dir;
+    this.dirEmitter.emit(dir);
     setDirection(dir);
   }
 

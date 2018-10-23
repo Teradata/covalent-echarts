@@ -21,3 +21,27 @@
   border: 0;
   min-height: 700px;
 }
+
+mat-sidenav,
+.small,
+.large {
+  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mat-subheader {
+  white-space: nowrap;
+}
+
+// .small {
+//   // transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//   margin-left: 70px;
+// }
+
+// .large {
+//   // transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//   margin-left: 200px;
+// }
+
+mat-sidenav-content {
+  margin-left: 0 !important;
+}

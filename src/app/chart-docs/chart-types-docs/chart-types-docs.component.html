@@ -1,9 +1,9 @@
-<td-layout-nav-list #navList
+<!-- <td-layout-nav-list #navList
                     logo="assets:teradata"
                     toolbarTitle="Covalent ECharts"
                     navigationRoute="/"
-                    [opened]="media.registerQuery('gt-sm') | async"
-                    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : ((media.registerQuery('sm') | async) ? 'push' : 'over')"
+                    [opened]="mediaGTSM | async"
+                    [mode]="(mediaGTSM | async) ? 'side' : ((media.registerQuery('sm') | async) ? 'push' : 'over')"
                     [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '400px' : '100%'">
   <button mat-icon-button td-menu-button tdLayoutToggle>
     <mat-icon>menu</mat-icon>
@@ -46,4 +46,89 @@
   <div class="theme-alt">
     <router-outlet></router-outlet>
   </div>
-</td-layout-nav-list>
+</td-layout-nav-list> -->
+
+<!-- CUSTOM MANAGE LIST -->
+
+  <td-layout-nav [toolbarTitle]="(media.registerQuery('gt-xs') | async) ? 'Covalent ECharts' : ''" logo="assets:teradata" navigationRoute="/">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div td-toolbar-content layout="row" layout-align="start center" flex>
+          <span hide-gt-xs flex class="text-upper">Covalent ECharts</span>
+          <td-toolbar flex layout="row" (dirEmitter)="handleDirEmitter($event)"></td-toolbar>
+        </div>
+<td-layout-manage-list class="side" #manageList [opened]="mediaGTSM | async" [mode]="(mediaGTSM | async) ? 'side' :  'over'"
+[sidenavWidth]="margin | async" [ngClass]="{'open': !miniNav}">
+<div td-sidenav-content layout="column" layout-fill>
+    <mat-nav-list flex [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
+            <a mat-list-item 
+            [routerLinkActiveOptions]="{exact:true}" 
+            [routerLink]="['/']" routerLinkActive="active" 
+            [matTooltip]="miniNav ? '' : 'Home'"
+            matTooltipPosition="right">
+              <mat-icon mat-list-icon [matTooltip]="miniNav ? 'Home' : ''" matTooltipPosition="right">home</mat-icon>
+                <span *ngIf="!miniNav">Home</span>
+            </a>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngIf="!miniNav" class="nav-subheader" role="listitem" layout="row" (click)="hideCoreComponent = !hideCoreComponent"> 
+                <h3 matSubheader flex>Core Charts {{dir}}</h3><mat-icon>keyboard_arrow_up</mat-icon> 
+              </mat-list-item>
+              <mat-divider *ngIf="hideCoreComponent"></mat-divider>
+             <div [@tdCollapse]="hideCoreComponent">
+            <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="routes">
+                <mat-divider *ngIf="route?.section && i > 0"></mat-divider>
+              <span layout="column" layout-align="center center">
+              </span>
+              <a mat-list-item color="accent"
+                [routerLinkActiveOptions]="{exact:true}" 
+                [routerLink]="route.route" 
+                routerLinkActive="active">
+                  <mat-icon mat-list-icon [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{ route.icon }}</mat-icon>
+                  <span *ngIf="!miniNav">{{ route.title }}</span>
+                </a>
+                <mat-divider *ngIf="last"></mat-divider>
+              </ng-template>
+            </div> 
+            <mat-list-item *ngIf="!miniNav" class="nav-subheader" role="listitem" layout="row" (click)="hideAtomicComponent = !hideAtomicComponent">  
+              <h3 matSubheader flex>Atomic Components </h3><mat-icon [@tdRotate]="hideAtomicComponent" [@tdFadeInOut]="!hideAtomicComponent">keyboard_arrow_up</mat-icon>
+            </mat-list-item>
+            <mat-divider *ngIf="hideAtomicComponent"></mat-divider>
+            <div [@tdCollapse]="hideAtomicComponent">
+            <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="atomicComponentRoutes">
+                <mat-divider *ngIf="route?.section && i > 0"></mat-divider>
+              <span layout="column" layout-align="center center">
+              </span>
+              <a mat-list-item
+              [routerLink]="">
+                  <mat-icon mat-list-icon
+                  [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{ route.icon }}</mat-icon>
+                  <span *ngIf="!miniNav">{{ route.title }}</span>
+                </a>
+                <mat-divider *ngIf="last"></mat-divider>
+              </ng-template>
+            </div>
+          <div layout="row" layout-align="end start" class="pad-sm">
+              <button mat-icon-button (click)="toggleMiniNav()">
+                  <mat-icon [@tdRotate]="miniNav" [matTooltip]="miniNav ? '' : 'Expand Menu'" matTooltipPosition="right">keyboard_arrow_right</mat-icon>
+                </button>
+          </div>
+    </mat-nav-list>
+  </div>
+<div *ngIf="dir==='ltr'" [ngStyle]="{'margin-left': margin | async}" layout="column" laypout-align="end start">
+  <div layout="column">
+    <div class="theme-alt">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="dir==='rtl'" layout="column" laypout-align="end start">
+  <div layout="column">
+    <div class="theme-alt">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+</td-layout-manage-list>
+</td-layout-nav>

@@ -25,7 +25,7 @@ export class ChartTypesMainComponent {
   {
     color: 'pink-A700',
     icon: 'multiline_chart',
-    route: 'scatter',
+    route: 'combination',
     title: 'Combination Chart',
   },
   {
