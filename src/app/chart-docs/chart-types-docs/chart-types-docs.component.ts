@@ -138,7 +138,7 @@ export class ChartTypesDocsComponent implements AfterViewInit {
 
   }
 
-  toggleMiniNav(event): void {
+  toggleMiniNav(event: Event): void {
     event.stopPropagation();
     this.miniNav = !this.miniNav;
     this.checkMiniNav();
