@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 import { TdLayoutManageListComponent } from '@covalent/core/layout';
 import { getDirection } from '../../utilities/direction';
+
 import 'echarts/lib/component/markPoint';
 import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/markArea';
@@ -23,20 +24,20 @@ import { share, tap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 })
 export class ChartTypesDocsComponent implements AfterViewInit {
 
+  private _margin: BehaviorSubject<string> = new BehaviorSubject('0'); 
+
+  get margin(): Observable<string> {
+    return this._margin.asObservable().pipe(share());
+  }
+
   @ViewChild('manageList')
   manageList: TdLayoutManageListComponent;
   
   miniNav: boolean = false;
   hideCoreComponent: boolean = false;
   hideAtomicComponent: boolean = false;
-  _margin: BehaviorSubject<string> = new BehaviorSubject('0'); 
   mediaGTSM: Observable<any>;
   dir: 'ltr' | 'rtl';
-  marginDirection: string;
-
-  get margin(): Observable<string> {
-    return this._margin.asObservable().pipe(share());
-  }
 
   routes: Object[] = [
     {
@@ -69,12 +70,6 @@ export class ChartTypesDocsComponent implements AfterViewInit {
       route: 'combination',
       title: 'Combination',
     },
-    // {
-    //   description: 'Atomic and Config Options',
-    //   icon: 'attach_file',
-    //   route: 'file-upload',
-    //   title: 'NPath',
-    // },
   ];
 
   atomicComponentRoutes: Object[] = [
@@ -136,15 +131,6 @@ export class ChartTypesDocsComponent implements AfterViewInit {
 
   handleDirEmitter(event: 'ltr' | 'rtl'): void {
     this.dir = event;
-    this._margin.subscribe((d: any) => {
-      if (this.dir === 'rtl') {
-        this.marginDirection = '0';
-        this.restMiniNav();
-      } else {
-        this.marginDirection = undefined;
-      }
-    });
-
   }
 
   toggleMiniNav(event: Event): void {
@@ -152,7 +138,7 @@ export class ChartTypesDocsComponent implements AfterViewInit {
     this.miniNav = !this.miniNav;
     this.checkMiniNav();
 
-    }
+  }
 
   checkMiniNav(): void {
     if (this.miniNav) {
@@ -161,7 +147,7 @@ export class ChartTypesDocsComponent implements AfterViewInit {
       this._margin.next('250');
     }
     this.restMiniNav();
-}
+  }
 
   openMiniNav(event: Event): void {
     event.stopPropagation();
