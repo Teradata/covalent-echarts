@@ -112,6 +112,21 @@ $theme: mat-light-theme($primary, $accent, $warn);
   .bgc-contrast {
     background-color: #111111;
   }
+  .td-layout-manage-list-sidenav::-webkit-scrollbar {
+    width: 8px;
+  }
+  .td-layout-manage-list-sidenav::-webkit-scrollbar-thumb {
+    background-color: mat-color($td-slate, 600);
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 2px solid mat-color($td-slate, 800);
+  }
+  .nav-subheader {
+    background-color: mat-color($td-slate, 600);
+  }
+  .custom-icon {
+    fill: white;
+  }
 }
 
 // Subpage themes
@@ -220,22 +235,4 @@ a {
 
 .nav-subheader {
   background-color: mat-color($td-slate, 50);
-}
-
-.theme-dark {
-  .td-layout-manage-list-sidenav::-webkit-scrollbar {
-    width: 8px;
-  }
-  .td-layout-manage-list-sidenav::-webkit-scrollbar-thumb {
-    background-color: mat-color($td-slate, 600);
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    border: 2px solid mat-color($td-slate, 800);
-  }
-  .nav-subheader {
-    background-color: mat-color($td-slate, 600);
-  }
-  .custom-icon {
-    fill: white;
-  }
 }
