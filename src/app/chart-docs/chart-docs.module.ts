@@ -26,7 +26,6 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 
 import {
   ChartTypesDocsComponent,
-  TreeDocsComponent,
   BarDocsComponent,
   LineDocsComponent,
   ScatterDocsComponent,
@@ -75,7 +74,6 @@ import { chartTypesRoutes } from './chart-docs.routes';
     chartTypesRoutes],
   declarations: [
     ChartTypesDocsComponent,
-    TreeDocsComponent,
     BarDocsComponent,
     LineDocsComponent,
     ScatterDocsComponent,

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   ChartTypesMainComponent,
   ChartTypesDocsComponent,
-  TreeDocsComponent,
   BarDocsComponent,
   LineDocsComponent,
   ScatterDocsComponent,
@@ -34,10 +33,6 @@ const routes: Routes = [
       {
         component: ScatterDocsComponent,
         path: 'scatter',
-      },
-      {
-        component: TreeDocsComponent,
-        path: 'tree',
       },
     ],
   },
