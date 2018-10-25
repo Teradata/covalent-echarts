@@ -3,11 +3,7 @@
     overflow-x: hidden !important;
   }
 }
-::ng-deep {
-  [dir='rtl'] mat-sidenav .mat-list-item-content mat-icon {
-    margin: 0 !important;
-  }
-}
+
 .clickable {
   cursor: pointer;
 }
