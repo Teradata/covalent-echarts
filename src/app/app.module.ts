@@ -12,7 +12,9 @@ import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { CovalentLayoutModule } from '@covalent/core/layout'; 
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
@@ -36,8 +38,11 @@ import { appRoutes, appRoutingProviders } from './app.routes';
     BrowserModule,
     HttpClientModule,
     MatIconModule,
+    MatListModule,
     MatButtonModule,
     /** Covalent Modules */
+    CovalentLayoutModule,
+    /** Covalent echarts Modules */
     CovalentBaseEchartsModule,
     CovalentLineEchartsModule,
     CovalentBarEchartsModule,

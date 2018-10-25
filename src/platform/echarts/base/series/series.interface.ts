@@ -79,6 +79,7 @@ export interface ITdMarkArea extends ITdAnimation {
 }
 
 export interface ITdSeriesTooltip {
+  icon?: string; // optional, added for mat-icon
   position?: TdTooltipPosition | any;
   formatter?: any;
   backgroundColor?: any;
