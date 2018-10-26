@@ -61,7 +61,7 @@
                     <ng-container *ngIf="params">
                       <div layout="row" layout-align="start center">
                         <mat-icon>
-                          <span class="tc-blue-300">{{seriesToolTip[i].icon}}</span>
+                          <span class="tc-blue-300">{{i === 0 ? 'person' : 'dashboard'}}</span>
                         </mat-icon>
                         <span class="mat-caption pad-left-sm">
                           {{params.seriesName + ': ' + params.value[1]}}
@@ -126,7 +126,7 @@
                   <ng-container *ngIf="params">
                     <div layout="row" layout-align="start center">
                       <mat-icon>
-                        <span class="tc-blue-300">{ {seriesToolTip[i].icon} }</span>
+                        <span class="tc-blue-300">{ {i === 0 ? 'person' : 'dashboard'} }</span>
                       </mat-icon>
                       <span class="mat-caption pad-left-sm">
                         { {params.seriesName + ': ' + params.value[1]} }

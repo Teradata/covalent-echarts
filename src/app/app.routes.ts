@@ -1,10 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DocsAppComponent } from './app.component';
 
-// const routes: Routes = [{
-//     path: '**', redirectTo: '/',
-//   },
-// ];
 const routes: Routes = [
   {
     component: DocsAppComponent,

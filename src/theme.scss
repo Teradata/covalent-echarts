@@ -1,6 +1,5 @@
 @import '~@angular/material/theming';
 @import '~@covalent/core/theming/all-theme';
-// @import '~@covalent/experimental/theming/all-theme';
 @import '~@covalent/markdown/markdown-theme';
 @import '~@covalent/highlight/highlight-theme';
 // Plus imports for other components in your app.
@@ -56,7 +55,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 // that you are using.
 @include angular-material-theme($theme);
 @include covalent-theme($theme);
-// @include experimental-theme($theme);
 @include covalent-markdown-theme($theme);
 @include covalent-highlight-theme(); // OR @import '~highlight.js/styles/vs.css';
 @include teradata-brand($theme);
@@ -151,29 +149,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
   .tc-warn {
     color: mat-color($warn-docs);
   }
-}
-
-// Custom theme examples
-.blue-orange {
-  $primary2: mat-palette($mat-blue, 700);
-  $accent2: mat-palette($mat-orange, 800);
-  $warn2: mat-palette($mat-red, 600);
-
-  $blue-orange: mat-light-theme($primary2, $accent2, $warn2);
-
-  @include angular-material-theme($blue-orange);
-  @include covalent-theme($blue-orange);
-}
-
-.blue-grey-deep-orange {
-  $primary3: mat-palette($mat-blue-grey, 700);
-  $accent3: mat-palette($mat-deep-orange);
-  $warn3: mat-palette($mat-red, 600);
-
-  $blue-grey-deep-orange: mat-light-theme($primary3, $accent3, $warn3);
-
-  @include angular-material-theme($blue-grey-deep-orange);
-  @include covalent-theme($blue-grey-deep-orange);
 }
 
 /* ------------------------------------------------------------------------------- */

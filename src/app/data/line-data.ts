@@ -148,15 +148,12 @@ const lineConfig: any = {
 
 const seriesToolTip: ITdSeriesTooltip[] = [
   {
-    icon: 'person',
     textStyle: {
       color: '#818181',
     },
     backgroundColor: '#fff',
     // formatter: ' inline Label {a}: {c0}',
-  },
-  {
-    icon: 'dashboard',
+  }, {
     textStyle: {
       color: '#00efff',
     },
