@@ -1,7 +1,5 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
-import { TdLayoutManageListComponent } from '@covalent/core/layout';
-import { getDirection } from '../../utilities/direction';
 
 import 'echarts/lib/component/markPoint';
 import 'echarts/lib/component/markLine';
@@ -11,41 +9,19 @@ import 'echarts/lib/component/legend';
 import 'echarts/lib/component/legendScroll';
 import 'echarts/lib/component/dataZoom';
 
-import { TdCollapseAnimation, TdRotateAnimation, TdFadeInOutAnimation } from '@covalent/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Observable } from 'rxjs';
-import { share, tap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation } from '@covalent/core/common';
 
 @Component({
   selector: 'app-chart-types-docs',
   templateUrl: './chart-types-docs.component.html',
   styleUrls: ['./chart-types-docs.component.scss'],
-  animations: [TdCollapseAnimation(), TdRotateAnimation(), TdFadeInOutAnimation()],
+  animations: [tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation],
 })
-export class ChartTypesDocsComponent implements AfterViewInit {
-
-  private _margin: BehaviorSubject<string> = new BehaviorSubject('0'); 
-
-  get margin(): Observable<string> {
-    return this._margin.asObservable().pipe(share());
-  }
-
-  @ViewChild('manageList')
-  manageList: TdLayoutManageListComponent;
+export class ChartTypesDocsComponent {
   
   miniNav: boolean = false;
-  hideCoreComponent: boolean = false;
-  hideAtomicComponent: boolean = false;
-  mediaGTSM: Observable<any>;
-  dir: 'ltr' | 'rtl';
 
   routes: Object[] = [
-    {
-      description: 'List of all examples including in the documentation',
-      icon: 'picture_in_picture',
-      route: '.',
-      title: 'Chart Types',
-    },
     {
       description: 'Atomic and Config Options',
       icon: 'insert_chart',
@@ -112,61 +88,9 @@ export class ChartTypesDocsComponent implements AfterViewInit {
   ];
 
   constructor(public media: TdMediaService) {
-    this.dir = getDirection();
-    this.mediaGTSM = media.registerQuery('gt-sm').pipe( 
-      distinctUntilChanged(),
-      debounceTime(50),
-      tap((gtSm: boolean) => {
-      if (!gtSm) {
-        if (this.dir === 'ltr') {
-        this._margin.next('0');
-        }
-        this.manageList.opened = false;
-      } else {
-        this.checkMiniNav();
-      }
-    }),
-    share());
   }
 
-  handleDirEmitter(event: 'ltr' | 'rtl'): void {
-    this.dir = event;
-  }
-
-  toggleMiniNav(event: Event): void {
-    event.stopPropagation();
+  toggleMiniNav(): void {
     this.miniNav = !this.miniNav;
-    this.checkMiniNav();
-
-  }
-
-  checkMiniNav(): void {
-    if (this.miniNav) {
-      this._margin.next('64');
-    } else {
-      this._margin.next('250');
-    }
-    this.restMiniNav();
-  }
-
-  openMiniNav(event: Event): void {
-    event.stopPropagation();
-    this.miniNav = !this.miniNav;
-    this._margin.next('250');
-    this.restMiniNav();
-  }
-
-  restMiniNav(): void {
-    this.manageList.opened = false;
-    setTimeout(() => {
-      this.manageList.opened = true;
-    });
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.handleDirEmitter(this.dir);
-      this.media.broadcast();
-    });
   }
 }
