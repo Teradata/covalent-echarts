@@ -59,6 +59,85 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include covalent-highlight-theme(); // OR @import '~highlight.js/styles/vs.css';
 @include teradata-brand($theme);
 
+/* ------------------------------------------------------------------------------- */
+$foreground: map-get($theme, foreground);
+$background: map-get($theme, background);
+
+// Default theme
+.tc-primary {
+  color: mat-color($primary);
+}
+.tc-accent {
+  color: mat-color($accent);
+}
+.tc-warn {
+  color: mat-color($warn);
+}
+.bgc-primary {
+  background-color: mat-color($primary);
+}
+.bgc-accent {
+  background-color: mat-color($accent);
+}
+.bgc-warn {
+  background-color: mat-color($warn);
+}
+.bgc-white,
+.bgc {
+  background-color: white;
+}
+.tc-faded {
+  color: rgba(0, 0, 0, 0.5);
+}
+.bgc-dark {
+  background-color: mat-color($background, app-bar);
+}
+.bgc-contrast {
+  background-color: #ececec;
+}
+// Teradata.com websites white theme
+.mat-toolbar.mat-white {
+  background-color: white;
+  color: mat-color($td-slate, 800);
+}
+// State colors
+.tc-positive {
+  color: map-get($td-positive, foreground-light) !important;
+}
+.tc-caution {
+  color: map-get($td-caution, foreground-light) !important;
+}
+.tc-negative {
+  color: map-get($td-negative, foreground-light) !important;
+}
+.tc-neutral {
+  color: map-get($td-neutral, foreground-light) !important;
+}
+.tc-emphasis-1 {
+  color: map-get($td-emphasis1, foreground-light) !important;
+}
+.tc-emphasis-2 {
+  color: map-get($td-emphasis2, foreground-light) !important;
+}
+.bgc-positive {
+  background-color: map-get($td-positive, background-light) !important;
+}
+.bgc-caution {
+  background-color: map-get($td-caution, background-light) !important;
+}
+.bgc-negative {
+  background-color: map-get($td-negative, background-light) !important;
+}
+.bgc-neutral {
+  background-color: map-get($td-neutral, background-light) !important;
+}
+.bgc-emphasis-1 {
+  background-color: map-get($td-emphasis1, background-light) !important;
+}
+.bgc-emphasis-2 {
+  background-color: map-get($td-emphasis2, background-light) !important;
+}
+
 // Alt theme
 .theme-alt {
   $primary-alt: mat-palette($td-orange, 800, 200, 900);
@@ -69,13 +148,13 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include covalent-theme($theme-alt);
 
   .tc-primary {
-    color: mat-color($primary-alt);
+    color: mat-color($primary);
   }
   .tc-accent {
-    color: mat-color($accent-alt);
+    color: mat-color($accent);
   }
   .tc-warn {
-    color: mat-color($warn-alt);
+    color: mat-color($warn);
   }
   a:not([class*='mat-']) {
     color: mat-color($accent-alt);
