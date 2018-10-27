@@ -3,22 +3,8 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import {
-  ITdSplitLine,
-  TdYAxisPosition,
-  ITdSeriesTooltip,
-  ITdAxisLine,
-  ITdAxisLabel,
   ITdBarSeries,
-} from '../../../../platform/echarts';
-import {
-  seriesToolTip,
-  barConfig,
-  barPlot,
-  splitLineBar,
-  xLine,
-  yLine,
-  yAxisLabel,
-} from '../../../data/bar-data';
+} from '../../../../platform/echarts/bar';
 
 @Component({
   selector: 'app-bar-docs',
@@ -28,30 +14,70 @@ import {
   preserveWhitespaces: true,
 })
 export class BarDocsComponent {
-  /**
-   * This component is intentionally left simple for brevity as the data is
-   * normally requested via an API which would include Angular
-   * life-cycle hooks and other considerations.
-   *
-   *
-   * CHANGE DECTECTION WORKAROUND:
-   * height is used as to trigger change detection which updates
-   * the chart, in this case the chart width needs to change. setTimeout in the
-   * clearMarkData() method cause Angular to wait for a tick in the change dectection
-   * life cycle before running change dectection again. This is due to the distinctUntilChange()
-   * operator being used when setting the height and width in
-   * src/platform/echarts/base/chart.component.ts
-   */
+  // Chart data
+  barPlot: ITdBarSeries[] = [
+    {
+      type: 'bar',
+      itemStyle: {
+        opacity: 0.95,
+        color: '#007373',
+      },
+      markPoint: {
+        data: [{ name: 'test', value: 130, xAxis: 1, yAxis: 130 }],
+      },
+      name: 'Yesterday',
+      data: [150, 130, 150, 120, 150, 120],
+    },
+    {
+      type: 'bar',
+      itemStyle: {
+        opacity: 0.95,
+        color: '#1B98C6',
+      },
+      markPoint: {
+        data: [{ name: 'Target', value: 80, xAxis: 1, yAxis: 121 }],
+      },
+      markLine: {
+        data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
+        symbol: 'circle',
+      },
+      name: 'Today',
+      data: [80, 122, 80, 120, 80, 120],
+    },
+  ];
 
-  seriesToolTip: ITdSeriesTooltip[] = seriesToolTip;
-  barConfig: any = barConfig;
-  barPlot: ITdBarSeries[] = barPlot;
-  splitLineBar: ITdSplitLine = splitLineBar;
-  xLine: ITdAxisLine = xLine;
-  yLine: ITdAxisLine = yLine;
-  yAxisLabel: ITdAxisLabel = yAxisLabel;
-
-  barYaxisPosition: TdYAxisPosition = 'right';
-  height: number = 300;
-
+  // Chart config
+  barConfig: any = {
+    xAxis: [
+      {
+        data: [
+          'Electronics',
+          'Toys',
+          'Grocery',
+          'Appliances',
+          'Automotive',
+          'Sports',
+        ],
+      },
+      {
+        show: true,
+        type: 'time',
+        boundaryGap: false,
+      },
+    ],
+    yAxis: [
+      {
+        show: true,
+        type: 'value',
+        axisLabel: { inside: false },
+        max: 300,
+      },
+    ],
+    series: this.barPlot,
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      showContent: true,
+    },
+  };
 }

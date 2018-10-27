@@ -1,6 +1,6 @@
 <div>
   <mat-card flex>
-    <mat-card-title>Bar Chart (atomic)</mat-card-title>
+    <mat-card-title>Bar Chart (HTML attributes)</mat-card-title>
     <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
     <mat-divider></mat-divider>
     <mat-card-content>
@@ -11,12 +11,14 @@
             <div flex>
               <td-chart [style.height.px]="300"
                         [dataZoom]="false">
-                <td-chart-tooltip [trigger]="'item'">
+                <td-chart-tooltip [trigger]="'item'"
+                                  [textStyle]="{ color: '#818181' }"
+                                  [backgroundColor]="'#ffffff'">
                   <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
                     <ng-container *ngIf="params">
                       <div layout="row" layout-align="start center">
                         <mat-icon>
-                          <span class="tc-blue-300">people</span>
+                          <span class="tc-accent">people</span>
                         </mat-icon>
                         <span class="mat-caption pad-left-sm">
                           {{params.seriesName + ': ' + params.value}}
@@ -29,40 +31,24 @@
                                   [position]="'bottom'"
                                   [type]="'category'"
                                   [data]="['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']"
-                                  [boundaryGap]="true"
-                                  [axisLine]="xLine"
-                                  [splitLine]="{show: false}">
+                                  [boundaryGap]="true">
                 </td-chart-x-axis>
                 <td-chart-y-axis [show]="true"
                                   [type]="'value'"
                                   [position]="'right'"
-                                  [axisLabel]="yAxisLabel"
-                                  [axisLine]="yLine"
                                   [max]="200"
-                                  [splitLine]="splitLineBar">
+                                  [splitLine]="{ lineStyle: { type: 'dotted' } }">
                 </td-chart-y-axis>
                 <td-chart-series td-bar
-                                *ngFor="let series of barPlot; let i=index"
-                                [data]="series.data"
-                                [name]="series.name"
-                                [markPoint]="series.markPoint"
-                                [markLine]="series.markLine"
-                                [itemStyle]="series.itemStyle">
-                  <td-chart-series-tooltip [textStyle]="seriesToolTip[i].textStyle"
-                                            [backgroundColor]="seriesToolTip[i].backgroundColor">
-                    <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
-                      <ng-container *ngIf="params">
-                        <div layout="row" layout-align="start center">
-                          <mat-icon>
-                            <span class="tc-blue-300">{{i === 0 ? 'person' : 'dashboard'}}</span>
-                          </mat-icon>
-                          <span class="mat-caption pad-left-sm">
-                            {{params.seriesName + ': ' + params.value}}
-                          </span>
-                        </div>
-                      </ng-container>
-                    </ng-template>
-                  </td-chart-series-tooltip>
+                                [data]="[150, 130, 150, 120, 150, 120]"
+                                [name]="'Today'"
+                                [itemStyle]="{ color: '#F2724B' }">
+                </td-chart-series>
+                <td-chart-series td-bar
+                                [data]="[80, 122, 80, 120, 80, 120]"
+                                [name]="'Yesterday'"
+                                [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
+                                [itemStyle]="{ color: '#3A4950' }">
                 </td-chart-series>
               </td-chart>
             </div>
@@ -73,52 +59,16 @@
           <p>HTML: </p>
           <td-highlight lang="html">
             <![CDATA[
-            <td-chart [style.height.px]="300"
-                      [dataZoom]="false">
-              <td-chart-tooltip [trigger]="'item'">
-                <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
-                  <ng-container *ngIf="params">
-                    <div layout="row" layout-align="start center">
-                      <mat-icon>
-                        <span class="tc-blue-300">people</span>
-                      </mat-icon>
-                      <span class="mat-caption pad-left-sm">
-                        { {params.seriesName + ': ' + params.value} }
-                      </span>
-                    </div>
-                  </ng-container>
-                </ng-template>
-              </td-chart-tooltip>
-              <td-chart-x-axis [show]="true"
-                                [position]="'bottom'"
-                                [type]="'category'"
-                                [data]="['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']"
-                                [boundaryGap]="true"
-                                [axisLine]="xLine"
-                                [splitLine]="{show: false}">
-              </td-chart-x-axis>
-              <td-chart-y-axis [show]="true"
-                                [type]="'value'"
-                                [position]="'right'"
-                                [axisLabel]="yAxisLabel"
-                                [axisLine]="yLine"
-                                [max]="200"
-                                [splitLine]="splitLineBar">
-              </td-chart-y-axis>
-              <td-chart-series td-bar
-                              *ngFor="let series of barPlot; let i=index"
-                              [data]="series.data"
-                              [name]="series.name"
-                              [markPoint]="series.markPoint"
-                              [markLine]="series.markLine"
-                              [itemStyle]="series.itemStyle">
-                <td-chart-series-tooltip [textStyle]="seriesToolTip[i].textStyle"
-                                          [backgroundColor]="seriesToolTip[i].backgroundColor">
+              <td-chart [style.height.px]="300"
+                        [dataZoom]="false">
+                <td-chart-tooltip [trigger]="'item'"
+                                  [textStyle]="{ color: '#818181' }"
+                                  [backgroundColor]="'#ffffff'">
                   <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
                     <ng-container *ngIf="params">
                       <div layout="row" layout-align="start center">
                         <mat-icon>
-                          <span class="tc-blue-300">{ {i === 0 ? 'person' : 'dashboard'} }</span>
+                          <span class="tc-blue-300">people</span>
                         </mat-icon>
                         <span class="mat-caption pad-left-sm">
                           { {params.seriesName + ': ' + params.value} }
@@ -126,9 +76,39 @@
                       </div>
                     </ng-container>
                   </ng-template>
-                </td-chart-series-tooltip>
-              </td-chart-series>
-            </td-chart>
+                </td-chart-tooltip>
+                <td-chart-x-axis [show]="true"
+                                  [position]="'bottom'"
+                                  [type]="'category'"
+                                  [data]="['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']"
+                                  [boundaryGap]="true">
+                </td-chart-x-axis>
+                <td-chart-y-axis [show]="true"
+                                  [type]="'value'"
+                                  [position]="'right'"
+                                  [max]="200"
+                                  [splitLine]="{ lineStyle: { type: 'dotted' } }">
+                </td-chart-y-axis>
+                <td-chart-series td-bar
+                                [data]="[150, 130, 150, 120, 150, 120]"
+                                [name]="'Today'"
+                                [itemStyle]="{ color: '#F2724B' }">
+                </td-chart-series>
+                <td-chart-series td-bar
+                                [data]="[80, 122, 80, 120, 80, 120]"
+                                [name]="'Yesterday'"
+                                [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
+                                [itemStyle]="{ color: '#3A4950' }">
+                </td-chart-series>
+              </td-chart>
+            ]]>
+          </td-highlight>
+          <p>TypeScript: </p>
+          <td-highlight lang="typescript">
+            <![CDATA[
+              import {
+                ITdBarSeries,
+              } from '@covalent/echarts/bar';
             ]]>
           </td-highlight>
         </mat-tab>
@@ -137,7 +117,7 @@
   </mat-card>
 </div>
 <mat-card>
-  <mat-card-title>Bar Chart (config object)</mat-card-title>
+  <mat-card-title>Bar Chart (TypeScript config object)</mat-card-title>
   <mat-card-subtitle>Configuration object, acts just like the atomic version but using one configuration @Input
     property</mat-card-subtitle>
   <mat-divider></mat-divider>
@@ -152,15 +132,92 @@
       <mat-tab>
         <ng-template matTabLabel>Code</ng-template>
         <p>HTML: </p>
-        <mat-card-content>
-          <td-highlight lang="html">
-            <![CDATA[
-                <td-chart [style.height.px]="300" 
-                          [config]="barConfig">
-                </td-chart>
-                ]]>
-          </td-highlight>
-        </mat-card-content>
+        <td-highlight lang="html">
+          <![CDATA[
+            <td-chart [style.height.px]="300" 
+                      [config]="barConfig">
+            </td-chart>
+            ]]>
+        </td-highlight>
+        <p>TypeScript: </p>
+        <td-highlight lang="typescript">
+          <![CDATA[
+            import {
+              ITdBarSeries,
+            } from '@covalent/echarts/bar';
+            ...
+            export class BarDocsComponent {
+              // Chart config
+              barConfig: any = {
+                xAxis: [
+                  {
+                    data: [
+                      'Electronics',
+                      'Toys',
+                      'Grocery',
+                      'Appliances',
+                      'Automotive',
+                      'Sports',
+                    ],
+                  },
+                  {
+                    show: true,
+                    type: 'time',
+                    boundaryGap: false,
+                    axisLine: { show: false },
+                    splitLine: { show: false },
+                  },
+                ],
+                yAxis: [
+                  {
+                    show: true,
+                    type: 'value',
+                    axisLabel: { inside: false },
+                    max: 300,
+                  },
+                ],
+                series: this.barPlot,
+                tooltip: {
+                  show: true,
+                  trigger: 'item',
+                  showContent: true,
+                },
+              };
+  
+              // Chart data
+              barPlot: ITdBarSeries[] = [
+              {
+                type: 'bar',
+                itemStyle: {
+                  opacity: 0.95,
+                  color: '#007373',
+                },
+                markPoint: {
+                  data: [{ name: 'test', value: 130, xAxis: 1, yAxis: 130 }],
+                },
+                name: 'Yesterday',
+                data: [150, 130, 150, 120, 150, 120],
+              },
+              {
+                type: 'bar',
+                itemStyle: {
+                  opacity: 0.95,
+                  color: '#1B98C6',
+                },
+                markPoint: {
+                  data: [{ name: 'Target', value: 80, xAxis: 1, yAxis: 121 }],
+                },
+                markLine: {
+                  data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
+                  symbol: 'circle',
+                },
+                name: 'Today',
+                data: [80, 122, 80, 120, 80, 120],
+              },
+            ];
+            ];
+          ]]>
+        </td-highlight>
       </mat-tab>
     </mat-tab-group>
   </mat-card-content>

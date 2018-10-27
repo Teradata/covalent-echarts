@@ -4,10 +4,6 @@ import { ITdBarSeries } from '../../platform/echarts';
 export const comboPlot: any[] = [
   {
     type: 'bar',
-    itemStyle: {
-      opacity: 0.75,
-      color: '#575757',
-    },
     markPoint: {
       data: [{ name: 'Target', value: 130, xAxis: 1, yAxis: 130 }],
     },
@@ -23,12 +19,7 @@ export const comboPlot: any[] = [
     },
     markLine: {
       data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
-      lineStyle: { color: '#000', type: 'dotted' },
       symbol: 'circle',
-    },
-    itemStyle: {
-      opacity: 0.75,
-      color: '#00E5FF',
     },
     name: 'Today',
     data: [80, 122, 80, 120, 80, 120],

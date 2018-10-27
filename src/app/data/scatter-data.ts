@@ -46,42 +46,15 @@ const basicScatterData: any[] = [
 ];
 
 const configScatterOption: any = {
-tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
-  backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
-      offset: 0,
-      color: '#f7f8fa',
-    },
-    {
-      offset: 1,
-      color: '#cdd0d5',
-    },
-  ]),
+  tooltip: {
+    show: true,
+  },
   legend: {
     right: 10,
     data: ['1990', '2015'],
   },
-  xAxis: [
-    {
-      splitLine: {
-          lineStyle: {
-              type: 'dotted',
-          },
-      },
-    },
-  ],
-  yAxis: [
-    {
-      splitLine: {
-          lineStyle: {
-            type: 'dotted',
-          },
-      },
-      scale: true,
-    },
-  ],
   series: [
     {
-      tooltip: { borderColor: '#e26d7b', borderWidth: 3 },
       name: '1990',
       data: basicScatterData[0],
       type: 'scatter',
@@ -95,24 +68,8 @@ tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
               },
               position: 'top',
       },
-      itemStyle: {
-        shadowBlur: 10,
-        shadowColor: 'rgba(120, 36, 50, 0.5)',
-        shadowOffsetY: 5,
-        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
-          {
-            offset: 0,
-            color: 'rgb(251, 118, 123)',
-          },
-          {
-            offset: 1,
-            color: 'rgb(204, 46, 72)',
-          },
-        ]),
-      },
     },
     {
-      tooltip: { borderColor: '#77d6e5', borderWidth: 3 },
       name: '2015',
       data: basicScatterData[1],
       type: 'scatter',
@@ -125,21 +82,6 @@ tooltip: {borderColor: '#ddd', borderWidth: 10, show: true},
                   return param.data[3];
               },
               position: 'top',
-      },
-      itemStyle: {
-        shadowBlur: 10,
-        shadowColor: 'rgba(25, 100, 150, 0.5)',
-        shadowOffsetY: 5,
-        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
-          {
-            offset: 0,
-            color: 'rgb(129, 227, 238)',
-          },
-          {
-            offset: 1,
-            color: 'rgb(25, 183, 207)',
-          },
-        ]),
       },
     },
   ],
