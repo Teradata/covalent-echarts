@@ -50,12 +50,6 @@ export class ComponentsComponent {
 
   atomicComponentRoutes: Object[] = [
     {
-      description: 'Series component, determines chart type and series styling.',
-      icon: 'style',
-      route: '',
-      title: 'Series',
-    },
-    {
       description: 'Chart/Series Tooltip component, enable/disable and other tooltip level options.',
       icon: 'info',
       route: '',

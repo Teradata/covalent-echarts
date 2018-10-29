@@ -217,28 +217,30 @@
   <mat-card-subtitle>Configuration object used to render a chart</mat-card-subtitle>
   <mat-divider></mat-divider>
   <mat-card-content>
-  <mat-tab-group mat-stretch-tabs dynamicHeight>
-    <mat-tab>
-      <ng-template matTabLabel>Demo</ng-template>
+    <mat-tab-group mat-stretch-tabs dynamicHeight>
+      <mat-tab>
+        <ng-template matTabLabel>Demo</ng-template>
 
-      <td-chart [style.height.px]="300"
-                [config]="config">
-      </td-chart>
-  </mat-tab>
-  <mat-tab>
-    <ng-template matTabLabel>Code</ng-template>
-    <p>HTML: </p>
-    <td-highlight lang="html">
-      <![CDATA[
         <td-chart [style.height.px]="300"
                   [config]="config">
         </td-chart>
-      ]]>          
-    </td-highlight>
-    <p>config JSON: </p>
-    <td-highlight [content]="config | json" lang="json">
-    </td-highlight>
-  </mat-tab>
-  </mat-tab-group>
-</mat-card-content>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>Code</ng-template>
+      <p>HTML: </p>
+      <td-highlight lang="html">
+        <![CDATA[
+          <td-chart [style.height.px]="300"
+                    [config]="config">
+          </td-chart>
+        ]]>          
+      </td-highlight>
+      <p>config JSON: </p>
+      <td-highlight [content]="config | json" lang="json">
+      </td-highlight>
+    </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
 </mat-card>
+
+<td-readme-loader resourceUrl="platform/echarts/bar/README.md"></td-readme-loader>

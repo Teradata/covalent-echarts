@@ -13,9 +13,9 @@
             <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
               <ng-container *ngIf="params">
                 <div layout="row" layout-align="start center">
-                  <mat-icon>person</mat-icon>
+                  <mat-icon [style.color]="params.color">person</mat-icon>
                   <span class="mat-caption pad-left-sm">
-                    {{params.seriesName + ': ' + params.value}}
+                    {{params.seriesName + ': ' + params.value[1]}}
                   </span>
                 </div>
               </ng-container>
@@ -24,14 +24,10 @@
           <td-chart-x-axis [show]="true"
                             [position]="'bottom'"
                             [type]="'value'"
-                            [boundaryGap]="true"
-                            [axisLine]="xLine"
-                            [splitLine]="{show: false}">
+                            [boundaryGap]="true">
           </td-chart-x-axis>
           <td-chart-y-axis [show]="true"
-                            [type]="'value'"
-                            [axisLine]="yLine"
-                            [splitLine]="splitLine">
+                            [type]="'value'">
           </td-chart-y-axis>
           <td-chart-series td-scatter
                             [data]="[
@@ -97,9 +93,9 @@
                 <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
                   <ng-container *ngIf="params">
                     <div layout="row" layout-align="start center">
-                      <mat-icon>person</mat-icon>
+                      <mat-icon [style.color]="params.color">person</mat-icon>
                       <span class="mat-caption pad-left-sm">
-                        { {params.seriesName + ': ' + params.value} }
+                        { {params.seriesName + ': ' + params.value[1]} }
                       </span>
                     </div>
                   </ng-container>
@@ -108,14 +104,10 @@
               <td-chart-x-axis [show]="true"
                                 [position]="'bottom'"
                                 [type]="'value'"
-                                [boundaryGap]="true"
-                                [axisLine]="xLine"
-                                [splitLine]="{show: false}">
+                                [boundaryGap]="true">
               </td-chart-x-axis>
               <td-chart-y-axis [show]="true"
-                                [type]="'value'"
-                                [axisLine]="yLine"
-                                [splitLine]="splitLine">
+                                [type]="'value'">
               </td-chart-y-axis>
               <td-chart-series td-scatter
                                 [data]="[
@@ -205,9 +197,9 @@
           <p>HTML: </p>
           <td-highlight lang="html">
             <![CDATA[
-            <td-chart [style.height.px]="300"
-                      [config]="config">
-            </td-chart>
+              <td-chart [style.height.px]="300"
+                        [config]="config">
+              </td-chart>
             ]]>
           </td-highlight>
           <p>config JSON: </p>
@@ -217,3 +209,5 @@
     </mat-tab-group>
   </mat-card-content>
 </mat-card>
+
+<td-readme-loader resourceUrl="platform/echarts/scatter/README.md"></td-readme-loader>

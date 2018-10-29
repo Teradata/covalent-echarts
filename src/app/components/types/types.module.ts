@@ -34,6 +34,8 @@ import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 import { chartTypesRoutes } from './types.routes';
 
+import { DocumentationToolsModule } from '../../documentation-tools';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -64,7 +66,10 @@ import { chartTypesRoutes } from './types.routes';
     CovalentBarEchartsModule,
     CovalentScatterEchartsModule,
     CovalentTooltipEchartsModule,
-    chartTypesRoutes],
+    // internal
+    DocumentationToolsModule,
+    chartTypesRoutes,
+  ],
   declarations: [
     TypesBarComponent,
     TypesLineComponent,

@@ -38,12 +38,6 @@ export class OverviewComponent {
 
 atomicComponents: Object[] = [
   {
-    color: 'cyan-A700',
-    icon: 'style',
-    route: '',
-    title: 'Series',
-  },
-  {
     color: 'deep-orange-A700',
     icon: 'info',
     route: '',

@@ -15,7 +15,7 @@
                 <ng-container *ngIf="params">
                   <div layout="row" layout-align="start center">
                     <mat-icon>
-                      <span class="tc-accent">people</span>
+                      <span [style.color]="params.color">people</span>
                     </mat-icon>
                     <span class="mat-caption pad-left-sm">
                       {{params.seriesName + ': ' + params.value}}
@@ -39,13 +39,13 @@
             <td-chart-series td-bar
                             [data]="[150, 130, 150, 120, 150, 120]"
                             [name]="'Today'"
-                            [itemStyle]="{ color: '#F2724B' }">
+                            [color]="'#F2724B'">
             </td-chart-series>
             <td-chart-series td-bar
                             [data]="[80, 122, 80, 120, 80, 120]"
                             [name]="'Yesterday'"
                             [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
-                            [itemStyle]="{ color: '#3A4950' }">
+                            [color]="'#3A4950'">
             </td-chart-series>
           </td-chart>
         </mat-tab>
@@ -62,7 +62,7 @@
                     <ng-container *ngIf="params">
                       <div layout="row" layout-align="start center">
                         <mat-icon>
-                          <span class="tc-blue-300">people</span>
+                          <span [style.color]="params.color">people</span>
                         </mat-icon>
                         <span class="mat-caption pad-left-sm">
                           { {params.seriesName + ': ' + params.value} }
@@ -86,13 +86,13 @@
                 <td-chart-series td-bar
                                 [data]="[150, 130, 150, 120, 150, 120]"
                                 [name]="'Today'"
-                                [itemStyle]="{ color: '#F2724B' }">
+                                [color]="'#F2724B'">
                 </td-chart-series>
                 <td-chart-series td-bar
                                 [data]="[80, 122, 80, 120, 80, 120]"
                                 [name]="'Yesterday'"
                                 [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
-                                [itemStyle]="{ color: '#3A4950' }">
+                                [color]="'#3A4950'">
                 </td-chart-series>
               </td-chart>
             ]]>
@@ -131,3 +131,5 @@
     </mat-tab-group>
   </mat-card-content>
 </mat-card>
+
+<td-readme-loader resourceUrl="platform/echarts/bar/README.md"></td-readme-loader>
