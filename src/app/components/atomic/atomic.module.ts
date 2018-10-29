@@ -22,17 +22,9 @@ import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentMenuModule } from '@covalent/core/menu';
 import { CovalentHighlightModule } from '@covalent/highlight';
 
-import { TypesBarComponent } from './bar/bar.component';
-import { TypesLineComponent } from './line/line.component';
-import { TypesScatterComponent } from './scatter/scatter.component';
-import { TypesCombinationComponent } from './combination/combination.component';
+import { AtomicTooltipComponent } from './tooltip/tooltip.component';
 
-import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
-import { CovalentLineEchartsModule } from '@covalent/echarts/line';
-import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
-import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
-import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
-import { moduleRoutes } from './types.routes';
+import { moduleRoutes } from './atomic.routes';
 
 import { DocumentationToolsModule } from '../../documentation-tools';
 
@@ -41,40 +33,14 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     CommonModule,
     // Material
     MatIconModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatToolbarModule,
     MatListModule,
     MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatTabsModule,
-    MatRippleModule,
-    MatMenuModule,
-    HttpClientModule,
-    MatTooltipModule,
-    // Covalent Core
-    CovalentLayoutModule,
-    CovalentCommonModule,
-    CovalentLoadingModule,
-    CovalentMediaModule,
-    CovalentMenuModule,
-    CovalentHighlightModule,
-    // Covalent Echarts
-    CovalentBaseEchartsModule,
-    CovalentLineEchartsModule,
-    CovalentBarEchartsModule,
-    CovalentScatterEchartsModule,
-    CovalentTooltipEchartsModule,
     // internal
     DocumentationToolsModule,
     moduleRoutes,
   ],
   declarations: [
-    TypesBarComponent,
-    TypesLineComponent,
-    TypesScatterComponent,
-    TypesCombinationComponent,
+    AtomicTooltipComponent,
   ],
 })
-export class TypesModule {}
+export class AtomicModule {}

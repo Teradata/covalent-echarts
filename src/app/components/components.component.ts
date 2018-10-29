@@ -52,13 +52,13 @@ export class ComponentsComponent {
     {
       description: 'Chart/Series Tooltip component, enable/disable and other tooltip level options.',
       icon: 'info',
-      route: '',
+      route: ['atomic', 'tooltip'],
       title: 'Tooltip',
     },
     {
       description: 'X and Y Axis components styling and other options',
       icon: 'trending_flat',
-      route: '',
+      route: ['atomic', 'axis'],
       title: 'Axis',
     },
   ];

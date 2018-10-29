@@ -35,7 +35,7 @@
         </h3>
         <mat-divider></mat-divider>
         <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="routes">
-          <a mat-list-item color="accent" [routerLinkActiveOptions]="{exact:true}" [routerLink]="route.route" routerLinkActive="active">
+          <a mat-list-item [routerLinkActiveOptions]="{exact:true}" [routerLink]="route.route" routerLinkActive="active">
             <mat-icon matListIcon [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{
               route.icon }}</mat-icon>
             <span *ngIf="!miniNav">{{ route.title }}</span>
@@ -53,7 +53,7 @@
         <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="atomicComponentRoutes">
           <span layout="column" layout-align="center center">
           </span>
-          <a mat-list-item [routerLink]="">
+          <a mat-list-item [routerLinkActiveOptions]="{exact:true}" [routerLink]="route.route" routerLinkActive="active">
             <mat-icon matListIcon [matTooltip]="miniNav ? route.title : ''" matTooltipPosition="after">{{
               route.icon }}</mat-icon>
             <span *ngIf="!miniNav">{{ route.title }}</span>

@@ -23,4 +23,4 @@ const routes: Routes = [{
   },
 ];
 
-export const chartTypesRoutes: any = RouterModule.forChild(routes);
+export const moduleRoutes: any = RouterModule.forChild(routes);

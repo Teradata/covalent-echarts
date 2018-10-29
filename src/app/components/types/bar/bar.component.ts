@@ -2,9 +2,6 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import {
-  ITdBarSeries,
-} from '@covalent/echarts/bar';
 
 @Component({
   selector: 'types-bar',

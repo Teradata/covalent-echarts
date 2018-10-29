@@ -40,13 +40,13 @@ atomicComponents: Object[] = [
   {
     color: 'deep-orange-A700',
     icon: 'info',
-    route: '',
+    route: ['atomic', 'tooltip'],
     title: 'Tooltip',
   },
   {
     color: 'lime-A700',
     icon: 'trending_flat',
-    route: '',
+    route: ['atomic', 'axis'],
     title: 'Axis',
   },
 ];

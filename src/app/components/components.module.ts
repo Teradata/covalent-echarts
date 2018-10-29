@@ -26,11 +26,6 @@ import { ToolbarModule } from '../toolbar/toolbar.module';
 import { ComponentsComponent } from './components.component';
 import { OverviewComponent } from './overview/overview.component';
 
-import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
-import { CovalentLineEchartsModule } from '@covalent/echarts/line';
-import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
-import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
-import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 import { moduleRoutes } from './components.routes';
 
 @NgModule({

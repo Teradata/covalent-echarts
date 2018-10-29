@@ -14,8 +14,11 @@ const routes: Routes = [
       },
       {
         path: 'types',
-        data: { preload: true },
         loadChildren: './types/types.module#TypesModule',
+      },
+      {
+        path: 'atomic',
+        loadChildren: './atomic/atomic.module#AtomicModule',
       },
     ],
   },

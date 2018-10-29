@@ -19,6 +19,7 @@ There are also lots of property inputs like:
 
 for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip)
 
+
 # td-chart-series-tooltip
 
 `td-chart-series-tooltip` element generates a series tooltip for the echarts visualization inside a `td-chart-series`. Its the equivalent of creating a JS tooltip series object in echarts.
