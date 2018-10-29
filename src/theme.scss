@@ -138,32 +138,6 @@ $background: map-get($theme, background);
   background-color: map-get($td-emphasis2, background-light) !important;
 }
 
-// Alt theme
-.theme-alt {
-  $primary-alt: mat-palette($td-orange, 800, 200, 900);
-  $accent-alt: mat-palette($td-slate, 700, 100, 900);
-  $warn-alt: mat-palette($mat-red, 600, 200, 900);
-  $theme-alt: mat-light-theme($primary-alt, $accent-alt, $warn-alt);
-  @include angular-material-theme($theme-alt);
-  @include covalent-theme($theme-alt);
-
-  .tc-primary {
-    color: mat-color($primary);
-  }
-  .tc-accent {
-    color: mat-color($accent);
-  }
-  .tc-warn {
-    color: mat-color($warn);
-  }
-  a:not([class*='mat-']) {
-    color: mat-color($accent-alt);
-    &:hover {
-      color: darken(mat-color($accent-alt), 10%);
-    }
-  }
-}
-
 // Dark theme
 .theme-dark {
   $primary-dark: mat-palette($td-slate, 800, 200, 900);
@@ -172,6 +146,8 @@ $background: map-get($theme, background);
   $theme-dark: mat-dark-theme($primary-dark, $accent-dark, $warn-dark);
   @include angular-material-theme($theme-dark);
   @include covalent-theme($theme-dark);
+  @include covalent-markdown-theme($theme-dark);
+  @include teradata-brand($theme-dark);
 
   .tc-primary {
     color: mat-color($primary-dark);
@@ -203,30 +179,6 @@ $background: map-get($theme, background);
   }
   .custom-icon {
     fill: white;
-  }
-}
-
-// Subpage themes
-.theme-docs {
-  $primary-docs: mat-palette($mat-deep-purple, 700);
-  $accent-docs: mat-palette($mat-cyan, A400);
-  $warn-docs: mat-palette($mat-red, 600);
-  $theme-docs: mat-light-theme($primary-docs, $accent-docs, $warn-docs);
-  @include angular-material-theme($theme-docs);
-  @include covalent-theme($theme-docs);
-
-  .tc-primary {
-    color: mat-color($primary-docs);
-  }
-  .tc-accent,
-  a {
-    color: mat-color($accent-docs);
-  }
-  a:hover {
-    color: darken(mat-color($accent-docs), 10%);
-  }
-  .tc-warn {
-    color: mat-color($warn-docs);
   }
 }
 
