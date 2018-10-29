@@ -41,9 +41,9 @@
         <h3 matSubheader>
           <span *ngIf="!miniNav">Charts</span>
           <mat-icon *ngIf="miniNav"
-                    matTooltip="Core Charts"
+                    matTooltip="Charts"
                     matTooltipPosition="after"
-                    class="pad-left-xs tc-grey-600">gps_fixed</mat-icon>
+                    class="pad-left-xs tc-grey-600">collections</mat-icon>
         </h3>
         <mat-divider></mat-divider>
         <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="routes">
@@ -57,7 +57,7 @@
         <h3 matSubheader>
             <span *ngIf="!miniNav">Atomic Components</span>
             <mat-icon *ngIf="miniNav"
-                      matTooltip="Core Charts"
+                      matTooltip="Atomic Components"
                       matTooltipPosition="after"
                       class="pad-left-xs tc-grey-600">widgets</mat-icon>
           </h3>
