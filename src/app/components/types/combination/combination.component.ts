@@ -9,7 +9,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class TypesCombinationComponent {
 
-  comboConfig: any = {
+  config: any = {
     xAxis: [
       {
         data: [
@@ -21,13 +21,6 @@ export class TypesCombinationComponent {
           'Sports',
         ],
       },
-      {
-        show: true,
-        type: 'time',
-        boundaryGap: false,
-        axisLine: { show: false },
-        splitLine: { show: false },
-      },
     ],
     yAxis: [
       {
@@ -36,15 +29,6 @@ export class TypesCombinationComponent {
         axisLabel: { inside: false },
         min: 0,
         max: 300,
-      },
-      {
-        show: true,
-        type: 'value',
-        axisLabel: { inside: false },
-        splitLine: { lineStyle: { type: 'value' } },
-        position: 'right',
-        min: 0,
-        max: 100,
       },
     ],
     series: [
