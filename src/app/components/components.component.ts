@@ -56,34 +56,16 @@ export class ComponentsComponent {
       title: 'Series',
     },
     {
-      description: 'Global tooltip component, enable/disable and other tooltip level options.',
+      description: 'Chart/Series Tooltip component, enable/disable and other tooltip level options.',
       icon: 'info',
       route: '',
       title: 'Tooltip',
     },
     {
-      description: 'X-Axis component, x-axis styling and other options',
+      description: 'X and Y Axis components styling and other options',
       icon: 'trending_flat',
       route: '',
-      title: 'X-Axis',
-    },
-    {
-      description: 'Y-Axis component, y-axis styling and other options',
-      icon: 'trending_up',
-      route: '',
-      title: 'Y-Axis',
-    },
-    {
-      description: 'Chart legend options, including position and styling.',
-      icon: 'text_fields',
-      route: '',
-      title: 'Legend',
-    },
-    {
-      description: 'Series Tooltip, extends from main tooltip settings and provides specific series level control.',
-      icon: 'info',
-      route: '',
-      title: 'Series Tooltip',
+      title: 'Axis',
     },
   ];
 

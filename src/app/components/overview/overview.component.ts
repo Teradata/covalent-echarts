@@ -53,25 +53,7 @@ atomicComponents: Object[] = [
     color: 'lime-A700',
     icon: 'trending_flat',
     route: '',
-    title: 'X-Axis',
-  },
-  {
-    color: 'amber-A700',
-    icon: 'trending_up',
-    route: '',
-    title: 'Y-Axis',
-  },
-  {
-    color: 'green-A700',
-    icon: 'info',
-    route: '',
-    title: 'Series Tooltip',
-  },
-  {
-    color: 'orange-A700',
-    icon: 'text_fields',
-    route: '',
-    title: 'Legend',
+    title: 'Axis',
   },
 ];
 
