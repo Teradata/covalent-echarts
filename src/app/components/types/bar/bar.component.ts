@@ -16,7 +16,7 @@ import {
 export class TypesBarComponent {
 
   // Chart config
-  barConfig: any = {
+  config: any = {
     xAxis: [
       {
         data: [

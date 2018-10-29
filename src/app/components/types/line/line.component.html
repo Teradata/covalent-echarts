@@ -1,5 +1,5 @@
 <mat-card flex>
-  <mat-card-title>Line Test (HTML attributes)</mat-card-title>
+  <mat-card-title>Line Test</mat-card-title>
   <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
   <mat-divider></mat-divider>
   <mat-card-content>
@@ -19,20 +19,76 @@
                           [type]="'value'">
         </td-chart-y-axis>
         <td-chart-series td-line
-                          *ngFor="let series of linePlot; let i=index"
                           [symbolSize]="14"
-                          [data]="series.data"
-                          [name]="series.name"
+                          [data]="[{
+                            'name': '2018-10-29T03:27:33.932Z',
+                            'value': [
+                              '2018-10-29T03:27:33.932Z',
+                              200
+                            ]
+                          }, {
+                            'name': '2018-10-30T03:27:33.932Z',
+                            'value': [
+                              '2018-10-30T03:27:33.932Z',
+                              50
+                            ]
+                          },{
+                            'name': '2018-10-31T03:27:33.932Z',
+                            'value': [
+                              '2018-10-31T03:27:33.932Z',
+                              100
+                            ]
+                          }]"
+                          [name]="'Revenue'"
                           [symbol]="'roundRect'"
-                          [color]="i === 0 ? '#F2724B' : '#3A4950'">
+                          [color]="'#F2724B'">
           <td-chart-series-tooltip>
             <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
               <ng-container *ngIf="params">
                 <div layout="row" layout-align="start center">
-                  <mat-icon *ngIf="i === 0">
+                  <mat-icon>
                     <span class="tc-accent">account_balance</span>
                   </mat-icon>
-                  <mat-icon *ngIf="i != 0">
+                  <span class="mat-caption pad-left-sm">
+                    {{params.seriesName + ': ' + params.value[1]}}
+                  </span>
+                </div>
+                <div class="mat-caption">
+                  at {{(params.name | date:'medium')}}
+                </div>
+              </ng-container>
+            </ng-template>
+          </td-chart-series-tooltip>
+        </td-chart-series>
+        <td-chart-series td-line
+                          [symbolSize]="14"
+                          [data]="[{
+                            'name': '2018-10-29T03:28:59.797Z',
+                            'value': [
+                              '2018-10-29T03:28:59.797Z',
+                              200
+                            ]
+                          }, {
+                            'name': '2018-10-29T13:28:59.797Z',
+                            'value': [
+                              '2018-10-29T13:28:59.797Z',
+                              50
+                            ]
+                          }, {
+                            'name': '2018-11-01T03:28:59.797Z',
+                            'value': [
+                              '2018-11-01T03:28:59.797Z',
+                              100
+                            ]
+                          }]"
+                          [name]="'Sales'"
+                          [symbol]="'roundRect'"
+                          [color]="'#3A4950'">
+          <td-chart-series-tooltip>
+            <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+              <ng-container *ngIf="params">
+                <div layout="row" layout-align="start center">
+                  <mat-icon>
                     <span class="tc-primary">attach_money</span>
                   </mat-icon>
                   <span class="mat-caption pad-left-sm">
@@ -66,20 +122,76 @@
                               [type]="'value'">
             </td-chart-y-axis>
             <td-chart-series td-line
-                              *ngFor="let series of linePlot; let i=index"
                               [symbolSize]="14"
-                              [data]="series.data"
-                              [name]="series.name"
+                              [data]="[{
+                                'name': '2018-10-29T03:27:33.932Z',
+                                'value': [
+                                  '2018-10-29T03:27:33.932Z',
+                                  200
+                                ]
+                              }, {
+                                'name': '2018-10-30T03:27:33.932Z',
+                                'value': [
+                                  '2018-10-30T03:27:33.932Z',
+                                  50
+                                ]
+                              },{
+                                'name': '2018-10-31T03:27:33.932Z',
+                                'value': [
+                                  '2018-10-31T03:27:33.932Z',
+                                  100
+                                ]
+                              }]"
+                              [name]="'Revenue'"
                               [symbol]="'roundRect'"
-                              [color]="i === 0 ? '#F2724B' : '#3A4950'">
+                              [color]="'#F2724B'">
               <td-chart-series-tooltip>
                 <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
                   <ng-container *ngIf="params">
                     <div layout="row" layout-align="start center">
-                      <mat-icon *ngIf="i === 0">
+                      <mat-icon>
                         <span class="tc-accent">account_balance</span>
                       </mat-icon>
-                      <mat-icon *ngIf="i != 0">
+                      <span class="mat-caption pad-left-sm">
+                        { {params.seriesName + ': ' + params.value[1]} }
+                      </span>
+                    </div>
+                    <div class="mat-caption">
+                      at { {(params.name | date:'medium')} }
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </td-chart-series-tooltip>
+            </td-chart-series>
+            <td-chart-series td-line
+                              [symbolSize]="14"
+                              [data]="[{
+                                'name': '2018-10-29T03:28:59.797Z',
+                                'value': [
+                                  '2018-10-29T03:28:59.797Z',
+                                  200
+                                ]
+                              }, {
+                                'name': '2018-10-29T13:28:59.797Z',
+                                'value': [
+                                  '2018-10-29T13:28:59.797Z',
+                                  50
+                                ]
+                              }, {
+                                'name': '2018-11-01T03:28:59.797Z',
+                                'value': [
+                                  '2018-11-01T03:28:59.797Z',
+                                  100
+                                ]
+                              }]"
+                              [name]="'Sales'"
+                              [symbol]="'roundRect'"
+                              [color]="'#3A4950'">
+              <td-chart-series-tooltip>
+                <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+                  <ng-container *ngIf="params">
+                    <div layout="row" layout-align="start center">
+                      <mat-icon>
                         <span class="tc-primary">attach_money</span>
                       </mat-icon>
                       <span class="mat-caption pad-left-sm">
@@ -96,70 +208,13 @@
           </td-chart>
         ]]>
       </td-highlight>
-      <p>TypeScript: </p>
-      <td-highlight lang="typescript">
-        <![CDATA[
-          import {
-            ITdLineSeries,
-          } from '@covalent/echarts/line';
-          ...
-          showTooltip: boolean = true;
-          today: Date = new Date();
-
-          // Chart data
-          linePlot: ITdLineSeries[] = [
-            {
-              name: 'Revenue',
-              type: 'line',
-              data: [
-                {
-                  name: this.today.toISOString(),
-                  value: [this.today.toISOString(), 200],
-                },
-                {
-                  name: new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(),
-                  value: [new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(), 50],
-                },
-                {
-                  name: new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-                  value: [
-                    new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-                    100,
-                  ],
-                },
-              ],
-            },
-            {
-              name: 'Sales',
-              type: 'line',
-              data: [
-                {
-                  name: this.today.toISOString(),
-                  value: [this.today.toISOString(), 200],
-                },
-                {
-                  name: new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(),
-                  value: [new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(), 50],
-                },
-                {
-                  name: new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-                  value: [
-                    new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-                    100,
-                  ],
-                },
-              ],
-            },
-          ];
-        ]]>
-      </td-highlight>
     </mat-tab>
   </mat-tab-group>
 </mat-card-content>
 </mat-card>
 <mat-card>
-  <mat-card-title>Line (TypeScript config object)</mat-card-title>
-  <mat-card-subtitle>Configuration object, acts just like the atomic version but using one [config] @Input property</mat-card-subtitle>
+  <mat-card-title>Line Chart (JS Object)</mat-card-title>
+  <mat-card-subtitle>Configuration object used to render a chart</mat-card-subtitle>
   <mat-divider></mat-divider>
   <mat-card-content>
   <mat-tab-group mat-stretch-tabs dynamicHeight>
@@ -167,7 +222,7 @@
       <ng-template matTabLabel>Demo</ng-template>
 
       <td-chart [style.height.px]="300"
-                [config]="lineConfig">
+                [config]="config">
       </td-chart>
   </mat-tab>
   <mat-tab>
@@ -176,88 +231,12 @@
     <td-highlight lang="html">
       <![CDATA[
         <td-chart [style.height.px]="300"
-                  [config]="lineConfig"></td-chart>
+                  [config]="config">
+        </td-chart>
       ]]>          
     </td-highlight>
-    <p>TypeScript: </p>
-    <td-highlight lang="typescript">
-      <![CDATA[
-        showTooltip: boolean = true;
-        today: Date = new Date();
-
-        // Chart data
-        linePlot: ITdLineSeries[] = [
-          {
-            name: 'Revenue',
-            type: 'line',
-            itemStyle: {
-              opacity: 0.95,
-              color: '#007373',
-            },
-            data: [
-              {
-                name: this.today.toISOString(),
-                value: [this.today.toISOString(), 200],
-              },
-              {
-                name: new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(),
-                value: [new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(), 50],
-              },
-              {
-                name: new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-                value: [
-                  new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-                  100,
-                ],
-              },
-            ],
-          },
-          {
-            name: 'Sales',
-            type: 'line',
-            itemStyle: {
-              opacity: 0.95,
-              color: '#1B98C6',
-            },
-            data: [
-              {
-                name: this.today.toISOString(),
-                value: [this.today.toISOString(), 200],
-              },
-              {
-                name: new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(),
-                value: [new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(), 50],
-              },
-              {
-                name: new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-                value: [
-                  new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-                  100,
-                ],
-              },
-            ],
-          },
-        ];
-
-        // Chart config
-        lineConfig: any = {
-          xAxis: [
-            {
-              show: true,
-              type: 'time',
-              boundaryGap: false,
-            },
-          ],
-          yAxis: [{ show: true, type: 'value', axisLabel: { inside: true } }],
-
-          series: this.linePlot,
-          tooltip: {
-            show: true,
-            trigger: 'axis',
-            showContent: true,
-          },
-        };
-      ]]>
+    <p>config JSON: </p>
+    <td-highlight [content]="config | json" lang="json">
     </td-highlight>
   </mat-tab>
   </mat-tab-group>

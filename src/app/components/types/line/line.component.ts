@@ -1,7 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {
-  ITdLineSeries,
-} from '@covalent/echarts/line';
 
 @Component({
   selector: 'types-line',
@@ -11,65 +8,10 @@ import {
   preserveWhitespaces: true,
 })
 export class TypesLineComponent {
-  showTooltip: boolean = true;
   today: Date = new Date();
 
-  // Chart data
-  linePlot: ITdLineSeries[] = [
-    {
-      name: 'Revenue',
-      type: 'line',
-      itemStyle: {
-        opacity: 0.95,
-        color: '#007373',
-      },
-      data: [
-        {
-          name: this.today.toISOString(),
-          value: [this.today.toISOString(), 200],
-        },
-        {
-          name: new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(),
-          value: [new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(), 50],
-        },
-        {
-          name: new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-          value: [
-            new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
-            100,
-          ],
-        },
-      ],
-    },
-    {
-      name: 'Sales',
-      type: 'line',
-      itemStyle: {
-        opacity: 0.95,
-        color: '#1B98C6',
-      },
-      data: [
-        {
-          name: this.today.toISOString(),
-          value: [this.today.toISOString(), 200],
-        },
-        {
-          name: new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(),
-          value: [new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(), 50],
-        },
-        {
-          name: new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-          value: [
-            new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
-            100,
-          ],
-        },
-      ],
-    },
-  ];
-
   // Chart config
-  lineConfig: any = {
+  config: any = {
     xAxis: [
       {
         show: true,
@@ -78,8 +20,58 @@ export class TypesLineComponent {
       },
     ],
     yAxis: [{ show: true, type: 'value', axisLabel: { inside: true } }],
-
-    series: this.linePlot,
+    series: [
+      {
+        name: 'Revenue',
+        type: 'line',
+        itemStyle: {
+          opacity: 0.95,
+          color: '#007373',
+        },
+        data: [
+          {
+            name: this.today.toISOString(),
+            value: [this.today.toISOString(), 200],
+          },
+          {
+            name: new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(),
+            value: [new Date(this.today.getTime() + 24 * 3600 * 1000).toISOString(), 50],
+          },
+          {
+            name: new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
+            value: [
+              new Date(this.today.getTime() + 2 * 24 * 3600 * 1000).toISOString(),
+              100,
+            ],
+          },
+        ],
+      },
+      {
+        name: 'Sales',
+        type: 'line',
+        itemStyle: {
+          opacity: 0.95,
+          color: '#1B98C6',
+        },
+        data: [
+          {
+            name: this.today.toISOString(),
+            value: [this.today.toISOString(), 200],
+          },
+          {
+            name: new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(),
+            value: [new Date(this.today.getTime() + 10 * 3600 * 1000).toISOString(), 50],
+          },
+          {
+            name: new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
+            value: [
+              new Date(this.today.getTime() + 3 * 24 * 3600 * 1000).toISOString(),
+              100,
+            ],
+          },
+        ],
+      },
+    ],
     tooltip: {
       show: true,
       trigger: 'axis',

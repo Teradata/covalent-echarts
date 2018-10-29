@@ -111,7 +111,7 @@
       <mat-tab>
         <ng-template matTabLabel>Demo</ng-template>
         <td-chart [style.height.px]="300" 
-                  [config]="barConfig">
+                  [config]="config">
         </td-chart>
       </mat-tab>
       <mat-tab>
@@ -125,7 +125,7 @@
           ]]>
         </td-highlight>
         <p>config JSON: </p>
-        <td-highlight [content]="barConfig | json" lang="json">
+        <td-highlight [content]="config | json" lang="json">
         </td-highlight>
       </mat-tab>
     </mat-tab-group>
