@@ -1,5 +1,20 @@
 # Covalent ECharts
 
+### What's Echarts?
+
+[Echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html) is a massive visualization library built on canvas by Baidu and open-sourced under the Apache License as an official Apache Incubator.
+
+### Why Covalent Echarts?
+
+Covalent Echarts is an Angular library built by Teradata with the goal of exposing the powerful Echarts APIs in Angular best practices and standards. Covalent Echarts also includes ease of use features such as auto resizing, event outputs, etc.
+
+The Covalent UI Platform is not required to use Covalent Echarts.
+
+### Why Canvas?
+
+Teradata customers work in massive datasets, the largest on the planet. SVG charts such as D3.js are great for flexibility and customization, but aren't nearly as effective for realtime data and big data. Covalent Echarts removes the complexity in customizing canvas charts building on the incredibly powerful and flexible Echarts APIs, which have provided just about every customization you can imagine.
+
+
 ## Installing Covalent Echarts
 
 ```bash
