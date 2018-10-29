@@ -1,6 +1,6 @@
 <div>
   <mat-card flex>
-    <mat-card-title>Bar Chart (HTML attributes)</mat-card-title>
+    <mat-card-title>Bar Chart</mat-card-title>
     <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
     <mat-divider></mat-divider>
     <mat-card-content>
@@ -97,23 +97,14 @@
               </td-chart>
             ]]>
           </td-highlight>
-          <p>TypeScript: </p>
-          <td-highlight lang="typescript">
-            <![CDATA[
-              import {
-                ITdBarSeries,
-              } from '@covalent/echarts/bar';
-            ]]>
-          </td-highlight>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
 </div>
 <mat-card>
-  <mat-card-title>Bar Chart (TypeScript config object)</mat-card-title>
-  <mat-card-subtitle>Configuration object, acts just like the atomic version but using one configuration @Input
-    property</mat-card-subtitle>
+  <mat-card-title>Bar Chart (JS Object)</mat-card-title>
+  <mat-card-subtitle>Configuration object used to render a chart</mat-card-subtitle>
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-tab-group mat-stretch-tabs dynamicHeight>
@@ -129,88 +120,12 @@
         <td-highlight lang="html">
           <![CDATA[
             <td-chart [style.height.px]="300" 
-                      [config]="barConfig">
+                      [config]="config">
             </td-chart>
-            ]]>
-        </td-highlight>
-        <p>TypeScript: </p>
-        <td-highlight lang="typescript">
-          <![CDATA[
-            import {
-              ITdBarSeries,
-            } from '@covalent/echarts/bar';
-            ...
-            export class BarDocsComponent {
-              // Chart config
-              barConfig: any = {
-                xAxis: [
-                  {
-                    data: [
-                      'Electronics',
-                      'Toys',
-                      'Grocery',
-                      'Appliances',
-                      'Automotive',
-                      'Sports',
-                    ],
-                  },
-                  {
-                    show: true,
-                    type: 'time',
-                    boundaryGap: false,
-                    axisLine: { show: false },
-                    splitLine: { show: false },
-                  },
-                ],
-                yAxis: [
-                  {
-                    show: true,
-                    type: 'value',
-                    axisLabel: { inside: false },
-                    max: 300,
-                  },
-                ],
-                series: this.barPlot,
-                tooltip: {
-                  show: true,
-                  trigger: 'item',
-                  showContent: true,
-                },
-              };
-  
-              // Chart data
-              barPlot: ITdBarSeries[] = [
-              {
-                type: 'bar',
-                itemStyle: {
-                  opacity: 0.95,
-                  color: '#007373',
-                },
-                markPoint: {
-                  data: [{ name: 'test', value: 130, xAxis: 1, yAxis: 130 }],
-                },
-                name: 'Yesterday',
-                data: [150, 130, 150, 120, 150, 120],
-              },
-              {
-                type: 'bar',
-                itemStyle: {
-                  opacity: 0.95,
-                  color: '#1B98C6',
-                },
-                markPoint: {
-                  data: [{ name: 'Target', value: 80, xAxis: 1, yAxis: 121 }],
-                },
-                markLine: {
-                  data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
-                  symbol: 'circle',
-                },
-                name: 'Today',
-                data: [80, 122, 80, 120, 80, 120],
-              },
-            ];
-            ];
           ]]>
+        </td-highlight>
+        <p>config JSON: </p>
+        <td-highlight [content]="barConfig | json" lang="json">
         </td-highlight>
       </mat-tab>
     </mat-tab-group>

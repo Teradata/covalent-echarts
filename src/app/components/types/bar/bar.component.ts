@@ -14,37 +14,6 @@ import {
   preserveWhitespaces: true,
 })
 export class TypesBarComponent {
-  // Chart data
-  barPlot: ITdBarSeries[] = [
-    {
-      type: 'bar',
-      itemStyle: {
-        opacity: 0.95,
-        color: '#007373',
-      },
-      markPoint: {
-        data: [{ name: 'test', value: 130, xAxis: 1, yAxis: 130 }],
-      },
-      name: 'Yesterday',
-      data: [150, 130, 150, 120, 150, 120],
-    },
-    {
-      type: 'bar',
-      itemStyle: {
-        opacity: 0.95,
-        color: '#1B98C6',
-      },
-      markPoint: {
-        data: [{ name: 'Target', value: 80, xAxis: 1, yAxis: 121 }],
-      },
-      markLine: {
-        data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
-        symbol: 'circle',
-      },
-      name: 'Today',
-      data: [80, 122, 80, 120, 80, 120],
-    },
-  ];
 
   // Chart config
   barConfig: any = {
@@ -73,7 +42,36 @@ export class TypesBarComponent {
         max: 300,
       },
     ],
-    series: this.barPlot,
+    series: [
+      {
+        type: 'bar',
+        itemStyle: {
+          opacity: 0.95,
+          color: '#007373',
+        },
+        markPoint: {
+          data: [{ name: 'test', value: 130, xAxis: 1, yAxis: 130 }],
+        },
+        name: 'Yesterday',
+        data: [150, 130, 150, 120, 150, 120],
+      },
+      {
+        type: 'bar',
+        itemStyle: {
+          opacity: 0.95,
+          color: '#1B98C6',
+        },
+        markPoint: {
+          data: [{ name: 'Target', value: 80, xAxis: 1, yAxis: 121 }],
+        },
+        markLine: {
+          data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }],
+          symbol: 'circle',
+        },
+        name: 'Today',
+        data: [80, 122, 80, 120, 80, 120],
+      },
+    ],
     tooltip: {
       show: true,
       trigger: 'item',
