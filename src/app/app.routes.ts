@@ -6,17 +6,17 @@ const routes: Routes = [
     component: DocsAppComponent,
     path: '',
     children: [
-      { path: '', redirectTo: 'types', pathMatch: 'full' },
+      { path: '', redirectTo: 'components', pathMatch: 'full' },
       {
-        path: 'types',
+        path: 'components',
         data: { preload: true },
-        loadChildren: './types/types.module#TypesFeature',
+        loadChildren: './components/components.module#ComponentsModule',
       },
     ],
   },
   {
     path: '**',
-    redirectTo: 'types',
+    redirectTo: 'components',
   },
 ];
 

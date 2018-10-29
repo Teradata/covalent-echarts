@@ -22,14 +22,10 @@ import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentMenuModule } from '@covalent/core/menu';
 import { CovalentHighlightModule } from '@covalent/highlight';
 
-import { ToolbarModule } from '../toolbar/toolbar.module';
-
 import { TypesBarComponent } from './bar/bar.component';
 import { TypesLineComponent } from './line/line.component';
 import { TypesScatterComponent } from './scatter/scatter.component';
 import { TypesCombinationComponent } from './combination/combination.component';
-import { TypesOverviewComponent } from './overview/overview.component';
-import { TypesComponent } from './types.component';
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
@@ -62,7 +58,6 @@ import { chartTypesRoutes } from './types.routes';
     CovalentMediaModule,
     CovalentMenuModule,
     CovalentHighlightModule,
-    ToolbarModule,
     // Covalent Echarts
     CovalentBaseEchartsModule,
     CovalentLineEchartsModule,
@@ -71,12 +66,10 @@ import { chartTypesRoutes } from './types.routes';
     CovalentTooltipEchartsModule,
     chartTypesRoutes],
   declarations: [
-    TypesComponent,
-    TypesOverviewComponent,
     TypesBarComponent,
     TypesLineComponent,
     TypesScatterComponent,
     TypesCombinationComponent,
   ],
 })
-export class TypesFeature {}
+export class TypesModule {}

@@ -2,37 +2,37 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 
 @Component({
-  selector: 'types-overview-main',
+  selector: 'overview-main',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class TypesOverviewComponent {
+export class OverviewComponent {
 
   items: Object[] = [{
     color: 'deep-purple-A700',
     icon: 'insert_chart',
-    route: 'bar',
+    route: ['types', 'bar'],
     title: 'Bar Chart',
   }, 
   {
     color: 'blue-A700',
     icon: 'show_chart',
-    route: 'line',
+    route: ['types', 'line'],
     title: 'Line Chart',
   }, 
   {
-    color: 'pink-A700',
-    icon: 'multiline_chart',
-    route: 'combination',
-    title: 'Combination Chart',
-  },
-  {
     color: 'teal-A700',
     icon: 'bubble_chart',
-    route: 'scatter',
+    route: ['types', 'scatter'],
     title: 'Scatter Chart',
+  },
+  {
+    color: 'pink-A700',
+    icon: 'multiline_chart',
+    route: ['types', 'combination'],
+    title: 'Combination Chart',
   },
 ];
 

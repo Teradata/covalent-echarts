@@ -12,12 +12,12 @@ import 'echarts/lib/component/dataZoom';
 import { tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation } from '@covalent/core/common';
 
 @Component({
-  selector: 'types',
-  templateUrl: './types.component.html',
-  styleUrls: ['./types.component.scss'],
+  selector: 'components',
+  templateUrl: './components.component.html',
+  styleUrls: ['./components.component.scss'],
   animations: [tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation],
 })
-export class TypesComponent {
+export class ComponentsComponent {
   
   miniNav: boolean = false;
 
@@ -25,25 +25,25 @@ export class TypesComponent {
     {
       description: 'Atomic and Config Options',
       icon: 'insert_chart',
-      route: 'bar',
+      route: ['types', 'bar'],
       title: 'Bar',
     },
     {
       description: 'Atomic and Config Options',
       icon: 'show_chart',
-      route: 'line',
+      route: ['types', 'line'],
       title: 'Line',
     },
     {
       description: 'Atomic and Config Options',
       icon: 'bubble_chart',
-      route: 'scatter',
+      route: ['types', 'scatter'],
       title: 'Scatter',
     },
     {
       description: 'Example using line/bar and 2 y-axis',
       icon: 'multiline_chart',
-      route: 'combination',
+      route: ['types', 'combination'],
       title: 'Combination',
     },
   ];
