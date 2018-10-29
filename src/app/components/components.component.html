@@ -74,7 +74,7 @@
         </ng-template>
       </mat-nav-list>
       <div layout="row" class="pad-sm">
-        <button mat-icon-button (click)="toggleMiniNav($event)">
+        <button mat-icon-button (click)="toggleMiniNav()">
           <mat-icon [@tdRotate]="!miniNav" [matTooltip]="miniNav ? 'Open Menu' : 'Close Menu'" matTooltipPosition="right">keyboard_arrow_right</mat-icon>
         </button>
       </div>
