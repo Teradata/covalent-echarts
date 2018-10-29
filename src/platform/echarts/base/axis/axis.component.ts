@@ -24,12 +24,12 @@ export abstract class TdChartAxisComponent implements OnChanges, OnInit, OnDestr
   private _state: any = {
     axisLine: {
       lineStyle: {
-        color: '#CCCCCC',
+        color: '#ABABAB',
       },
     },
     splitLine: {
       lineStyle: {
-        color: '#ECECEC',
+        color: '#ABABAB',
       },
     },
   };

@@ -8,13 +8,11 @@ import {
   ChangeDetectorRef,
   AfterViewInit,
   OnChanges,
-  NgZone,
   OnDestroy,
   DoCheck,
-  ContentChild,
 } from '@angular/core';
 
-import { Subscription, Subject, fromEvent, merge } from 'rxjs';
+import { Subscription, Subject, fromEvent, merge, timer } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import * as echarts from 'echarts/lib/echarts';
@@ -34,7 +32,6 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
   private _subs: Subscription[] = [];
   private _widthSubject: Subject<number> = new Subject<number>();
   private _heightSubject: Subject<number> = new Subject<number>();
-  private _resizing: boolean = false;
 
   private _instance: any;
 
@@ -91,15 +88,11 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
         this._heightSubject.asObservable().pipe(
           debounceTime(100),
         ),
+      ).pipe(
+        debounceTime(100),
       ).subscribe(() => {
-        if (!this._resizing) {
-          this._resizing = true;
-          setTimeout(() => {
-            this._instance.resize();
-            this._resizing = false;
-            this._changeDetectorRef.markForCheck();
-          }, 100);
-        }
+        this._instance.resize();
+        this._changeDetectorRef.markForCheck();
       }),
     );
     this.render();
