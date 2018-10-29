@@ -26,6 +26,8 @@ import { ToolbarModule } from '../toolbar/toolbar.module';
 import { ComponentsComponent } from './components.component';
 import { OverviewComponent } from './overview/overview.component';
 
+import { DocumentationToolsModule } from '../documentation-tools';
+
 import { moduleRoutes } from './components.routes';
 
 @NgModule({
@@ -52,6 +54,7 @@ import { moduleRoutes } from './components.routes';
     CovalentMediaModule,
     CovalentMenuModule,
     ToolbarModule,
+    DocumentationToolsModule,
     moduleRoutes,
   ],
   declarations: [
