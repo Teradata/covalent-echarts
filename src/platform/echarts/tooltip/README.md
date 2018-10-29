@@ -17,7 +17,7 @@ There are also lots of property inputs like:
 + trigger?: 'item' | 'axis' | 'none'
   + Type of triggering.
 
-for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip)
+And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip)
 
 
 # td-chart-series-tooltip
@@ -32,7 +32,14 @@ for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option
   + Sets the JS config object if you choose to not use the property inputs.
   + Note: property inputs override JS config conject properties.
 
-There are also lots of property inputs like `position` and `formatter`.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.tooltip)
+There are also lots of property inputs like:
+
++ formatter?: string | Function
+  + The content formatter of tooltip's floating layer which supports string template and callback function.
++ trigger?: 'item' | 'axis' | 'none'
+  + Type of triggering.
+  
+And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.tooltip)
 
 Note: every series object can contain its own tooltip
 
