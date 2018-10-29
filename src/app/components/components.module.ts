@@ -25,6 +25,7 @@ import { ToolbarModule } from '../toolbar/toolbar.module';
 
 import { ComponentsComponent } from './components.component';
 import { OverviewComponent } from './overview/overview.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 
 import { DocumentationToolsModule } from '../documentation-tools';
 
@@ -60,6 +61,7 @@ import { moduleRoutes } from './components.routes';
   declarations: [
     ComponentsComponent,
     OverviewComponent,
+    GettingStartedComponent,
   ],
 })
 export class ComponentsModule {}

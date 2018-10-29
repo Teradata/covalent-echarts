@@ -1,22 +1,23 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { OverviewComponent } from './overview/overview.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { ComponentsComponent } from './components.component';
 
 const routes: Routes = [
   {
     component: ComponentsComponent,
     path: '',
-    children: [
-      {
+    children: [{
         component: OverviewComponent,
         path: '',
-      },
-      {
+      }, {
+        path: 'getting-started',
+        component: GettingStartedComponent,
+      }, {
         path: 'types',
         loadChildren: './types/types.module#TypesModule',
-      },
-      {
+      }, {
         path: 'atomic',
         loadChildren: './atomic/atomic.module#AtomicModule',
       },

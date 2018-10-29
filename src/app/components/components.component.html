@@ -14,7 +14,9 @@
                           [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? (miniNav ? '64px' : '257px') : '100%'">
     <div td-sidenav-content layout="column" layout-fill>
       <mat-nav-list flex
-        [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
+                    [tdLayoutManageListClose]="!media.query('gt-sm')"
+                    layout="column"
+                    layout-align="center center">
         <a mat-list-item
             color="accent"
             [routerLinkActiveOptions]="{exact:true}"
@@ -24,6 +26,16 @@
                     [matTooltip]="miniNav ? 'Overview' : ''"
                     matTooltipPosition="after">apps</mat-icon>
           <span *ngIf="!miniNav">Overview</span>
+        </a>
+        <a mat-list-item
+            color="accent"
+            [routerLinkActiveOptions]="{exact:true}"
+            [routerLink]="['/components', 'getting-started']"
+            routerLinkActive="active">
+          <mat-icon matListIcon
+                    [matTooltip]="miniNav ? 'Getting Started' : ''"
+                    matTooltipPosition="after">chrome_reader_mode</mat-icon>
+          <span *ngIf="!miniNav">Getting Started</span>
         </a>
         <mat-divider></mat-divider>
         <h3 matSubheader>
