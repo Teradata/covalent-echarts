@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 
 import 'echarts/lib/component/markPoint';
@@ -63,10 +63,14 @@ export class ComponentsComponent {
     },
   ];
 
-  constructor(public media: TdMediaService) {
+  constructor(public media: TdMediaService,
+              private _changeDetectorRef: ChangeDetectorRef) {
   }
 
   toggleMiniNav(): void {
     this.miniNav = !this.miniNav;
+    setTimeout(() => {
+      this._changeDetectorRef.markForCheck();
+    }, 100);
   }
 }

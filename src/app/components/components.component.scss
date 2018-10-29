@@ -2,7 +2,10 @@
   .td-layout-manage-list-sidenav {
     overflow-x: hidden !important;
   }
-  .mat-sidenav {
-    transition: width 0.33s ease-in-out;
+  .td-layout-manage-list {
+    > .mat-sidenav,
+    > .mat-drawer-content {
+      transition: all 0.1s ease-in;
+    }
   }
 }
