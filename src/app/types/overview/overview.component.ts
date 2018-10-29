@@ -1,14 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TdMediaService } from '@covalent/core/media';
 
 @Component({
-  selector: 'app-chart-types-main',
-  templateUrl: './chart-types-main.component.html',
-  styleUrls: ['./chart-types-main.component.scss'],
+  selector: 'types-overview-main',
+  templateUrl: './overview.component.html',
+  styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class ChartTypesMainComponent {
+export class TypesOverviewComponent {
 
   items: Object[] = [{
     color: 'deep-purple-A700',

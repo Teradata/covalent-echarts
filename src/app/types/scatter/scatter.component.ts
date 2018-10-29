@@ -1,16 +1,16 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   ITdScatterSeries,
-} from '../../../../platform/echarts/scatter';
+} from '@covalent/echarts/scatter';
 
 @Component({
-  selector: 'app-scatter-docs',
-  templateUrl: './scatter-docs.component.html',
-  styleUrls: ['./scatter-docs.component.scss'],
+  selector: 'types-scatter',
+  templateUrl: './scatter.component.html',
+  styleUrls: ['./scatter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces:  true,
 })
-export class ScatterDocsComponent {
+export class TypesScatterComponent {
 
   // Chart data
   scatterPlot: ITdScatterSeries[] = [

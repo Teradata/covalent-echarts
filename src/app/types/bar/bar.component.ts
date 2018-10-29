@@ -4,16 +4,16 @@ import {
 } from '@angular/core';
 import {
   ITdBarSeries,
-} from '../../../../platform/echarts/bar';
+} from '@covalent/echarts/bar';
 
 @Component({
-  selector: 'app-bar-docs',
-  templateUrl: './bar-docs.component.html',
-  styleUrls: ['./bar-docs.component.scss'],
+  selector: 'types-bar',
+  templateUrl: './bar.component.html',
+  styleUrls: ['./bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: true,
 })
-export class BarDocsComponent {
+export class TypesBarComponent {
   // Chart data
   barPlot: ITdBarSeries[] = [
     {

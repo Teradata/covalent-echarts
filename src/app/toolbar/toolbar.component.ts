@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 
 import { Dir } from '@angular/cdk/bidi';
 
-import { getDirection, setDirection } from '../../utilities/direction';
+import { getDirection, setDirection } from '../utilities/direction';
 
 @Component({
   selector: 'td-toolbar',

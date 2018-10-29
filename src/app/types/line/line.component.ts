@@ -1,16 +1,16 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   ITdLineSeries,
-} from '../../../../platform/echarts/line';
+} from '@covalent/echarts/line';
 
 @Component({
-  selector: 'app-line-docs',
-  templateUrl: './line-docs.component.html',
-  styleUrls: ['./line-docs.component.scss'],
+  selector: 'types-line',
+  templateUrl: './line.component.html',
+  styleUrls: ['./line.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: true,
 })
-export class LineDocsComponent {
+export class TypesLineComponent {
   showTooltip: boolean = true;
   today: Date = new Date();
 

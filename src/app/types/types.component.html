@@ -1,10 +1,11 @@
-<td-layout-nav toolbarTitle="Covalent ECharts" logo="teradata"
-  navigationRoute="/">
+<td-layout-nav toolbarTitle="Covalent ECharts"
+                logo="teradata"
+                navigationRoute="/">
   <button mat-icon-button td-menu-button (click)="manageList.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-    <td-toolbar flex layout="row" (dirEmitter)="handleDirEmitter($event)"></td-toolbar>
+    <td-toolbar flex></td-toolbar>
   </div>
   <td-layout-manage-list #manageList
                           [containerAutosize]="true"
@@ -14,15 +15,24 @@
     <div td-sidenav-content layout="column" layout-fill>
       <mat-nav-list flex
         [tdLayoutManageListClose]="!media.query('gt-sm')" layout="column" layout-align="center center">
-        <a mat-list-item color="accent" [routerLinkActiveOptions]="{exact:true}" [routerLink]="'/chart-types'" routerLinkActive="active">
-          <mat-icon matListIcon [matTooltip]="miniNav ? 'Chart Types' : ''" matTooltipPosition="after">apps</mat-icon>
-          <span *ngIf="!miniNav">Chart Types</span>
+        <a mat-list-item
+            color="accent"
+            [routerLinkActiveOptions]="{exact:true}"
+            [routerLink]="['/types']"
+            routerLinkActive="active">
+          <mat-icon matListIcon
+                    [matTooltip]="miniNav ? 'Overview' : ''"
+                    matTooltipPosition="after">apps</mat-icon>
+          <span *ngIf="!miniNav">Overview</span>
         </a>
         <mat-divider></mat-divider>
-        <h3 matSubheader *ngIf="!miniNav">Core Charts</h3>
-        <mat-list-item *ngIf="miniNav">
-          <mat-icon matTooltip="Core Charts" matTooltipPosition="after" class="pad-left-xs tc-grey-600">gps_fixed</mat-icon>
-        </mat-list-item>
+        <h3 matSubheader>
+          <span *ngIf="!miniNav">Core Charts</span>
+          <mat-icon *ngIf="miniNav"
+                    matTooltip="Core Charts"
+                    matTooltipPosition="after"
+                    class="pad-left-xs tc-grey-600">gps_fixed</mat-icon>
+        </h3>
         <mat-divider></mat-divider>
         <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="routes">
           <a mat-list-item color="accent" [routerLinkActiveOptions]="{exact:true}" [routerLink]="route.route" routerLinkActive="active">
@@ -32,10 +42,13 @@
           </a>
           <mat-divider *ngIf="last"></mat-divider>
         </ng-template>
-        <h3 matSubheader *ngIf="!miniNav">Atomic Components</h3>
-        <mat-list-item *ngIf="miniNav">
-          <mat-icon matTooltip="Atomic Components" matTooltipPosition="after" class="pad-left-xs tc-grey-600">widgets</mat-icon>
-        </mat-list-item>
+        <h3 matSubheader>
+            <span *ngIf="!miniNav">Atomic Components</span>
+            <mat-icon *ngIf="miniNav"
+                      matTooltip="Core Charts"
+                      matTooltipPosition="after"
+                      class="pad-left-xs tc-grey-600">widgets</mat-icon>
+          </h3>
         <mat-divider></mat-divider>
         <ng-template let-route let-i="index" let-last="last" ngFor [ngForOf]="atomicComponentRoutes">
           <span layout="column" layout-align="center center">

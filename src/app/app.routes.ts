@@ -6,17 +6,17 @@ const routes: Routes = [
     component: DocsAppComponent,
     path: '',
     children: [
-      { path: '', redirectTo: 'chart-types', pathMatch: 'full' },
+      { path: '', redirectTo: 'types', pathMatch: 'full' },
       {
-        path: 'chart-types',
+        path: 'types',
         data: { preload: true },
-        loadChildren: './chart-docs/chart-docs.module#ChartDocsModule',
+        loadChildren: './types/types.module#TypesFeature',
       },
     ],
   },
   {
     path: '**',
-    redirectTo: 'chart-types',
+    redirectTo: 'types',
   },
 ];
 

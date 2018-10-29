@@ -12,12 +12,12 @@ import 'echarts/lib/component/dataZoom';
 import { tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation } from '@covalent/core/common';
 
 @Component({
-  selector: 'app-chart-types-docs',
-  templateUrl: './chart-types-docs.component.html',
-  styleUrls: ['./chart-types-docs.component.scss'],
+  selector: 'types',
+  templateUrl: './types.component.html',
+  styleUrls: ['./types.component.scss'],
   animations: [tdCollapseAnimation, tdRotateAnimation, tdFadeInOutAnimation],
 })
-export class ChartTypesDocsComponent {
+export class TypesComponent {
   
   miniNav: boolean = false;
 

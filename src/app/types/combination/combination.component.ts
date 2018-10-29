@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { comboConfig } from '../../../data/combination-data';
+import { comboConfig } from '../../data/combination-data';
 
 @Component({
-  selector: 'app-combination-docs',
-  templateUrl: './combination-docs.component.html',
-  styleUrls: ['./combination-docs.component.scss'],
+  selector: 'types-combination',
+  templateUrl: './combination.component.html',
+  styleUrls: ['./combination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: true,
 })
-export class CombinationDocsComponent {
+export class TypesCombinationComponent {
 
   /** 
    * This component is intentionally left simple for brevity as the data is 

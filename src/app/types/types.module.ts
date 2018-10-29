@@ -22,23 +22,21 @@ import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentMenuModule } from '@covalent/core/menu';
 import { CovalentHighlightModule } from '@covalent/highlight';
 
-import { ToolbarModule } from './toolbar/toolbar.module';
+import { ToolbarModule } from '../toolbar/toolbar.module';
 
-import {
-  ChartTypesDocsComponent,
-  BarDocsComponent,
-  LineDocsComponent,
-  ScatterDocsComponent,
-  ChartTypesMainComponent,
-  CombinationDocsComponent,
-} from './';
+import { TypesBarComponent } from './bar/bar.component';
+import { TypesLineComponent } from './line/line.component';
+import { TypesScatterComponent } from './scatter/scatter.component';
+import { TypesCombinationComponent } from './combination/combination.component';
+import { TypesOverviewComponent } from './overview/overview.component';
+import { TypesComponent } from './types.component';
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
 import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
 import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
-import { chartTypesRoutes } from './chart-docs.routes';
+import { chartTypesRoutes } from './types.routes';
 
 @NgModule({
   imports: [
@@ -73,12 +71,12 @@ import { chartTypesRoutes } from './chart-docs.routes';
     CovalentTooltipEchartsModule,
     chartTypesRoutes],
   declarations: [
-    ChartTypesDocsComponent,
-    BarDocsComponent,
-    LineDocsComponent,
-    ScatterDocsComponent,
-    ChartTypesMainComponent,
-    CombinationDocsComponent,
+    TypesComponent,
+    TypesOverviewComponent,
+    TypesBarComponent,
+    TypesLineComponent,
+    TypesScatterComponent,
+    TypesCombinationComponent,
   ],
 })
-export class ChartDocsModule {}
+export class TypesFeature {}
