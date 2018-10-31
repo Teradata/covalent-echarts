@@ -80,6 +80,7 @@
     "@covalent/tools": "2.0.0-beta.2",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
+    "d3-hierarchy": "^1.1.8",
     "echarts": "^4.1.0",
     "hammerjs": "^2.0.8",
     "highlight.js": "9.13.1",

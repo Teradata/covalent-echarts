@@ -5,6 +5,7 @@ import { TypesLineComponent } from './line/line.component';
 import { TypesScatterComponent } from './scatter/scatter.component';
 import { TypesCombinationComponent } from './combination/combination.component';
 import { TypesTreeComponent } from './tree/tree.component';
+import { TypesPackedBubblesComponent } from './packed-bubbles/packed-bubbles.component';
 
 const routes: Routes = [{
     component: TypesBarComponent,
@@ -25,6 +26,10 @@ const routes: Routes = [{
   {
     component: TypesTreeComponent,
     path: 'tree',
+  },
+  {
+    component: TypesPackedBubblesComponent,
+    path: 'packed-bubbles',
   },
 ];
 

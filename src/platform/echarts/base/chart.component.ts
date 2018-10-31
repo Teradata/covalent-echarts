@@ -80,16 +80,16 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
     this._subs.push(
       merge(
         fromEvent(window, 'resize').pipe(
-          debounceTime(100),
+          debounceTime(2000),
         ),
         this._widthSubject.asObservable().pipe(
-          debounceTime(100),
+          debounceTime(2000),
         ),
         this._heightSubject.asObservable().pipe(
-          debounceTime(100),
+          debounceTime(2000),
         ),
       ).pipe(
-        debounceTime(100),
+        debounceTime(2000),
       ).subscribe(() => {
         this._instance.resize();
         this._changeDetectorRef.markForCheck();
