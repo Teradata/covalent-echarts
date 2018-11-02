@@ -84,9 +84,11 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
           debounceTime(100),
         ),
         this._widthSubject.asObservable().pipe(
+          distinctUntilChanged(),
           debounceTime(100),
         ),
         this._heightSubject.asObservable().pipe(
+          distinctUntilChanged(),
           debounceTime(100),
         ),
       ).pipe(

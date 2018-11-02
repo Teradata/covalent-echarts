@@ -48,6 +48,7 @@ export {
   ITdBaseStyle,
   ITdTooltipAxisPointer,
   TdAxisPointerAxis,
+  ITdEdgeLabel,
 } from './base.types';
 
 export * from './series/series.component';
@@ -69,4 +70,7 @@ export {
   ITdTreeLineStyle,
   ITdTreeEmphasis,
   ITdTreeLeaves,
+  TdLayout,
+  ITdSeriesForce,
+  ITdCategories,
 } from './series/series.interface';

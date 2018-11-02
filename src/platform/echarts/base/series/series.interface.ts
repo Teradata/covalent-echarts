@@ -89,7 +89,29 @@ export interface ITdSeriesTooltip {
   extraCssText?: string;
 }
 
+export interface ITdSeriesForce {
+  initLayout?: string;
+  repulsion?: any | number;
+  gravity?: number;
+  edgeLength?: any | number;
+  layoutAnimation?: boolean;
+}
+
+export interface ITdCategories {
+  name?: string;
+  symbol?: TdMarkPointSymbol | string;
+  symbolSize?: number | any[];
+  symbolRotate?: number;
+  symbolKeepAspect?: boolean;
+  symbolOffset: any[];
+  itemStyle: ITdItemStyle;
+  label: ITdLabel;
+  emphasis: ITdEmphasis;
+}
+
 export type TdCoordinateSystem = 'cartesian2d' | 'polar';
+
+export type TdLayout = 'none' | 'circluar' | 'force';
 
 /**
  * 'column': By default, the datasetcolumns correspond to the series, so that dataseteach column is a dimension (dimension).

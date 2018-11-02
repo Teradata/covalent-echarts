@@ -1,5 +1,5 @@
 <div>
-  <!-- <mat-card flex>
+  <mat-card flex>
     <mat-card-title>Bar</mat-card-title>
     <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
     <mat-divider></mat-divider>
@@ -100,9 +100,9 @@
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>
-  </mat-card> -->
+  </mat-card>
 </div>
-<mat-card #bubChart>
+<mat-card>
   <mat-card-title>Bar (JS Object)</mat-card-title>
   <mat-card-subtitle>Configuration object used to render a chart</mat-card-subtitle>
   <mat-divider></mat-divider>
@@ -110,13 +110,9 @@
     <mat-tab-group mat-stretch-tabs dynamicHeight>
       <mat-tab>
         <ng-template matTabLabel>Demo</ng-template>
-        <button mat-button (click)="reset()">Reset</button>
-        <!-- <td-chart [style.height.px]="800" 
-                  [config]="config" class="pad" (click)="clickHandler($event)">
-        </td-chart> -->
-        <td-chart #chart [style.height.px]="height" 
-        [config]="graphConfig" class="pad" (click)="clickHandler($event)">
-</td-chart>
+        <td-chart [style.height.px]="300" 
+                  [config]="config">
+        </td-chart>
       </mat-tab>
       <mat-tab>
         <ng-template matTabLabel>Code</ng-template>
@@ -134,11 +130,6 @@
       </mat-tab>
     </mat-tab-group>
   </mat-card-content>
-  <pre>
-    {{event?.componentType}}
-  </pre>
-
 </mat-card>
-<pre>{{graphConfig | json}}</pre>
-<pre>{{nodes | json}}</pre>
+
 <td-readme-loader resourceUrl="platform/echarts/bar/README.md"></td-readme-loader>
