@@ -59,6 +59,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
     this._instance = echarts.init(this._elementRef.nativeElement);
     this._subs.push(
       fromEvent(this._instance, 'click').subscribe((params: any) => {
+        console.log(params)
         this.click.next(params);
       }),
     );
@@ -80,16 +81,16 @@ export class TdChartComponent implements AfterViewInit, OnChanges, DoCheck, OnDe
     this._subs.push(
       merge(
         fromEvent(window, 'resize').pipe(
-          debounceTime(2000),
+          debounceTime(100),
         ),
         this._widthSubject.asObservable().pipe(
-          debounceTime(2000),
+          debounceTime(100),
         ),
         this._heightSubject.asObservable().pipe(
-          debounceTime(2000),
+          debounceTime(100),
         ),
       ).pipe(
-        debounceTime(2000),
+        debounceTime(100),
       ).subscribe(() => {
         this._instance.resize();
         this._changeDetectorRef.markForCheck();

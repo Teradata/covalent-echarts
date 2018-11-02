@@ -52,6 +52,12 @@ export class ComponentsComponent {
       route: ['types', 'tree'],
       title: 'Tree',
     },
+    {
+      description: 'Atomic and Config Options',
+      icon: 'bubble_chart',
+      route: ['types', 'packed-bubbles'],
+      title: 'Custom: Packed Bubbles',
+    },
   ];
 
   atomicComponentRoutes: Object[] = [

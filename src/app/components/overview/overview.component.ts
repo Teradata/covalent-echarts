@@ -40,6 +40,12 @@ export class OverviewComponent {
     route: ['types', 'tree'],
     title: 'Tree Chart',
   },
+  {
+    color: 'green-A700',
+    icon: 'bubble_chart',
+    route: ['types', 'packed-bubbles'],
+    title: 'Custom: Packed Bubbles',
+  },
 ];
 
 atomicComponents: Object[] = [
