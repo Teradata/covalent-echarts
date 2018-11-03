@@ -34,6 +34,7 @@ import { CovalentLineEchartsModule } from '@covalent/echarts/line';
 import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
 import { CovalentScatterEchartsModule } from '@covalent/echarts/scatter';
 import { CovalentTreeEchartsModule } from '@covalent/echarts/tree';
+import { CovalentGraphEchartsModule } from '@covalent/echarts/graph';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 import { moduleRoutes } from './types.routes';
 
@@ -70,6 +71,8 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     CovalentScatterEchartsModule,
     CovalentTooltipEchartsModule,
     CovalentTreeEchartsModule,
+    CovalentTreeEchartsModule,
+    CovalentGraphEchartsModule,
     // internal
     DocumentationToolsModule,
     moduleRoutes,

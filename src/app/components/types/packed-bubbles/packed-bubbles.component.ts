@@ -4,6 +4,8 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
+  ViewChildren,
+  QueryList,
 } from '@angular/core';
 import 'echarts/lib/chart/custom';
 import 'echarts/lib/chart/graph';
@@ -21,8 +23,9 @@ import { ConnectedPositionStrategy } from '@angular/cdk/overlay';
   preserveWhitespaces: true,
 })
 export class TypesPackedBubblesComponent implements AfterViewInit {
-  @ViewChild(TdChartComponent, { read: ElementRef })
-  chartComponent: ElementRef<any>;
+
+  @ViewChild('atomic') atomic: ElementRef<HTMLElement>;
+  @ViewChild('jsObject') jsObject: ElementRef<HTMLElement>;
 
   colorCount: number = 0;
   graphCount: number = 0;
@@ -66,11 +69,12 @@ export class TypesPackedBubblesComponent implements AfterViewInit {
   graphConfig: any;
 
   checkSize(): void {
+    console.log(this.atomic.nativeElement);
     this.width = (<HTMLElement>(
-      this.chartComponent.nativeElement
+      this.atomic.nativeElement
     )).getBoundingClientRect().width;
     this.height = (<HTMLElement>(
-      this.chartComponent.nativeElement
+      this.atomic.nativeElement
     )).getBoundingClientRect().height;
     console.log(this.width, this.height);
   }
