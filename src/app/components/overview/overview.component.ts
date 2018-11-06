@@ -41,6 +41,12 @@ export class OverviewComponent {
     title: 'Tree Chart',
   },
   {
+    color: 'orange-A700',
+    icon: 'bubble_chart',
+    route: ['types', 'graph'],
+    title: 'Graph Chart',
+  },
+  {
     color: 'green-A700',
     icon: 'bubble_chart',
     route: ['types', 'packed-bubbles'],

@@ -177,6 +177,7 @@ export class TdChartSeriesGraphComponent extends TdSeriesComponent<'graph'> impl
       symbolRotate: this.symbolRotate,
       symbolKeepAspect: this.symbolKeepAspect,
       symbolOffset: this.symbolOffset,
+      focusNodeAdjacency: this.focusNodeAdjacency,
       edgeSymbol: this.edgeSymbol,
       edgeSymbolSize: this.edgeSymbolSize,
       cursor: this.cursor,
