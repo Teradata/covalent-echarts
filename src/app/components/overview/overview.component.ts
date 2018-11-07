@@ -42,7 +42,7 @@ export class OverviewComponent {
   },
   {
     color: 'orange-A700',
-    icon: 'bubble_chart',
+    icon: 'grain',
     route: ['types', 'graph'],
     title: 'Graph Chart',
   },

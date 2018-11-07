@@ -54,7 +54,7 @@ export class ComponentsComponent {
     },
     {
       description: 'Atomic and Config Options',
-      icon: 'bubble_chart',
+      icon: 'grain',
       route: ['types', 'graph'],
       title: 'Graph',
     },

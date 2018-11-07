@@ -1,7 +1,7 @@
 <div>
   <mat-card flex>
     <mat-card-title>Graph</mat-card-title>
-    <mat-card-subtitle>Individual component configurations, series</mat-card-subtitle>
+    <mat-card-subtitle>Individual series component configuration</mat-card-subtitle>
     <mat-divider></mat-divider>
     <mat-card-content>
       <mat-tab-group mat-stretch-tabs dynamicHeight>
@@ -10,8 +10,7 @@
           <td-chart [style.height.px]="800"
                     [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
             <td-chart-series td-graph
-                            [data]="[
-                            { x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
+                            [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
                               symbolSize: 4.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
                             { x: -134.2215, y: -862.7517, id: 'backbone', name: 'backbone',
                               symbolSize: 6.1554675, itemStyle: { normal: { color: '#c71969' } } },
