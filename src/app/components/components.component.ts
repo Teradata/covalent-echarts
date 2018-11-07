@@ -55,8 +55,8 @@ export class ComponentsComponent {
     {
       description: 'Atomic and Config Options',
       icon: 'bubble_chart',
-      route: ['types', 'packed-bubbles'],
-      title: 'Custom: Packed Bubbles',
+      route: ['types', 'graph'],
+      title: 'Graph',
     },
   ];
 

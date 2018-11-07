@@ -28,7 +28,6 @@ import { TypesScatterComponent } from './scatter/scatter.component';
 import { TypesCombinationComponent } from './combination/combination.component';
 import { TypesTreeComponent } from './tree/tree.component';
 import { TypesGraphComponent } from './graph/graph.component';
-import { TypesPackedBubblesComponent } from './packed-bubbles/packed-bubbles.component';
 
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentLineEchartsModule } from '@covalent/echarts/line';
@@ -84,7 +83,6 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     TypesScatterComponent,
     TypesCombinationComponent,
     TypesTreeComponent,
-    TypesPackedBubblesComponent,
     TypesGraphComponent,
   ],
 })
