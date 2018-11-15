@@ -18,7 +18,7 @@ Teradata customers work in massive datasets, the largest on the planet. SVG char
 ## Installing Covalent Echarts
 
 ```bash
-npm install echarts --save
+npm install --save echarts
 ```
 
 ```bash
