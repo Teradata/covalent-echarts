@@ -73,7 +73,6 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     CovalentScatterEchartsModule,
     CovalentTooltipEchartsModule,
     CovalentTreeEchartsModule,
-    CovalentTreeEchartsModule,
     CovalentGraphEchartsModule,
     CovalentSankeyEchartsModule,
     // internal
