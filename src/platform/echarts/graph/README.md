@@ -16,14 +16,12 @@ There are also lots of property inputs like:
   + It can be used to refer the component in option or API.
 + name?: string
   + Series name used for displaying in tooltip and filtering with legend.
-+ data?: any[]
-  + Data array of series, nodes is an alias of data.
-+ nodes?: any[]
-  + Nodes is an alias of data.
-+ links?: any[]
-  + Relational data between nodes.
-+ edges?: any[]
-  + Edges is an alias of links.
++ color?: any
+  + Global color for the series.
++ nodes?: any[] // or data?: any[]
+  + Data array of series.
++ links?: any[] // or edges?: any[]
+  + The links between nodes.
 
 And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph)
 

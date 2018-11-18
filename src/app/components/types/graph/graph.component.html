@@ -1,13 +1,13 @@
 <div>
   <mat-card flex>
     <mat-card-title>Graph</mat-card-title>
-    <mat-card-subtitle>Individual series component configuration</mat-card-subtitle>
+    <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
     <mat-divider></mat-divider>
     <mat-card-content>
       <mat-tab-group mat-stretch-tabs dynamicHeight>
         <mat-tab>
           <ng-template matTabLabel>Demo</ng-template>
-          <td-chart [style.height.px]="800"
+          <td-chart [style.height.px]="500"
                     [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
             <td-chart-series td-graph
                             [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
@@ -314,6 +314,29 @@
                             [roam]="true"
                             [focusNodeAdjacency]="true"
                             [label]="{ emphasis: { position: 'right', show: true } }">
+              <td-chart-tooltip [trigger]="'item'">
+                <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
+                  <ng-container *ngIf="params">
+                    <div layout="row" layout-align="start center">
+                      <ng-container *ngIf="params.dataType === 'node'">
+                        <mat-icon [style.color]="params.color">device_hub</mat-icon>
+                        <span class="mat-caption pad-left-sm">
+                          {{params.data.name}}
+                        </span>
+                      </ng-container>
+                      <ng-container *ngIf="params.dataType === 'edge'">
+                        <span class="mat-caption pad-left-sm">
+                          {{params.data.source}}
+                        </span>
+                        <mat-icon>arrow_forward</mat-icon>
+                        <span class="mat-caption">
+                          {{params.data.target}}
+                        </span>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </td-chart-tooltip>
             </td-chart-series>
           </td-chart>
         </mat-tab>
@@ -322,11 +345,10 @@
           <p>HTML: </p>
           <td-highlight lang="html">
             <![CDATA[
-            <td-chart [style.height.px]="800"
+            <td-chart [style.height.px]="500"
             [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
               <td-chart-series td-graph
-                              [data]="[
-                              { x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
+                              [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
                                 symbolSize: 4.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
                               { x: -134.2215, y: -862.7517, id: 'backbone', name: 'backbone',
                                 symbolSize: 6.1554675, itemStyle: { normal: { color: '#c71969' } } },
@@ -630,6 +652,29 @@
                               [roam]="true"
                               [focusNodeAdjacency]="true"
                               [label]="{ emphasis: { position: 'right', show: true } }">
+                <td-chart-tooltip [trigger]="'item'">
+                  <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
+                    <ng-container *ngIf="params">
+                      <div layout="row" layout-align="start center">
+                        <ng-container *ngIf="params.dataType === 'node'">
+                          <mat-icon [style.color]="params.color">device_hub</mat-icon>
+                          <span class="mat-caption pad-left-sm">
+                            { {params.data.name} }
+                          </span>
+                        </ng-container>
+                        <ng-container *ngIf="params.dataType === 'edge'">
+                          <span class="mat-caption pad-left-sm">
+                            { {params.data.source} }
+                          </span>
+                          <mat-icon>arrow_forward</mat-icon>
+                          <span class="mat-caption">
+                            { {params.data.target} }
+                          </span>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </ng-template>
+                </td-chart-tooltip>
               </td-chart-series>
             </td-chart>
             ]]>
@@ -647,7 +692,7 @@
     <mat-tab-group mat-stretch-tabs dynamicHeight>
       <mat-tab>
         <ng-template matTabLabel>Demo</ng-template>
-        <td-chart [style.height.px]="800" 
+        <td-chart [style.height.px]="500" 
                   [config]="config">
         </td-chart>
       </mat-tab>
