@@ -54,6 +54,11 @@ export class ComponentsComponent {
     },
     {
       description: 'Atomic and Config Options',
+      icon: 'call_split',
+      route: ['types', 'sankey'],
+      title: 'Sankey',
+    },
+    {
       icon: 'grain',
       route: ['types', 'graph'],
       title: 'Graph',

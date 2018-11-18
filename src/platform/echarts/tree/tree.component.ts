@@ -14,10 +14,41 @@ import {
   ITdLineStyle,
   ITdSeries,
   TdSeriesComponent,
-  TdOrient,
-  ITdTreeLeaves,
-  ITdTreeEmphasis,
+  ITdEmphasis,
+  ITdShadow,
 } from '@covalent/echarts/base';
+
+/**
+ * ECHART OPTION DOCS
+ * https://ecomfe.github.io/echarts-doc/public/en/option.html#series-tree
+ *
+ */
+
+/** 
+ * LR - from left to right
+ * RL - from right to left
+ * TB - from top to bottom
+ * BT - from bottom to top
+ */
+export type TdTreeOrient = 'LR' | 'RL'| 'TB' | 'BT';
+
+export type TdTreeLayout = 'orthogonal' | 'radial';
+
+export interface ITdTreeEmphasisLineStyle extends ITdShadow {
+  color?: any;
+  width?: number;
+  curveness?: number;
+}
+
+export interface ITdTreeEmphasis extends ITdEmphasis {
+  lineStyle: ITdTreeEmphasisLineStyle;
+}
+
+export interface ITdTreeLeaves {
+  label?: ITdLabel;
+  itemStyle?: ITdItemStyle;
+  emphasis: ITdEmphasis;
+}
 
 interface ITdTreeSeries extends ITdSeries<'tree'> {
   zlevel?: number;
@@ -28,8 +59,8 @@ interface ITdTreeSeries extends ITdSeries<'tree'> {
   bottom?: string | number;
   width?: string | number;
   height?: string | number;
-  layout?: string;
-  orient?: TdOrient;
+  layout?: TdTreeLayout;
+  orient?: TdTreeOrient;
   symbol?: TdMarkPointSymbol | string; // string added for custom SVG, URL or dataURI
   symbolSize?: number;
   symbolRotate?: number;
@@ -44,7 +75,6 @@ interface ITdTreeSeries extends ITdSeries<'tree'> {
   leaves?: ITdTreeLeaves;
   emphasis?: ITdTreeEmphasis;
   data: any[];
-  tooltip: ITdSeriesTooltip;
 }
 
 @Component({
@@ -61,7 +91,7 @@ export class TdChartSeriesTreeComponent extends TdSeriesComponent<'tree'> implem
   @Input('config') config: any = {};
   @Input('id') id: string;
   @Input('name') name: string;
-  @Input('data') data: any[];
+  @Input('data') data: any;
   @Input('zlevel') zlevel: number;
   @Input('z') z: number;
   @Input('left') left: string | number;
@@ -70,8 +100,8 @@ export class TdChartSeriesTreeComponent extends TdSeriesComponent<'tree'> implem
   @Input('bottom') bottom: string | number;
   @Input('width') width: string | number;
   @Input('height') height: string | number;
-  @Input('layout') layout: string;
-  @Input('orient') orient: TdOrient;
+  @Input('layout') layout: TdTreeLayout;
+  @Input('orient') orient: TdTreeOrient;
   @Input('symbol') symbol: TdMarkPointSymbol | string; // string added for custom SVG, URL or dataURI
   @Input('symbolSize') symbolSize: number; // string added for custom SVG, URL or dataURI
   @Input('symbolRotate') symbolRotate: number;

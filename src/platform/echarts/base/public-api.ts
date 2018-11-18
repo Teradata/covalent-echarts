@@ -66,11 +66,4 @@ export {
   TdSeriesLayoutBy,
   TdProgressiveChunkMode,
   ITdMarkAreaEmphasis,
-  TdOrient,
-  ITdTreeLineStyle,
-  ITdTreeEmphasis,
-  ITdTreeLeaves,
-  TdLayout,
-  ITdSeriesForce,
-  ITdCategories,
 } from './series/series.interface';

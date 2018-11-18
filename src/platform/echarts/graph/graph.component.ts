@@ -16,15 +16,33 @@ import {
   ITdMarkArea,
   ITdSeries,
   ITdLabel,
-  TdLayout,
-  TdProgressiveChunkMode,
   TdSeriesComponent,
-  ITdSeriesForce,
   TdMarkPointSymbol,
   ITdLineStyle,
   ITdEdgeLabel,
-  ITdCategories,
 } from '@covalent/echarts/base';
+
+export interface ITdCategories {
+  name?: string;
+  symbol?: TdMarkPointSymbol | string;
+  symbolSize?: number | any[];
+  symbolRotate?: number;
+  symbolKeepAspect?: boolean;
+  symbolOffset: any[];
+  itemStyle: ITdItemStyle;
+  label: ITdLabel;
+  emphasis: ITdEmphasis;
+}
+
+export interface ITdGraphForce {
+  initLayout?: string;
+  repulsion?: any | number;
+  gravity?: number;
+  edgeLength?: any | number;
+  layoutAnimation?: boolean;
+}
+
+export type TdGraphLayout = 'none' | 'circluar' | 'force';
 
 export interface ITdGraphSeries extends ITdSeries<'graph'> {
   legendHoverLink?: boolean;
@@ -36,8 +54,8 @@ export interface ITdGraphSeries extends ITdSeries<'graph'> {
   geoIndex?: number;
   hoverAnimation?: boolean;
   circular?: object;
-  force?: ITdSeriesForce;
-  layout?: TdLayout; 
+  force?: ITdGraphForce;
+  layout?: TdGraphLayout; 
   nodeScaleRatio?: boolean;
   draggable?: boolean;
   symbol?: TdMarkPointSymbol | string;
@@ -103,8 +121,8 @@ export class TdChartSeriesGraphComponent extends TdSeriesComponent<'graph'> impl
 @Input('geoIndex') geoIndex: number;
 @Input('hoverAnimation') hoverAnimation: boolean;
 @Input('circular') circular: object;
-@Input('force') force: ITdSeriesForce;
-@Input('layout') layout: TdLayout; 
+@Input('force') force: ITdGraphForce;
+@Input('layout') layout: TdGraphLayout; 
 @Input('nodeScaleRatio') nodeScaleRatio: boolean;
 @Input('draggable') draggable: boolean;
 @Input('symbol') symbol: TdMarkPointSymbol | string;

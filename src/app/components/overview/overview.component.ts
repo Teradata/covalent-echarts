@@ -41,6 +41,12 @@ export class OverviewComponent {
     title: 'Tree Chart',
   },
   {
+    color: 'green-A700',
+    icon: 'call_split',
+    route: ['types', 'sankey'],
+    title: 'Sankey Chart',
+  },
+  {
     color: 'orange-A700',
     icon: 'grain',
     route: ['types', 'graph'],
