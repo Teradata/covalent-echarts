@@ -53,6 +53,12 @@ export class ComponentsComponent {
       title: 'Tree',
     },
     {
+      description: 'Example using Treemap',
+      icon: 'dashboard',
+      route: ['types', 'treemap'],
+      title: 'Treemap',
+    },
+    {
       description: 'Atomic and Config Options',
       icon: 'call_split',
       route: ['types', 'sankey'],
