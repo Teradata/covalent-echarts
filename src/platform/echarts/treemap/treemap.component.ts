@@ -77,7 +77,7 @@ export interface ITdTreeMapBreadcrumb {
   height?: string | number;
   emptyItemWidth?: string | number;
   itemStyle?: ITdItemStyle;
-  emphasis?: ITdTreeEmphasis,
+  emphasis?: ITdTreeEmphasis;
 }
 
 interface ITdTreeMapSeries extends ITdSeries<'treemap'> {

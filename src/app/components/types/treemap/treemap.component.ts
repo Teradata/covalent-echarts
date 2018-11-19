@@ -30,24 +30,24 @@ export class TypesTreeMapComponent {
             {
               value: 12,
               name: 'DefaultAccessPlugin.bundle',
-              path: 'Accounts/Access/DefaultAccessPlugin.bundle'
+              path: 'Accounts/Access/DefaultAccessPlugin.bundle',
             },
             {
               value: 28,
               name: 'FacebookAccessPlugin.bundle',
-              path: 'Accounts/Access/FacebookAccessPlugin.bundle'
+              path: 'Accounts/Access/FacebookAccessPlugin.bundle',
             },
             {
               value: 20,
               name: 'LinkedInAccessPlugin.bundle',
-              path: 'Accounts/Access/LinkedInAccessPlugin.bundle'
+              path: 'Accounts/Access/LinkedInAccessPlugin.bundle',
             },
             {
               value: 16,
               name: 'TencentWeiboAccessPlugin.bundle',
-              path: 'Accounts/Access/TencentWeiboAccessPlugin.bundle'
-            }
-          ]
+              path: 'Accounts/Access/TencentWeiboAccessPlugin.bundle',
+            },
+          ],
         },
         {
           value: 92,
@@ -57,27 +57,27 @@ export class TypesTreeMapComponent {
             {
               value: 24,
               name: 'FacebookAuthenticationPlugin.bundle',
-              path: 'Accounts/Authentication/FacebookAuthenticationPlugin.bundle'
+              path: 'Accounts/Authentication/FacebookAuthenticationPlugin.bundle',
             },
             {
               value: 16,
               name: 'LinkedInAuthenticationPlugin.bundle',
-              path: 'Accounts/Authentication/LinkedInAuthenticationPlugin.bundle'
+              path: 'Accounts/Authentication/LinkedInAuthenticationPlugin.bundle',
             },
             {
               value: 20,
               name: 'TencentWeiboAuthenticationPlugin.bundle',
-              path: 'Accounts/Authentication/TencentWeiboAuthenticationPlugin.bundle'
+              path: 'Accounts/Authentication/TencentWeiboAuthenticationPlugin.bundle',
             },
             {
               value: 16,
               name: 'TwitterAuthenticationPlugin.bundle',
-              path: 'Accounts/Authentication/TwitterAuthenticationPlugin.bundle'
+              path: 'Accounts/Authentication/TwitterAuthenticationPlugin.bundle',
             },
             {
               value: 16,
               name: 'WeiboAuthenticationPlugin.bundle',
-              path: 'Accounts/Authentication/WeiboAuthenticationPlugin.bundle'
+              path: 'Accounts/Authentication/WeiboAuthenticationPlugin.bundle',
             },
           ],
         },
@@ -89,7 +89,7 @@ export class TypesTreeMapComponent {
             {
               value: 12,
               name: 'SPAAccountsNotificationPlugin.bundle',
-              path: 'Accounts/Notification/SPAAccountsNotificationPlugin.bundle'
+              path: 'Accounts/Notification/SPAAccountsNotificationPlugin.bundle',
             },
           ],
         },
@@ -108,7 +108,7 @@ export class TypesTreeMapComponent {
             {
               value: 744,
               name: 'Contents',
-              path: 'AddressBook Plug-Ins/CardDAVPlugin.sourcebundle/Contents'
+              path: 'AddressBook Plug-Ins/CardDAVPlugin.sourcebundle/Contents',
             },
           ],
         },
@@ -120,7 +120,7 @@ export class TypesTreeMapComponent {
             {
               value: 28,
               name: 'Contents',
-              path: 'AddressBook Plug-Ins/DirectoryServices.sourcebundle/Contents'
+              path: 'AddressBook Plug-Ins/DirectoryServices.sourcebundle/Contents',
             },
           ],
         },
@@ -132,7 +132,7 @@ export class TypesTreeMapComponent {
             {
               value: 680,
               name: 'Contents',
-              path: 'AddressBook Plug-Ins/Exchange.sourcebundle/Contents'
+              path: 'AddressBook Plug-Ins/Exchange.sourcebundle/Contents',
             },
           ],
         },
@@ -144,7 +144,7 @@ export class TypesTreeMapComponent {
             {
               value: 432,
               name: 'Contents',
-              path: 'AddressBook Plug-Ins/LDAP.sourcebundle/Contents'
+              path: 'AddressBook Plug-Ins/LDAP.sourcebundle/Contents',
             },
           ],
         },
@@ -156,7 +156,7 @@ export class TypesTreeMapComponent {
             {
               value: 20,
               name: 'Contents',
-              path: 'AddressBook Plug-Ins/LocalSource.sourcebundle/Contents'
+              path: 'AddressBook Plug-Ins/LocalSource.sourcebundle/Contents',
             },
           ],
         },
@@ -185,7 +185,7 @@ export class TypesTreeMapComponent {
         },
         levels: [{ itemStyle: { normal: { borderWidth: 0, gapWidth: 5 } } }, 
                  { itemStyle: { normal: { gapWidth: 1 } } },
-                 { colorSaturation: [0.35, 0.5], itemStyle: { normal: { gapWidth: 1, borderColorSaturation: 0.6 } } }
+                 { colorSaturation: [0.35, 0.5], itemStyle: { normal: { gapWidth: 1, borderColorSaturation: 0.6 } } },
                 ],
         label: {
           show: true,
