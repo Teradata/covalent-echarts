@@ -42,7 +42,7 @@ export interface ITdGraphForce {
   layoutAnimation?: boolean;
 }
 
-export type TdGraphLayout = 'none' | 'circluar' | 'force';
+export type TdGraphLayout = 'none' | 'circular' | 'force';
 
 export interface ITdGraphSeries extends ITdSeries<'graph'> {
   legendHoverLink?: boolean;
