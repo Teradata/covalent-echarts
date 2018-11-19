@@ -165,10 +165,6 @@ export class TdChartSeriesTreeMapComponent extends TdSeriesComponent<'treemap'> 
 
   getConfig(): any {
     return {
-      id: this.id,
-      type: this.type,
-      name: this.name,
-      data: this.data,
       zlevel: this.zlevel,
       z: this.z,
       left: this.left,
@@ -198,7 +194,6 @@ export class TdChartSeriesTreeMapComponent extends TdSeriesComponent<'treemap'> 
       upperLabel: this.upperLabel,
       breadcrumb: this.breadcrumb,
       emphasis: this.emphasis,
-      tooltip: this.tooltip,
     };
   }
 }
