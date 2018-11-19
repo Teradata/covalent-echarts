@@ -1,689 +1,145 @@
-<div>
-  <mat-card flex>
-    <mat-card-title>Graph</mat-card-title>
-    <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <mat-tab-group mat-stretch-tabs dynamicHeight>
-        <mat-tab>
-          <ng-template matTabLabel>Demo</ng-template>
+<mat-card flex>
+  <mat-card-title>Graph</mat-card-title>
+  <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-tab-group mat-stretch-tabs dynamicHeight>
+      <mat-tab>
+        <ng-template matTabLabel>Demo</ng-template>
+        <td-chart [style.height.px]="500"
+                  [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
+          <td-chart-tooltip [trigger]="'item'">
+            <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
+              <ng-container *ngIf="params">
+                <div layout="row" layout-align="start center">
+                  <ng-container *ngIf="params.dataType === 'node'">
+                    <mat-icon [style.color]="params.color">device_hub</mat-icon>
+                    <span class="mat-caption pad-left-sm">
+                      {{params.data.name}}
+                    </span>
+                  </ng-container>
+                  <ng-container *ngIf="params.dataType === 'edge'">
+                    <span class="mat-caption pad-left-sm">
+                      {{params.data.source}}
+                    </span>
+                    <mat-icon>arrow_forward</mat-icon>
+                    <span class="mat-caption">
+                      {{params.data.target}}
+                    </span>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </ng-template>
+          </td-chart-tooltip>
+          <td-chart-series td-graph
+                          [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
+                            symbolSize: 40.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
+                          { x: -134.2215, y: -862.7517, id: 'backbone', name: 'backbone',
+                            symbolSize: 60.1554675, itemStyle: { normal: { color: '#c71969' } } },
+                          { x: -818.97516, y: 624.50604, id: 'angular', name: 'angular',
+                            symbolSize: 60.7816025, itemStyle: { normal: { color: '#c71969' } } },
+                          { x: -710.59204, y: 120.37976, id: 'socket.io', name: 'socket.io',
+                            symbolSize: 19.818306, itemStyle: { normal: { color: '#c71919' } } },
+                          { x: -127.03764, y: 477.03778, id: 'underscore', name: 'underscore',
+                            symbolSize: 40.0429485, itemStyle: { normal: { color: '#c76919' } } },
+                          { x: -338.03128, y: -404.62427, id: 'vue.js', name: 'vue.js',
+                            symbolSize: 80.163814, itemStyle: { normal: { color: '#8419c7' } } },
+                          { x: 118.30771, y: -380.16626, id: 'lodash', name: 'lodash',
+                            symbolSize: 18.935852, itemStyle: { normal: { color: '#c76919' } } },
+                          { x: 381.10724, y: -531.28235, id: 'dateformat', name: 'dateformat',
+                            symbolSize: 30.3863845, itemStyle: { normal: { color: '#c71969' } } },
+                          { x: -644.2716, y: -230.14833, id: 'express', name: 'express',
+                            symbolSize: 49.608772, itemStyle: { normal: { color: '#c71919' } } }]"
+                          [edges]="[{ source: 'jquery', target: 'backbone' },
+                                    { source: 'jquery', target: 'vue.js' },
+                                    { source: 'jquery', target: 'lodash' },
+                                    { source: 'jquery', target: 'dateformat' },
+                                    { source: 'backbone', target: 'underscore' },
+                                    { source: 'faye', target: 'cookiejar' },
+                                    { source: 'socket.io', target: 'express' },
+                                    { source: 'socket.io', target: 'faye' },
+                                    { source: 'vue.js', target: 'underscore' },
+                                    { source: 'vue.js', target: 'dateformat' },
+                                    { source: 'express', target: 'socket.io' },
+                                    { source: 'express', target: 'dateformat' }]"
+                          [roam]="true"
+                          [focusNodeAdjacency]="true"
+                          [label]="{ emphasis: { position: 'right', show: true } }">
+          </td-chart-series>
+        </td-chart>
+      </mat-tab>
+      <mat-tab>
+        <ng-template matTabLabel>Code</ng-template>
+        <p>HTML: </p>
+        <td-highlight lang="html">
+          <![CDATA[
           <td-chart [style.height.px]="500"
                     [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
+            <td-chart-tooltip [trigger]="'item'">
+              <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
+                <ng-container *ngIf="params">
+                  <div layout="row" layout-align="start center">
+                    <ng-container *ngIf="params.dataType === 'node'">
+                      <mat-icon [style.color]="params.color">device_hub</mat-icon>
+                      <span class="mat-caption pad-left-sm">
+                        { {params.data.name} }
+                      </span>
+                    </ng-container>
+                    <ng-container *ngIf="params.dataType === 'edge'">
+                      <span class="mat-caption pad-left-sm">
+                        { {params.data.source} }
+                      </span>
+                      <mat-icon>arrow_forward</mat-icon>
+                      <span class="mat-caption">
+                        { {params.data.target} }
+                      </span>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </ng-template>
+            </td-chart-tooltip>
             <td-chart-series td-graph
                             [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
-                              symbolSize: 4.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
+                              symbolSize: 40.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
                             { x: -134.2215, y: -862.7517, id: 'backbone', name: 'backbone',
-                              symbolSize: 6.1554675, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: -75.53079, y: -734.4221, id: 'underscore', name: 'underscore',
-                              symbolSize: 100, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: -818.97516, y: 624.50604, id: 'faye', name: 'faye',
-                              symbolSize: 0.67816025, itemStyle: { normal: { color: '#c71969' } } },
+                              symbolSize: 60.1554675, itemStyle: { normal: { color: '#c71969' } } },
+                            { x: -818.97516, y: 624.50604, id: 'angular', name: 'angular',
+                              symbolSize: 60.7816025, itemStyle: { normal: { color: '#c71969' } } },
                             { x: -710.59204, y: 120.37976, id: 'socket.io', name: 'socket.io',
                               symbolSize: 19.818306, itemStyle: { normal: { color: '#c71919' } } },
-                            { x: 71.52897, y: -612.5541, id: 'requirejs', name: 'requirejs',
-                              symbolSize: 4.0862627, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: 1202.1166, y: -556.3107, id: 'amdefine', name: 'amdefine',
-                              symbolSize: 2.3822114, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: -1150.2018, y: 378.15536, id: 'mongoose', name: 'mongoose',
-                              symbolSize: 10.81118, itemStyle: { normal: { color: '#1984c7' } } },
-                            { x: -127.03764, y: 477.03778, id: 'underscore.deferred', name: 'underscore.deferred',
-                              symbolSize: 0.40429485, itemStyle: { normal: { color: '#c76919' } } },
-                            { x: -338.03128, y: -404.62427, id: 'cheerio', name: 'cheerio',
-                              symbolSize: 8.163814, itemStyle: { normal: { color: '#8419c7' } } },
+                            { x: -127.03764, y: 477.03778, id: 'underscore', name: 'underscore',
+                              symbolSize: 40.0429485, itemStyle: { normal: { color: '#c76919' } } },
+                            { x: -338.03128, y: -404.62427, id: 'vue.js', name: 'vue.js',
+                              symbolSize: 80.163814, itemStyle: { normal: { color: '#8419c7' } } },
                             { x: 118.30771, y: -380.16626, id: 'lodash', name: 'lodash',
                               symbolSize: 18.935852, itemStyle: { normal: { color: '#c76919' } } },
-                            { x: -697.4635, y: 649.6795, id: 'faye-websocket', name: 'faye-websocket',
-                              symbolSize: 1.0128845, itemStyle: { normal: { color: '#c71969' } } },
                             { x: 381.10724, y: -531.28235, id: 'dateformat', name: 'dateformat',
-                              symbolSize: 3.3863845, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: 317.77667, y: -224.0287, id: 'mkdirp', name: 'mkdirp',
-                              symbolSize: 23.713282, itemStyle: { normal: { color: '#c79f19' } } },
+                              symbolSize: 30.3863845, itemStyle: { normal: { color: '#c71969' } } },
                             { x: -644.2716, y: -230.14833, id: 'express', name: 'express',
-                              symbolSize: 49.608772, itemStyle: { normal: { color: '#c71919' } } },
-                            { x: -933.4234, y: 294.88266, id: 'connect', name: 'connect',
-                              symbolSize: 19.574871, itemStyle: { normal: { color: '#c71919' } } },
-                            { x: -101.796974, y: 495.22098, id: 'consolidate', name: 'consolidate',
-                              symbolSize: 3.0212305, itemStyle: { normal: { color: '#c71919' } } },
-                            { x: 930.74255, y: 79.99539, id: 'hogan.js', name: 'hogan.js',
-                              symbolSize: 3.2646663, itemStyle: { normal: { color: '#c78419' } } },
-                            { x: -378.0424, y: 815.4766, id: 'node-uuid', name: 'node-uuid',
-                              symbolSize: 13.488974, itemStyle: { normal: { color: '#c719b9' } } },
-                            { x: 157.57562, y: 41.25936, id: 'async', name: 'async',
-                              symbolSize: 73.161194, itemStyle: { normal: { color: '#1984c7' } } },
-                            { x: -895.56586, y: 56.938953, id: 'redis', name: 'redis',
-                              symbolSize: 17.475237, itemStyle: { normal: { color: '#c719b9' } } },
-                            { x: -275.69714, y: 810.54626, id: 'backoff', name: 'backoff',
-                              symbolSize: 0.58687174, itemStyle: { normal: { color: '#199fc7' } } },
-                            { x: -1005.2705, y: 380.12103, id: 'bytes', name: 'bytes',
-                              symbolSize: 0.8607372, itemStyle: { normal: { color: '#9f19c7' } } },
-                            { x: 1057.7959, y: 144.45488, id: 'temp', name: 'temp',
-                              symbolSize: 4.0558333, itemStyle: { normal: { color: '#1984c7' } } },
-                            { x: -554.2029, y: -554.3333, id: 'mustache', name: 'mustache',
-                              symbolSize: 3.7819674, itemStyle: { normal: { color: '#69c719' } } },
-                            { x: -147.57906, y: 241.89249, id: 'request', name: 'request',
-                              symbolSize: 64.54965, itemStyle: { normal: { color: '#8419c7' } } },
-                            { x: 58.392773, y: -528.7333, id: 'underscore.string', name: 'underscore.string',
-                              symbolSize: 7.311788, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: -231.44426, y: 385.31375, id: 'jquery-browserify', name: 'jquery-browserify',
-                              symbolSize: 0.83030766, itemStyle: { normal: { color: '#c71969' } } },
-                            { x: 313.5104, y: 858.8598, id: 'event-stream', name: 'event-stream',
-                              symbolSize: 3.0212305, itemStyle: { normal: { color: '#8419c7' } } },
-                            { x: 7.309183, y: 350.19534, id: 'log4js', name: 'log4js',
-                              symbolSize: 3.4776726, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: 599.53815, y: 171.80579, id: 'optimist', name: 'optimist',
-                              symbolSize: 48.6046, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: -393.3754, y: -178.11076, id: 'mocha', name: 'mocha',
-                              symbolSize: 7.889948, itemStyle: { normal: { color: '#1919c7' } } },
-                            { x: -334.43466, y: -198.63869, id: 'should', name: 'should',
-                              symbolSize: 4.7252817, itemStyle: { normal: { color: '#1984c7' } } },
-                            { x: 414.43912, y: 375.80014, id: 'semver', name: 'semver',
-                              symbolSize: 8.711545, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: -423.78125, y: -389.02567, id: 'q', name: 'q',
-                              symbolSize: 12.54566, itemStyle: { normal: { color: '#69c719' } } },
-                            { x: -319.42093, y: -94.528114, id: 'node-fs', name: 'node-fs',
-                              symbolSize: 1.225891, itemStyle: { normal: { color: '#c74f19' } } },
-                            { x: 37.15866, y: -432.71243, id: 'colorize', name: 'colorize',
-                              symbolSize: 0.55644226, itemStyle: { normal: { color: '#19c7b9' } } },
-                            { x: -383.83453, y: 244.62839, id: 'github', name: 'github',
-                              symbolSize: 1.6519039, itemStyle: { normal: { color: '#c76919' } } },
-                            { x: 748.4038, y: 819.16583, id: 'prompt', name: 'prompt',
-                              symbolSize: 4.1471214, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: 694.03375, y: -265.6326, id: 'colors', name: 'colors',
-                              symbolSize: 33.359425, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: -479.44443, y: -682.1726, id: 'commander', name: 'commander',
-                              symbolSize: 43.21858, itemStyle: { normal: { color: '#19c7b9' } } },
-                            { x: -668.0554, y: -429.05365, id: 'validator', name: 'validator',
-                              symbolSize: 3.6602497, itemStyle: { normal: { color: '#9fc719' } } },
-                            { x: 683.8534, y: -710.3381, id: 'grunt', name: 'grunt',
-                              symbolSize: 9.959153, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: -292.83875, y: -386.1587, id: 'grunt-contrib-clean', name: 'grunt-contrib-clean',
-                              symbolSize: 1.0128845, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: 99.38902, y: 224.41283, id: 'grunt-contrib-concat', name: 'grunt-contrib-concat',
-                              symbolSize: 0.76944876, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: -215.58498, y: -611.3146, id: 'grunt-contrib-less', name: 'grunt-contrib-less',
-                              symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: 548.61926, y: -938.3397, id: 'grunt-contrib-jshint', name: 'grunt-contrib-jshint',
-                              symbolSize: 1.3171794, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: 160.96982, y: -871.8892, id: 'grunt-contrib-uglify', name: 'grunt-contrib-uglify',
-                              symbolSize: 1.1346025, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: -616.9189, y: 80.96627, id: 'grunt-contrib-watch', name: 'grunt-contrib-watch',
-                              symbolSize: 0.8607372, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: 711.7106, y: 418.763, id: 'http-proxy', name: 'http-proxy',
-                              symbolSize: 4.6339936, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: -284.14108, y: 34.348167, id: 'mime', name: 'mime',
-                              symbolSize: 14.858301, itemStyle: { normal: { color: '#b9c719' } } },
-                            { x: -199.6149, y: -392.55402, id: 'ycssmin', name: 'ycssmin',
-                              symbolSize: 0.4651538, itemStyle: { normal: { color: '#c78419' } } },
-                            { x: -1089.2416, y: 522.375, id: 'mongodb', name: 'mongodb',
-                              symbolSize: 11.237192, itemStyle: { normal: { color: '#3419c7' } } },
-                            { x: 1076.3447, y: 357.40076, id: 'ini', name: 'ini',
-                              symbolSize: 1.5301858, itemStyle: { normal: { color: '#19b9c7' } } },
-                            { x: 928.9824, y: -272.38953, id: 'slide', name: 'slide',
-                              symbolSize: 0.40429485, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1187.2019, y: -185.45026, id: 'abbrev', name: 'abbrev',
-                              symbolSize: 0.43472436, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 864.7834, y: -400.4116, id: 'graceful-fs', name: 'graceful-fs',
-                              symbolSize: 1.8649102, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 923.4708, y: -332.82092, id: 'minimatch', name: 'minimatch',
-                              symbolSize: 4.6339936, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 648.4921, y: 0.9246719, id: 'nopt', name: 'nopt',
-                              symbolSize: 5.303442, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 842.5285, y: -169.53479, id: 'rimraf', name: 'rimraf',
-                              symbolSize: 7.159641, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1191.029, y: -237.25739, id: 'which', name: 'which',
-                              symbolSize: 1.8649102, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 572.6111, y: -160.8614, id: 'tar', name: 'tar',
-                              symbolSize: 3.2646663, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 522.8266, y: -86.683586, id: 'fstream', name: 'fstream',
-                              symbolSize: 2.5343587, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 639.7362, y: 289.38367, id: 'inherits', name: 'inherits',
-                              symbolSize: 3.4472432, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 537.65076, y: 376.2344, id: 'read', name: 'read',
-                              symbolSize: 1.4997563, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 758.7636, y: 63.76733, id: 'lru-cache', name: 'lru-cache',
-                              symbolSize: 2.1996343, itemStyle: { normal: { color: '#c719b9' } } },
-                            { x: 941.12946, y: -206.755, id: 'node-gyp', name: 'node-gyp',
-                              symbolSize: 1.165032, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 792.2891, y: 172.07289, id: 'fstream-npm', name: 'fstream-npm',
-                              symbolSize: 0.52601284, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1288.449, y: -15.182732, id: 'archy', name: 'archy',
-                              symbolSize: 0.67816025, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 856.64276, y: -713.69055, id: 'npmlog', name: 'npmlog',
-                              symbolSize: 1.4084679, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 996.9021, y: -722.70416, id: 'ansi', name: 'ansi',
-                              symbolSize: 1.165032, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 770.89215, y: -163.23782, id: 'npm-registry-client', name: 'npm-registry-client',
-                              symbolSize: 0.70858973, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 835.7924, y: -328.63486, id: 'read-package-json', name: 'read-package-json',
-                              symbolSize: 0.6173013, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 502.02698, y: -542.05096, id: 'glob', name: 'glob',
-                              symbolSize: 14.88873, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1170.4095, y: 83.11953, id: 'osenv', name: 'osenv',
-                              symbolSize: 0.67816025, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1088.8419, y: -149.41582, id: 'retry', name: 'retry',
-                              symbolSize: 0.55644226, itemStyle: { normal: { color: '#c76919' } } },
-                            { x: 692.4719, y: 632.73914, id: 'once', name: 'once',
-                              symbolSize: 0.92159617, itemStyle: { normal: { color: '#34c719' } } },
-                            { x: 880.9455, y: 263.6715, id: 'npmconf', name: 'npmconf',
-                              symbolSize: 0.70858973, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 1306.2058, y: 30.311459, id: 'opener', name: 'opener',
-                              symbolSize: 0.43472436, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 23.50861, y: -216.35048, id: 'append', name: 'append',
-                              symbolSize: 0.4651538, itemStyle: { normal: { color: '#3419c7' } } },
-                            { x: -407.7309, y: 52.33028, id: 'clone', name: 'clone',
-                              symbolSize: 2.4430702, itemStyle: { normal: { color: '#3419c7' } } },
-                            { x: -421.52237, y: 264.84995, id: 'ejs', name: 'ejs',
-                              symbolSize: 11.298051, itemStyle: { normal: { color: '#c71919' } } },
-                            { x: -880.5015, y: -75.5553, id: 'debug', name: 'debug',
-                              symbolSize: 15.923333, itemStyle: { normal: { color: '#9f19c7' } } },
-                            { x: -27.64139, y: -141.5042, id: 'out', name: 'out',
-                              symbolSize: 0.43472436, itemStyle: { normal: { color: '#9f19c7' } } },
-                            { x: -874.1786, y: -798.01276, id: 'when', name: 'when',
-                              symbolSize: 3.8123972, itemStyle: { normal: { color: '#1919c7' } } },
-                            { x: 81.49971, y: -915.89026, id: 'coffee-script', name: 'coffee-script',
-                              symbolSize: 44.131462, itemStyle: { normal: { color: '#c78419' } } },
-                            { x: 893.567, y: 198.17334, id: 'adm-zip', name: 'adm-zip',
-                              symbolSize: 1.3780384, itemStyle: { normal: { color: '#c79f19' } } },
-                            { x: 345.53296, y: -535.91614, id: 'findup-sync', name: 'findup-sync',
-                              symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7b919' } } },
-                            { x: 284.06558, y: -772.7816, id: 'node-minify', name: 'node-minify',
-                              symbolSize: 0.76944876, itemStyle: { normal: { color: '#c78419' } } },
-                            { x: 1113.2292, y: 794.0542, id: 'watch', name: 'watch',
-                              symbolSize: 3.7211087, itemStyle: { normal: { color: '#19c719' } } },
-                            { x: 1637.5715, y: 630.7962, id: 'bal-util', name: 'bal-util',
-                              symbolSize: 1.0128845, itemStyle: { normal: { color: '#19c784' } } },
-                            { x: 1661.8947, y: 674.9556, id: 'extendr', name: 'extendr',
-                              symbolSize: 0.4651538, itemStyle: { normal: { color: '#19c784' } } },
-                            { x: 1473.007, y: 557.3904, id: 'taskgroup', name: 'taskgroup',
-                              symbolSize: 0.67816025, itemStyle: { normal: { color: '#19c784' } } },
-                            { x: 1672.5186, y: 655.7608, id: 'typechecker', name: 'typechecker',
-                              symbolSize: 0.4651538, itemStyle: { normal: { color: '#19c784' } } },
-                            { x: -106.96772, y: -865.8074, id: 'underscorem', name: 'underscorem',
-                              symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7199f' } } },
-                            { x: -280.204, y: -683.4332, id: 'hubot', name: 'hubot',
-                              symbolSize: 1.165032, itemStyle: { normal: { color: '#c719b9' } } },
-                            { x: 518.3953, y: -1321.741, id: 'ndarray-ops', name: 'ndarray-ops',
-                              symbolSize: 0.58687174, itemStyle: { normal: { color: '#1969c7' } } },
-                            { x: 501.15656, y: -1302.119, id: 'ndarray', name: 'ndarray',
-                              symbolSize: 1.1041731, itemStyle: { normal: { color: '#1969c7' } } },
-                            { x: 964.9717, y: -1032.3728, id: 'typedarray-pool', name: 'typedarray-pool',
-                              symbolSize: 0.6173013, itemStyle: { normal: { color: '#1969c7' } } },
-                            { x: -173.24167, y: -449.40155, id: 'jade', name: 'jade',
-                              symbolSize: 20.031315, itemStyle: { normal: { color: '#c71919' } } }]"
-                            [edges]="[
-                            { source: 'jquery', target: 'jsdom' },
-                            { source: 'jquery', target: 'xmlhttprequest' },
-                            { source: 'jquery', target: 'htmlparser' },
-                            { source: 'jquery', target: 'contextify' },
-                            { source: 'backbone', target: 'underscore' },
-                            { source: 'faye', target: 'faye-websocket' },
-                            { source: 'faye', target: 'cookiejar' },
-                            { source: 'socket.io', target: 'redis' },
-                            { source: 'socket.io', target: 'socket.io-client' },
-                            { source: 'mongoose', target: 'mongodb' },
-                            { source: 'mongoose', target: 'hooks' },
-                            { source: 'mongoose', target: 'ms' },
-                            { source: 'cheerio', target: 'underscore' },
-                            { source: 'cheerio', target: 'htmlparser2' },
-                            { source: 'cheerio', target: 'entities' },
-                            { source: 'express', target: 'mkdirp' },
-                            { source: 'express', target: 'connect' },
-                            { source: 'express', target: 'commander' },
-                            { source: 'express', target: 'debug' },
-                            { source: 'express', target: 'cookie' },
-                            { source: 'express', target: 'send' },
-                            { source: 'express', target: 'methods' },
-                            { source: 'express', target: 'buffer-crc32' },
-                            { source: 'express', target: 'fresh' },
-                            { source: 'connect', target: 'bytes' },
-                            { source: 'connect', target: 'debug' },
-                            { source: 'connect', target: 'qs' },
-                            { source: 'connect', target: 'cookie' },
-                            { source: 'connect', target: 'send' },
-                            { source: 'connect', target: 'formidable' },
-                            { source: 'connect', target: 'methods' },
-                            { source: 'connect', target: 'buffer-crc32' },
-                            { source: 'connect', target: 'fresh' },
-                            { source: 'connect', target: 'pause' },
-                            { source: 'temp', target: 'rimraf' },
-                            { source: 'request', target: 'node-uuid' },
-                            { source: 'request', target: 'mime' },
-                            { source: 'request', target: 'qs' },
-                            { source: 'request', target: 'form-data' },
-                            { source: 'event-stream', target: 'through' },
-                            { source: 'event-stream', target: 'duplexer' },
-                            { source: 'event-stream', target: 'split' },
-                            { source: 'event-stream', target: 'pause-stream' },
-                            { source: 'event-stream', target: 'map-stream' },
-                            { source: 'event-stream', target: 'stream-combiner' },
-                            { source: 'event-stream', target: 'from' },
-                            { source: 'log4js', target: 'async' },
-                            { source: 'log4js', target: 'semver' },
-                            { source: 'log4js', target: 'readable-stream' },
-                            { source: 'optimist', target: 'wordwrap' },
-                            { source: 'mocha', target: 'mkdirp' },
-                            { source: 'mocha', target: 'commander' },
-                            { source: 'mocha', target: 'glob' },
-                            { source: 'mocha', target: 'debug' },
-                            { source: 'mocha', target: 'jade' },
-                            { source: 'mocha', target: 'growl' },
-                            { source: 'mocha', target: 'ms' },
-                            { source: 'mocha', target: 'diff' },
-                            { source: 'prompt', target: 'read' },
-                            { source: 'prompt', target: 'pkginfo' },
-                            { source: 'prompt', target: 'winston' },
-                            { source: 'prompt', target: 'utile' },
-                            { source: 'prompt', target: 'revalidator' },
-                            { source: 'commander', target: 'keypress' },
-                            { source: 'grunt', target: 'lodash' },
-                            { source: 'grunt', target: 'dateformat' },
-                            { source: 'grunt', target: 'async' },
-                            { source: 'grunt', target: 'underscore.string' },
-                            { source: 'grunt', target: 'colors' },
-                            { source: 'grunt', target: 'minimatch' },
-                            { source: 'grunt', target: 'nopt' },
-                            { source: 'grunt', target: 'rimraf' },
-                            { source: 'grunt', target: 'which' },
-                            { source: 'grunt', target: 'glob' },
-                            { source: 'grunt', target: 'coffee-script' },
-                            { source: 'grunt', target: 'findup-sync' },
-                            { source: 'grunt', target: 'eventemitter2' },
-                            { source: 'grunt', target: 'iconv-lite' },
-                            { source: 'grunt', target: 'js-yaml' },
-                            { source: 'grunt-contrib-less', target: 'less' },
-                            { source: 'grunt-contrib-less', target: 'grunt-lib-contrib' },
-                            { source: 'grunt-contrib-jshint', target: 'jshint' },
-                            { source: 'grunt-contrib-uglify', target: 'uglify-js' },
-                            { source: 'grunt-contrib-uglify', target: 'grunt-lib-contrib' },
-                            { source: 'grunt-contrib-watch', target: 'gaze' },
-                            { source: 'grunt-contrib-watch', target: 'tiny-lr' },
-                            { source: 'http-proxy', target: 'optimist' },
-                            { source: 'http-proxy', target: 'colors' },
-                            { source: 'http-proxy', target: 'pkginfo' },
-                            { source: 'http-proxy', target: 'utile' },
-                            { source: 'mongodb', target: 'bson' },
-                            { source: 'minimatch', target: 'lru-cache' },
-                            { source: 'nopt', target: 'abbrev' },
-                            { source: 'rimraf', target: 'graceful-fs' },
-                            { source: 'tar', target: 'fstream' },
-                            { source: 'tar', target: 'inherits' },
-                            { source: 'fstream', target: 'mkdirp' },
-                            { source: 'fstream', target: 'graceful-fs' },
-                            { source: 'fstream', target: 'rimraf' },
-                            { source: 'fstream', target: 'inherits' }]"
+                              symbolSize: 49.608772, itemStyle: { normal: { color: '#c71919' } } }]"
+                            [edges]="[{ source: 'jquery', target: 'backbone' },
+                                      { source: 'jquery', target: 'vue.js' },
+                                      { source: 'jquery', target: 'lodash' },
+                                      { source: 'jquery', target: 'dateformat' },
+                                      { source: 'backbone', target: 'underscore' },
+                                      { source: 'faye', target: 'cookiejar' },
+                                      { source: 'socket.io', target: 'express' },
+                                      { source: 'socket.io', target: 'faye' },
+                                      { source: 'vue.js', target: 'underscore' },
+                                      { source: 'vue.js', target: 'dateformat' },
+                                      { source: 'express', target: 'socket.io' },
+                                      { source: 'express', target: 'dateformat' }]"
                             [roam]="true"
                             [focusNodeAdjacency]="true"
                             [label]="{ emphasis: { position: 'right', show: true } }">
-              <td-chart-tooltip [trigger]="'item'">
-                <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
-                  <ng-container *ngIf="params">
-                    <div layout="row" layout-align="start center">
-                      <ng-container *ngIf="params.dataType === 'node'">
-                        <mat-icon [style.color]="params.color">device_hub</mat-icon>
-                        <span class="mat-caption pad-left-sm">
-                          {{params.data.name}}
-                        </span>
-                      </ng-container>
-                      <ng-container *ngIf="params.dataType === 'edge'">
-                        <span class="mat-caption pad-left-sm">
-                          {{params.data.source}}
-                        </span>
-                        <mat-icon>arrow_forward</mat-icon>
-                        <span class="mat-caption">
-                          {{params.data.target}}
-                        </span>
-                      </ng-container>
-                    </div>
-                  </ng-container>
-                </ng-template>
-              </td-chart-tooltip>
             </td-chart-series>
           </td-chart>
-        </mat-tab>
-        <mat-tab>
-          <ng-template matTabLabel>Code</ng-template>
-          <p>HTML: </p>
-          <td-highlight lang="html">
-            <![CDATA[
-            <td-chart [style.height.px]="500"
-            [config]="{ xAxis: { show: false }, yAxis: { show: false } }">
-              <td-chart-series td-graph
-                              [data]="[{ x: -739.36383, y: -404.26147, id: 'jquery', name: 'jquery',
-                                symbolSize: 4.7252817, itemStyle: { normal: { color: '#4f19c7' } } },
-                              { x: -134.2215, y: -862.7517, id: 'backbone', name: 'backbone',
-                                symbolSize: 6.1554675, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: -75.53079, y: -734.4221, id: 'underscore', name: 'underscore',
-                                symbolSize: 100, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: -818.97516, y: 624.50604, id: 'faye', name: 'faye',
-                                symbolSize: 0.67816025, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: -710.59204, y: 120.37976, id: 'socket.io', name: 'socket.io',
-                                symbolSize: 19.818306, itemStyle: { normal: { color: '#c71919' } } },
-                              { x: 71.52897, y: -612.5541, id: 'requirejs', name: 'requirejs',
-                                symbolSize: 4.0862627, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: 1202.1166, y: -556.3107, id: 'amdefine', name: 'amdefine',
-                                symbolSize: 2.3822114, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: -1150.2018, y: 378.15536, id: 'mongoose', name: 'mongoose',
-                                symbolSize: 10.81118, itemStyle: { normal: { color: '#1984c7' } } },
-                              { x: -127.03764, y: 477.03778, id: 'underscore.deferred', name: 'underscore.deferred',
-                                symbolSize: 0.40429485, itemStyle: { normal: { color: '#c76919' } } },
-                              { x: -338.03128, y: -404.62427, id: 'cheerio', name: 'cheerio',
-                                symbolSize: 8.163814, itemStyle: { normal: { color: '#8419c7' } } },
-                              { x: 118.30771, y: -380.16626, id: 'lodash', name: 'lodash',
-                                symbolSize: 18.935852, itemStyle: { normal: { color: '#c76919' } } },
-                              { x: -697.4635, y: 649.6795, id: 'faye-websocket', name: 'faye-websocket',
-                                symbolSize: 1.0128845, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: 381.10724, y: -531.28235, id: 'dateformat', name: 'dateformat',
-                                symbolSize: 3.3863845, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: 317.77667, y: -224.0287, id: 'mkdirp', name: 'mkdirp',
-                                symbolSize: 23.713282, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: -644.2716, y: -230.14833, id: 'express', name: 'express',
-                                symbolSize: 49.608772, itemStyle: { normal: { color: '#c71919' } } },
-                              { x: -933.4234, y: 294.88266, id: 'connect', name: 'connect',
-                                symbolSize: 19.574871, itemStyle: { normal: { color: '#c71919' } } },
-                              { x: -101.796974, y: 495.22098, id: 'consolidate', name: 'consolidate',
-                                symbolSize: 3.0212305, itemStyle: { normal: { color: '#c71919' } } },
-                              { x: 930.74255, y: 79.99539, id: 'hogan.js', name: 'hogan.js',
-                                symbolSize: 3.2646663, itemStyle: { normal: { color: '#c78419' } } },
-                              { x: -378.0424, y: 815.4766, id: 'node-uuid', name: 'node-uuid',
-                                symbolSize: 13.488974, itemStyle: { normal: { color: '#c719b9' } } },
-                              { x: 157.57562, y: 41.25936, id: 'async', name: 'async',
-                                symbolSize: 73.161194, itemStyle: { normal: { color: '#1984c7' } } },
-                              { x: -895.56586, y: 56.938953, id: 'redis', name: 'redis',
-                                symbolSize: 17.475237, itemStyle: { normal: { color: '#c719b9' } } },
-                              { x: -275.69714, y: 810.54626, id: 'backoff', name: 'backoff',
-                                symbolSize: 0.58687174, itemStyle: { normal: { color: '#199fc7' } } },
-                              { x: -1005.2705, y: 380.12103, id: 'bytes', name: 'bytes',
-                                symbolSize: 0.8607372, itemStyle: { normal: { color: '#9f19c7' } } },
-                              { x: 1057.7959, y: 144.45488, id: 'temp', name: 'temp',
-                                symbolSize: 4.0558333, itemStyle: { normal: { color: '#1984c7' } } },
-                              { x: -554.2029, y: -554.3333, id: 'mustache', name: 'mustache',
-                                symbolSize: 3.7819674, itemStyle: { normal: { color: '#69c719' } } },
-                              { x: -147.57906, y: 241.89249, id: 'request', name: 'request',
-                                symbolSize: 64.54965, itemStyle: { normal: { color: '#8419c7' } } },
-                              { x: 58.392773, y: -528.7333, id: 'underscore.string', name: 'underscore.string',
-                                symbolSize: 7.311788, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: -231.44426, y: 385.31375, id: 'jquery-browserify', name: 'jquery-browserify',
-                                symbolSize: 0.83030766, itemStyle: { normal: { color: '#c71969' } } },
-                              { x: 313.5104, y: 858.8598, id: 'event-stream', name: 'event-stream',
-                                symbolSize: 3.0212305, itemStyle: { normal: { color: '#8419c7' } } },
-                              { x: 7.309183, y: 350.19534, id: 'log4js', name: 'log4js',
-                                symbolSize: 3.4776726, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: 599.53815, y: 171.80579, id: 'optimist', name: 'optimist',
-                                symbolSize: 48.6046, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: -393.3754, y: -178.11076, id: 'mocha', name: 'mocha',
-                                symbolSize: 7.889948, itemStyle: { normal: { color: '#1919c7' } } },
-                              { x: -334.43466, y: -198.63869, id: 'should', name: 'should',
-                                symbolSize: 4.7252817, itemStyle: { normal: { color: '#1984c7' } } },
-                              { x: 414.43912, y: 375.80014, id: 'semver', name: 'semver',
-                                symbolSize: 8.711545, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: -423.78125, y: -389.02567, id: 'q', name: 'q',
-                                symbolSize: 12.54566, itemStyle: { normal: { color: '#69c719' } } },
-                              { x: -319.42093, y: -94.528114, id: 'node-fs', name: 'node-fs',
-                                symbolSize: 1.225891, itemStyle: { normal: { color: '#c74f19' } } },
-                              { x: 37.15866, y: -432.71243, id: 'colorize', name: 'colorize',
-                                symbolSize: 0.55644226, itemStyle: { normal: { color: '#19c7b9' } } },
-                              { x: -383.83453, y: 244.62839, id: 'github', name: 'github',
-                                symbolSize: 1.6519039, itemStyle: { normal: { color: '#c76919' } } },
-                              { x: 748.4038, y: 819.16583, id: 'prompt', name: 'prompt',
-                                symbolSize: 4.1471214, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: 694.03375, y: -265.6326, id: 'colors', name: 'colors',
-                                symbolSize: 33.359425, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: -479.44443, y: -682.1726, id: 'commander', name: 'commander',
-                                symbolSize: 43.21858, itemStyle: { normal: { color: '#19c7b9' } } },
-                              { x: -668.0554, y: -429.05365, id: 'validator', name: 'validator',
-                                symbolSize: 3.6602497, itemStyle: { normal: { color: '#9fc719' } } },
-                              { x: 683.8534, y: -710.3381, id: 'grunt', name: 'grunt',
-                                symbolSize: 9.959153, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: -292.83875, y: -386.1587, id: 'grunt-contrib-clean', name: 'grunt-contrib-clean',
-                                symbolSize: 1.0128845, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: 99.38902, y: 224.41283, id: 'grunt-contrib-concat', name: 'grunt-contrib-concat',
-                                symbolSize: 0.76944876, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: -215.58498, y: -611.3146, id: 'grunt-contrib-less', name: 'grunt-contrib-less',
-                                symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: 548.61926, y: -938.3397, id: 'grunt-contrib-jshint', name: 'grunt-contrib-jshint',
-                                symbolSize: 1.3171794, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: 160.96982, y: -871.8892, id: 'grunt-contrib-uglify', name: 'grunt-contrib-uglify',
-                                symbolSize: 1.1346025, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: -616.9189, y: 80.96627, id: 'grunt-contrib-watch', name: 'grunt-contrib-watch',
-                                symbolSize: 0.8607372, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: 711.7106, y: 418.763, id: 'http-proxy', name: 'http-proxy',
-                                symbolSize: 4.6339936, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: -284.14108, y: 34.348167, id: 'mime', name: 'mime',
-                                symbolSize: 14.858301, itemStyle: { normal: { color: '#b9c719' } } },
-                              { x: -199.6149, y: -392.55402, id: 'ycssmin', name: 'ycssmin',
-                                symbolSize: 0.4651538, itemStyle: { normal: { color: '#c78419' } } },
-                              { x: -1089.2416, y: 522.375, id: 'mongodb', name: 'mongodb',
-                                symbolSize: 11.237192, itemStyle: { normal: { color: '#3419c7' } } },
-                              { x: 1076.3447, y: 357.40076, id: 'ini', name: 'ini',
-                                symbolSize: 1.5301858, itemStyle: { normal: { color: '#19b9c7' } } },
-                              { x: 928.9824, y: -272.38953, id: 'slide', name: 'slide',
-                                symbolSize: 0.40429485, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1187.2019, y: -185.45026, id: 'abbrev', name: 'abbrev',
-                                symbolSize: 0.43472436, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 864.7834, y: -400.4116, id: 'graceful-fs', name: 'graceful-fs',
-                                symbolSize: 1.8649102, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 923.4708, y: -332.82092, id: 'minimatch', name: 'minimatch',
-                                symbolSize: 4.6339936, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 648.4921, y: 0.9246719, id: 'nopt', name: 'nopt',
-                                symbolSize: 5.303442, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 842.5285, y: -169.53479, id: 'rimraf', name: 'rimraf',
-                                symbolSize: 7.159641, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1191.029, y: -237.25739, id: 'which', name: 'which',
-                                symbolSize: 1.8649102, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 572.6111, y: -160.8614, id: 'tar', name: 'tar',
-                                symbolSize: 3.2646663, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 522.8266, y: -86.683586, id: 'fstream', name: 'fstream',
-                                symbolSize: 2.5343587, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 639.7362, y: 289.38367, id: 'inherits', name: 'inherits',
-                                symbolSize: 3.4472432, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 537.65076, y: 376.2344, id: 'read', name: 'read',
-                                symbolSize: 1.4997563, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 758.7636, y: 63.76733, id: 'lru-cache', name: 'lru-cache',
-                                symbolSize: 2.1996343, itemStyle: { normal: { color: '#c719b9' } } },
-                              { x: 941.12946, y: -206.755, id: 'node-gyp', name: 'node-gyp',
-                                symbolSize: 1.165032, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 792.2891, y: 172.07289, id: 'fstream-npm', name: 'fstream-npm',
-                                symbolSize: 0.52601284, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1288.449, y: -15.182732, id: 'archy', name: 'archy',
-                                symbolSize: 0.67816025, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 856.64276, y: -713.69055, id: 'npmlog', name: 'npmlog',
-                                symbolSize: 1.4084679, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 996.9021, y: -722.70416, id: 'ansi', name: 'ansi',
-                                symbolSize: 1.165032, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 770.89215, y: -163.23782, id: 'npm-registry-client', name: 'npm-registry-client',
-                                symbolSize: 0.70858973, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 835.7924, y: -328.63486, id: 'read-package-json', name: 'read-package-json',
-                                symbolSize: 0.6173013, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 502.02698, y: -542.05096, id: 'glob', name: 'glob',
-                                symbolSize: 14.88873, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1170.4095, y: 83.11953, id: 'osenv', name: 'osenv',
-                                symbolSize: 0.67816025, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1088.8419, y: -149.41582, id: 'retry', name: 'retry',
-                                symbolSize: 0.55644226, itemStyle: { normal: { color: '#c76919' } } },
-                              { x: 692.4719, y: 632.73914, id: 'once', name: 'once',
-                                symbolSize: 0.92159617, itemStyle: { normal: { color: '#34c719' } } },
-                              { x: 880.9455, y: 263.6715, id: 'npmconf', name: 'npmconf',
-                                symbolSize: 0.70858973, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 1306.2058, y: 30.311459, id: 'opener', name: 'opener',
-                                symbolSize: 0.43472436, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 23.50861, y: -216.35048, id: 'append', name: 'append',
-                                symbolSize: 0.4651538, itemStyle: { normal: { color: '#3419c7' } } },
-                              { x: -407.7309, y: 52.33028, id: 'clone', name: 'clone',
-                                symbolSize: 2.4430702, itemStyle: { normal: { color: '#3419c7' } } },
-                              { x: -421.52237, y: 264.84995, id: 'ejs', name: 'ejs',
-                                symbolSize: 11.298051, itemStyle: { normal: { color: '#c71919' } } },
-                              { x: -880.5015, y: -75.5553, id: 'debug', name: 'debug',
-                                symbolSize: 15.923333, itemStyle: { normal: { color: '#9f19c7' } } },
-                              { x: -27.64139, y: -141.5042, id: 'out', name: 'out',
-                                symbolSize: 0.43472436, itemStyle: { normal: { color: '#9f19c7' } } },
-                              { x: -874.1786, y: -798.01276, id: 'when', name: 'when',
-                                symbolSize: 3.8123972, itemStyle: { normal: { color: '#1919c7' } } },
-                              { x: 81.49971, y: -915.89026, id: 'coffee-script', name: 'coffee-script',
-                                symbolSize: 44.131462, itemStyle: { normal: { color: '#c78419' } } },
-                              { x: 893.567, y: 198.17334, id: 'adm-zip', name: 'adm-zip',
-                                symbolSize: 1.3780384, itemStyle: { normal: { color: '#c79f19' } } },
-                              { x: 345.53296, y: -535.91614, id: 'findup-sync', name: 'findup-sync',
-                                symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7b919' } } },
-                              { x: 284.06558, y: -772.7816, id: 'node-minify', name: 'node-minify',
-                                symbolSize: 0.76944876, itemStyle: { normal: { color: '#c78419' } } },
-                              { x: 1113.2292, y: 794.0542, id: 'watch', name: 'watch',
-                                symbolSize: 3.7211087, itemStyle: { normal: { color: '#19c719' } } },
-                              { x: 1637.5715, y: 630.7962, id: 'bal-util', name: 'bal-util',
-                                symbolSize: 1.0128845, itemStyle: { normal: { color: '#19c784' } } },
-                              { x: 1661.8947, y: 674.9556, id: 'extendr', name: 'extendr',
-                                symbolSize: 0.4651538, itemStyle: { normal: { color: '#19c784' } } },
-                              { x: 1473.007, y: 557.3904, id: 'taskgroup', name: 'taskgroup',
-                                symbolSize: 0.67816025, itemStyle: { normal: { color: '#19c784' } } },
-                              { x: 1672.5186, y: 655.7608, id: 'typechecker', name: 'typechecker',
-                                symbolSize: 0.4651538, itemStyle: { normal: { color: '#19c784' } } },
-                              { x: -106.96772, y: -865.8074, id: 'underscorem', name: 'underscorem',
-                                symbolSize: 0.6173013, itemStyle: { normal: { color: '#c7199f' } } },
-                              { x: -280.204, y: -683.4332, id: 'hubot', name: 'hubot',
-                                symbolSize: 1.165032, itemStyle: { normal: { color: '#c719b9' } } },
-                              { x: 518.3953, y: -1321.741, id: 'ndarray-ops', name: 'ndarray-ops',
-                                symbolSize: 0.58687174, itemStyle: { normal: { color: '#1969c7' } } },
-                              { x: 501.15656, y: -1302.119, id: 'ndarray', name: 'ndarray',
-                                symbolSize: 1.1041731, itemStyle: { normal: { color: '#1969c7' } } },
-                              { x: 964.9717, y: -1032.3728, id: 'typedarray-pool', name: 'typedarray-pool',
-                                symbolSize: 0.6173013, itemStyle: { normal: { color: '#1969c7' } } },
-                              { x: -173.24167, y: -449.40155, id: 'jade', name: 'jade',
-                                symbolSize: 20.031315, itemStyle: { normal: { color: '#c71919' } } }]"
-                              [edges]="[
-                              { source: 'jquery', target: 'jsdom' },
-                              { source: 'jquery', target: 'xmlhttprequest' },
-                              { source: 'jquery', target: 'htmlparser' },
-                              { source: 'jquery', target: 'contextify' },
-                              { source: 'backbone', target: 'underscore' },
-                              { source: 'faye', target: 'faye-websocket' },
-                              { source: 'faye', target: 'cookiejar' },
-                              { source: 'socket.io', target: 'redis' },
-                              { source: 'socket.io', target: 'socket.io-client' },
-                              { source: 'mongoose', target: 'mongodb' },
-                              { source: 'mongoose', target: 'hooks' },
-                              { source: 'mongoose', target: 'ms' },
-                              { source: 'cheerio', target: 'underscore' },
-                              { source: 'cheerio', target: 'htmlparser2' },
-                              { source: 'cheerio', target: 'entities' },
-                              { source: 'express', target: 'mkdirp' },
-                              { source: 'express', target: 'connect' },
-                              { source: 'express', target: 'commander' },
-                              { source: 'express', target: 'debug' },
-                              { source: 'express', target: 'cookie' },
-                              { source: 'express', target: 'send' },
-                              { source: 'express', target: 'methods' },
-                              { source: 'express', target: 'buffer-crc32' },
-                              { source: 'express', target: 'fresh' },
-                              { source: 'connect', target: 'bytes' },
-                              { source: 'connect', target: 'debug' },
-                              { source: 'connect', target: 'qs' },
-                              { source: 'connect', target: 'cookie' },
-                              { source: 'connect', target: 'send' },
-                              { source: 'connect', target: 'formidable' },
-                              { source: 'connect', target: 'methods' },
-                              { source: 'connect', target: 'buffer-crc32' },
-                              { source: 'connect', target: 'fresh' },
-                              { source: 'connect', target: 'pause' },
-                              { source: 'temp', target: 'rimraf' },
-                              { source: 'request', target: 'node-uuid' },
-                              { source: 'request', target: 'mime' },
-                              { source: 'request', target: 'qs' },
-                              { source: 'request', target: 'form-data' },
-                              { source: 'event-stream', target: 'through' },
-                              { source: 'event-stream', target: 'duplexer' },
-                              { source: 'event-stream', target: 'split' },
-                              { source: 'event-stream', target: 'pause-stream' },
-                              { source: 'event-stream', target: 'map-stream' },
-                              { source: 'event-stream', target: 'stream-combiner' },
-                              { source: 'event-stream', target: 'from' },
-                              { source: 'log4js', target: 'async' },
-                              { source: 'log4js', target: 'semver' },
-                              { source: 'log4js', target: 'readable-stream' },
-                              { source: 'optimist', target: 'wordwrap' },
-                              { source: 'mocha', target: 'mkdirp' },
-                              { source: 'mocha', target: 'commander' },
-                              { source: 'mocha', target: 'glob' },
-                              { source: 'mocha', target: 'debug' },
-                              { source: 'mocha', target: 'jade' },
-                              { source: 'mocha', target: 'growl' },
-                              { source: 'mocha', target: 'ms' },
-                              { source: 'mocha', target: 'diff' },
-                              { source: 'prompt', target: 'read' },
-                              { source: 'prompt', target: 'pkginfo' },
-                              { source: 'prompt', target: 'winston' },
-                              { source: 'prompt', target: 'utile' },
-                              { source: 'prompt', target: 'revalidator' },
-                              { source: 'commander', target: 'keypress' },
-                              { source: 'grunt', target: 'lodash' },
-                              { source: 'grunt', target: 'dateformat' },
-                              { source: 'grunt', target: 'async' },
-                              { source: 'grunt', target: 'underscore.string' },
-                              { source: 'grunt', target: 'colors' },
-                              { source: 'grunt', target: 'minimatch' },
-                              { source: 'grunt', target: 'nopt' },
-                              { source: 'grunt', target: 'rimraf' },
-                              { source: 'grunt', target: 'which' },
-                              { source: 'grunt', target: 'glob' },
-                              { source: 'grunt', target: 'coffee-script' },
-                              { source: 'grunt', target: 'findup-sync' },
-                              { source: 'grunt', target: 'eventemitter2' },
-                              { source: 'grunt', target: 'iconv-lite' },
-                              { source: 'grunt', target: 'js-yaml' },
-                              { source: 'grunt-contrib-less', target: 'less' },
-                              { source: 'grunt-contrib-less', target: 'grunt-lib-contrib' },
-                              { source: 'grunt-contrib-jshint', target: 'jshint' },
-                              { source: 'grunt-contrib-uglify', target: 'uglify-js' },
-                              { source: 'grunt-contrib-uglify', target: 'grunt-lib-contrib' },
-                              { source: 'grunt-contrib-watch', target: 'gaze' },
-                              { source: 'grunt-contrib-watch', target: 'tiny-lr' },
-                              { source: 'http-proxy', target: 'optimist' },
-                              { source: 'http-proxy', target: 'colors' },
-                              { source: 'http-proxy', target: 'pkginfo' },
-                              { source: 'http-proxy', target: 'utile' },
-                              { source: 'mongodb', target: 'bson' },
-                              { source: 'minimatch', target: 'lru-cache' },
-                              { source: 'nopt', target: 'abbrev' },
-                              { source: 'rimraf', target: 'graceful-fs' },
-                              { source: 'tar', target: 'fstream' },
-                              { source: 'tar', target: 'inherits' },
-                              { source: 'fstream', target: 'mkdirp' },
-                              { source: 'fstream', target: 'graceful-fs' },
-                              { source: 'fstream', target: 'rimraf' },
-                              { source: 'fstream', target: 'inherits' }]"
-                              [roam]="true"
-                              [focusNodeAdjacency]="true"
-                              [label]="{ emphasis: { position: 'right', show: true } }">
-                <td-chart-tooltip [trigger]="'item'">
-                  <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
-                    <ng-container *ngIf="params">
-                      <div layout="row" layout-align="start center">
-                        <ng-container *ngIf="params.dataType === 'node'">
-                          <mat-icon [style.color]="params.color">device_hub</mat-icon>
-                          <span class="mat-caption pad-left-sm">
-                            { {params.data.name} }
-                          </span>
-                        </ng-container>
-                        <ng-container *ngIf="params.dataType === 'edge'">
-                          <span class="mat-caption pad-left-sm">
-                            { {params.data.source} }
-                          </span>
-                          <mat-icon>arrow_forward</mat-icon>
-                          <span class="mat-caption">
-                            { {params.data.target} }
-                          </span>
-                        </ng-container>
-                      </div>
-                    </ng-container>
-                  </ng-template>
-                </td-chart-tooltip>
-              </td-chart-series>
-            </td-chart>
-            ]]>
-          </td-highlight>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-card-content>
-  </mat-card>
-</div>
+          ]]>
+        </td-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
 <mat-card>
   <mat-card-title>Graph (JS Object)</mat-card-title>
   <mat-card-subtitle>Configuration object used to render a chart</mat-card-subtitle>
