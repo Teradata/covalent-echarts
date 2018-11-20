@@ -46,7 +46,7 @@ export class MyModule {}
 Basic Example:
 
 ```html
-<td-chart [style.height.px]="800">
+<td-chart>
   <td-chart-series td-tree
                   [leaves]="{ label: { position: 'right' } }"
                   [label]="{ position: 'left' }"            
