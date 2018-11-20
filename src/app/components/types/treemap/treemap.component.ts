@@ -1,6 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import * as echarts from 'echarts/lib/echarts';
-import zrUtil from 'echarts/lib/echarts';
 
 @Component({
   selector: 'types-treemap',
@@ -9,7 +7,7 @@ import zrUtil from 'echarts/lib/echarts';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: true,
 })
-export class TypesTreeMapComponent {
+export class TypesTreemapComponent {
   // Series data
   data: any = [
     {

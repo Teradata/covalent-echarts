@@ -22,17 +22,17 @@ import {
  *
  */
 
-export interface ITdTreeEmphasisLineStyle extends ITdShadow {
+export interface ITdTreemapEmphasisLineStyle extends ITdShadow {
   color?: any;
   width?: number;
   curveness?: number;
 }
 
-export interface ITdTreeEmphasis extends ITdEmphasis {
-  lineStyle: ITdTreeEmphasisLineStyle;
+export interface ITdTreemapEmphasis extends ITdEmphasis {
+  lineStyle: ITdTreemapEmphasisLineStyle;
 }
 
-export interface ITdTreeMapUpperLabel {
+export interface ITdTreemapUpperLabel {
   show?: boolean;
   position?: string | any[];
   distance?: string | number;
@@ -68,7 +68,7 @@ export interface ITdTreeMapUpperLabel {
   ellipsis: any;
 }
 
-export interface ITdTreeMapBreadcrumb {
+export interface ITdTreemapBreadcrumb {
   show?: boolean;
   left?: string | number;
   top?: string | number;
@@ -77,10 +77,10 @@ export interface ITdTreeMapBreadcrumb {
   height?: string | number;
   emptyItemWidth?: string | number;
   itemStyle?: ITdItemStyle;
-  emphasis?: ITdTreeEmphasis;
+  emphasis?: ITdTreemapEmphasis;
 }
 
-interface ITdTreeMapSeries extends ITdSeries<'treemap'> {
+interface ITdTreemapSeries extends ITdSeries<'treemap'> {
   zlevel?: number;
   z?: number;
   left?: string | number;
@@ -107,9 +107,9 @@ interface ITdTreeMapSeries extends ITdSeries<'treemap'> {
   childrenVisibleMin?: string | number;
   itemStyle?: ITdItemStyle;
   label?: ITdLabel;
-  upperLabel?: ITdTreeMapUpperLabel;
-  breadcrumb?: ITdTreeMapBreadcrumb;
-  emphasis?: ITdTreeEmphasis;
+  upperLabel?: ITdTreemapUpperLabel;
+  breadcrumb?: ITdTreemapBreadcrumb;
+  emphasis?: ITdTreemapEmphasis;
   data: any[];
 }
 
@@ -118,11 +118,10 @@ interface ITdTreeMapSeries extends ITdSeries<'treemap'> {
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{
-    provide: TdSeriesComponent, useExisting: forwardRef(() => TdChartSeriesTreeMapComponent),
+    provide: TdSeriesComponent, useExisting: forwardRef(() => TdChartSeriesTreemapComponent),
   }],
 })
-
-export class TdChartSeriesTreeMapComponent extends TdSeriesComponent<'treemap'> implements ITdTreeMapSeries {
+export class TdChartSeriesTreemapComponent extends TdSeriesComponent<'treemap'> implements ITdTreemapSeries {
 
   @Input('config') config: any = {};
   @Input('id') id: string;
@@ -154,9 +153,9 @@ export class TdChartSeriesTreeMapComponent extends TdSeriesComponent<'treemap'> 
   @Input('childrenVisibleMin') childrenVisibleMin: string | number;
   @Input('itemStyle') itemStyle: ITdItemStyle;
   @Input('label') label: ITdLabel;
-  @Input('upperLabel') upperLabel: ITdTreeMapUpperLabel;
-  @Input('breadcrumb') breadcrumb: ITdTreeMapBreadcrumb;
-  @Input('emphasis') emphasis: ITdTreeEmphasis;
+  @Input('upperLabel') upperLabel: ITdTreemapUpperLabel;
+  @Input('breadcrumb') breadcrumb: ITdTreemapBreadcrumb;
+  @Input('emphasis') emphasis: ITdTreemapEmphasis;
   @Input('tooltip') tooltip: ITdSeriesTooltip;
 
   constructor(_optionsService: TdChartOptionsService) {

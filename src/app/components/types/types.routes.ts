@@ -5,7 +5,7 @@ import { TypesLineComponent } from './line/line.component';
 import { TypesScatterComponent } from './scatter/scatter.component';
 import { TypesCombinationComponent } from './combination/combination.component';
 import { TypesTreeComponent } from './tree/tree.component';
-import { TypesTreeMapComponent } from './treemap/treemap.component';
+import { TypesTreemapComponent } from './treemap/treemap.component';
 import { TypesSankeyComponent } from './sankey/sankey.component';
 import { TypesGraphComponent } from './graph/graph.component';
 
@@ -33,7 +33,7 @@ const routes: Routes = [{
     path: 'graph',
   },
   {
-    component: TypesTreeMapComponent,
+    component: TypesTreemapComponent,
     path: 'treemap',
   },
 ];

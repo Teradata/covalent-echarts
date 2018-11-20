@@ -44,7 +44,7 @@ export class OverviewComponent {
     color: 'green-A700',
     icon: 'dashboard',
     route: ['types', 'treemap'],
-    title: 'Tree Map Chart',
+    title: 'Treemap Chart',
   },
   {
     color: 'yellow-A700',

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import 'echarts/lib/chart/treemap';
 
-import { TdChartSeriesTreeMapComponent } from './treemap.component';
+import { TdChartSeriesTreemapComponent } from './treemap.component';
 
 export const TREEMAP_MODULE_COMPONENTS: Type<any>[] = [
-  TdChartSeriesTreeMapComponent,
+  TdChartSeriesTreemapComponent,
 ];
 
 @NgModule({
@@ -20,6 +20,6 @@ export const TREEMAP_MODULE_COMPONENTS: Type<any>[] = [
     TREEMAP_MODULE_COMPONENTS,
   ],
 })
-export class CovalentTreeMapEchartsModule {
+export class CovalentTreemapEchartsModule {
 
 }
