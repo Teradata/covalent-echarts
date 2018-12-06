@@ -17,7 +17,7 @@ import { debounceTime, distinctUntilChanged, takeUntil, tap } from 'rxjs/operato
 import * as echarts from 'echarts/lib/echarts';
 
 import { TdChartOptionsService, CHART_PROVIDER } from './chart-options.service';
-import { assignDefined } from './utils';
+import { assignDefined, LanguageDefaults } from '..//base/utils';
 
 @Component({
   selector: 'td-chart',
@@ -41,6 +41,8 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   private _state: any = {};
   private _options: any = {};
 
+  _languageDefaults: LanguageDefaults = new LanguageDefaults();
+
   @Input('config') config: any = {};
 
   @Input('group') group: string;
@@ -48,6 +50,9 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Output('click') click: EventEmitter<any> = new EventEmitter<any>();
   @Output('dblclick') dblclick: EventEmitter<any> = new EventEmitter<any>();
   @Output('contextmenu') contextmenu: EventEmitter<any> = new EventEmitter<any>();
+  @Output('magictypechanged') magictypechanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output('dataviewchanged') dataviewchanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output('datazoomchanged') datazoomchanged: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
               private _elementRef: ElementRef,
@@ -129,15 +134,31 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     this._destroy.unsubscribe();
   }
 
+  checkToolBoxHeight(): string {
+    return this.config.toolbox.height ? this.config.toolbox.height : '40';
+  }
+
+  setToolBoxLang(): void {
+    if (this.config.toolbox && this.config.toolbox.feature) {
+      this.config.toolbox.feature = {
+        ...this._languageDefaults.setFeatureLang(this.config.toolbox.feature),
+      };
+    }
+
+  }
+
   render(): void {
     if (this._instance) {
+      this.setToolBoxLang();
       this._instance.setOption(assignDefined(this._state, {
         grid: {
           show: true,
           left: '20',
           right: '20',
-          bottom: '10',
-          top: '10',
+          bottom: (this.config.toolbox && typeof this.config.toolbox.bottom === 'number') 
+          || (this.config.toolbox && this.config.toolbox.bottom) ? this.checkToolBoxHeight() : '10',
+          top: (this.config.toolbox && typeof this.config.toolbox.top === 'number') 
+          || (this.config.toolbox && this.config.toolbox.top) ? this.checkToolBoxHeight() : '10',
           containLabel: true,
           borderColor: '#FCFCFC',
         },

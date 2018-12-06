@@ -40,9 +40,12 @@ import { CovalentSankeyEchartsModule } from '@covalent/echarts/sankey';
 import { CovalentGraphEchartsModule } from '@covalent/echarts/graph';
 import { CovalentTreemapEchartsModule } from '@covalent/echarts/treemap';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
+import { CovalentToolboxEchartsModule } from '@covalent/echarts/toolbox';
 import { moduleRoutes } from './types.routes';
 
 import { DocumentationToolsModule } from '../../documentation-tools';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -61,6 +64,8 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     MatMenuModule,
     HttpClientModule,
     MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,
     // Covalent Core
     CovalentLayoutModule,
     CovalentCommonModule,
@@ -78,6 +83,7 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     CovalentGraphEchartsModule,
     CovalentSankeyEchartsModule,
     CovalentTreemapEchartsModule,
+    CovalentToolboxEchartsModule,
     // internal
     DocumentationToolsModule,
     moduleRoutes,
