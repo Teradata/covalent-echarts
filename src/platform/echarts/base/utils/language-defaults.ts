@@ -128,6 +128,7 @@ export class LanguageDefaults {
    */
   public setBrush(brush: ITdBrush): ITdBrush {
     if (brush) {
+      console.log('brush')
       return brush.title ? {
           ...brush,
           title: {
@@ -208,25 +209,26 @@ export class LanguageDefaults {
    * Checks all feature titles || sets defaults to English.
    */
   public setFeatureLang(feature: ITdToolboxFeature): ITdToolboxFeature {
+    let featureLang: ITdToolboxFeature = {...feature};
     
     if (feature.dataZoom) {
-      feature.dataZoom = { ...feature.dataZoom, ...this.setDataZoom(feature.dataZoom)};
+      featureLang.dataZoom = { ...feature.dataZoom, ...this.setDataZoom(feature.dataZoom)};
     } 
     if (feature.brush) {
-    feature.brush = { ...feature.brush, ...this.setBrush(feature.brush)};
+      featureLang.brush = { ...feature.brush, ...this.setBrush(feature.brush)};
     } 
     if (feature.magicType) {
-      feature.magicType = { ...feature.magicType, ...this.setMagicType(feature.magicType)};
+      featureLang.magicType = { ...feature.magicType, ...this.setMagicType(feature.magicType)};
     } 
     if (feature.dataView) {
-      feature.dataView = { ...feature.dataView, ...this.setViewDataLang(feature.dataView)};
+      featureLang.dataView = { ...feature.dataView, ...this.setViewDataLang(feature.dataView)};
     } 
     if (feature.restore) {
-      feature.restore = { ...feature.restore, ...this.setRestore(feature.restore)};
+      featureLang.restore = { ...feature.restore, ...this.setRestore(feature.restore)};
     } 
     if (feature.saveAsImage) {
-      feature.saveAsImage = { ...feature.saveAsImage, ...this.setSaveAsImage(feature.saveAsImage)};
+      featureLang.saveAsImage = { ...feature.saveAsImage, ...this.setSaveAsImage(feature.saveAsImage)};
     } 
-    return feature = {...feature};
+    return featureLang;
   }
 }

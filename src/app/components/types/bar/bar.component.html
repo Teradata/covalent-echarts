@@ -7,7 +7,7 @@
       <mat-tab-group mat-stretch-tabs dynamicHeight>
         <mat-tab>
           <ng-template matTabLabel>Demo</ng-template>
-          <td-chart [style.height.px]="300" [config]="{brush: {toolbox: ['lineX', 'polygon']}, toolbox: { top: '10'}, feature: {brush: {type: ['rect']}}}">
+          <td-chart [style.height.px]="300" [config]="{brush: {}, toolbox: { top: '10'}}">
             <td-chart-toolbox
                         [show]="true"
                         [right]="30">
@@ -176,9 +176,9 @@
     <mat-tab-group mat-stretch-tabs dynamicHeight>
       <mat-tab>
         <ng-template matTabLabel>Demo</ng-template>
-        <td-chart [style.height.px]="300" 
+        <!-- <td-chart [style.height.px]="300" 
                   [config]="config">
-        </td-chart>
+        </td-chart> -->
       </mat-tab>
       <mat-tab>
         <ng-template matTabLabel>Code</ng-template>

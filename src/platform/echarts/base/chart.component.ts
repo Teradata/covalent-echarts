@@ -140,15 +140,27 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   setToolBoxLang(): void {
     if (this.config.brush) {
+      if (!this.config.brush.toolbox) {
+        this.config.brush = {
+          toolbox:  ['rect', 'polygon', 'keep', 'clear'],
+      };
+    }
       this.config.toolbox = {
         ...this.config.toolbox,
         feature: {
           ...this.config.toolbox.feature,
-          brush: {},
+          brush: {...{
+            rect: 'Rectangle selection',
+            polygon: 'Polygon selection',
+            lineX: 'Horizontal selection',
+            lineY: 'Vertical selection',
+            keep: 'Keep previous selection',
+            clear: 'Clear selection',
+          }},
         },
       };
     }
-
+    console.log(this.config);
     if (this.config.toolbox && this.config.toolbox.feature) {
       this.config.toolbox.feature = {
         ...this._languageDefaults.setFeatureLang(this.config.toolbox.feature),
