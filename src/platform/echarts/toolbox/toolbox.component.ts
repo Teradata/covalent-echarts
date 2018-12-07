@@ -19,28 +19,26 @@ import {
   ITdItemStyle,
 } from '@covalent/echarts/base';
 
-import { TdChartComponent } from '@covalent/echarts/base';
 import { assignDefined, LanguageDefaults } from '..//base/utils';
-
 import { TdTextPosition, TdTextAlign } from '../base/base.types';
 
 export type TdToolboxOrient = 'horizontal' | 'vertical';
 export type TdImageType = 'png' | 'jpeg';
-// export type TdMagicType = 'line' | 'bar' | 'stack' | 'tiled';
 
-export interface ITdMagicAcceptedTypes {
+export interface ITdAcceptedBrushTypes {
+  rect?: string;
+  polygon?: string;
+  lineX?: string;
+  lineY?: string;
+  keep?: string;
+  clear?: string;
+}
+
+export interface ITdAcceptedMagicTypes {
   line?: string;
   bar?: string;
   stack?: string;
   tiled?: string;
-}
-
-export interface ITdFeatureBrushOptions {
-  rect?: string;
-  polygon?: string;
-  lineX?: string;
-  keep?: string;
-  clear?: string;
 }
 
 export interface ITdToolboxIconEmphasis extends ITdItemStyle, ITdShadow {}
@@ -103,8 +101,8 @@ export interface ITdDataZoom {
 export interface ITdMagicType {
   show?: boolean;
   type?: string[]; // only expects 'line' | 'bar' | 'stack' | 'tiled';
-  title?: ITdMagicAcceptedTypes;
-  icon?: ITdMagicAcceptedTypes;
+  title?: ITdAcceptedMagicTypes;
+  icon?: ITdAcceptedMagicTypes;
   iconStyle?: ITdFeatureIconStyle;
   option?: {
     line?: object;
@@ -122,8 +120,8 @@ export interface ITdMagicType {
 
 export interface ITdBrush {
   type?: any[];
-  icon?: ITdFeatureBrushOptions;
-  title?: ITdFeatureBrushOptions;
+  icon?: ITdAcceptedBrushTypes;
+  title?: ITdAcceptedBrushTypes;
 }
 
 export interface ITdToolboxFeature {
@@ -135,15 +133,10 @@ export interface ITdToolboxFeature {
   brush?: ITdBrush;
 }
 
-export class TdToolboxContext {
-  $implicit: any;
-}
-
 @Directive({
-  selector: 'ng-template[tdToolboxFormatter]',
+  selector: 'ng-template[tdViewDataFormatter]',
 })
-export class TdChartToolboxFormatterDirective {
-}
+export class TdChartViewDataFormatterDirective {}
 
 @Component({
   selector: 'td-chart-toolbox',
@@ -151,15 +144,12 @@ export class TdChartToolboxFormatterDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TdChartToolboxComponent implements OnChanges, OnDestroy {
-
   private _state: any = {};
 
-  _context: TdToolboxContext = new TdToolboxContext();
   _languageDefaults: LanguageDefaults = new LanguageDefaults();
 
   @Input('config') config: any = {};
-  @Input('instance') _instance: TdChartComponent;
-  
+
   @Input('show') show: boolean = true;
   @Input('name') trigger: string;
   @Input('orient') orient: TdToolboxOrient;
@@ -179,13 +169,15 @@ export class TdChartToolboxComponent implements OnChanges, OnDestroy {
   @Input('width') width: string | number = 'auto';
   @Input('height') height: string | number = 'auto';
 
-  @ContentChild(TdChartToolboxFormatterDirective, {read: TemplateRef}) formatterTemplate: TemplateRef<any>;
+  @ContentChild(TdChartViewDataFormatterDirective, { read: TemplateRef })
+  formatterTemplate: TemplateRef<any>;
   @ViewChild('toolboxContent') fullTemplate: TemplateRef<any>;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef,
-              private _elementRef: ElementRef,
-              private _optionsService: TdChartOptionsService) {
-  }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _optionsService: TdChartOptionsService,
+  ) {}
 
   ngOnChanges(): void {
     this._setOptions();
@@ -196,35 +188,33 @@ export class TdChartToolboxComponent implements OnChanges, OnDestroy {
   }
 
   private _setOptions(): void {
-    if (this.formatterTemplate) {
-      this.feature = {
-        ...this.feature,
-        dataView: {
-          optionToContent: this._optionToContentFormatter(),
-        },
-      };
-    }
 
-    let config: any = assignDefined(this._state, this.config ? this.config : {}, {
-      show: this.show,
-      name: this.trigger,
-      orient: this.orient,
-      itemSize: this.itemSize,
-      itemGap: this.itemGap,
-      showTitle: this.showTitle,
-      label: this.label,
-      feature: this._languageDefaults.setFeatureLang(this.feature),
-      iconStyle: this.iconStyle,
-      zlevel: this.zlevel,
-      z: this.z,
-      transitionDuration: this.transitionDuration,
-      left: this.left,
-      top: this.top,
-      right: this.right,
-      bottom: this.bottom,
-      width: this.width,
-      height: this.height,
-    });
+    this._checkFormatterTemplate();
+
+    let config: any = assignDefined(
+      this._state,
+      this.config ? this.config : {},
+      {
+        show: this.show,
+        name: this.trigger,
+        orient: this.orient,
+        itemSize: this.itemSize,
+        itemGap: this.itemGap,
+        showTitle: this.showTitle,
+        label: this.label,
+        feature: this.feature ? this._languageDefaults.setFeatureLang(this.feature) : undefined,
+        iconStyle: this.iconStyle,
+        zlevel: this.zlevel,
+        z: this.z,
+        transitionDuration: this.transitionDuration,
+        left: this.left,
+        top: this.top,
+        right: this.right,
+        bottom: this.bottom,
+        width: this.width,
+        height: this.height,
+      },
+    );
     // set toolbox configuration in parent chart and render new configurations
     this._optionsService.setOption('toolbox', config);
   }
@@ -233,14 +223,20 @@ export class TdChartToolboxComponent implements OnChanges, OnDestroy {
     this._optionsService.clearOption('toolbox');
   }
 
-  private _optionToContentFormatter(): Function {
-    return (params: any, html: any) => {
-      console.log(params);
-      this._context = {
-        $implicit: params,
+  private _checkFormatterTemplate(): void {
+    if (this.formatterTemplate) {
+      this.feature = {
+        ...this.feature,
+        dataView: {
+          ...this.feature.dataView,
+          optionToContent: this._optionToContentFormatter(),
+        },
       };
-      // timeout set since we need to set the HTML at the end of the angular lifecycle when
-      // the toolbox delay is more than 0
+    }
+  }
+
+  private _optionToContentFormatter(): Function {
+    return () => {
       this._changeDetectorRef.markForCheck();
       return (<HTMLElement>this._elementRef.nativeElement).innerHTML;
     };

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import 'echarts/lib/component/toolbox';
 
-import { TdChartToolboxComponent, TdChartToolboxFormatterDirective } from './toolbox.component';
+import { TdChartToolboxComponent, TdChartViewDataFormatterDirective } from './toolbox.component';
 
 export const TOOLBOX_MODULE_COMPONENTS: Type<any>[] = [
   TdChartToolboxComponent,
-  TdChartToolboxFormatterDirective,
+  TdChartViewDataFormatterDirective,
 ];
 
 @NgModule({

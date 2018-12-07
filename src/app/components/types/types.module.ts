@@ -20,6 +20,7 @@ import { CovalentCommonModule } from '@covalent/core/common';
 import { CovalentLoadingModule } from '@covalent/core/loading';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentMenuModule } from '@covalent/core/menu';
+import { CovalentDataTableModule } from '@covalent/core/data-table';
 import { CovalentHighlightModule } from '@covalent/highlight';
 
 import { TypesBarComponent } from './bar/bar.component';
@@ -72,6 +73,7 @@ import { MatInputModule } from '@angular/material/input';
     CovalentLoadingModule,
     CovalentMediaModule,
     CovalentMenuModule,
+    CovalentDataTableModule,
     CovalentHighlightModule,
     // Covalent Echarts
     CovalentBaseEchartsModule,

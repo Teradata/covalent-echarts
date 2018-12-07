@@ -1,32 +1,43 @@
 <div>
   <mat-card flex>
     <mat-card-title>Bar</mat-card-title>
-    <mat-card-subtitle>Individual component configurations, series, tooltip, x & y axis, series tooltip</mat-card-subtitle>
+    <mat-card-subtitle>Individual component configurations, series, tooltip, toolbox, x & y axis</mat-card-subtitle>
     <mat-divider></mat-divider>
     <mat-card-content>
       <mat-tab-group mat-stretch-tabs dynamicHeight>
         <mat-tab>
           <ng-template matTabLabel>Demo</ng-template>
-          <td-chart #atomic [style.height.px]="300" [config]="{toolbox: { top: '10', show: false}}">
+          <td-chart [style.height.px]="300" [config]="{brush: {toolbox: ['lineX', 'polygon']}, toolbox: { top: '10'}, feature: {brush: {type: ['rect']}}}">
             <td-chart-toolbox
-            [show]="true"
-            [right]="30"
-            [feature]="{show: true, dataView: {show: true}}">
-              <!-- <ng-template tdToolboxFormatter>
+                        [show]="true"
+                        [right]="30">
+              <ng-template tdViewDataFormatter>
                 <ng-container>
-                    <h3 layout="row" layout-align="start center"><mat-icon class="push-right-sm">attach_money</mat-icon> Sales</h3>
-                    <table style="width: 50%; text-align: left">
-                    <tbody><tr><td>Time:</td><td>{{config.series[0].name}}</td>
-                    <td>{{config.series[1].name}}</td></tr>
-                    <ng-container *ngFor="let item of config.xAxis[0].data; let i = index">
-                        <tr><td>{{item}}</td>
-                                 <td>{{config.series[0].data[i]}}</td>
-                                 <td>{{config.series[1].data[i]}}</td>
-                                 </tr>
-                                </ng-container>
-                                </tbody></table>
-                </ng-container>  
-              </ng-template> -->
+                  <h3 layout="row" layout-align="start center"><mat-icon class="push-right-sm">attach_money</mat-icon> Sales</h3>
+                    <table td-data-table>
+                        <thead>
+                          <tr td-data-table-column-row>
+                            <th td-data-table-column>Category</th>
+                            <th td-data-table-column>{{config.series[0].name}}</th>
+                            <th td-data-table-column>{{config.series[1].name}}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
+                            <tr td-data-table-row>
+                              <td td-data-table-cell>{{item}}</td>
+                              <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
+                                {{firstSeries[i]}}
+                              </td>
+                              <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
+                                {{secondSeries[i]}}
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                  </ng-container>  
+                </ng-template>
             </td-chart-toolbox>
             <td-chart-tooltip [trigger]="'item'"
                               [textStyle]="{ color: '#818181' }"
@@ -74,7 +85,42 @@
           <p>HTML: </p>
           <td-highlight lang="html">
             <![CDATA[
-              <td-chart [style.height.px]="300">
+            <td-chart [style.height.px]="300" [config]="{toolbox: { top: '10'}}">
+                <td-chart-toolbox
+                            [show]="true"
+                            [right]="30"
+                            [feature]="{ dataZoom: {}, dataView: {readOnly: true, lang: [' '],
+                            buttonColor: '#f3753f'}, 
+                            magicType: {type: ['line', 'bar', 'stack', 'tiled']},
+                            restore: {}, saveAsImage: {}}">
+                  <ng-template tdViewDataFormatter>
+                    <ng-container>
+                      <h3 layout="row" layout-align="start center"><mat-icon class="push-right-sm">attach_money</mat-icon> Sales</h3>
+                        <table td-data-table>
+                            <thead>
+                              <tr td-data-table-column-row>
+                                <th td-data-table-column>Category</th>
+                                <th td-data-table-column>{ {config.series[0].name} }</th>
+                                <th td-data-table-column>{ {config.series[1].name} }</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
+                                <tr td-data-table-row>
+                                  <td td-data-table-cell>{ {item} }</td>
+                                  <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
+                                    { {firstSeries[i]} }
+                                  </td>
+                                  <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
+                                    { {secondSeries[i]} }
+                                  </td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                          </table>
+                      </ng-container>  
+                    </ng-template>
+                </td-chart-toolbox>
                 <td-chart-tooltip [trigger]="'item'"
                                   [textStyle]="{ color: '#818181' }"
                                   [backgroundColor]="'#ffffff'">
@@ -100,7 +146,7 @@
                 <td-chart-y-axis [show]="true"
                                   [type]="'value'"
                                   [position]="'right'"
-                                  [max]="200"
+                                  [max]="300"
                                   [splitLine]="{ lineStyle: { type: 'dotted' } }">
                 </td-chart-y-axis>
                 <td-chart-series td-bar
@@ -114,7 +160,7 @@
                                 [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
                                 [color]="'#3A4950'">
                 </td-chart-series>
-              </td-chart>
+            </td-chart>
             ]]>
           </td-highlight>
         </mat-tab>

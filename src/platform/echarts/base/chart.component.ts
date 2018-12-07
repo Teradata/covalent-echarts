@@ -139,12 +139,21 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   setToolBoxLang(): void {
+    if (this.config.brush) {
+      this.config.toolbox = {
+        ...this.config.toolbox,
+        feature: {
+          ...this.config.toolbox.feature,
+          brush: {},
+        },
+      };
+    }
+
     if (this.config.toolbox && this.config.toolbox.feature) {
       this.config.toolbox.feature = {
         ...this._languageDefaults.setFeatureLang(this.config.toolbox.feature),
       };
     }
-
   }
 
   render(): void {

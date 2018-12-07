@@ -1,21 +1,32 @@
 import {
   ITdZoomTitles,
-  ITdMagicAcceptedTypes,
+  ITdAcceptedMagicTypes,
   ITdDataView,
   ITdMagicType,
   ITdRestore,
   ITdSaveAsImage,
   ITdToolboxFeature,
+  ITdAcceptedBrushTypes,
+  ITdBrush,
+  ITdDataZoom,
 } from '@covalent/echarts/toolbox';
 
 export class LanguageDefaults {
   
+  private burshTitles: ITdAcceptedBrushTypes = {
+    rect: 'Rectangle selection',
+    polygon: 'Polygon selection',
+    lineX: 'Horizontal selection',
+    lineY: 'Vertical selection',
+    keep: 'Keep previous selection',
+    clear: 'Clear selection',
+  };
   private dataZoomTitles: ITdZoomTitles = { zoom: 'Zoom', back: 'Back' };
   private dataViewTitle: string = 'View Data';
   private dataViewLang: string[] = ['data view', 'turn off', 'refresh'];
   private restoreTitle: string = 'Restore';
   private saveAsImageTitle: string = 'Save Image';
-  private magicTypesAcceptedTitles: ITdMagicAcceptedTypes = {
+  private magicTypesAcceptedTitles: ITdAcceptedMagicTypes = {
     line: 'Line Chart',
     bar: 'Bar Chart',
     stack: 'Stack',
@@ -53,19 +64,24 @@ export class LanguageDefaults {
 
   /**
    *
-   * @param zoomTitles: ITdZoomTitles
+   * @param dataZoom: ITdDataZoom
    * Checks for existing dataZoom.zoom, dataZoom.back || sets defaults to English.
    */
-  public setDataZoom(zoomTitles: ITdZoomTitles): ITdZoomTitles {
-    return zoomTitles
-      ? {
-          zoom: zoomTitles.zoom ? zoomTitles.zoom : this.dataZoomTitles.zoom,
-          back: zoomTitles.back ? zoomTitles.back : this.dataZoomTitles.back,
-        }
-      : {
-          zoom: this.dataZoomTitles.zoom,
-          back: this.dataZoomTitles.back,
+  public setDataZoom(dataZoom: ITdDataZoom): ITdDataZoom {
+    if (dataZoom) {
+      return dataZoom.title ? {
+        ...dataZoom,
+        title: {
+          zoom: dataZoom.title.zoom ? dataZoom.title.zoom : this.dataZoomTitles.zoom,
+          back: dataZoom.title.back ? dataZoom.title.back : this.dataZoomTitles.back,
+        },
+      } : {
+          title: {
+            zoom: this.dataZoomTitles.zoom,
+            back: this.dataZoomTitles.back,
+          },
         };
+    }
   }
   
   /**
@@ -74,8 +90,8 @@ export class LanguageDefaults {
    * Checks for existing magicType accepted titles || sets defaults to English.
    */
   public setMagicType(magicType: ITdMagicType): ITdMagicType {
-    return magicType
-      ? {
+    if (magicType) {
+      return magicType.title ? {
           ...magicType,
           title: {
             line: magicType.title.line
@@ -91,8 +107,73 @@ export class LanguageDefaults {
               ? magicType.title.tiled
               : this.magicTypesAcceptedTitles.tiled,
           },
-        }
-      : { show: false };
+        } : {
+          ...magicType,
+          title: {
+            line: this.magicTypesAcceptedTitles.line,
+            bar: this.magicTypesAcceptedTitles.bar,
+            stack: this.magicTypesAcceptedTitles.stack,
+            tiled: this.magicTypesAcceptedTitles.tiled,
+          },
+        };
+    } else {
+      return undefined;
+      }
+  }
+
+  /**
+   *
+   * @param brush: ITdBrush
+   * Checks for existing ITdBrush accepted titles || sets defaults to English.
+   */
+  public setBrush(brush: ITdBrush): ITdBrush {
+    if (brush) {
+      return brush.title ? {
+          ...brush,
+          title: {
+            rect: brush.title.rect
+              ? brush.title.rect
+              : this.burshTitles.rect,
+            polygon: brush.title.polygon
+              ? brush.title.polygon
+              : this.burshTitles.polygon,
+            lineX: brush.title.lineX
+              ? brush.title.lineX
+              : this.burshTitles.lineX,
+            lineY: brush.title.lineY
+              ? brush.title.lineY
+              : this.burshTitles.lineY,
+            keep: brush.title.keep
+              ? brush.title.keep
+              : this.burshTitles.keep,
+            clear: brush.title.clear
+              ? brush.title.clear
+              : this.burshTitles.clear,
+          },
+        } : {
+          ...brush,
+          title: {
+            rect: this.burshTitles.rect,
+            polygon: this.burshTitles.polygon,
+            lineX: this.burshTitles.lineX,
+            lineY: this.burshTitles.lineY,
+            keep: this.burshTitles.keep,
+            clear: this.burshTitles.clear,
+          },
+        };
+    } else {
+      return {
+        ...brush,
+        title: {
+          rect: this.burshTitles.rect,
+          polygon: this.burshTitles.polygon,
+          lineX: this.burshTitles.lineX,
+          lineY: this.burshTitles.lineY,
+          keep: this.burshTitles.keep,
+          clear: this.burshTitles.clear,
+        },
+      };
+      }
   }
 
   /**
@@ -105,7 +186,7 @@ export class LanguageDefaults {
       ? {
           title: restore.title ? restore.title : this.restoreTitle,
         }
-      : { show: false };
+      : undefined;
   }
 
   /**
@@ -118,7 +199,7 @@ export class LanguageDefaults {
       ? {
           title: saveAsImage.title ? saveAsImage.title : this.saveAsImageTitle,
         }
-      : { show: false };
+      : undefined;
   }
 
   /**
@@ -127,29 +208,25 @@ export class LanguageDefaults {
    * Checks all feature titles || sets defaults to English.
    */
   public setFeatureLang(feature: ITdToolboxFeature): ITdToolboxFeature {
-    feature = {
-      ...feature,
-      dataZoom: feature.dataZoom ? {...feature.dataZoom} : {show: false},
-    };
-    return (feature = {
-      ...feature,
-      dataView: {
-        ...feature.dataView,
-        ...this.setViewDataLang(feature.dataView),
-      },
-      dataZoom: {
-        ...feature.dataZoom,
-        title: { ...this.setDataZoom(feature.dataZoom.title) },
-      },
-      magicType: {
-        ...feature.magicType,
-        ...this.setMagicType(feature.magicType),
-      },
-      restore: { ...feature.restore, ...this.setRestore(feature.restore) },
-      saveAsImage: {
-        ...feature.saveAsImage,
-        ...this.setSaveAsImage(feature.saveAsImage),
-      },
-    });
+    
+    if (feature.dataZoom) {
+      feature.dataZoom = { ...feature.dataZoom, ...this.setDataZoom(feature.dataZoom)};
+    } 
+    if (feature.brush) {
+    feature.brush = { ...feature.brush, ...this.setBrush(feature.brush)};
+    } 
+    if (feature.magicType) {
+      feature.magicType = { ...feature.magicType, ...this.setMagicType(feature.magicType)};
+    } 
+    if (feature.dataView) {
+      feature.dataView = { ...feature.dataView, ...this.setViewDataLang(feature.dataView)};
+    } 
+    if (feature.restore) {
+      feature.restore = { ...feature.restore, ...this.setRestore(feature.restore)};
+    } 
+    if (feature.saveAsImage) {
+      feature.saveAsImage = { ...feature.saveAsImage, ...this.setSaveAsImage(feature.saveAsImage)};
+    } 
+    return feature = {...feature};
   }
 }

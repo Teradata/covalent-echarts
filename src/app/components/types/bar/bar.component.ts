@@ -1,10 +1,6 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
-import { TdChartComponent } from '@covalent/echarts/base';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import 'echarts/lib/component/brush';
 
 @Component({
   selector: 'types-bar',
@@ -14,26 +10,29 @@ import { TdChartComponent } from '@covalent/echarts/base';
   preserveWhitespaces: true,
 })
 export class TypesBarComponent {
-
-  @ViewChild('atomic') atomic: TdChartComponent;
-
   // Chart config
   config: any = {
+    // brush: {
+      // brushStyle: {borderWidth: 30},
+      // toolbox: ['rect'],
+      // xAxisIndex: 0,
+    // },
     toolbox: {
       showTitle: true,
       top: 0,
       right: '30px',
       show: true,
-      feature: {
-        dataZoom: {
-          xAxisIndex: 'none',
-      },
-          dataView: {readOnly: false},
-          magicType: {type: ['line', 'bar', 'stack'], title: {line: 'Show as line chart', bar: 'Show as bar chart', stack: 'Show as stacked'}},
-          restore: {title: 'Restore'},
-          saveAsImage: {title: 'Save image'},
-      },
-  },
+      // feature: {
+      //   brush: { type: ['rect'] },
+      //   dataZoom: {
+      //     xAxisIndex: 'none',
+      //   },
+      //   dataView: { readOnly: false, buttonColor: '#f3753f' },
+      //   magicType: { type: ['line', 'bar', 'stack'] },
+      //   restore: {},
+      //   saveAsImage: {},
+      // },
+    },
     xAxis: [
       {
         data: [
@@ -95,35 +94,4 @@ export class TypesBarComponent {
       showContent: true,
     },
   };
-
-
-// ngAfterViewInit(): void {
-//   console.log(this.atomic.instance)
-//   let count: number = 0;
-//   setInterval(() => {
-//     count++;
-//     const axisData: string = 'Test ' + count;
-
-//     const data0 = this.config.series[0].data;
-//     const data1 = this.config.series[1].data;
-//     // data0.shift();
-//     data0.push(Math.round(Math.random() * 1000));
-//     // data1.shift();
-//     data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
-
-//     this.config.xAxis[0].data.shift();
-//     this.config.xAxis[0].data.push(axisData);
-//     // this.config.xAxis[1].data.shift();
-//     // this.config.xAxis[1].data.push(100);
-
-//     this.atomic.instance.setOption(this.config);
-//   }, 2100);
-  
-// }
-
-  contentToOption(args, config): void {
-    console.log(args, config)
-    config.series[0].data[0] = 8;
-
-  }
 }
