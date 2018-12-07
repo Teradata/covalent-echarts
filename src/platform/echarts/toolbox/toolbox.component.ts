@@ -14,12 +14,12 @@ import {
 
 import {
   TdChartOptionsService,
+  assignDefined,
   ITdLabel,
   ITdShadow,
   ITdItemStyle,
 } from '@covalent/echarts/base';
 
-import { assignDefined, LanguageDefaults } from '..//base/utils';
 import { TdTextPosition, TdTextAlign } from '../base/base.types';
 
 export type TdToolboxOrient = 'horizontal' | 'vertical';
@@ -146,8 +146,6 @@ export class TdChartViewDataFormatterDirective {}
 export class TdChartToolboxComponent implements OnChanges, OnDestroy {
   private _state: any = {};
 
-  _languageDefaults: LanguageDefaults = new LanguageDefaults();
-
   @Input('config') config: any = {};
 
   @Input('show') show: boolean = true;
@@ -157,7 +155,7 @@ export class TdChartToolboxComponent implements OnChanges, OnDestroy {
   @Input('itemGap') itemGap: number;
   @Input('showTitle') showTitle: boolean = true;
   @Input('label') label: ITdLabel;
-  @Input('feature') feature: ITdToolboxFeature = {};
+  @Input('feature') feature: ITdToolboxFeature;
   @Input('iconStyle') iconStyle: ITdFeatureIconStyle;
   @Input('zlevel') zlevel: number;
   @Input('z') z: number;
@@ -202,7 +200,7 @@ export class TdChartToolboxComponent implements OnChanges, OnDestroy {
         itemGap: this.itemGap,
         showTitle: this.showTitle,
         label: this.label,
-        feature: this.feature ? this._languageDefaults.setFeatureLang(this.feature) : undefined,
+        feature: this.feature,
         iconStyle: this.iconStyle,
         zlevel: this.zlevel,
         z: this.z,

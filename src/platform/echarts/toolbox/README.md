@@ -14,46 +14,22 @@ There are also lots of property inputs like:
 
 + feature?: ITdToolboxFeature
   + The configuration item for each tool which includes saveAsImage, dataView, dataZoom, restore, magicTypes and brush.
-+ trigger?: 'item' | 'axis' | 'none'
-  + Type of triggering.
++ show?: boolean
+  + Show or hide the toolbox.
 
-And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip)
-
-
-# td-chart-series-tooltip
-
-`td-chart-series-tooltip` element generates a series tooltip for the echarts visualization inside a `td-chart-series`. Its the equivalent of creating a JS tooltip series object in echarts.
-
-## API Summary
-
-#### Inputs
-
-+ config?: any
-  + Sets the JS config object if you choose to not use the property inputs.
-  + Note: property inputs override JS config conject properties.
-
-There are also lots of property inputs like:
-
-+ formatter?: string | Function
-  + The content formatter of tooltip's floating layer which supports string template and callback function.
-+ trigger?: 'item' | 'axis' | 'none'
-  + Type of triggering.
-  
-And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.tooltip)
-
-Note: every series object can contain its own tooltip
+And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox)
 
 ## Setup
 
-Import the [CovalentTooltipEchartsModule] in your NgModule:
+Import the [CovalentToolboxEchartsModule] in your NgModule:
 
 ```typescript
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
-import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
+import { CovalentToolboxEchartsModule } from '@covalent/echarts/toolbox';
 @NgModule({
   imports: [
     CovalentBaseEchartsModule,
-    CovalentTooltipEchartsModule,
+    CovalentToolboxEchartsModule,
     ...
   ],
   ...
@@ -63,50 +39,18 @@ export class MyModule {}
 
 ## Usage
 
-Basic Tooltip Example:
+Basic Toolbox Example: To change the toolbox default language for `title` and `lang` properties they must be done manually either on the parent config JS object or on the `td-chart-toolbox` component inputs. Toolbox component inputs will override any options on the parent `td-chart` config JS object.
 
 ```html
 <td-chart>
-  <td-chart-tooltip [trigger]="'item'"
-                    [triggerOn]="'mousemove'">
-    <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
-      <ng-container *ngIf="params">
-        <div layout="row" layout-align="start center">
-          <mat-icon [style.color]="params.color">person</mat-icon>
-          <span class="mat-caption pad-left-sm">
-            {{params.seriesName + ': ' + params.value}}
-          </span>
-        </div>
-      </ng-container>
-    </ng-template>
-  </td-chart-tooltip>
-</td-chart>
-```
-
-## Usage
-
-Basic Series Tooltip Example (only works if tooltip.trigger is 'item'):
-
-```html
-<td-chart>
-  <td-chart-tooltip [trigger]="'item'">
-  </td-chart-tooltip>
-  <td-chart-series td-bar
-                    [name]="'name'"
-                    [data]="[100,200,150,200]">
-    <td-chart-series-tooltip [trigger]="'item'"
-                      [triggerOn]="'mousemove'">
-      <ng-template let-params let-i="index" let-ticket="ticket" tdTooltipFormatter>
-        <ng-container *ngIf="params">
-          <div layout="row" layout-align="start center">
-            <mat-icon [style.color]="params.color">person</mat-icon>
-            <span class="mat-caption pad-left-sm">
-              {{params.seriesName + ': ' + params.value}}
-            </span>
-          </div>
-        </ng-container>
-      </ng-template>
-    </td-chart-series-tooltip>
-  </td-chart-series>
+  <td-chart-toolbox
+              [show]="true"
+              [right]="30"
+              [feature]="{dataView: {readOnly: true, title: 'View Data', lang: ['Data View', 'Turn Off', 'Refresh']},
+                          dataZoom: {title: {zoom: 'Zoom', back: 'Back'}},
+                          magicType: {type: ['line', 'bar', 'stack', 'tiled'], 
+                                      title: {line: 'Line', bar: 'Bar', stack: 'Stack', tiled: 'Tiled'}},
+                          restore: {title: 'Restore'}}">
+  </td-chart-toolbox>
 </td-chart>
 ```
