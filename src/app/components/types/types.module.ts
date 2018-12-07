@@ -45,8 +45,6 @@ import { CovalentToolboxEchartsModule } from '@covalent/echarts/toolbox';
 import { moduleRoutes } from './types.routes';
 
 import { DocumentationToolsModule } from '../../documentation-tools';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -65,8 +63,6 @@ import { MatInputModule } from '@angular/material/input';
     MatMenuModule,
     HttpClientModule,
     MatTooltipModule,
-    MatFormFieldModule,
-    MatInputModule,
     // Covalent Core
     CovalentLayoutModule,
     CovalentCommonModule,

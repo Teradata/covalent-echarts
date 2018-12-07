@@ -153,7 +153,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     this._destroy.unsubscribe();
   }
 
-  checkToolBoxHeight(): string {
+  checkToolboxHeight(): string {
     return this.config.toolbox.height ? this.config.toolbox.height : '40';
   }
 
@@ -165,9 +165,9 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
           left: '20',
           right: '20',
           bottom: (this.config.toolbox && typeof this.config.toolbox.bottom === 'number') 
-          || (this.config.toolbox && this.config.toolbox.bottom) ? this.checkToolBoxHeight() : '10',
+          || (this.config.toolbox && this.config.toolbox.bottom) ? this.checkToolboxHeight() : '10',
           top: (this.config.toolbox && typeof this.config.toolbox.top === 'number') 
-          || (this.config.toolbox && this.config.toolbox.top) ? this.checkToolBoxHeight() : '10',
+          || (this.config.toolbox && this.config.toolbox.top) ? this.checkToolboxHeight() : '10',
           containLabel: true,
           borderColor: '#FCFCFC',
         },

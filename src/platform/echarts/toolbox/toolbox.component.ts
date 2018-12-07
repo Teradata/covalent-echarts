@@ -18,9 +18,9 @@ import {
   ITdLabel,
   ITdShadow,
   ITdItemStyle,
+  TdTextPosition,
+  TdTextAlign,
 } from '@covalent/echarts/base';
-
-import { TdTextPosition, TdTextAlign } from '../base/base.types';
 
 export type TdToolboxOrient = 'horizontal' | 'vertical';
 export type TdImageType = 'png' | 'jpeg';
