@@ -17,32 +17,29 @@
                                                 title: {line: 'Line', bar: 'Bar', stack: 'Stack', tiled: 'Tiled'}},
                                     restore: {title: 'Restore'}}">
               <ng-template tdViewDataFormatter>
-                <ng-container>
-                  <h3 layout="row" layout-align="start center"><mat-icon class="push-right-sm">attach_money</mat-icon> Sales</h3>
-                    <table td-data-table>
-                        <thead>
-                          <tr td-data-table-column-row>
-                            <th td-data-table-column>Category</th>
-                            <th td-data-table-column>{{config.series[0].name}}</th>
-                            <th td-data-table-column>{{config.series[1].name}}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
-                            <tr td-data-table-row>
-                              <td td-data-table-cell>{{item}}</td>
-                              <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
-                                {{firstSeries[i]}}
-                              </td>
-                              <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
-                                {{secondSeries[i]}}
-                              </td>
-                            </tr>
-                          </ng-container>
-                        </tbody>
-                      </table>
-                  </ng-container>  
-                </ng-template>
+                <table td-data-table>
+                  <thead>
+                    <tr td-data-table-column-row>
+                      <th td-data-table-column>Category</th>
+                      <th td-data-table-column>{{config.series[0].name}}</th>
+                      <th td-data-table-column>{{config.series[1].name}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
+                      <tr td-data-table-row>
+                        <td td-data-table-cell>{{item}}</td>
+                        <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
+                          {{firstSeries[i]}}
+                        </td>
+                        <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
+                          {{secondSeries[i]}}
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </ng-template>
             </td-chart-toolbox>
             <td-chart-tooltip [trigger]="'item'"
                               [textStyle]="{ color: '#818181' }"
@@ -100,32 +97,29 @@
                                                   title: {line: 'Line', bar: 'Bar', stack: 'Stack', tiled: 'Tiled'}},
                                       restore: {title: 'Restore'}}">
                 <ng-template tdViewDataFormatter>
-                  <ng-container>
-                    <h3 layout="row" layout-align="start center"><mat-icon class="push-right-sm">attach_money</mat-icon> Sales</h3>
-                      <table td-data-table>
-                          <thead>
-                            <tr td-data-table-column-row>
-                              <th td-data-table-column>Category</th>
-                              <th td-data-table-column>{{config.series[0].name}}</th>
-                              <th td-data-table-column>{{config.series[1].name}}</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
-                              <tr td-data-table-row>
-                                <td td-data-table-cell>{ {item} }</td>
-                                <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
-                                  { {firstSeries[i]} }
-                                </td>
-                                <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
-                                  { {secondSeries[i]} }
-                                </td>
-                              </tr>
-                            </ng-container>
-                          </tbody>
-                        </table>
-                    </ng-container>  
-                  </ng-template>
+                  <table td-data-table>
+                    <thead>
+                      <tr td-data-table-column-row>
+                        <th td-data-table-column>Category</th>
+                        <th td-data-table-column>{{config.series[0].name}}</th>
+                        <th td-data-table-column>{{config.series[1].name}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let item of ['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']; let i = index">
+                        <tr td-data-table-row>
+                          <td td-data-table-cell>{ {item} }</td>
+                          <td td-data-table-cell *ngIf="[150, 130, 150, 120, 150, 120] as firstSeries">
+                            { {firstSeries[i]} }
+                          </td>
+                          <td td-data-table-cell *ngIf="[80, 122, 80, 120, 80, 120] as secondSeries">
+                            { {secondSeries[i]} }
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </ng-template>
               </td-chart-toolbox>
               <td-chart-tooltip [trigger]="'item'"
                                 [textStyle]="{ color: '#818181' }"
