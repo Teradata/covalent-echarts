@@ -48,7 +48,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   /**
    * config?: any;
    * Sets the JS config object if you choose to not use the property inputs.
-   * Note: property inputs override JS config conject properties.
+   * Note: [config] input properties will override input values
    * https://ecomfe.github.io/echarts-doc/public/en/option.html
    */
   @Input('config') config: any = {};
