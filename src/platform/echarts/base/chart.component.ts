@@ -116,10 +116,10 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
           show: true,
           left: '20',
           right: '20',
-          bottom: (this.config.toolbox && typeof this.config.toolbox.bottom === 'number') 
-          || (this.config.toolbox && this.config.toolbox.bottom) ? this._checkToolboxHeight() : '10',
-          top: (this.config.toolbox && typeof this.config.toolbox.top === 'number') 
-          || (this.config.toolbox && this.config.toolbox.top) ? this._checkToolboxHeight() : '10',
+          bottom: (this.config.toolbox && typeof this.config.toolbox.bottom === 'number') ||
+                (this._options.toolbox && typeof this._options.toolbox.bottom  === 'number') ? '40' : '10',
+          top: (this.config.toolbox && typeof this.config.toolbox.top === 'number') ||
+                (this._options.toolbox && typeof this._options.toolbox.top  === 'number') ? '40' : '10',
           containLabel: true,
           borderColor: '#FCFCFC',
         },
@@ -216,10 +216,6 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
       echarts.dispose(this._instance);
     }
     this._destroy.next(true);
-  }
-
-  private _checkToolboxHeight(): string {
-    return this.config.toolbox.height ? this.config.toolbox.height : '40';
   }
 
 }
