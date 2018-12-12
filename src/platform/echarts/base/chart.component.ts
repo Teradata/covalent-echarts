@@ -123,7 +123,7 @@ export class TdChartComponent implements AfterViewInit, OnChanges, OnDestroy {
           containLabel: true,
           borderColor: '#FCFCFC',
         },
-      }, this.config ? this.config : {}, this._options), true);
+      }, this._options, this.config ? this.config : {}), true);
       this._changeDetectorRef.markForCheck();
     }
   }
