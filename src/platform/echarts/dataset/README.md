@@ -1,6 +1,6 @@
-# td-chart-series[td-line]
+# td-chart-dataset
 
-`td-chart-series[td-line]` element generates a line series echarts visualization inside a `td-chart`. Its the equivalent of creating a JS series object `type="line"` in echarts.
+`td-chart-dataset` element sets the `dataset` option, it allows additional flexibility of managing data separately from the series option which allows reuse by different series. It also enables data encoding. Its the equivalent of creating a JS dataset object in echarts.
 
 ## API Summary
 
@@ -10,30 +10,30 @@
   + Sets the JS config object if you choose to not use the property inputs.
   + Note: [config] input properties will override input values
 
-There are also lots of property inputs like:
+There are also three main property inputs:
 
 + id?: string
   + It can be used to refer the component in option or API.
-+ name?: string
-  + Series name used for displaying in tooltip and filtering with legend.
-+ color?: any
-  + Global color for the series.
-+ data?: any[]
-  + Data array of series.
++ source?: object | any[]
+  + Source data. Source data describe in a tabular or 2d array format.
++ dimensions?: any[]
+  + dimensions can be used to define dimension info for `series.data` or `dataset.source`.
++ sourceHeader?: boolean
+  + Whether the first row/column of `dataset.source` represents dimension names.
 
-And so many more.. for more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line)
+For more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset)
 
 ## Setup
 
-Import the [CovalentLineEchartsModule] in your NgModule:
+Import the [CovalenDatasetEchartsModule] in your NgModule:
 
 ```typescript
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
-import { CovalentLineEchartsModule } from '@covalent/echarts/line';
+import { CovalenDatasetEchartsModule } from '@covalent/echarts/dataset';
 @NgModule({
   imports: [
     CovalentBaseEchartsModule,
-    CovalentLineEchartsModule,
+    CovalenDatasetEchartsModule,
     ...
   ],
   ...
@@ -46,35 +46,41 @@ export class MyModule {}
 Basic Example:
 
 ```html
-<td-chart>
-  <td-chart-x-axis [show]="true"
-                    [type]="'time'">
-  </td-chart-x-axis>
-  <td-chart-y-axis [show]="true"
-                    [type]="'value'">
-  </td-chart-y-axis>
-  <td-chart-series td-line
-              [name]="'name'"
-              [data]="[{
-                'name': '2018-10-29T03:27:33.932Z',
-                'value': [
-                  '2018-10-29T03:27:33.932Z',
-                  200
-                ]
-              }, {
-                'name': '2018-10-30T03:27:33.932Z',
-                'value': [
-                  '2018-10-30T03:27:33.932Z',
-                  50
-                ]
-              },{
-                'name': '2018-10-31T03:27:33.932Z',
-                'value': [
-                  '2018-10-31T03:27:33.932Z',
-                  100
-                ]
-              }]"
-              [color]="'#F2724B'">
-  </td-chart-series>
+<td-chart [style.height.px]="300">
+  <td-chart-x-axis></td-chart-x-axis>
+  <td-chart-y-axis [type]="'category'"> </td-chart-y-axis>
+    <td-chart-series td-bar></td-chart-series>
+    <td-chart-series td-bar></td-chart-series>
+    <td-chart-series td-bar></td-chart-series>
+  <td-chart-dataset
+    [source]="[['product', '2015', '2016', '2017'],
+    ['Matcha Latte', 43.3, 85.8, 93.7],
+    ['Milk Tea', 83.1, 73.4, 55.1],
+    ['Cheese Cocoa', 86.4, 65.2, 82.5],
+    ['Walnut Brownie', 72.4, 53.9, 39.1]
+  ]"
+  >
+  </td-chart-dataset>
 </td-chart>
+```
+Dimension Input property Example:
+
+```html
+<td-chart [style.height.px]="300">
+    <td-chart-x-axis></td-chart-x-axis>
+    <td-chart-y-axis [type]="'category'"> </td-chart-y-axis>
+    <td-chart-series td-bar></td-chart-series>
+    <td-chart-series td-bar></td-chart-series>
+    <td-chart-series td-bar></td-chart-series>
+    <td-chart-dataset
+    [dimensions]="['product', '2015', '2016', '2017']"
+      [source]="[
+      {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
+      {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
+      {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
+      {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
+  ]"
+    >
+    </td-chart-dataset>
+  </td-chart>
 ```

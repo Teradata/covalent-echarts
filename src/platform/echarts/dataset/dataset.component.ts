@@ -20,6 +20,7 @@ export class TdDatasetComponent implements OnChanges, OnDestroy {
 
   private _state: any = {};
 
+  @Input('id') id: string;
   @Input('config') config: any = {};
   @Input('source') source: object | any[];
   @Input('dimensions') dimensions: any[];
