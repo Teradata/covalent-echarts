@@ -42,6 +42,7 @@ import { CovalentGraphEchartsModule } from '@covalent/echarts/graph';
 import { CovalentTreemapEchartsModule } from '@covalent/echarts/treemap';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 import { CovalentToolboxEchartsModule } from '@covalent/echarts/toolbox';
+import { CovalentDatasetEchartsModule } from '@covalent/echarts/dataset';
 import { moduleRoutes } from './types.routes';
 
 import { DocumentationToolsModule } from '../../documentation-tools';
@@ -82,6 +83,7 @@ import { DocumentationToolsModule } from '../../documentation-tools';
     CovalentSankeyEchartsModule,
     CovalentTreemapEchartsModule,
     CovalentToolboxEchartsModule,
+    CovalentDatasetEchartsModule,
     // internal
     DocumentationToolsModule,
     moduleRoutes,
