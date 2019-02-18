@@ -10,7 +10,7 @@
   + Sets the JS config object if you choose to not use the property inputs.
   + Note: [config] input properties will override input values
 
-There are also three property inputs:
+There are also has several property inputs:s
 
 + id?: string
   + It can be used to refer the component in option or API.
