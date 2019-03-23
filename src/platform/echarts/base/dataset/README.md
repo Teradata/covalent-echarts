@@ -25,15 +25,13 @@ For more info [click here](https://ecomfe.github.io/echarts-doc/public/en/option
 
 ## Setup
 
-Import the [CovalenDatasetEchartsModule] in your NgModule:
+Import the [CovalentBaseEchartsModule] in your NgModule:
 
 ```typescript
 import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
-import { CovalenDatasetEchartsModule } from '@covalent/echarts/dataset';
 @NgModule({
   imports: [
     CovalentBaseEchartsModule,
-    CovalenDatasetEchartsModule,
     ...
   ],
   ...

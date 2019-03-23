@@ -5,11 +5,8 @@ import {
   OnChanges,
   OnDestroy,
 } from '@angular/core';
-
-import {
-  TdChartOptionsService,
-  assignDefined,
-} from '@covalent/echarts/base';
+import { TdChartOptionsService } from '../chart-options.service';
+import { assignDefined } from '../utils';
 
 @Component({
   template: '',
