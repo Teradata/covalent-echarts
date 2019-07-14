@@ -5,4 +5,3 @@ export * from './scatter/index';
 export * from './tree/index';
 export * from './tooltip/index';
 export * from './toolbox/index';
-export * from './themes/index';
