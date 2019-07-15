@@ -1,31 +1,14 @@
 import * as echarts from 'echarts/lib/echarts';
 
-import aquaSlash from '../themes/aqua-splash';
-import aquaSlashDark from '../themes/aqua-splash-dark';
-
+import aquaSplash from '../themes/aqua-splash';
 import californiaCoast from '../themes/california-coast';
-import californiaCoastDark from '../themes/california-coast-dark';
-
 import hawaiianSunrise from '../themes/hawaiian-sunrise';
-import hawaiianSunriseDark from '../themes/hawaiian-sunrise-dark';
-
 import passionFlower from '../themes/passion-flower';
-import passionFlowerDark from '../themes/passion-flower-dark';
-
 import razzleberryPie from '../themes/razzleberry-pie';
-import razzleberryPieDark from '../themes/razzleberry-pie-dark';
-
 import teradataClassic from '../themes/teradata-classic';
-import teradataClassicDark from '../themes/teradata-classic-dark';
-
 import teradataDefault from '../themes/teradata-default';
-import teradataDefaultDark from '../themes/teradata-default-dark';
-
 import urbanSunrise from '../themes/urban-sunrise';
-import urbanSunriseDark from '../themes/urban-sunrise-dark';
-
 import volcanicEruption from '../themes/volcanic-eruption';
-import volcanicEruptionDark from '../themes/volcanic-eruption-dark';
 
 /**
  * Function used to register a theme into echarts
@@ -41,33 +24,30 @@ export function registerTheme(themeName: string, theme: Object): void {
  * @internal
  */
 export function registerDefaultThemes(): void {
-  function registerInternalTheme(themeObj: {themeName: string, theme: any}): void {
-    registerTheme(themeObj.themeName, themeObj.theme);
-  }
-  registerInternalTheme(aquaSlash);
-  registerInternalTheme(aquaSlashDark);
+  registerTheme('aqua-splash', aquaSplash);
+  registerTheme('california-coast', californiaCoast);
+  registerTheme('hawaiian-sunrise', hawaiianSunrise);
+  registerTheme('passion-flower', passionFlower);
+  registerTheme('razzleberry-pie', razzleberryPie);
+  registerTheme('teradata-classic', teradataClassic);
+  registerTheme('teradata-default', teradataDefault);
+  registerTheme('urban-sunrise', urbanSunrise);
+  registerTheme('volcanic-eruption', volcanicEruption);
+}
 
-  registerInternalTheme(californiaCoast);
-  registerInternalTheme(californiaCoastDark);
-
-  registerInternalTheme(hawaiianSunrise);
-  registerInternalTheme(hawaiianSunriseDark);
-
-  registerInternalTheme(passionFlower);
-  registerInternalTheme(passionFlowerDark);
-
-  registerInternalTheme(razzleberryPie);
-  registerInternalTheme(razzleberryPieDark);
-
-  registerInternalTheme(teradataClassic);
-  registerInternalTheme(teradataClassicDark);
-
-  registerInternalTheme(teradataDefault);
-  registerInternalTheme(teradataDefaultDark);
-
-  registerInternalTheme(urbanSunrise);
-  registerInternalTheme(urbanSunriseDark);
-
-  registerInternalTheme(volcanicEruption);
-  registerInternalTheme(volcanicEruptionDark);
+/**
+ * Returns all the theme names bundled with covalent echarts.
+ */
+export function getThemes(): string[] {
+  return [
+    'aqua-splash',
+    'california-coast',
+    'hawaiian-sunrise',
+    'passion-flower',
+    'razzleberry-pie',
+    'teradata-classic',
+    'teradata-default',
+    'urban-sunrise',
+    'volcanic-eruption',
+  ];
 }
