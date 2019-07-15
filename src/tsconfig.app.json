@@ -6,10 +6,7 @@
     "module": "es2015",
     "types": [
       "hammerjs"
-    ],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    ]
   },
   "exclude": [
     "universal-app/**",
