@@ -1,31 +1,31 @@
 import * as echarts from 'echarts/lib/echarts';
 
-import aquaSlash from '../themes/aqua-splash.json';
-import aquaSlashDark from '../themes/aqua-splash-dark.json';
+import aquaSlash from '../themes/aqua-splash';
+import aquaSlashDark from '../themes/aqua-splash-dark';
 
-import californiaCoast from '../themes/california-coast.json';
-import californiaCoastDark from '../themes/california-coast-dark.json';
+import californiaCoast from '../themes/california-coast';
+import californiaCoastDark from '../themes/california-coast-dark';
 
-import hawaiianSunrise from '../themes/hawaiian-sunrise.json';
-import hawaiianSunriseDark from '../themes/hawaiian-sunrise-dark.json';
+import hawaiianSunrise from '../themes/hawaiian-sunrise';
+import hawaiianSunriseDark from '../themes/hawaiian-sunrise-dark';
 
-import passionFlower from '../themes/passion-flower.json';
-import passionFlowerDark from '../themes/passion-flower-dark.json';
+import passionFlower from '../themes/passion-flower';
+import passionFlowerDark from '../themes/passion-flower-dark';
 
-import razzleberryPie from '../themes/razzleberry-pie.json';
-import razzleberryPieDark from '../themes/razzleberry-pie-dark.json';
+import razzleberryPie from '../themes/razzleberry-pie';
+import razzleberryPieDark from '../themes/razzleberry-pie-dark';
 
-import teradataClassic from '../themes/teradata-classic.json';
-import teradataClassicDark from '../themes/teradata-classic-dark.json';
+import teradataClassic from '../themes/teradata-classic';
+import teradataClassicDark from '../themes/teradata-classic-dark';
 
-import teradataDefault from '../themes/teradata-default.json';
-import teradataDefaultDark from '../themes/teradata-default-dark.json';
+import teradataDefault from '../themes/teradata-default';
+import teradataDefaultDark from '../themes/teradata-default-dark';
 
-import urbanSunrise from '../themes/urban-sunrise.json';
-import urbanSunriseDark from '../themes/urban-sunrise-dark.json';
+import urbanSunrise from '../themes/urban-sunrise';
+import urbanSunriseDark from '../themes/urban-sunrise-dark';
 
-import volcanicEruption from '../themes/volcanic-eruption.json';
-import volcanicEruptionDark from '../themes/volcanic-eruption-dark.json';
+import volcanicEruption from '../themes/volcanic-eruption';
+import volcanicEruptionDark from '../themes/volcanic-eruption-dark';
 
 /**
  * Function used to register a theme into echarts

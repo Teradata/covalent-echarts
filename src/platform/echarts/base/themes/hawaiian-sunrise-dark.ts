@@ -1,6 +1,7 @@
-{
+/* tslint:disable */
+export default {
     "version": 1,
-    "themeName": "urban-sunrise-dark",
+    "themeName": "hawaiian-sunrise-dark",
     "theme": {
         "seriesCnt": "6",
         "backgroundColor": "#141d22",
@@ -10,9 +11,9 @@
         "textColor": "#333",
         "markTextColor": "#ffffff",
         "color": [
-            "#667279",
-            "#979ea4",
-            "#caced0",
+            "#00b2b1",
+            "#69c6c4",
+            "#a0d9d7",
             "#ffbb9c",
             "#fd986d",
             "#f3753f"
@@ -20,18 +21,18 @@
         "borderColor": "#ccc",
         "borderWidth": 0,
         "visualMapColor": [
-            "#667279",
-            "#979ea4",
-            "#caced0",
-            "#FFBB9C",
-            "#FD986D",
-            "#F3753F"
+            "#00b2b1",
+            "#69c6c4",
+            "#a0d9d7",
+            "#ffbb9c",
+            "#fd986d",
+            "#f3753f"
         ],
         "legendTextColor": "rgba(255,255,255,0.64)",
         "kColor": "#f3753f",
         "kColor0": "transparent",
         "kBorderColor": "#f3753f",
-        "kBorderColor0": "#caced0",
+        "kBorderColor0": "#00b2b1",
         "kBorderWidth": "2",
         "lineWidth": "2",
         "symbolSize": "6",
@@ -40,8 +41,8 @@
         "lineSmooth": true,
         "graphLineWidth": 1,
         "graphLineColor": "#aaaaaa",
-        "mapLabelColor": "#667279",
-        "mapLabelColorE": "rgb(102,114,121)",
+        "mapLabelColor": "#007373",
+        "mapLabelColorE": "rgb(0,115,115)",
         "mapBorderColor": "#999999",
         "mapBorderColorE": "#ecaf2b",
         "mapBorderWidth": 0.5,

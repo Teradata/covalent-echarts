@@ -1,4 +1,5 @@
-{
+/* tslint:disable */
+export default {
     "version": 1,
     "themeName": "passion-flower-dark",
     "theme": {

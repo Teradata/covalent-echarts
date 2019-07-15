@@ -6,8 +6,5 @@
     "paths": {
       "@covalent/echarts/*": ["./*"]
     }
-  },
-  "angularCompilerOptions": {
-    "annotateForClosureCompiler": false
   }
 }

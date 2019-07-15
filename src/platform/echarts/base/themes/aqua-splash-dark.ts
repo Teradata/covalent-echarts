@@ -1,4 +1,5 @@
-{
+/* tslint:disable */
+export default {
     "version": 1,
     "themeName": "aqua-splash-dark",
     "theme": {
